@@ -1,0 +1,1601 @@
+EmployeeID,Age,Gender,MaritalStatus,Department,JobRole,JobLevel,MonthlyIncome,YearsAtCompany,YearsInCurrentRole,YearsSinceLastPromotion,TotalWorkingYears,OverTime,DistanceFromHome,Education,PerformanceRating,JobSatisfaction,EnvironmentSatisfaction,WorkLifeBalance,RelationshipSatisfaction,NumCompaniesWorked,TrainingTimesLastYear,StockOptionLevel,PercentSalaryHike,EngagementScore,Attrition
+1,61,Female,Married,Nursing,CNA,1,2948,30,0,18,42,Yes,2,4,3,3,4,1,2,2,2,3,12,4.8,Yes
+2,49,Male,Married,Nursing,CNA,3,7780,22,9,10,22,No,26,1,4,4,4,4,4,9,1,0,12,3.2,No
+3,60,Male,Divorced,Administration,Office Manager,3,8553,27,14,27,33,Yes,27,4,3,2,1,3,3,0,2,3,15,7.8,Yes
+4,36,Non-Binary,Single,Finance,Revenue Cycle Analyst,1,3451,13,7,12,14,No,32,1,4,2,4,3,1,0,3,0,19,4.3,No
+5,38,Non-Binary,Divorced,Clinical,Resident,4,10835,8,7,1,8,No,50,2,4,3,3,3,1,0,3,1,16,7.6,No
+6,57,Female,Single,Nursing,Registered Nurse,1,4130,19,5,18,23,Yes,11,5,3,2,3,2,1,3,0,0,24,7.6,No
+7,50,Non-Binary,Single,Clinical,Resident,4,13809,11,9,2,24,Yes,33,4,3,3,2,1,4,6,3,1,25,5.9,Yes
+8,54,Non-Binary,Single,Facilities,Maintenance Tech,3,7121,22,2,9,28,Yes,36,1,3,4,1,4,2,3,5,1,21,7.1,No
+9,46,Male,Single,Administration,Admin Assistant,1,3357,5,2,5,11,No,46,5,2,2,4,3,1,3,6,0,17,7.1,No
+10,53,Non-Binary,Divorced,Nursing,Charge Nurse,3,9176,10,1,8,18,Yes,6,3,3,1,4,4,4,3,6,1,13,5.4,Yes
+11,35,Female,Single,Nursing,Nurse Practitioner,4,11492,13,7,11,16,No,24,3,4,3,2,2,2,4,5,3,18,9.0,No
+12,54,Female,Single,Clinical,Physician,2,5475,11,9,2,36,No,15,1,3,2,4,2,2,9,3,1,20,8.3,No
+13,49,Non-Binary,Divorced,Clinical,Specialist,3,6544,26,16,1,30,No,50,2,4,3,3,1,4,6,3,2,15,3.3,No
+14,51,Male,Single,Administration,Office Manager,3,8825,29,0,10,32,Yes,29,2,4,3,4,4,2,5,3,1,13,7.8,No
+15,47,Male,Single,IT,Health Informatics Analyst,2,6316,10,5,2,11,Yes,24,4,4,2,4,1,3,0,1,0,25,6.2,Yes
+16,29,Non-Binary,Single,Finance,Controller,2,4760,1,0,0,7,Yes,48,5,2,1,2,4,2,6,2,3,16,8.1,No
+17,33,Male,Single,Clinical,Specialist,3,6927,7,6,7,10,No,37,2,4,3,3,1,1,1,3,0,19,7.8,No
+18,61,Non-Binary,Divorced,Finance,Medical Biller,2,5335,8,2,0,17,No,15,2,3,3,3,3,2,1,3,1,17,6.6,No
+19,43,Male,Single,HR,Benefits Coordinator,3,8609,13,7,10,14,Yes,12,3,3,3,3,1,4,1,5,2,15,5.0,No
+20,59,Non-Binary,Divorced,HR,HR Director,1,2964,0,0,0,4,Yes,13,4,4,4,3,1,1,3,1,0,16,6.4,Yes
+21,55,Female,Married,Finance,Revenue Cycle Analyst,3,8356,11,8,0,19,No,41,3,2,2,2,4,2,9,0,0,15,7.7,Yes
+22,30,Male,Married,Clinical,Physician,3,8858,5,3,1,12,Yes,26,4,4,2,2,1,4,6,2,1,16,5.7,Yes
+23,40,Female,Married,Clinical,Surgeon,5,14547,6,2,1,17,Yes,6,3,3,3,3,3,4,4,0,2,25,4.7,No
+24,54,Non-Binary,Divorced,Nursing,Registered Nurse,1,2512,25,6,15,34,No,36,1,3,1,4,3,4,7,1,2,24,5.8,No
+25,29,Female,Single,Facilities,Maintenance Tech,3,8754,2,1,2,5,No,12,1,4,4,2,4,1,4,0,1,15,9.2,No
+26,59,Non-Binary,Single,Clinical,Resident,4,13700,30,9,18,34,Yes,48,1,3,2,4,1,1,0,2,1,19,3.8,Yes
+27,42,Non-Binary,Married,Clinical,Surgeon,4,10797,16,15,11,22,Yes,41,2,3,2,2,2,3,0,1,1,22,8.6,No
+28,29,Male,Single,Nursing,CNA,4,12877,7,3,2,8,Yes,19,1,3,2,3,4,4,7,4,2,13,5.5,Yes
+29,33,Female,Single,Administration,Scheduling Coordinator,1,3611,0,0,0,3,Yes,16,1,4,1,2,4,2,6,0,1,22,5.0,No
+30,61,Non-Binary,Married,Facilities,Maintenance Tech,2,6527,0,0,0,25,Yes,15,4,3,4,1,4,4,0,0,0,25,6.0,Yes
+31,30,Non-Binary,Single,Clinical,Clinical Researcher,2,6573,2,0,2,9,Yes,16,1,3,3,2,1,2,5,5,0,12,6.6,Yes
+32,62,Male,Single,Facilities,Environmental Services,4,9922,1,1,0,12,Yes,44,1,4,3,4,4,3,5,4,1,22,5.6,No
+33,32,Non-Binary,Married,Clinical,Surgeon,2,5017,1,0,1,10,No,16,3,3,1,2,2,3,0,3,0,25,6.5,Yes
+34,59,Female,Married,Facilities,Maintenance Tech,5,18710,16,9,10,21,No,6,5,4,1,2,3,2,7,2,1,15,3.5,No
+35,42,Female,Divorced,Clinical,Surgeon,1,4146,0,0,0,24,No,23,2,3,4,2,1,3,9,1,2,20,7.1,Yes
+36,50,Non-Binary,Divorced,Clinical,Resident,1,2818,14,3,0,27,Yes,25,1,3,1,1,4,2,4,1,2,19,6.1,Yes
+37,53,Male,Married,Nursing,Nurse Manager,1,4051,13,2,2,31,No,33,5,4,2,3,3,3,3,5,3,13,4.8,Yes
+38,60,Male,Married,Facilities,Environmental Services,5,12509,19,13,19,30,Yes,47,4,2,1,3,3,2,2,3,1,16,5.6,No
+39,41,Non-Binary,Married,Nursing,Registered Nurse,2,5387,6,2,4,19,Yes,15,5,3,1,1,2,1,1,0,0,19,8.1,Yes
+40,24,Non-Binary,Married,Clinical,Clinical Researcher,2,4581,1,0,0,4,No,16,3,3,3,1,2,1,7,6,3,13,3.4,Yes
+41,30,Male,Single,Clinical,Specialist,4,11436,7,6,4,8,Yes,36,2,4,4,3,1,2,8,6,3,11,8.0,Yes
+42,55,Female,Single,Clinical,Surgeon,3,6680,18,15,17,33,No,39,4,4,4,1,4,4,7,2,2,23,8.4,No
+43,53,Female,Divorced,Clinical,Surgeon,3,8951,12,2,9,26,No,29,5,2,1,4,1,1,2,5,3,17,9.3,No
+44,25,Male,Single,Clinical,Physician,3,9286,0,0,0,3,Yes,6,5,2,3,2,4,3,7,2,3,24,6.2,Yes
+45,60,Male,Married,Clinical,Surgeon,1,3848,17,12,12,29,Yes,3,4,2,1,3,3,2,1,0,1,21,3.0,No
+46,40,Male,Divorced,Facilities,Maintenance Tech,2,4268,9,3,6,20,Yes,21,5,4,3,1,4,3,8,4,1,22,8.5,Yes
+47,30,Male,Single,Clinical,Specialist,2,5318,4,3,1,8,No,44,4,4,4,1,2,3,3,4,1,21,5.8,No
+48,59,Non-Binary,Married,Facilities,Safety Officer,3,9829,3,0,1,11,Yes,37,3,3,2,3,1,4,4,4,0,15,5.4,No
+49,41,Male,Single,HR,Recruiter,2,6175,13,0,5,21,No,38,3,2,4,1,2,4,7,2,1,15,4.2,No
+50,44,Female,Single,Administration,Admin Assistant,1,4176,7,6,5,24,Yes,13,1,2,3,2,2,1,7,3,0,19,8.2,Yes
+51,37,Non-Binary,Single,Finance,Revenue Cycle Analyst,1,3520,10,1,6,10,No,41,3,4,3,2,1,2,8,3,0,22,5.8,No
+52,26,Non-Binary,Divorced,Clinical,Physician Assistant,1,3098,4,2,0,7,No,3,3,3,1,4,2,3,3,1,3,24,3.8,Yes
+53,33,Female,Divorced,IT,IT Support,1,3956,5,4,1,11,No,10,3,2,2,2,3,4,6,0,0,18,4.9,No
+54,47,Male,Single,Nursing,CNA,4,11783,14,9,8,28,Yes,6,2,3,4,3,4,1,8,0,0,18,7.0,No
+55,41,Male,Married,Nursing,Nurse Practitioner,2,6194,2,2,2,5,No,2,4,4,3,2,4,2,3,2,0,23,8.8,No
+56,57,Female,Married,Nursing,Nurse Practitioner,4,8630,25,4,14,33,Yes,25,4,2,2,4,3,4,8,5,3,22,7.9,No
+57,46,Non-Binary,Single,Nursing,Nurse Practitioner,3,8903,11,7,6,12,Yes,9,3,3,1,2,3,4,8,0,3,17,5.0,Yes
+58,59,Non-Binary,Married,Nursing,CNA,3,6107,22,1,3,29,Yes,45,5,4,2,2,1,4,7,5,0,15,5.8,Yes
+59,27,Female,Divorced,Nursing,Registered Nurse,5,17471,1,1,0,4,Yes,22,2,4,2,3,2,4,3,6,1,24,8.7,No
+60,44,Female,Divorced,Facilities,Safety Officer,5,17337,1,1,1,15,Yes,42,5,3,2,4,3,2,8,6,3,20,5.9,Yes
+61,54,Non-Binary,Divorced,Facilities,Environmental Services,2,5791,24,12,13,31,Yes,25,1,3,3,4,4,2,2,1,0,15,8.0,No
+62,58,Male,Married,IT,Systems Administrator,3,7785,11,2,6,36,Yes,29,4,4,3,3,3,4,5,2,3,19,7.4,No
+63,53,Non-Binary,Divorced,Finance,Revenue Cycle Analyst,1,3571,27,3,17,32,Yes,30,4,1,1,3,3,3,6,2,0,14,5.4,No
+64,40,Male,Married,Nursing,Registered Nurse,2,4932,1,1,1,7,Yes,13,5,3,1,1,4,2,1,2,1,11,7.0,Yes
+65,47,Non-Binary,Divorced,Clinical,Specialist,1,3485,16,2,6,22,Yes,44,4,4,2,4,2,4,2,2,0,23,7.5,Yes
+66,22,Non-Binary,Single,Clinical,Specialist,1,2555,0,0,0,4,Yes,48,5,4,1,2,4,4,2,2,0,25,5.9,Yes
+67,42,Male,Single,Clinical,Resident,5,12149,8,8,8,18,Yes,5,1,4,2,3,1,4,8,0,2,13,5.8,No
+68,42,Male,Married,Nursing,Nurse Practitioner,4,10843,18,6,8,22,Yes,43,3,4,4,4,4,2,2,1,3,17,8.6,Yes
+69,31,Non-Binary,Divorced,Facilities,Facilities Manager,3,10379,4,2,0,11,Yes,39,4,4,4,3,2,4,2,6,0,23,3.1,No
+70,26,Female,Married,Nursing,Charge Nurse,3,7320,0,0,0,2,No,41,1,4,4,4,1,2,1,2,3,25,8.3,No
+71,39,Non-Binary,Single,Finance,Medical Biller,4,11941,17,4,6,19,No,8,5,3,3,4,3,3,3,0,3,11,9.2,No
+72,49,Male,Divorced,Administration,Medical Records Clerk,2,5724,0,0,0,29,No,25,2,4,2,3,2,1,0,2,2,14,3.4,No
+73,38,Female,Married,Administration,Admin Assistant,2,4143,4,1,1,12,No,46,4,1,4,3,1,4,4,3,1,18,6.4,No
+74,22,Female,Married,IT,IT Manager,1,2747,0,0,0,0,No,34,4,3,4,4,4,4,7,5,2,19,4.6,Yes
+75,53,Non-Binary,Divorced,IT,Systems Administrator,1,3439,16,11,10,20,No,40,2,3,4,1,1,2,9,2,2,15,4.5,Yes
+76,47,Non-Binary,Single,Clinical,Clinical Researcher,3,9194,21,5,10,26,Yes,49,4,4,4,4,4,2,8,4,3,23,4.5,Yes
+77,34,Non-Binary,Divorced,Clinical,Physician,1,4093,5,1,2,13,No,21,2,3,1,1,1,4,3,0,0,23,7.9,Yes
+78,26,Female,Single,IT,IT Manager,1,2804,3,3,2,7,No,6,1,4,1,1,4,1,9,2,3,14,3.0,No
+79,57,Female,Married,Finance,Revenue Cycle Analyst,4,11196,19,5,7,27,Yes,6,3,3,3,1,3,1,5,5,1,19,8.6,Yes
+80,50,Non-Binary,Divorced,HR,Benefits Coordinator,3,10371,23,2,2,32,No,2,2,2,2,4,4,1,1,5,1,20,5.0,No
+81,28,Male,Married,HR,Recruiter,3,7291,1,0,1,3,No,19,4,2,1,4,3,3,3,1,3,14,3.2,Yes
+82,60,Male,Married,Administration,Medical Records Clerk,1,3950,30,23,25,31,Yes,7,1,3,3,1,4,2,3,0,2,18,8.3,No
+83,47,Female,Divorced,Clinical,Clinical Researcher,3,9235,9,6,1,28,No,45,3,3,1,4,4,3,6,1,0,23,9.2,No
+84,34,Female,Single,Clinical,Specialist,4,11645,11,6,2,11,Yes,46,4,4,3,2,3,3,1,5,1,17,4.5,No
+85,62,Female,Single,Administration,Office Manager,1,2884,24,23,13,30,No,28,2,4,2,3,2,2,7,5,3,15,8.7,No
+86,24,Non-Binary,Divorced,Nursing,Nurse Manager,2,5064,2,1,1,4,No,11,3,3,3,1,4,4,4,1,2,23,6.8,Yes
+87,56,Female,Divorced,Clinical,Surgeon,2,4019,25,15,13,26,Yes,17,5,4,4,1,4,1,8,3,0,14,3.6,No
+88,25,Non-Binary,Married,Clinical,Physician Assistant,2,6750,1,0,0,1,No,19,4,4,2,2,4,3,7,4,3,11,7.7,Yes
+89,61,Male,Divorced,HR,HR Generalist,2,6756,6,6,4,40,No,33,4,4,4,4,3,1,4,2,3,15,7.1,No
+90,25,Non-Binary,Single,Clinical,Resident,1,4112,3,0,1,7,No,37,5,1,3,2,4,4,4,3,3,20,4.3,Yes
+91,24,Non-Binary,Divorced,Facilities,Facilities Manager,4,10920,2,1,2,3,No,28,1,2,3,3,2,3,1,4,3,21,6.4,Yes
+92,52,Non-Binary,Divorced,IT,Health Informatics Analyst,1,3430,16,8,7,34,No,2,5,4,1,1,3,2,5,0,1,17,8.0,Yes
+93,24,Female,Divorced,Nursing,Nurse Manager,3,9344,1,1,0,1,No,29,4,4,1,1,1,2,0,2,3,16,9.3,Yes
+94,59,Male,Divorced,Clinical,Specialist,1,4063,19,12,4,21,No,12,2,3,1,4,3,1,4,1,2,14,4.0,No
+95,31,Non-Binary,Married,Facilities,Environmental Services,3,7318,8,4,0,11,Yes,24,2,4,4,3,1,4,3,2,3,12,6.5,No
+96,30,Female,Married,Facilities,Facilities Manager,1,2684,3,0,2,4,No,41,5,4,4,1,4,3,6,3,2,11,8.5,Yes
+97,46,Male,Single,Nursing,Charge Nurse,1,4178,21,20,7,22,Yes,12,1,2,3,1,2,3,8,3,0,21,3.6,Yes
+98,44,Non-Binary,Married,Clinical,Surgeon,4,10082,15,8,2,19,No,19,4,3,3,4,3,4,6,3,0,17,8.3,No
+99,58,Non-Binary,Married,Clinical,Surgeon,2,4247,17,14,7,23,No,23,4,4,3,2,1,3,5,1,3,24,3.3,Yes
+100,35,Male,Divorced,Facilities,Safety Officer,4,11407,1,1,0,14,No,43,2,3,2,4,2,1,7,5,2,11,4.7,Yes
+101,29,Non-Binary,Divorced,IT,IT Manager,2,6681,4,0,3,8,Yes,43,1,3,3,3,2,1,8,2,3,25,8.0,Yes
+102,47,Non-Binary,Married,IT,Health Informatics Analyst,4,9957,8,4,7,25,No,47,3,4,4,4,2,1,0,4,3,25,4.7,No
+103,32,Non-Binary,Divorced,Nursing,Charge Nurse,4,13595,0,0,0,3,No,22,1,4,1,3,4,4,1,4,3,22,6.1,Yes
+104,33,Female,Divorced,Nursing,Nurse Manager,1,4097,3,1,2,4,Yes,3,1,3,4,1,2,4,4,0,1,16,9.4,No
+105,59,Female,Married,Facilities,Facilities Manager,1,3976,29,10,0,37,No,36,4,3,4,2,4,4,5,0,3,20,4.4,No
+106,51,Female,Married,Nursing,Nurse Practitioner,2,4032,26,9,21,33,No,29,1,3,2,4,4,1,5,6,3,23,6.5,No
+107,22,Non-Binary,Married,Administration,Office Manager,1,3978,0,0,0,4,No,14,3,3,2,2,3,4,8,4,3,11,8.9,Yes
+108,38,Male,Divorced,Clinical,Clinical Researcher,4,8617,13,13,12,17,Yes,25,4,3,3,3,3,2,0,3,2,12,4.4,No
+109,38,Female,Married,Clinical,Surgeon,3,7194,4,1,4,19,No,10,5,3,1,4,1,2,9,3,0,25,6.6,No
+110,31,Female,Married,Administration,Admin Assistant,2,6911,2,2,1,3,Yes,13,5,4,4,1,3,4,1,0,3,13,3.8,No
+111,31,Female,Divorced,Clinical,Specialist,2,4196,3,1,1,6,Yes,31,4,4,4,2,4,1,0,5,2,22,7.2,Yes
+112,60,Male,Single,Clinical,Surgeon,1,4013,12,9,12,29,Yes,43,1,2,3,3,2,2,9,4,0,14,4.0,Yes
+113,55,Non-Binary,Married,Clinical,Surgeon,1,4027,21,0,11,23,No,50,2,3,2,3,1,3,6,3,2,11,4.9,No
+114,55,Female,Married,Facilities,Environmental Services,2,5247,5,1,1,31,Yes,13,1,3,4,1,4,4,6,3,2,17,9.3,Yes
+115,43,Female,Divorced,IT,Systems Administrator,4,11387,13,11,6,13,Yes,32,5,3,3,1,1,3,7,4,3,24,4.0,Yes
+116,29,Non-Binary,Divorced,Nursing,CNA,2,5706,6,5,4,7,No,36,1,4,2,1,1,4,1,3,3,21,6.5,No
+117,42,Female,Married,Facilities,Safety Officer,4,9028,16,12,0,18,Yes,7,3,3,1,2,4,2,1,5,3,18,5.8,No
+118,36,Female,Single,Nursing,Registered Nurse,4,13756,5,3,4,9,No,47,5,3,1,3,3,1,6,6,2,19,8.9,Yes
+119,52,Female,Married,Finance,Revenue Cycle Analyst,4,13492,30,10,11,32,Yes,26,3,3,3,3,4,1,9,4,0,20,3.3,No
+120,26,Non-Binary,Divorced,Finance,Revenue Cycle Analyst,2,5657,3,2,1,7,Yes,2,3,4,1,3,4,2,9,2,2,22,5.2,Yes
+121,55,Male,Married,Clinical,Physician,5,16670,8,1,5,10,Yes,24,5,3,2,1,2,4,4,1,3,22,4.2,Yes
+122,25,Non-Binary,Married,Administration,Medical Records Clerk,2,6077,1,0,0,4,Yes,5,3,4,2,1,3,3,4,3,0,17,9.3,Yes
+123,24,Female,Single,Nursing,Charge Nurse,2,5346,2,1,0,2,Yes,5,4,1,1,1,3,4,5,3,3,13,3.4,No
+124,48,Male,Divorced,Administration,Admin Assistant,4,8040,7,6,0,12,No,28,5,3,4,1,3,3,0,5,3,16,8.4,No
+125,57,Male,Single,Finance,Controller,1,3302,11,1,6,27,No,20,2,4,4,1,3,1,4,0,0,19,7.5,Yes
+126,45,Non-Binary,Divorced,Nursing,Charge Nurse,1,3161,14,5,10,25,Yes,11,2,3,3,3,1,3,8,3,1,15,3.1,No
+127,55,Female,Married,Finance,Medical Biller,2,6196,26,10,14,31,No,13,3,2,3,2,1,2,5,6,0,21,9.1,No
+128,48,Non-Binary,Single,Administration,Office Manager,2,6587,23,5,17,24,No,48,4,3,4,4,3,1,0,6,0,12,3.9,No
+129,25,Male,Divorced,Clinical,Physician Assistant,4,11054,3,1,0,3,No,35,5,4,3,2,4,4,9,4,2,12,7.0,Yes
+130,43,Female,Married,Nursing,CNA,2,6094,9,0,6,17,No,28,5,3,1,2,2,2,8,2,0,20,5.1,Yes
+131,58,Non-Binary,Divorced,Clinical,Surgeon,3,9045,23,22,12,29,Yes,37,2,2,1,2,4,3,9,2,2,13,4.5,Yes
+132,50,Female,Divorced,Nursing,Charge Nurse,4,13970,27,22,14,27,No,49,5,3,2,4,1,2,8,3,1,24,5.5,No
+133,60,Female,Divorced,Nursing,CNA,4,8448,30,6,21,41,No,29,5,3,4,2,2,3,7,1,3,11,4.8,Yes
+134,44,Non-Binary,Single,Administration,Admin Assistant,3,8375,21,4,20,22,Yes,37,5,3,1,2,3,2,5,1,1,15,9.0,No
+135,41,Male,Married,Nursing,Registered Nurse,1,3294,18,15,15,22,No,33,3,3,3,1,3,2,8,2,1,25,3.1,No
+136,48,Non-Binary,Single,Clinical,Surgeon,1,2471,8,5,2,13,No,23,2,4,2,1,3,3,3,6,3,19,8.4,No
+137,58,Non-Binary,Married,Nursing,Nurse Practitioner,2,5615,9,5,8,21,No,12,1,3,3,4,3,4,6,3,3,11,9.2,No
+138,26,Female,Divorced,HR,Benefits Coordinator,1,3766,0,0,0,2,Yes,33,1,4,4,2,1,4,8,4,3,19,5.0,Yes
+139,57,Female,Married,Nursing,Registered Nurse,2,6823,23,4,17,35,No,35,3,4,4,4,3,3,4,1,1,22,6.5,No
+140,62,Female,Divorced,Clinical,Resident,3,8103,20,0,17,22,No,23,2,3,2,3,2,3,9,3,1,23,4.5,No
+141,28,Male,Single,Clinical,Clinical Researcher,1,3420,6,1,0,7,No,26,4,3,3,4,4,2,2,0,1,12,5.2,No
+142,60,Female,Married,Clinical,Specialist,2,5618,7,4,7,28,No,1,2,3,1,4,2,1,9,6,1,13,5.9,Yes
+143,44,Male,Divorced,Administration,Scheduling Coordinator,3,7588,4,1,0,12,No,17,2,3,4,2,4,1,0,4,3,15,8.2,Yes
+144,56,Male,Divorced,Administration,Scheduling Coordinator,2,4320,17,2,2,20,Yes,29,3,4,4,3,1,1,1,3,1,14,8.3,No
+145,58,Female,Single,Nursing,Nurse Practitioner,2,5484,0,0,0,6,No,34,1,3,2,1,2,3,7,4,1,12,8.0,Yes
+146,53,Female,Married,Clinical,Specialist,3,9818,24,20,3,31,Yes,3,4,4,4,1,3,1,5,5,1,13,3.2,Yes
+147,45,Male,Single,IT,IT Support,3,10039,11,8,3,13,Yes,11,5,4,1,4,3,1,4,4,3,14,7.8,Yes
+148,35,Non-Binary,Divorced,IT,IT Support,3,10002,1,0,1,1,No,8,4,3,4,4,3,1,8,2,3,25,3.9,No
+149,27,Non-Binary,Married,Clinical,Specialist,2,4801,5,0,4,5,No,26,3,3,1,2,4,4,2,3,2,24,4.6,Yes
+150,31,Male,Married,Finance,Revenue Cycle Analyst,1,3907,3,2,2,12,No,18,4,3,4,2,1,4,7,4,2,16,5.1,No
+151,57,Male,Single,Nursing,Charge Nurse,2,5164,28,19,3,35,No,39,4,3,2,1,3,3,8,6,0,17,4.8,No
+152,59,Male,Divorced,Facilities,Facilities Manager,3,10376,13,3,1,30,No,34,4,3,2,2,3,1,9,3,0,23,6.7,No
+153,23,Non-Binary,Single,Facilities,Facilities Manager,4,11974,1,1,0,3,No,10,2,3,3,4,3,2,8,0,0,16,6.5,No
+154,28,Male,Divorced,Administration,Office Manager,2,6177,5,0,2,5,Yes,30,5,3,2,2,4,2,5,4,2,25,8.3,Yes
+155,34,Non-Binary,Divorced,Clinical,Clinical Researcher,3,9723,3,3,1,16,Yes,1,5,2,4,2,2,3,6,6,2,17,5.7,Yes
+156,46,Male,Single,Nursing,Nurse Practitioner,1,3754,6,6,6,18,Yes,1,3,3,1,4,3,3,1,3,2,25,7.2,Yes
+157,61,Male,Divorced,Nursing,Nurse Practitioner,3,7104,6,0,4,35,No,46,5,3,2,4,4,4,0,2,1,16,7.6,No
+158,59,Female,Divorced,Clinical,Physician Assistant,2,6583,1,0,0,27,No,19,3,3,3,1,3,3,1,4,3,14,5.6,Yes
+159,40,Male,Single,Nursing,CNA,2,4040,7,4,5,12,No,19,5,2,2,3,4,2,3,4,1,13,6.3,Yes
+160,60,Male,Married,Administration,Office Manager,2,4706,8,1,1,36,Yes,35,3,3,4,3,4,2,8,2,3,15,4.3,Yes
+161,59,Male,Divorced,Clinical,Surgeon,2,4563,12,1,0,22,Yes,32,3,4,2,1,1,4,5,0,2,23,4.5,Yes
+162,58,Non-Binary,Single,Nursing,CNA,4,8036,19,17,16,34,Yes,22,5,3,2,4,2,1,1,5,0,22,7.8,Yes
+163,46,Non-Binary,Divorced,Clinical,Resident,2,5989,12,8,12,14,Yes,32,4,4,1,1,4,2,1,4,1,24,3.6,Yes
+164,37,Non-Binary,Married,Nursing,Nurse Manager,2,5658,11,1,8,18,Yes,35,3,4,4,2,4,4,9,2,0,14,5.1,Yes
+165,43,Female,Divorced,Nursing,CNA,5,14002,6,1,1,16,Yes,20,5,4,4,4,4,1,4,1,1,23,3.3,Yes
+166,36,Male,Married,HR,HR Generalist,1,4110,11,7,0,13,Yes,42,1,4,4,4,3,2,8,5,3,19,8.8,No
+167,27,Non-Binary,Divorced,IT,Health Informatics Analyst,4,10185,3,3,0,3,No,21,1,1,1,1,3,2,5,5,1,17,4.8,Yes
+168,58,Female,Single,Clinical,Physician Assistant,2,5893,4,0,4,10,Yes,7,3,4,2,1,4,3,9,0,3,24,6.1,No
+169,30,Non-Binary,Divorced,Nursing,Registered Nurse,1,3766,0,0,0,11,Yes,24,4,4,2,2,3,4,1,1,0,16,6.0,Yes
+170,57,Male,Divorced,Clinical,Surgeon,2,4072,1,1,1,22,No,7,4,3,2,1,4,4,6,3,3,18,3.5,No
+171,23,Female,Married,Administration,Office Manager,1,3365,1,0,1,4,No,17,3,4,1,4,1,2,0,1,3,22,7.7,No
+172,26,Male,Single,Facilities,Environmental Services,4,13172,0,0,0,3,Yes,16,3,4,4,3,2,2,7,2,1,16,3.9,No
+173,39,Male,Married,Clinical,Physician Assistant,2,6776,0,0,0,9,No,20,3,3,1,1,2,4,6,1,3,22,7.1,Yes
+174,23,Non-Binary,Divorced,Facilities,Environmental Services,3,7375,1,0,1,1,Yes,38,5,2,2,1,1,3,0,3,1,24,6.4,Yes
+175,58,Male,Married,Facilities,Facilities Manager,2,5017,10,1,8,22,No,2,2,4,3,3,1,4,0,0,2,14,4.2,No
+176,56,Female,Divorced,Facilities,Safety Officer,4,8411,25,12,19,32,Yes,47,5,4,3,4,4,2,9,6,3,25,6.6,No
+177,62,Male,Single,Administration,Admin Assistant,1,2836,14,0,8,34,Yes,29,1,2,2,3,2,4,5,3,1,19,5.9,No
+178,50,Female,Married,IT,Health Informatics Analyst,1,3036,23,21,4,23,Yes,29,5,3,4,4,2,4,1,1,0,13,7.6,Yes
+179,44,Non-Binary,Married,Clinical,Clinical Researcher,1,4009,7,7,3,14,No,4,2,4,3,2,2,2,5,2,2,20,7.0,Yes
+180,24,Male,Divorced,Nursing,Nurse Manager,3,9464,0,0,0,5,Yes,28,3,3,1,3,2,2,7,3,1,21,7.0,Yes
+181,30,Male,Single,Nursing,Registered Nurse,2,6230,3,3,0,7,Yes,7,2,4,3,2,4,4,1,6,0,14,5.3,Yes
+182,51,Female,Married,IT,Health Informatics Analyst,2,6856,21,21,10,21,No,43,5,3,1,1,1,1,1,4,0,20,5.2,Yes
+183,59,Non-Binary,Single,Clinical,Surgeon,4,8069,7,0,2,13,No,33,4,4,4,1,4,3,5,3,1,15,6.0,No
+184,57,Male,Divorced,Clinical,Specialist,3,9393,7,0,0,20,Yes,25,1,3,2,2,2,4,4,5,1,22,8.2,Yes
+185,50,Non-Binary,Divorced,Facilities,Environmental Services,3,6117,2,0,1,24,No,36,2,2,3,1,2,1,3,5,1,11,6.3,Yes
+186,49,Male,Divorced,Facilities,Environmental Services,4,9508,4,1,3,31,Yes,7,4,3,2,3,1,3,4,3,1,19,4.3,Yes
+187,24,Non-Binary,Divorced,Finance,Controller,2,6906,1,1,0,6,No,44,5,3,4,1,3,2,4,5,2,11,6.6,No
+188,28,Non-Binary,Divorced,Finance,Controller,4,10043,0,0,0,7,No,27,5,3,4,1,1,4,4,4,0,13,9.2,Yes
+189,58,Non-Binary,Married,Finance,Financial Analyst,3,6865,13,13,6,23,Yes,26,2,1,2,4,2,4,5,6,3,21,4.4,No
+190,61,Male,Married,Administration,Office Manager,3,7123,3,1,0,17,Yes,37,2,4,4,3,4,2,2,1,1,16,4.8,No
+191,34,Non-Binary,Married,HR,Recruiter,3,7706,12,10,9,13,No,25,5,3,2,1,2,3,1,2,2,24,4.8,Yes
+192,41,Non-Binary,Divorced,IT,Health Informatics Analyst,2,5491,14,1,14,20,No,19,5,3,4,3,2,1,9,6,0,19,3.5,No
+193,34,Female,Divorced,Administration,Scheduling Coordinator,1,2694,3,2,3,13,No,42,1,3,3,3,1,3,9,2,3,13,9.4,No
+194,42,Female,Divorced,Administration,Medical Records Clerk,5,12371,19,13,1,21,Yes,30,4,3,1,4,4,4,3,0,2,19,3.6,Yes
+195,49,Female,Single,Nursing,CNA,2,4463,1,1,0,23,Yes,21,4,4,1,2,3,1,9,6,0,16,4.4,Yes
+196,42,Female,Married,Clinical,Resident,1,3560,13,9,0,18,Yes,44,4,3,1,1,1,1,7,0,3,19,8.9,Yes
+197,37,Non-Binary,Divorced,Facilities,Safety Officer,2,5071,13,0,6,16,Yes,24,1,3,1,2,4,2,5,4,3,12,4.6,Yes
+198,38,Female,Single,Clinical,Physician Assistant,2,4068,4,4,4,4,Yes,34,2,3,3,2,1,3,0,2,2,19,4.3,Yes
+199,47,Male,Married,Facilities,Maintenance Tech,1,3383,23,10,21,26,No,7,3,3,2,3,2,2,1,2,3,17,8.9,No
+200,62,Female,Single,Administration,Medical Records Clerk,1,4001,28,15,7,35,No,19,5,3,4,4,3,3,9,4,0,21,3.4,No
+201,50,Non-Binary,Married,Nursing,CNA,3,8213,11,7,9,15,Yes,24,2,4,4,4,3,1,4,1,2,24,4.8,Yes
+202,50,Female,Divorced,Nursing,Registered Nurse,3,6681,25,14,2,31,Yes,10,5,4,1,2,2,1,2,5,3,13,8.9,No
+203,48,Male,Divorced,Nursing,Charge Nurse,1,3356,5,2,2,14,Yes,9,5,3,1,1,4,4,8,6,2,12,8.6,Yes
+204,61,Non-Binary,Single,Clinical,Physician Assistant,2,6226,20,2,4,29,Yes,45,1,2,4,2,1,3,3,3,3,11,7.4,Yes
+205,22,Male,Single,Nursing,CNA,1,2973,0,0,0,1,Yes,4,1,3,2,1,4,4,0,2,3,18,8.9,No
+206,36,Non-Binary,Married,Facilities,Safety Officer,2,5353,3,2,3,14,No,25,1,2,2,3,3,2,9,3,1,14,6.3,Yes
+207,52,Male,Single,IT,IT Manager,3,8804,1,1,0,30,No,42,2,3,1,4,4,3,0,3,1,22,6.3,No
+208,61,Non-Binary,Married,IT,Health Informatics Analyst,3,9791,24,3,20,30,Yes,42,3,4,2,4,3,2,3,4,3,19,6.6,Yes
+209,43,Non-Binary,Divorced,Clinical,Specialist,4,11560,12,10,10,25,Yes,29,4,4,4,1,3,4,8,4,3,24,8.2,Yes
+210,39,Non-Binary,Divorced,Facilities,Safety Officer,2,6680,0,0,0,11,No,13,3,4,3,1,2,4,2,4,2,16,4.8,No
+211,60,Non-Binary,Single,Nursing,Nurse Practitioner,2,5210,15,0,5,38,No,10,1,2,3,3,2,2,9,5,1,24,6.9,No
+212,44,Male,Divorced,Nursing,Nurse Manager,4,13396,0,0,0,10,No,1,1,4,1,2,1,1,7,2,0,13,5.8,Yes
+213,36,Non-Binary,Divorced,Clinical,Physician Assistant,1,3601,1,0,0,15,Yes,44,3,4,3,4,3,4,2,1,3,23,7.0,Yes
+214,46,Female,Married,Nursing,Nurse Practitioner,4,9531,7,1,6,14,No,31,1,3,1,4,1,3,4,0,3,12,9.1,No
+215,53,Male,Married,Nursing,CNA,3,8208,18,0,3,20,Yes,33,5,3,1,3,3,1,3,5,1,12,5.4,Yes
+216,33,Female,Divorced,Nursing,Charge Nurse,1,3613,2,0,2,12,Yes,20,5,3,1,1,1,1,1,1,2,23,3.4,Yes
+217,38,Non-Binary,Divorced,IT,IT Support,4,11786,8,6,7,15,No,24,2,4,1,2,4,1,5,2,1,14,6.5,No
+218,58,Female,Single,Administration,Admin Assistant,3,8468,27,22,2,36,No,42,1,2,3,1,4,4,0,6,3,15,7.9,No
+219,62,Non-Binary,Divorced,Administration,Scheduling Coordinator,5,18088,23,16,4,25,No,14,5,4,1,3,3,3,0,2,3,21,7.6,No
+220,39,Female,Divorced,IT,IT Support,1,2677,8,6,4,20,No,24,2,4,2,2,3,2,0,6,0,15,4.0,No
+221,62,Non-Binary,Single,Nursing,Charge Nurse,1,3698,19,18,2,25,No,31,4,2,3,3,1,3,6,1,1,13,9.4,No
+222,61,Non-Binary,Married,Finance,Revenue Cycle Analyst,2,5310,7,0,5,7,No,24,5,4,2,3,4,2,4,6,1,23,5.4,No
+223,24,Male,Married,Nursing,Charge Nurse,5,13352,2,1,2,5,No,19,3,3,2,4,1,1,4,0,2,24,8.9,Yes
+224,29,Female,Single,Clinical,Surgeon,3,10226,7,7,5,10,No,42,2,3,3,4,4,4,2,3,0,25,6.8,Yes
+225,32,Male,Single,Administration,Medical Records Clerk,1,2739,3,3,1,8,No,29,1,2,2,1,4,4,8,0,1,14,7.3,No
+226,43,Male,Married,Clinical,Resident,2,6459,17,12,8,18,No,36,1,3,1,4,1,3,6,0,0,11,7.0,Yes
+227,27,Male,Single,Nursing,Charge Nurse,2,5447,5,0,1,9,Yes,4,3,4,4,1,3,4,9,5,0,11,5.9,Yes
+228,31,Non-Binary,Single,Nursing,Nurse Practitioner,4,9701,6,6,1,7,Yes,41,2,3,3,2,3,1,5,1,2,12,3.3,No
+229,33,Female,Divorced,Clinical,Physician Assistant,2,5232,11,6,0,14,Yes,14,1,4,2,1,4,2,7,3,2,11,8.0,Yes
+230,38,Male,Single,Facilities,Maintenance Tech,3,6588,5,1,4,16,Yes,46,1,3,4,2,2,1,5,0,2,25,5.9,Yes
+231,44,Non-Binary,Married,Nursing,Nurse Practitioner,2,6201,14,11,13,17,Yes,10,4,3,3,2,3,1,9,4,0,18,5.9,Yes
+232,32,Female,Married,Finance,Controller,1,3284,5,4,1,12,Yes,17,1,4,3,2,4,4,0,4,3,11,8.1,No
+233,57,Female,Single,Administration,Admin Assistant,3,8604,11,1,4,35,No,26,5,4,3,3,4,1,8,4,0,22,8.4,No
+234,52,Non-Binary,Single,IT,Systems Administrator,3,8886,11,5,11,11,No,1,5,2,2,3,4,2,7,4,3,14,7.9,No
+235,59,Male,Single,Facilities,Maintenance Tech,4,9034,29,13,29,31,Yes,7,2,4,2,3,1,3,4,2,2,11,8.5,No
+236,29,Female,Divorced,HR,HR Generalist,4,13354,2,1,2,8,Yes,50,3,3,1,2,2,3,3,0,0,20,4.4,Yes
+237,59,Non-Binary,Married,Facilities,Environmental Services,3,8266,15,11,15,30,No,46,4,2,4,4,3,1,4,5,1,15,7.7,No
+238,48,Non-Binary,Single,Clinical,Physician,4,8509,19,1,0,23,No,27,4,4,1,4,4,4,1,0,1,23,3.3,Yes
+239,54,Male,Single,Nursing,Charge Nurse,1,2874,20,16,18,27,No,7,1,4,4,1,1,2,0,5,2,20,6.1,Yes
+240,42,Non-Binary,Single,Nursing,Nurse Practitioner,4,10201,11,5,1,20,Yes,11,2,3,3,1,1,1,7,5,0,24,7.1,Yes
+241,24,Male,Married,Administration,Scheduling Coordinator,3,9473,1,1,1,5,Yes,41,2,3,2,1,1,3,5,5,0,16,6.3,Yes
+242,54,Female,Divorced,Clinical,Resident,2,6285,23,11,23,31,Yes,17,3,4,1,2,4,1,1,3,2,16,8.6,Yes
+243,45,Non-Binary,Divorced,Nursing,Registered Nurse,1,2756,8,0,4,24,Yes,30,4,4,2,3,3,1,3,6,1,12,4.8,Yes
+244,26,Female,Divorced,Facilities,Safety Officer,3,9108,4,2,1,8,No,29,5,4,3,4,4,3,0,2,2,18,5.4,No
+245,37,Non-Binary,Married,Clinical,Surgeon,1,2759,13,7,8,14,Yes,48,5,3,2,2,4,3,0,2,0,18,7.6,Yes
+246,36,Male,Married,Nursing,Nurse Manager,5,14838,2,0,2,8,Yes,12,1,3,1,2,4,2,4,5,0,14,5.7,Yes
+247,31,Female,Married,Clinical,Specialist,3,6569,2,2,2,6,Yes,17,3,4,1,2,4,1,7,2,0,18,7.9,Yes
+248,27,Male,Married,HR,HR Director,1,3769,5,1,2,5,Yes,1,5,2,1,3,4,3,8,2,3,16,7.7,No
+249,26,Female,Married,Finance,Financial Analyst,2,5536,0,0,0,3,Yes,12,2,2,2,3,4,2,6,4,2,11,4.5,No
+250,39,Male,Single,Administration,Admin Assistant,4,8286,17,12,1,17,Yes,40,1,1,3,2,1,2,9,3,0,18,4.3,Yes
+251,38,Male,Married,Nursing,Nurse Manager,1,2602,4,0,3,8,No,37,5,3,2,3,2,1,7,6,0,21,3.8,Yes
+252,40,Female,Divorced,Clinical,Specialist,2,5379,2,1,2,7,No,44,3,4,2,3,2,2,4,1,2,24,8.3,No
+253,46,Non-Binary,Married,Nursing,CNA,2,5783,5,2,4,10,No,43,1,3,4,3,2,2,8,0,3,11,4.1,No
+254,31,Non-Binary,Single,Clinical,Physician Assistant,2,6620,4,1,0,10,Yes,47,5,3,3,4,1,1,8,3,1,25,4.2,No
+255,22,Female,Married,Finance,Medical Biller,3,7469,0,0,0,1,Yes,25,2,3,3,3,2,2,8,2,0,20,7.5,Yes
+256,62,Male,Divorced,Facilities,Facilities Manager,3,10103,3,2,2,43,No,33,3,4,4,3,2,3,7,1,3,16,6.7,Yes
+257,29,Female,Divorced,IT,IT Manager,4,12558,3,0,3,9,Yes,41,5,4,3,1,3,4,0,6,3,13,8.9,No
+258,49,Female,Divorced,Clinical,Physician,1,2892,14,11,11,26,No,18,1,3,1,2,1,1,8,3,1,13,8.8,Yes
+259,62,Non-Binary,Single,IT,Health Informatics Analyst,4,9420,1,0,1,41,Yes,18,4,3,2,2,3,1,3,0,3,11,7.6,Yes
+260,62,Male,Married,Nursing,Charge Nurse,3,9424,5,1,5,24,No,42,4,4,2,3,4,1,8,4,3,21,7.7,No
+261,53,Male,Divorced,HR,Benefits Coordinator,2,4245,14,4,6,15,Yes,18,2,3,1,1,4,2,5,4,3,16,3.7,Yes
+262,23,Female,Divorced,Facilities,Environmental Services,2,4723,0,0,0,0,No,37,1,4,3,3,1,1,7,3,2,20,5.3,Yes
+263,30,Non-Binary,Single,Clinical,Surgeon,3,7425,5,1,5,5,No,13,3,3,2,4,3,1,0,4,1,19,7.3,No
+264,47,Male,Single,Clinical,Physician Assistant,3,7826,17,1,12,27,No,28,4,2,4,3,1,2,7,6,3,21,8.4,No
+265,54,Female,Divorced,Clinical,Physician,2,4998,2,1,1,18,No,48,5,2,4,4,1,4,3,5,2,22,7.9,No
+266,26,Non-Binary,Married,Clinical,Physician,3,9932,2,0,0,4,Yes,3,4,2,1,2,1,2,3,2,1,16,3.3,No
+267,23,Non-Binary,Divorced,Nursing,CNA,5,16084,0,0,0,4,Yes,47,5,3,2,2,3,1,0,6,3,19,8.5,Yes
+268,35,Male,Single,Administration,Office Manager,5,11699,2,1,0,5,Yes,23,5,3,4,2,2,3,5,1,2,13,7.2,Yes
+269,26,Male,Single,Nursing,CNA,4,8261,4,4,1,4,No,48,3,2,4,1,2,3,4,5,0,19,7.1,Yes
+270,22,Female,Divorced,Clinical,Surgeon,1,4127,0,0,0,2,No,50,3,3,3,4,3,3,5,1,3,15,5.5,Yes
+271,37,Non-Binary,Married,Clinical,Clinical Researcher,1,3183,8,1,1,18,No,18,5,3,4,3,2,1,4,4,0,19,3.6,No
+272,62,Male,Single,HR,Recruiter,1,4187,7,3,2,33,No,1,2,1,1,4,3,4,3,6,2,22,6.4,Yes
+273,52,Female,Single,Nursing,Registered Nurse,3,6407,8,4,1,31,Yes,47,2,4,3,4,4,4,2,4,0,20,8.4,No
+274,39,Female,Single,Nursing,Charge Nurse,2,6902,6,2,5,8,Yes,16,4,1,1,2,1,3,1,1,3,12,6.9,Yes
+275,48,Female,Married,Facilities,Facilities Manager,3,9727,10,2,4,30,No,9,2,3,1,3,1,4,3,1,2,22,7.4,No
+276,45,Female,Married,Nursing,Registered Nurse,1,3916,5,2,5,26,Yes,40,5,3,1,3,1,1,2,0,1,19,6.7,Yes
+277,39,Female,Married,Facilities,Safety Officer,4,10392,15,0,3,21,No,8,5,3,3,2,2,4,3,0,3,21,5.6,No
+278,29,Female,Divorced,Clinical,Resident,1,4037,4,0,0,5,No,39,5,3,1,3,4,4,9,5,2,19,8.7,Yes
+279,46,Male,Married,IT,Systems Administrator,2,4557,3,2,0,11,Yes,46,2,3,1,1,4,4,3,1,0,14,6.9,Yes
+280,58,Non-Binary,Single,Nursing,Nurse Manager,1,3359,17,9,8,37,No,24,5,4,3,3,3,2,1,6,1,15,8.0,No
+281,48,Non-Binary,Married,IT,Systems Administrator,3,8874,9,8,9,23,Yes,47,1,4,1,1,3,1,3,1,3,11,6.7,Yes
+282,30,Female,Single,Facilities,Environmental Services,5,14040,1,1,0,2,No,23,4,3,2,3,3,1,3,3,2,23,6.9,No
+283,40,Non-Binary,Single,Facilities,Safety Officer,4,13122,11,2,9,22,Yes,20,2,3,4,1,1,3,9,1,3,20,3.6,Yes
+284,53,Female,Married,Facilities,Safety Officer,3,8282,25,9,21,27,No,37,1,3,2,4,3,2,0,2,2,22,7.0,No
+285,61,Male,Married,HR,HR Director,4,13192,15,14,3,43,Yes,32,1,1,1,2,1,1,2,2,1,12,9.3,Yes
+286,54,Male,Single,Clinical,Physician,1,3056,30,5,23,35,No,20,2,3,3,4,1,2,8,0,3,13,7.3,No
+287,61,Non-Binary,Married,Finance,Revenue Cycle Analyst,2,6126,18,15,2,26,No,33,3,3,3,3,2,2,5,6,0,25,6.5,No
+288,62,Male,Single,Clinical,Specialist,5,11551,23,12,14,39,No,30,2,3,4,4,4,2,9,4,3,13,5.2,No
+289,52,Non-Binary,Divorced,Facilities,Environmental Services,4,10266,9,6,8,30,No,18,1,3,2,4,2,3,8,1,1,21,3.5,Yes
+290,47,Male,Married,HR,Recruiter,3,8190,1,1,0,21,Yes,5,2,3,1,4,3,1,0,6,1,19,6.4,Yes
+291,25,Male,Married,Clinical,Physician Assistant,1,3492,2,0,1,5,No,8,2,3,3,2,2,2,3,6,2,18,5.1,Yes
+292,56,Female,Married,Clinical,Surgeon,2,6651,5,2,5,34,Yes,12,1,3,2,2,3,3,3,0,1,20,7.1,Yes
+293,51,Non-Binary,Divorced,Clinical,Physician Assistant,2,5050,22,3,7,31,Yes,34,3,3,2,4,4,3,8,5,0,20,7.6,Yes
+294,33,Female,Married,Facilities,Safety Officer,2,6037,1,1,0,6,No,35,5,3,3,4,3,3,0,4,0,19,7.3,Yes
+295,42,Female,Married,Clinical,Resident,1,3674,4,4,2,16,Yes,20,2,3,1,3,1,1,6,2,3,24,7.2,Yes
+296,62,Non-Binary,Divorced,Facilities,Safety Officer,1,3041,4,1,3,25,No,43,5,4,2,2,1,2,9,5,1,12,8.8,No
+297,43,Female,Single,Clinical,Physician,3,7593,2,1,1,22,No,5,5,3,3,4,3,1,6,6,2,21,6.3,No
+298,36,Female,Single,Finance,Financial Analyst,2,4994,11,1,4,14,Yes,5,3,3,3,3,3,1,2,6,0,21,9.3,No
+299,42,Female,Divorced,Administration,Admin Assistant,2,5779,6,2,0,6,Yes,2,3,2,3,3,4,3,3,1,2,21,3.4,No
+300,51,Female,Divorced,Clinical,Resident,1,2743,28,16,0,32,Yes,23,2,4,4,2,2,3,5,1,0,16,5.9,Yes
+301,57,Female,Divorced,IT,Systems Administrator,2,6838,18,14,10,29,Yes,17,1,2,2,4,3,4,9,5,0,25,6.6,No
+302,30,Female,Divorced,Clinical,Clinical Researcher,2,4400,0,0,0,5,No,31,3,3,4,4,2,1,5,5,2,12,6.0,No
+303,42,Non-Binary,Married,HR,HR Director,5,16205,2,2,2,24,No,8,3,4,2,1,2,3,0,4,1,23,5.6,Yes
+304,59,Non-Binary,Divorced,Nursing,CNA,2,4367,24,13,8,26,Yes,41,5,2,4,1,1,4,9,4,1,12,6.9,Yes
+305,50,Non-Binary,Divorced,Clinical,Surgeon,2,5211,12,2,4,29,Yes,35,1,4,3,1,4,4,4,1,2,11,3.9,Yes
+306,36,Non-Binary,Married,HR,Recruiter,1,2704,14,4,8,15,Yes,13,3,4,3,2,1,2,8,5,3,18,7.1,Yes
+307,54,Non-Binary,Married,Nursing,Registered Nurse,2,6358,11,11,9,11,Yes,22,4,3,3,4,1,4,2,2,2,23,9.5,No
+308,24,Non-Binary,Divorced,Facilities,Environmental Services,3,8542,2,2,1,4,No,45,5,4,1,2,2,4,7,1,3,20,5.5,Yes
+309,55,Non-Binary,Married,Nursing,Registered Nurse,3,6937,1,1,0,14,No,13,1,2,3,1,4,4,6,4,1,21,5.6,No
+310,57,Male,Single,Clinical,Specialist,3,7466,17,11,1,33,Yes,10,5,2,2,1,3,3,2,0,1,16,6.3,Yes
+311,33,Non-Binary,Divorced,Nursing,Nurse Manager,3,7648,10,4,4,15,Yes,8,3,3,3,3,1,3,0,0,2,12,9.1,Yes
+312,58,Male,Married,Clinical,Specialist,3,6100,7,5,4,14,No,10,1,3,2,2,3,4,4,3,2,21,8.3,No
+313,38,Female,Single,Nursing,Nurse Manager,1,2693,9,6,8,9,Yes,12,4,4,4,2,4,1,1,4,0,24,4.5,No
+314,60,Non-Binary,Divorced,Clinical,Surgeon,3,8832,29,15,0,36,Yes,45,1,3,3,3,1,1,1,3,2,20,8.0,Yes
+315,59,Non-Binary,Married,Finance,Revenue Cycle Analyst,3,8698,21,15,21,22,No,21,3,3,1,1,1,1,7,1,2,11,8.8,Yes
+316,30,Non-Binary,Single,Finance,Revenue Cycle Analyst,2,5746,8,1,4,12,No,40,1,3,4,1,4,1,2,4,0,13,7.7,No
+317,37,Non-Binary,Single,Finance,Medical Biller,1,3495,4,3,4,4,Yes,20,5,3,4,4,2,3,6,5,3,12,7.1,Yes
+318,48,Male,Divorced,HR,Benefits Coordinator,4,12474,17,5,2,28,Yes,35,3,4,1,2,4,3,3,5,2,24,6.7,Yes
+319,46,Non-Binary,Single,Clinical,Surgeon,5,16346,14,12,13,26,No,29,4,3,3,4,3,1,5,3,1,25,6.0,No
+320,45,Female,Married,HR,Recruiter,3,6091,11,11,2,27,Yes,5,3,2,2,3,1,3,8,2,2,22,3.7,Yes
+321,30,Female,Married,Nursing,Nurse Manager,4,8466,8,7,8,10,No,30,5,3,2,2,1,4,2,1,1,17,5.3,No
+322,38,Female,Single,HR,Benefits Coordinator,5,14911,8,3,8,8,No,6,3,3,1,3,4,3,7,5,3,15,5.0,Yes
+323,43,Male,Married,Finance,Controller,3,7961,16,10,6,18,No,50,2,4,4,1,4,3,4,2,1,21,7.1,No
+324,43,Non-Binary,Married,Nursing,Nurse Manager,5,12053,15,9,12,16,No,21,1,4,2,1,2,1,3,0,1,22,7.9,Yes
+325,45,Female,Married,Nursing,Registered Nurse,5,18010,13,13,2,18,No,41,2,2,4,3,2,1,0,3,3,15,5.5,No
+326,51,Male,Single,Nursing,Nurse Manager,1,3179,12,12,12,12,No,45,2,2,2,3,3,2,3,4,2,12,5.4,No
+327,38,Male,Single,Facilities,Facilities Manager,2,5226,0,0,0,15,No,45,1,4,1,2,3,4,1,2,2,22,8.9,No
+328,49,Male,Single,Clinical,Resident,1,3206,14,7,12,22,No,15,2,3,1,1,4,1,2,6,3,13,6.7,No
+329,37,Female,Single,Clinical,Surgeon,3,6290,4,4,3,19,No,12,3,3,1,2,1,4,1,5,2,16,8.9,Yes
+330,51,Female,Married,IT,IT Support,2,4448,27,11,5,32,Yes,23,3,2,3,1,2,4,5,6,2,12,8.3,Yes
+331,55,Non-Binary,Single,Nursing,Charge Nurse,2,4445,24,7,8,30,Yes,19,1,3,1,1,1,4,8,4,0,13,8.0,Yes
+332,45,Male,Single,Clinical,Surgeon,2,4883,1,1,0,10,Yes,18,4,2,3,1,1,3,9,2,3,20,5.4,Yes
+333,49,Male,Married,Finance,Medical Biller,2,6329,12,0,4,22,Yes,47,5,2,2,2,1,3,0,1,2,24,8.2,Yes
+334,57,Female,Divorced,Facilities,Facilities Manager,2,6382,30,6,28,30,Yes,40,3,4,4,4,1,4,4,5,3,23,4.8,No
+335,37,Male,Single,Clinical,Specialist,2,6623,11,7,11,12,Yes,43,4,4,1,1,2,2,5,3,1,18,7.3,Yes
+336,45,Female,Divorced,Clinical,Specialist,4,12977,21,1,2,27,Yes,7,5,3,4,1,2,1,0,2,1,22,6.2,Yes
+337,23,Female,Single,Clinical,Physician Assistant,2,6664,1,0,0,4,No,5,2,3,4,3,2,2,1,2,1,12,5.6,Yes
+338,22,Non-Binary,Single,Clinical,Surgeon,4,10862,0,0,0,0,No,2,1,3,4,3,2,3,7,2,1,17,9.1,No
+339,57,Non-Binary,Single,HR,HR Director,4,8049,2,0,1,16,No,7,5,4,4,3,2,3,3,4,1,12,9.0,Yes
+340,40,Female,Married,Nursing,CNA,2,4523,4,4,2,11,No,38,2,4,3,3,3,1,0,4,3,22,5.4,No
+341,49,Non-Binary,Married,IT,IT Manager,3,8579,20,18,16,27,No,4,5,3,2,3,3,2,7,3,1,20,4.4,No
+342,50,Female,Married,Facilities,Safety Officer,1,4193,4,1,0,25,No,38,3,2,2,1,2,1,5,6,0,16,8.5,Yes
+343,60,Non-Binary,Single,Clinical,Specialist,1,3999,12,1,6,12,Yes,16,3,2,2,4,1,3,0,0,0,20,7.9,Yes
+344,57,Female,Single,Administration,Office Manager,1,3128,20,20,0,20,Yes,18,3,4,1,4,2,2,9,3,0,23,3.9,Yes
+345,47,Male,Divorced,HR,Recruiter,2,6300,14,3,3,26,Yes,50,5,3,3,2,3,1,5,6,2,22,8.0,Yes
+346,37,Non-Binary,Married,Clinical,Resident,1,2814,11,7,9,16,No,42,3,3,2,1,3,1,5,2,3,23,9.5,Yes
+347,34,Female,Married,Nursing,Registered Nurse,3,9014,6,3,2,8,Yes,6,2,3,3,3,2,1,3,6,1,13,5.4,Yes
+348,28,Male,Married,HR,HR Generalist,5,14065,0,0,0,10,No,18,2,3,2,4,2,2,2,6,3,25,7.5,Yes
+349,47,Female,Married,IT,Systems Administrator,2,6339,6,2,6,25,Yes,1,3,4,1,2,3,1,2,5,0,15,3.4,Yes
+350,27,Female,Married,IT,IT Support,1,2542,3,0,0,8,Yes,4,2,4,3,1,4,3,2,0,2,24,7.5,No
+351,32,Male,Single,IT,IT Support,1,3323,0,0,0,6,No,30,2,4,3,2,1,1,1,1,3,12,9.2,Yes
+352,47,Male,Divorced,HR,Benefits Coordinator,4,12453,9,7,5,21,Yes,27,1,2,4,4,3,4,3,2,0,21,4.6,Yes
+353,28,Female,Married,Facilities,Facilities Manager,1,3558,2,2,2,10,Yes,50,1,4,1,1,3,4,5,0,1,25,3.8,Yes
+354,33,Female,Divorced,Clinical,Resident,2,4984,6,6,5,7,No,15,2,2,3,4,4,3,6,1,1,15,6.6,No
+355,26,Non-Binary,Single,Administration,Office Manager,3,7497,4,4,2,6,No,45,2,3,2,3,2,1,2,6,2,15,4.5,Yes
+356,45,Non-Binary,Single,Finance,Medical Biller,4,9032,5,4,2,19,No,1,4,4,2,2,3,2,4,6,2,13,8.7,Yes
+357,35,Female,Married,Administration,Admin Assistant,3,7247,2,1,1,8,Yes,47,5,3,4,1,3,3,2,6,1,11,5.1,No
+358,45,Non-Binary,Single,HR,Benefits Coordinator,3,9255,10,4,2,25,Yes,27,2,4,1,1,2,2,8,0,2,20,5.1,Yes
+359,55,Male,Divorced,Nursing,Nurse Manager,3,7535,15,14,12,16,Yes,29,5,4,2,2,3,4,3,2,2,22,8.0,Yes
+360,44,Non-Binary,Single,Clinical,Physician Assistant,3,8456,12,5,7,18,Yes,39,2,3,3,1,3,3,1,4,3,16,8.3,No
+361,29,Male,Married,Administration,Medical Records Clerk,3,7125,7,2,3,7,Yes,16,3,3,1,2,4,1,2,3,1,11,9.2,Yes
+362,37,Female,Married,Finance,Financial Analyst,1,4022,11,7,4,15,No,38,3,3,1,4,1,3,1,6,2,23,6.3,No
+363,26,Male,Married,Clinical,Surgeon,2,6118,0,0,0,8,No,40,4,3,1,2,3,4,5,0,0,17,8.5,Yes
+364,55,Male,Married,Nursing,Nurse Manager,4,9360,26,22,9,26,No,46,5,3,2,2,3,1,8,5,2,19,3.2,No
+365,59,Female,Married,Nursing,Nurse Manager,1,3724,13,6,8,17,No,18,4,3,3,4,4,2,4,3,2,19,8.9,Yes
+366,26,Male,Married,HR,Recruiter,2,5418,1,0,1,1,Yes,8,1,1,2,1,3,2,9,0,1,11,8.5,No
+367,34,Non-Binary,Single,Clinical,Physician Assistant,1,2527,12,7,6,13,No,20,3,2,2,2,1,1,3,6,3,12,6.6,Yes
+368,46,Male,Married,Administration,Office Manager,1,3981,23,7,15,23,No,32,4,1,3,1,3,2,8,1,2,19,6.5,Yes
+369,25,Female,Divorced,Clinical,Resident,2,4036,2,0,0,6,No,33,1,3,1,4,3,3,3,2,3,20,8.5,No
+370,35,Male,Single,Nursing,Charge Nurse,1,2788,9,6,0,10,Yes,32,1,4,2,2,3,4,2,3,0,23,4.0,Yes
+371,36,Female,Divorced,Facilities,Safety Officer,3,8374,13,12,9,15,Yes,33,4,4,2,3,1,2,8,6,2,11,3.7,Yes
+372,44,Non-Binary,Divorced,Administration,Medical Records Clerk,4,10547,6,5,3,22,Yes,27,1,3,1,2,4,4,5,5,0,12,3.1,No
+373,35,Male,Single,HR,Benefits Coordinator,3,7871,5,0,5,16,No,16,4,3,4,3,4,3,9,6,2,17,6.1,No
+374,33,Non-Binary,Single,Facilities,Facilities Manager,1,3857,1,1,1,7,No,30,1,3,1,4,3,3,7,5,0,11,9.0,No
+375,46,Non-Binary,Divorced,Clinical,Physician Assistant,2,4216,12,8,0,23,No,20,4,2,3,4,4,4,1,1,3,21,9.1,No
+376,22,Female,Married,Clinical,Clinical Researcher,3,9619,0,0,0,1,No,14,4,1,1,4,1,2,6,2,2,16,7.0,No
+377,58,Female,Single,Clinical,Resident,2,5080,19,15,18,36,Yes,46,2,4,3,3,3,4,9,1,1,12,6.4,Yes
+378,39,Non-Binary,Single,Clinical,Clinical Researcher,3,6862,5,2,3,6,Yes,31,2,3,1,3,4,1,6,0,2,21,3.1,No
+379,35,Non-Binary,Divorced,Clinical,Resident,2,6214,9,0,0,11,Yes,7,3,2,4,3,4,4,4,1,2,20,4.8,Yes
+380,40,Female,Married,Clinical,Resident,2,4903,6,0,3,9,Yes,41,1,4,4,3,4,3,7,1,1,24,5.8,No
+381,39,Female,Divorced,IT,IT Manager,2,5337,15,0,5,21,No,50,1,3,4,1,1,1,7,1,2,23,5.9,No
+382,48,Non-Binary,Divorced,HR,HR Generalist,2,6753,11,3,11,19,Yes,12,3,4,1,1,2,1,2,4,2,16,7.6,No
+383,33,Non-Binary,Single,Finance,Medical Biller,3,6317,6,3,5,9,Yes,19,1,3,2,1,1,4,4,2,3,23,3.4,Yes
+384,47,Female,Divorced,HR,HR Generalist,2,5884,4,0,4,16,Yes,36,4,3,4,1,3,2,9,3,3,23,8.9,No
+385,54,Male,Single,Clinical,Physician,5,16855,12,7,8,12,Yes,13,1,2,1,2,3,4,5,0,0,22,6.6,Yes
+386,60,Male,Married,Administration,Office Manager,5,16830,29,29,1,30,Yes,26,2,3,3,3,1,4,5,1,2,15,8.9,No
+387,27,Non-Binary,Single,Administration,Admin Assistant,3,6471,2,2,1,5,Yes,16,3,3,1,4,2,2,4,4,0,14,8.5,No
+388,55,Male,Divorced,IT,Health Informatics Analyst,4,9928,15,4,15,28,No,20,1,2,1,1,4,2,1,5,0,17,7.3,Yes
+389,37,Non-Binary,Single,Nursing,Nurse Manager,2,4867,3,3,0,3,Yes,3,4,4,4,3,4,2,3,0,3,22,7.9,No
+390,62,Female,Married,IT,Systems Administrator,2,6622,16,16,4,25,No,18,2,3,2,4,3,3,9,0,2,12,7.3,No
+391,61,Male,Married,Clinical,Surgeon,3,9344,14,11,1,43,Yes,25,2,3,1,1,2,4,1,6,1,13,8.5,Yes
+392,54,Non-Binary,Married,Nursing,Nurse Practitioner,3,10468,11,3,0,25,Yes,3,1,3,2,4,4,3,4,5,3,20,3.1,Yes
+393,39,Non-Binary,Divorced,Nursing,Nurse Manager,4,11378,11,0,2,20,Yes,15,2,2,3,4,2,2,5,1,2,19,6.4,Yes
+394,41,Female,Single,Administration,Medical Records Clerk,1,3001,4,4,0,20,Yes,8,2,3,1,1,3,4,3,1,2,25,6.6,No
+395,61,Female,Divorced,Administration,Office Manager,3,10187,2,1,2,18,No,39,3,3,2,4,2,4,0,3,0,19,6.2,No
+396,30,Non-Binary,Single,HR,HR Director,4,13751,8,5,1,9,No,37,4,2,4,2,3,3,8,1,2,14,5.1,No
+397,33,Female,Single,Clinical,Resident,3,8598,11,11,7,14,Yes,37,3,4,2,2,4,1,6,3,3,15,5.2,Yes
+398,47,Non-Binary,Married,Nursing,CNA,4,10789,17,11,14,23,No,48,2,3,3,2,1,4,0,5,2,21,5.7,Yes
+399,45,Female,Single,Clinical,Resident,1,2952,18,9,15,19,Yes,41,3,3,1,1,4,4,4,3,0,24,6.0,Yes
+400,39,Male,Divorced,Clinical,Resident,3,7558,6,2,4,20,No,12,5,4,1,4,3,3,9,0,2,13,7.7,No
+401,49,Female,Divorced,Finance,Revenue Cycle Analyst,1,2679,6,2,3,21,No,7,5,3,4,1,4,3,5,5,3,20,7.4,No
+402,27,Non-Binary,Divorced,Nursing,Nurse Practitioner,1,2643,0,0,0,4,No,48,1,4,1,2,1,1,0,3,2,14,9.2,Yes
+403,52,Female,Married,Clinical,Surgeon,1,3186,12,9,0,19,Yes,15,2,4,2,4,3,3,7,2,1,24,5.5,No
+404,35,Female,Single,Nursing,Nurse Manager,3,6202,0,0,0,13,Yes,33,4,4,3,1,4,2,9,4,1,21,3.2,No
+405,51,Non-Binary,Single,Finance,Medical Biller,3,7132,2,2,2,31,Yes,14,1,4,1,1,3,1,7,1,0,24,7.0,No
+406,48,Male,Married,IT,IT Manager,2,5205,23,16,7,25,No,23,4,3,4,4,2,3,8,6,3,16,4.6,No
+407,25,Non-Binary,Married,Finance,Financial Analyst,1,2802,1,0,1,5,No,3,3,4,4,4,1,2,0,1,2,18,8.9,No
+408,30,Non-Binary,Divorced,Clinical,Specialist,1,3322,2,1,2,2,Yes,33,4,4,1,2,3,3,4,4,0,25,7.7,No
+409,36,Female,Divorced,Clinical,Physician Assistant,4,10350,13,4,5,14,No,26,5,4,4,2,1,3,0,2,1,25,5.6,Yes
+410,48,Non-Binary,Single,Nursing,Nurse Manager,2,4033,8,0,6,8,No,2,2,3,1,1,4,2,9,1,2,20,4.8,No
+411,28,Female,Single,IT,Systems Administrator,1,3590,1,0,0,8,No,36,3,2,3,1,4,4,5,3,2,17,8.4,No
+412,29,Female,Single,IT,IT Manager,3,9690,1,1,1,5,No,25,5,4,3,2,3,3,7,6,2,12,5.9,No
+413,53,Male,Divorced,Clinical,Surgeon,1,3030,12,1,6,23,Yes,43,4,3,2,4,3,1,9,5,3,17,3.9,No
+414,48,Male,Married,Finance,Financial Analyst,4,12720,7,5,0,17,No,37,1,4,4,4,4,4,3,2,1,19,8.3,No
+415,54,Female,Single,Clinical,Clinical Researcher,3,8190,7,5,6,12,No,6,5,2,2,1,4,1,4,2,2,24,3.2,Yes
+416,25,Female,Divorced,Administration,Office Manager,4,11262,0,0,0,4,Yes,22,1,2,4,2,3,1,9,2,3,12,5.0,No
+417,22,Male,Divorced,Clinical,Resident,1,3526,0,0,0,1,No,26,3,1,4,4,2,4,3,1,1,13,6.8,No
+418,29,Non-Binary,Married,Nursing,CNA,3,7716,3,0,1,6,No,50,2,4,2,1,4,3,5,1,3,17,5.8,Yes
+419,37,Male,Married,Administration,Admin Assistant,1,4086,15,9,5,17,No,32,1,3,2,2,4,3,4,0,0,20,5.1,No
+420,41,Female,Divorced,Clinical,Physician Assistant,2,5326,4,0,3,16,Yes,18,3,3,3,3,2,1,9,4,3,25,3.1,No
+421,58,Non-Binary,Single,Nursing,CNA,1,2682,6,4,1,25,No,6,2,3,4,2,2,2,8,4,3,18,6.2,No
+422,36,Male,Divorced,Finance,Financial Analyst,1,4146,5,0,1,10,Yes,45,3,4,1,2,4,4,3,0,2,25,3.2,Yes
+423,28,Non-Binary,Single,Administration,Medical Records Clerk,2,5174,6,5,4,7,Yes,16,1,3,3,4,4,1,2,6,3,17,6.6,No
+424,34,Non-Binary,Single,Nursing,Charge Nurse,3,9465,8,3,4,11,Yes,16,3,4,3,4,3,1,6,3,1,11,7.0,No
+425,57,Male,Single,Clinical,Specialist,4,11968,19,16,0,25,Yes,6,2,4,1,4,2,4,6,1,1,14,3.8,Yes
+426,44,Female,Married,Clinical,Resident,2,5416,11,5,3,17,Yes,39,5,3,2,3,4,2,9,0,2,25,8.1,Yes
+427,58,Non-Binary,Single,Facilities,Facilities Manager,4,11282,25,10,19,31,No,44,1,4,3,3,4,2,8,4,2,20,7.3,No
+428,43,Non-Binary,Single,Clinical,Physician,4,11383,16,11,12,17,No,19,5,4,1,2,1,1,8,6,0,19,3.5,No
+429,30,Male,Married,Clinical,Resident,3,6297,4,4,4,7,Yes,43,1,4,3,4,2,4,7,1,1,20,7.9,No
+430,24,Non-Binary,Divorced,Finance,Medical Biller,2,5769,2,2,1,2,Yes,12,2,4,2,2,3,3,4,0,0,14,6.2,Yes
+431,37,Female,Married,Nursing,Nurse Manager,2,6513,3,0,2,5,No,24,1,4,2,1,4,4,9,6,0,23,4.4,Yes
+432,36,Male,Married,Facilities,Facilities Manager,3,7993,10,1,8,14,Yes,3,4,3,2,2,4,3,4,0,2,18,7.3,Yes
+433,25,Female,Married,Facilities,Environmental Services,4,11797,1,1,0,5,No,38,3,3,3,4,1,2,6,5,3,15,8.3,Yes
+434,27,Male,Married,Administration,Office Manager,2,4954,3,1,0,3,No,27,2,3,2,1,2,2,4,1,1,17,4.7,Yes
+435,25,Non-Binary,Married,Administration,Medical Records Clerk,2,5578,1,0,0,7,Yes,13,1,3,3,4,4,1,4,1,3,20,7.8,No
+436,30,Female,Married,Clinical,Physician Assistant,3,7326,0,0,0,4,Yes,5,2,4,4,3,4,4,9,4,1,15,7.6,No
+437,42,Female,Single,Administration,Scheduling Coordinator,3,9413,5,0,3,10,No,7,1,3,2,2,1,2,2,0,0,17,3.1,Yes
+438,23,Female,Single,Nursing,Registered Nurse,2,6188,0,0,0,0,No,11,3,3,2,2,1,2,1,0,3,13,7.9,Yes
+439,53,Female,Married,Finance,Financial Analyst,4,8229,5,2,0,17,No,30,4,4,4,3,2,3,4,1,2,17,6.9,No
+440,53,Female,Married,IT,Systems Administrator,2,5567,2,2,0,33,Yes,3,5,3,2,2,2,2,7,1,1,23,9.3,Yes
+441,42,Female,Single,Finance,Financial Analyst,3,7292,9,4,3,14,No,9,5,3,4,2,4,2,7,6,0,23,6.3,No
+442,32,Male,Divorced,Finance,Revenue Cycle Analyst,4,11010,1,0,1,1,No,15,1,4,4,3,2,4,4,2,0,17,7.8,No
+443,40,Male,Divorced,Administration,Scheduling Coordinator,2,6156,5,3,1,16,Yes,21,3,3,4,4,1,1,8,1,1,15,5.8,Yes
+444,38,Female,Single,Clinical,Physician Assistant,2,6453,11,10,6,14,Yes,27,1,3,2,4,1,1,5,5,3,13,5.2,Yes
+445,25,Male,Married,Nursing,Nurse Practitioner,3,9943,1,1,1,1,No,42,2,3,2,2,3,2,9,0,0,11,9.3,Yes
+446,38,Female,Single,Nursing,Nurse Manager,5,15430,10,9,2,16,No,3,5,1,3,2,2,2,6,1,0,15,5.2,Yes
+447,33,Female,Married,Facilities,Maintenance Tech,2,4306,11,5,5,13,No,21,4,3,1,4,3,1,4,1,0,23,3.1,No
+448,29,Non-Binary,Divorced,Clinical,Resident,4,10554,2,0,1,10,Yes,29,5,3,1,3,1,3,4,4,2,13,5.7,No
+449,31,Non-Binary,Divorced,Finance,Revenue Cycle Analyst,2,6682,6,5,6,7,No,1,3,1,3,1,2,4,3,1,2,16,3.3,No
+450,45,Female,Single,Nursing,Nurse Manager,3,7329,6,6,5,22,No,14,4,2,2,4,1,4,1,1,2,24,6.1,No
+451,61,Non-Binary,Divorced,Nursing,CNA,5,16279,9,3,5,34,Yes,7,2,3,4,3,3,2,4,4,3,18,6.0,No
+452,45,Non-Binary,Single,Administration,Medical Records Clerk,1,2800,5,5,3,11,Yes,28,2,4,4,4,2,4,1,0,1,16,7.1,No
+453,26,Non-Binary,Single,Clinical,Resident,3,7896,1,1,1,4,Yes,16,1,3,1,4,3,1,0,3,1,21,4.1,Yes
+454,32,Non-Binary,Divorced,Facilities,Maintenance Tech,3,7918,3,0,0,11,Yes,22,5,3,4,3,4,2,3,5,2,14,8.9,No
+455,30,Male,Married,Nursing,Nurse Practitioner,1,3819,4,0,4,10,No,19,1,2,4,4,3,1,9,5,0,25,6.7,No
+456,41,Male,Divorced,Facilities,Facilities Manager,2,5151,19,0,9,22,No,3,3,3,3,2,3,2,6,1,2,20,3.3,Yes
+457,50,Female,Divorced,Clinical,Physician,2,4737,15,12,12,17,Yes,1,1,3,4,4,4,2,1,6,2,13,8.1,Yes
+458,58,Female,Married,Nursing,Nurse Practitioner,1,3692,21,4,19,21,No,43,2,3,2,3,2,3,3,6,0,25,3.1,No
+459,24,Non-Binary,Divorced,Clinical,Specialist,2,4966,0,0,0,1,No,23,5,3,1,1,2,2,6,2,2,18,4.4,Yes
+460,61,Female,Divorced,Facilities,Facilities Manager,2,5586,28,15,20,37,No,45,3,3,1,2,3,3,2,3,1,17,5.6,Yes
+461,25,Female,Single,Nursing,Registered Nurse,1,2852,1,0,1,6,No,19,1,4,4,4,4,2,0,3,0,19,3.2,No
+462,62,Non-Binary,Divorced,Facilities,Safety Officer,1,3853,16,2,9,37,Yes,39,4,3,2,3,1,1,5,2,1,15,3.6,No
+463,56,Male,Single,Nursing,Nurse Practitioner,3,10106,20,10,6,20,No,28,4,3,2,2,1,3,4,6,1,13,6.6,No
+464,25,Non-Binary,Married,Clinical,Physician Assistant,1,3249,2,0,2,3,No,42,1,4,2,2,2,3,9,1,2,21,5.8,Yes
+465,29,Female,Divorced,Clinical,Surgeon,2,6512,4,0,0,8,No,38,4,3,1,3,4,3,7,1,3,14,3.0,Yes
+466,50,Male,Divorced,IT,Systems Administrator,3,8172,20,7,20,29,No,25,2,3,4,2,4,2,0,6,0,15,3.2,No
+467,27,Female,Single,Administration,Admin Assistant,2,6098,3,3,3,5,No,2,2,3,4,3,2,2,9,3,0,20,4.3,No
+468,31,Male,Single,Clinical,Physician,2,5814,8,3,6,11,No,47,1,4,4,3,4,1,9,1,1,12,4.8,No
+469,60,Male,Single,Clinical,Physician Assistant,2,6144,15,1,3,30,No,40,4,4,2,2,3,2,1,6,2,15,4.4,Yes
+470,58,Non-Binary,Divorced,Finance,Financial Analyst,3,9132,4,1,3,26,Yes,38,1,3,3,4,3,2,2,3,0,15,4.1,No
+471,24,Male,Divorced,Nursing,Charge Nurse,3,10297,0,0,0,0,Yes,46,5,1,2,4,2,4,1,3,3,23,3.5,Yes
+472,60,Non-Binary,Married,Clinical,Physician Assistant,3,7310,1,1,1,37,No,10,5,2,3,1,3,1,7,1,3,25,9.3,No
+473,50,Non-Binary,Single,Clinical,Physician Assistant,3,9111,23,8,1,30,No,49,1,4,3,2,1,1,5,4,3,14,5.6,Yes
+474,23,Female,Single,Clinical,Surgeon,3,6711,1,0,0,5,No,41,3,4,4,4,1,1,9,0,3,16,3.2,No
+475,55,Non-Binary,Married,HR,Recruiter,3,9567,1,1,0,20,Yes,8,2,2,4,2,4,3,3,1,3,16,5.8,Yes
+476,50,Non-Binary,Divorced,Administration,Office Manager,1,3024,11,4,2,21,Yes,37,2,4,2,3,1,3,6,4,0,23,8.6,No
+477,23,Non-Binary,Single,Clinical,Surgeon,2,5940,1,0,1,1,Yes,43,3,2,1,3,1,1,9,6,1,12,7.9,Yes
+478,45,Female,Divorced,Clinical,Physician,1,2664,16,4,4,24,No,29,1,2,1,4,1,3,6,0,2,25,9.4,No
+479,42,Female,Single,Nursing,Nurse Manager,1,3743,20,16,2,21,No,50,5,4,1,1,4,2,4,2,2,25,5.1,Yes
+480,43,Female,Divorced,Clinical,Specialist,1,2592,11,6,10,14,Yes,2,3,3,4,3,4,4,5,6,3,13,5.5,Yes
+481,59,Female,Married,Clinical,Specialist,3,7731,4,3,0,4,No,29,3,4,3,2,1,1,0,4,0,13,4.2,No
+482,40,Non-Binary,Divorced,Administration,Office Manager,1,3381,10,1,10,11,Yes,41,1,3,4,1,1,4,9,2,3,17,9.4,No
+483,37,Male,Married,Clinical,Specialist,1,2554,11,6,2,13,No,17,4,4,1,3,4,4,0,5,0,22,7.1,Yes
+484,36,Female,Single,Facilities,Maintenance Tech,1,4159,0,0,0,2,No,39,3,3,2,4,2,3,1,1,1,19,5.8,No
+485,49,Male,Married,Administration,Medical Records Clerk,2,5017,17,4,6,25,Yes,29,2,3,3,1,3,2,3,4,0,23,7.3,No
+486,43,Male,Married,Administration,Medical Records Clerk,5,19196,0,0,0,6,Yes,13,5,3,1,4,4,2,2,0,0,11,7.1,No
+487,36,Female,Married,Clinical,Specialist,2,6616,1,0,0,1,No,31,2,4,3,4,3,4,9,5,2,18,7.6,Yes
+488,31,Female,Divorced,IT,IT Manager,3,6815,0,0,0,0,No,28,1,4,1,4,3,2,1,1,1,11,5.6,Yes
+489,29,Female,Divorced,Facilities,Safety Officer,2,4530,1,0,0,6,Yes,7,2,2,1,4,1,3,2,2,2,19,5.8,Yes
+490,26,Male,Single,Clinical,Physician Assistant,1,3888,1,1,0,8,Yes,29,4,4,4,3,2,3,7,2,3,15,8.2,Yes
+491,44,Male,Divorced,Clinical,Physician,2,4343,20,9,2,21,Yes,14,3,4,3,4,1,1,6,0,0,25,4.8,Yes
+492,29,Male,Divorced,Nursing,Nurse Manager,3,8580,2,0,1,9,No,13,2,2,4,3,1,4,2,0,3,25,3.1,No
+493,58,Female,Divorced,IT,IT Manager,2,6137,10,1,4,16,Yes,33,3,3,4,4,3,3,4,4,0,21,7.8,No
+494,32,Male,Married,IT,Systems Administrator,5,12823,1,1,1,7,No,39,3,3,2,1,3,1,6,5,2,19,9.5,No
+495,39,Female,Single,Clinical,Resident,3,9725,6,5,5,18,No,7,4,3,3,3,3,1,1,6,1,17,3.6,No
+496,28,Male,Divorced,Nursing,CNA,3,9220,6,0,6,6,Yes,35,2,3,1,2,3,4,2,0,1,25,7.5,Yes
+497,62,Male,Married,Finance,Controller,1,3447,1,1,0,33,Yes,18,1,3,1,4,3,4,1,1,0,16,3.3,Yes
+498,36,Female,Married,Administration,Office Manager,2,6291,2,0,2,3,Yes,45,1,2,4,2,1,1,5,3,3,12,9.4,No
+499,53,Female,Divorced,IT,IT Manager,1,2887,28,17,4,29,No,19,4,4,1,2,4,1,5,4,3,12,6.6,No
+500,50,Female,Divorced,IT,IT Support,2,4279,2,1,1,22,Yes,36,5,4,4,4,3,3,9,6,2,25,6.9,Yes
+501,59,Male,Single,Administration,Office Manager,2,5863,3,0,3,41,Yes,32,5,2,2,2,3,1,2,5,2,19,5.5,Yes
+502,60,Non-Binary,Married,Nursing,CNA,4,8683,5,3,1,13,No,16,4,3,3,2,3,3,3,6,2,25,8.8,No
+503,38,Female,Married,Nursing,Nurse Manager,2,5723,1,1,0,15,Yes,39,4,3,4,2,2,3,6,1,1,15,7.6,Yes
+504,32,Male,Married,Clinical,Resident,3,9673,2,0,0,13,Yes,1,1,3,1,2,3,4,9,1,2,23,3.1,Yes
+505,37,Male,Single,Clinical,Clinical Researcher,2,4641,11,2,7,11,No,27,1,3,2,4,2,2,8,2,1,15,6.5,Yes
+506,27,Non-Binary,Divorced,Clinical,Physician Assistant,2,4377,1,1,0,7,Yes,33,1,1,3,1,1,1,9,0,3,17,5.2,Yes
+507,28,Non-Binary,Single,Clinical,Surgeon,1,2547,4,3,0,10,No,35,4,4,2,2,2,3,5,2,3,17,7.3,Yes
+508,24,Non-Binary,Married,Facilities,Safety Officer,2,4839,2,2,1,3,No,19,3,2,3,1,4,4,6,2,2,15,3.8,No
+509,54,Male,Divorced,Clinical,Specialist,1,3668,25,20,9,26,Yes,16,5,3,4,4,2,3,2,4,0,19,5.0,Yes
+510,28,Male,Divorced,Clinical,Specialist,1,3056,4,1,2,9,No,19,1,4,4,3,2,3,0,1,1,17,8.8,No
+511,56,Female,Married,IT,Systems Administrator,2,4920,26,20,11,26,No,16,1,4,4,3,3,2,3,4,3,25,4.0,Yes
+512,53,Male,Single,Clinical,Clinical Researcher,3,7146,0,0,0,32,Yes,23,5,3,4,1,3,1,3,4,1,20,6.3,No
+513,39,Non-Binary,Single,Administration,Medical Records Clerk,1,2991,3,2,1,19,No,34,1,3,4,4,3,3,3,1,3,12,7.7,No
+514,36,Non-Binary,Divorced,Nursing,Charge Nurse,3,9580,3,1,2,9,Yes,12,3,4,1,3,4,3,0,6,1,13,9.4,Yes
+515,31,Female,Married,Nursing,Registered Nurse,3,8333,2,0,2,6,Yes,43,2,3,3,2,3,4,2,0,1,21,3.8,Yes
+516,24,Non-Binary,Divorced,Clinical,Clinical Researcher,3,10432,2,1,0,5,Yes,26,3,3,3,3,1,4,3,1,1,15,7.2,Yes
+517,49,Female,Single,Facilities,Environmental Services,2,4950,3,3,2,23,Yes,42,5,4,2,4,2,1,6,6,0,20,8.8,Yes
+518,45,Non-Binary,Divorced,IT,Health Informatics Analyst,2,6278,5,0,2,21,No,1,5,3,1,2,3,3,7,4,2,14,3.4,No
+519,51,Female,Married,HR,Benefits Coordinator,3,7475,20,6,10,23,Yes,40,2,3,3,4,4,4,1,1,3,11,3.4,No
+520,30,Non-Binary,Married,IT,IT Support,2,4966,4,3,3,11,Yes,15,1,3,1,4,2,1,1,3,1,22,5.0,No
+521,58,Male,Divorced,Finance,Financial Analyst,1,3197,12,1,10,40,Yes,20,1,4,2,2,4,4,6,3,3,23,3.9,No
+522,43,Male,Married,Nursing,CNA,5,18540,17,16,6,24,No,41,3,3,3,2,4,4,9,3,1,15,3.8,Yes
+523,60,Non-Binary,Married,Clinical,Physician,4,12172,4,4,0,12,Yes,33,5,4,1,3,2,2,0,4,0,22,4.7,No
+524,59,Female,Single,Finance,Medical Biller,1,3887,27,16,17,37,Yes,13,3,4,3,3,1,4,1,6,3,16,7.6,No
+525,57,Female,Single,IT,IT Manager,3,6032,19,10,0,23,No,38,3,3,3,2,4,2,4,6,2,19,5.8,Yes
+526,40,Male,Married,Nursing,Registered Nurse,4,11004,0,0,0,5,No,16,3,2,2,3,3,2,8,4,0,17,6.0,No
+527,58,Male,Single,Clinical,Surgeon,1,3539,0,0,0,19,Yes,6,2,4,3,1,2,2,3,3,0,22,5.9,Yes
+528,39,Non-Binary,Divorced,Clinical,Physician,1,2574,5,3,4,11,Yes,10,3,2,1,1,3,4,8,6,2,25,7.8,No
+529,54,Male,Single,Facilities,Environmental Services,1,3688,17,4,16,17,No,9,3,4,2,4,1,1,7,3,1,12,4.9,Yes
+530,27,Non-Binary,Married,Nursing,CNA,3,6959,4,1,4,5,Yes,20,3,3,2,3,3,1,6,1,2,13,8.4,Yes
+531,36,Female,Married,Administration,Medical Records Clerk,2,6885,0,0,0,5,Yes,46,5,3,2,4,4,3,7,0,0,12,3.8,No
+532,29,Non-Binary,Single,Administration,Medical Records Clerk,2,5102,6,3,4,10,Yes,34,1,4,4,1,1,2,1,2,0,21,6.5,No
+533,32,Non-Binary,Divorced,IT,Systems Administrator,5,11812,7,2,7,11,No,10,2,2,3,2,2,2,2,5,1,11,6.8,No
+534,33,Female,Single,Facilities,Maintenance Tech,3,9438,6,4,6,8,Yes,13,4,3,2,4,2,2,3,4,1,18,3.4,Yes
+535,58,Female,Divorced,Clinical,Surgeon,1,2729,15,5,8,19,No,28,2,3,1,4,3,2,2,3,3,16,9.4,No
+536,47,Female,Single,Nursing,Registered Nurse,2,4595,10,3,10,28,No,13,2,3,3,1,3,3,6,6,2,17,5.2,No
+537,46,Non-Binary,Divorced,Nursing,Nurse Practitioner,5,18812,23,15,18,24,Yes,19,3,3,2,1,1,4,5,3,0,21,6.6,Yes
+538,27,Male,Married,Nursing,Registered Nurse,2,6433,5,1,3,6,Yes,42,4,3,2,2,4,2,8,0,3,16,4.5,Yes
+539,53,Female,Single,HR,Benefits Coordinator,2,4189,2,2,1,10,Yes,25,4,2,1,3,2,3,1,1,2,16,8.3,No
+540,52,Female,Divorced,Finance,Medical Biller,4,9254,10,10,3,19,No,43,5,4,3,3,3,2,0,4,2,13,7.1,No
+541,45,Non-Binary,Single,IT,Systems Administrator,4,9652,13,3,4,20,No,35,2,3,2,3,4,3,4,2,2,16,3.1,No
+542,57,Male,Married,Finance,Medical Biller,3,9525,24,15,20,24,No,3,4,3,2,3,3,2,9,1,1,12,6.6,Yes
+543,47,Non-Binary,Married,Facilities,Maintenance Tech,2,6843,17,9,1,29,No,1,5,3,2,3,4,3,7,4,3,20,6.1,Yes
+544,42,Non-Binary,Married,Nursing,Nurse Manager,1,2463,16,6,2,20,Yes,8,3,3,4,1,2,2,9,2,2,21,6.8,Yes
+545,48,Female,Single,Facilities,Facilities Manager,1,3281,4,1,4,17,Yes,47,4,3,2,2,3,3,4,4,0,15,9.2,Yes
+546,47,Female,Married,IT,Health Informatics Analyst,2,4590,5,1,4,7,Yes,16,3,3,1,3,4,4,1,3,0,12,9.0,Yes
+547,44,Non-Binary,Single,Clinical,Clinical Researcher,2,4674,4,4,0,6,Yes,47,4,3,4,3,3,3,4,2,0,11,5.0,Yes
+548,45,Female,Divorced,Nursing,Nurse Manager,4,9844,4,0,0,11,No,5,1,3,2,4,3,3,0,4,2,12,3.1,No
+549,23,Female,Divorced,Nursing,Nurse Manager,1,3589,0,0,0,5,Yes,43,4,4,4,3,4,4,8,2,0,20,4.6,No
+550,51,Male,Divorced,Administration,Medical Records Clerk,1,3525,6,0,6,9,No,37,5,3,1,3,1,4,9,4,1,18,9.2,No
+551,32,Non-Binary,Single,Nursing,CNA,2,5489,9,5,6,14,No,8,5,3,3,2,4,2,7,6,0,24,4.7,No
+552,31,Female,Divorced,Clinical,Clinical Researcher,2,4904,2,2,0,2,No,10,5,3,2,4,2,1,4,4,3,13,4.6,Yes
+553,38,Non-Binary,Single,Administration,Office Manager,1,2582,13,12,6,20,Yes,39,5,3,3,2,2,2,9,6,2,14,3.9,No
+554,26,Male,Married,Nursing,Registered Nurse,4,10081,2,0,0,7,No,36,1,4,1,2,1,3,4,6,0,16,6.3,Yes
+555,38,Male,Married,Administration,Admin Assistant,2,5212,3,3,0,14,Yes,2,1,3,3,2,3,2,6,2,2,17,9.1,No
+556,54,Male,Divorced,Administration,Medical Records Clerk,2,6107,28,7,7,32,No,28,5,3,1,3,4,4,5,2,0,21,4.3,No
+557,53,Female,Married,HR,Benefits Coordinator,3,8758,16,3,7,23,Yes,11,5,3,1,1,1,3,0,3,1,25,5.4,No
+558,28,Male,Married,Nursing,Nurse Manager,1,3564,3,0,3,7,Yes,27,4,4,3,1,3,1,0,3,0,25,4.1,Yes
+559,25,Non-Binary,Single,Administration,Scheduling Coordinator,1,3472,3,0,2,6,Yes,45,2,2,3,3,1,3,5,6,3,22,6.7,Yes
+560,52,Male,Divorced,Clinical,Resident,3,9428,7,7,7,9,No,17,2,4,3,1,2,3,3,1,1,11,5.6,Yes
+561,36,Male,Married,Administration,Admin Assistant,2,4767,7,1,4,17,Yes,2,2,1,2,1,1,2,8,1,2,19,5.7,Yes
+562,50,Male,Divorced,IT,Health Informatics Analyst,2,5478,26,21,24,31,Yes,30,2,4,3,3,1,2,5,5,1,12,7.8,No
+563,47,Non-Binary,Divorced,Clinical,Clinical Researcher,4,10403,18,14,6,24,Yes,42,5,1,3,2,4,3,2,3,2,12,6.6,No
+564,61,Non-Binary,Single,Facilities,Maintenance Tech,2,5687,1,0,0,24,Yes,16,4,3,3,4,3,4,5,3,3,17,4.6,Yes
+565,43,Female,Divorced,Facilities,Maintenance Tech,1,2583,8,3,7,14,Yes,33,4,3,1,3,4,3,6,0,3,13,8.9,No
+566,33,Female,Divorced,Facilities,Maintenance Tech,2,6244,8,0,1,15,Yes,26,4,2,3,4,2,1,1,1,1,23,3.4,No
+567,47,Male,Divorced,IT,Health Informatics Analyst,3,8677,12,2,6,27,No,25,1,3,4,2,1,4,6,2,3,21,3.2,No
+568,29,Male,Married,IT,IT Support,2,5560,1,0,0,10,No,4,5,4,3,1,4,3,0,3,0,24,5.4,No
+569,27,Female,Single,Finance,Financial Analyst,2,6938,4,0,3,5,No,3,4,4,1,1,4,1,3,0,2,12,9.4,No
+570,59,Female,Single,Clinical,Resident,2,5277,4,3,0,13,No,29,5,3,1,4,2,2,1,2,0,17,7.1,No
+571,22,Non-Binary,Divorced,Clinical,Surgeon,4,8592,0,0,0,0,Yes,30,1,4,4,1,2,4,1,5,2,24,4.3,Yes
+572,34,Female,Divorced,Finance,Controller,1,2750,4,0,4,16,No,30,1,3,3,3,3,2,2,6,2,23,6.2,No
+573,24,Male,Single,Finance,Revenue Cycle Analyst,1,3496,2,1,1,4,Yes,41,3,3,1,1,3,4,4,0,3,20,8.3,No
+574,41,Non-Binary,Divorced,Facilities,Facilities Manager,2,5544,1,1,1,4,Yes,33,5,1,3,2,4,1,4,4,3,12,9.4,No
+575,26,Non-Binary,Married,Administration,Medical Records Clerk,1,3353,2,1,1,8,No,40,4,3,4,4,4,1,8,0,1,11,7.8,Yes
+576,38,Female,Divorced,Clinical,Resident,2,6667,5,1,5,8,No,3,1,3,4,3,3,3,3,0,0,11,9.2,No
+577,47,Non-Binary,Divorced,HR,HR Generalist,1,3890,16,8,0,28,Yes,43,5,3,4,4,2,1,8,3,3,19,8.4,Yes
+578,57,Male,Married,Finance,Financial Analyst,4,11308,26,21,11,36,Yes,11,4,2,2,4,2,3,0,4,1,21,5.5,No
+579,32,Non-Binary,Married,Clinical,Clinical Researcher,2,6460,4,4,4,11,Yes,33,1,3,3,2,1,2,0,5,1,14,3.4,Yes
+580,54,Male,Married,Clinical,Physician Assistant,4,11407,11,0,3,25,No,20,5,4,3,4,3,1,4,5,0,24,4.8,No
+581,25,Male,Single,Clinical,Specialist,2,6744,0,0,0,7,No,1,4,3,3,4,2,1,2,3,0,14,6.0,No
+582,39,Male,Married,Clinical,Specialist,4,10768,17,14,6,19,Yes,5,1,4,4,1,4,3,1,4,3,24,6.3,No
+583,39,Female,Single,Clinical,Clinical Researcher,3,7276,17,14,6,17,No,8,1,3,3,4,3,2,1,6,2,21,4.5,Yes
+584,28,Male,Married,Finance,Controller,3,6845,0,0,0,8,Yes,30,2,3,4,3,3,3,1,5,1,22,7.7,No
+585,54,Non-Binary,Divorced,Clinical,Surgeon,4,10425,15,1,6,23,No,18,5,3,4,1,2,4,3,3,3,13,3.4,Yes
+586,56,Female,Divorced,IT,Health Informatics Analyst,1,2611,14,14,7,38,Yes,5,4,2,1,4,1,2,9,4,0,23,3.7,No
+587,51,Male,Single,Nursing,Nurse Manager,2,6118,5,0,0,19,No,33,1,3,2,3,1,2,5,2,3,11,9.3,No
+588,45,Male,Divorced,Clinical,Surgeon,2,4299,21,6,12,25,No,35,4,4,4,4,3,4,7,0,2,23,9.0,No
+589,37,Non-Binary,Married,Clinical,Physician,3,6478,15,1,1,19,Yes,13,4,3,3,3,4,2,8,2,0,17,3.7,No
+590,48,Female,Married,IT,IT Support,3,6836,15,14,11,30,No,2,4,3,3,1,1,4,2,0,2,25,4.0,No
+591,28,Female,Single,Clinical,Clinical Researcher,1,2918,2,0,2,2,Yes,23,4,2,2,1,4,4,7,0,2,16,7.4,Yes
+592,50,Female,Divorced,Clinical,Clinical Researcher,5,14096,12,5,5,13,Yes,30,2,3,3,4,3,2,0,4,1,20,3.1,No
+593,49,Non-Binary,Divorced,Nursing,Charge Nurse,3,6517,5,1,2,8,No,11,2,2,3,3,1,3,2,3,3,12,8.5,No
+594,49,Male,Single,Clinical,Physician,3,7620,15,4,7,26,Yes,30,3,3,2,3,1,3,0,1,0,20,8.0,Yes
+595,26,Non-Binary,Married,HR,HR Director,2,6012,2,2,1,3,No,12,5,3,4,4,3,4,0,5,3,14,5.7,No
+596,58,Male,Single,Nursing,Charge Nurse,1,3710,10,10,9,20,Yes,5,3,3,1,1,4,2,2,6,2,19,3.4,Yes
+597,54,Non-Binary,Married,Administration,Medical Records Clerk,1,3627,3,3,1,16,No,25,5,4,1,4,3,4,8,2,0,12,4.3,No
+598,49,Female,Married,Nursing,Nurse Practitioner,1,2758,26,22,23,27,No,3,2,4,3,3,3,3,2,2,1,22,4.6,No
+599,37,Non-Binary,Married,IT,Systems Administrator,3,8145,1,0,1,11,No,10,2,1,3,3,3,2,0,5,2,12,8.7,No
+600,56,Non-Binary,Single,Clinical,Resident,1,3366,14,0,7,35,Yes,5,5,2,4,4,3,2,5,5,3,15,5.6,No
+601,51,Female,Divorced,HR,HR Generalist,4,10300,8,8,0,24,Yes,19,5,4,3,2,3,2,6,0,0,14,6.5,Yes
+602,44,Male,Single,Nursing,Nurse Manager,2,6493,12,10,9,12,No,22,2,3,4,3,1,1,7,6,3,16,6.3,Yes
+603,27,Male,Divorced,Administration,Medical Records Clerk,2,4822,4,0,0,7,No,13,4,3,3,4,1,3,7,0,3,20,5.9,No
+604,44,Non-Binary,Married,Clinical,Surgeon,4,10296,21,4,14,26,Yes,15,3,3,1,1,4,3,4,1,0,14,8.3,Yes
+605,23,Male,Single,Clinical,Physician,3,7807,0,0,0,4,No,13,3,3,4,1,3,2,9,3,1,15,8.2,No
+606,32,Male,Married,Facilities,Facilities Manager,3,6509,9,4,8,12,Yes,11,4,4,2,3,2,4,1,5,2,11,6.3,No
+607,27,Female,Married,IT,IT Manager,1,2407,4,4,1,8,Yes,2,1,4,1,1,3,2,5,5,0,14,3.3,No
+608,38,Male,Divorced,Facilities,Safety Officer,3,8239,12,4,11,13,Yes,13,3,3,3,3,4,4,2,6,3,19,3.5,No
+609,43,Non-Binary,Married,Facilities,Facilities Manager,1,2506,2,1,1,20,Yes,13,3,4,1,1,3,1,1,4,0,19,8.4,No
+610,37,Female,Single,Facilities,Environmental Services,3,8609,2,0,2,19,Yes,44,4,3,3,2,4,3,5,1,1,14,4.0,No
+611,22,Female,Married,Clinical,Physician Assistant,1,3716,0,0,0,1,No,24,2,3,2,4,3,1,3,5,0,13,8.4,Yes
+612,62,Female,Divorced,Clinical,Clinical Researcher,2,6816,12,8,5,39,Yes,46,1,4,2,2,1,4,1,0,2,13,5.3,Yes
+613,40,Female,Divorced,Administration,Office Manager,5,19369,16,16,3,22,No,5,5,2,2,2,1,3,2,3,2,19,4.8,Yes
+614,37,Non-Binary,Married,HR,Benefits Coordinator,1,3313,2,1,0,3,No,35,2,4,4,1,3,3,2,2,1,15,7.4,No
+615,47,Male,Divorced,Clinical,Specialist,5,18777,16,0,2,23,Yes,30,5,3,1,1,3,1,8,2,1,13,3.7,Yes
+616,47,Non-Binary,Divorced,Nursing,Registered Nurse,2,4040,19,11,8,25,Yes,10,2,2,3,3,4,4,1,0,0,13,9.4,Yes
+617,56,Non-Binary,Married,Clinical,Surgeon,2,6235,9,1,3,36,Yes,42,1,3,2,2,3,4,4,1,3,24,3.4,Yes
+618,37,Male,Divorced,Finance,Medical Biller,1,4033,9,3,6,15,Yes,9,4,3,2,1,4,3,0,3,1,12,5.3,No
+619,56,Female,Married,Facilities,Environmental Services,3,7814,2,2,1,23,Yes,29,1,4,3,2,4,1,4,6,1,13,3.3,No
+620,24,Male,Married,Finance,Controller,4,8222,1,0,0,6,Yes,12,1,4,2,4,2,3,9,6,3,24,3.3,Yes
+621,41,Male,Single,IT,Health Informatics Analyst,1,3796,2,0,0,3,No,21,3,3,2,1,4,1,5,1,0,19,4.3,No
+622,52,Non-Binary,Divorced,HR,Recruiter,2,6361,19,13,9,27,Yes,6,2,1,2,2,4,1,7,6,0,14,5.4,No
+623,37,Female,Divorced,Nursing,CNA,3,8155,3,3,2,4,Yes,3,1,4,2,3,2,4,9,0,2,12,9.5,No
+624,37,Male,Single,IT,IT Manager,1,4010,3,3,1,4,Yes,4,5,3,4,1,2,3,6,2,3,14,5.4,Yes
+625,34,Female,Married,Administration,Admin Assistant,4,11735,6,4,4,8,No,38,5,3,3,4,1,3,9,2,3,15,7.9,No
+626,47,Female,Single,IT,IT Support,4,11684,24,0,2,27,Yes,50,2,3,1,3,1,4,2,4,1,12,7.7,No
+627,42,Non-Binary,Single,Nursing,Nurse Manager,3,7142,2,0,0,22,No,24,4,3,3,2,1,2,1,5,3,25,7.6,Yes
+628,46,Non-Binary,Married,Clinical,Physician Assistant,1,3380,18,0,12,28,No,2,1,4,4,4,2,3,9,4,3,13,8.9,Yes
+629,40,Female,Married,Clinical,Physician,4,11901,5,2,0,14,Yes,25,5,3,2,2,2,1,9,5,1,14,4.6,Yes
+630,23,Male,Single,HR,Benefits Coordinator,2,6581,0,0,0,1,No,43,1,3,3,1,4,4,5,5,1,11,8.5,No
+631,31,Non-Binary,Divorced,Nursing,Registered Nurse,1,3122,1,1,1,12,Yes,34,4,3,4,3,2,2,7,1,0,15,4.6,Yes
+632,26,Non-Binary,Married,Facilities,Facilities Manager,1,3150,2,1,1,5,Yes,31,4,2,1,1,3,1,8,0,2,16,6.5,Yes
+633,27,Male,Divorced,Clinical,Surgeon,1,3612,2,2,2,5,Yes,17,5,3,4,4,4,1,6,6,0,12,8.6,No
+634,22,Female,Married,Clinical,Clinical Researcher,2,6708,0,0,0,2,No,5,5,4,3,4,2,1,7,6,2,25,3.0,Yes
+635,53,Male,Divorced,Nursing,Nurse Manager,3,7015,21,12,10,25,No,3,3,3,2,3,2,2,6,2,1,18,5.7,No
+636,62,Non-Binary,Divorced,Facilities,Facilities Manager,1,3939,17,16,11,18,Yes,40,1,4,4,4,3,2,8,0,3,22,3.9,Yes
+637,55,Non-Binary,Single,Nursing,Nurse Manager,2,6520,29,1,23,34,No,22,1,4,2,1,1,2,7,0,1,19,4.6,Yes
+638,34,Female,Divorced,Clinical,Specialist,2,5905,11,6,3,14,No,35,5,3,3,1,3,2,7,1,2,20,6.3,No
+639,30,Female,Divorced,HR,HR Generalist,5,17636,2,2,2,4,No,3,2,4,3,3,1,4,0,3,3,24,8.0,No
+640,34,Female,Single,Finance,Medical Biller,1,3287,12,9,6,16,Yes,12,2,2,2,2,2,1,3,5,0,18,9.0,Yes
+641,52,Non-Binary,Single,IT,Health Informatics Analyst,4,8243,1,0,1,28,No,12,5,3,4,1,2,1,6,0,2,23,7.6,Yes
+642,48,Male,Married,HR,Recruiter,5,19328,10,0,0,17,No,25,5,4,3,2,3,4,1,6,0,14,5.0,Yes
+643,38,Non-Binary,Divorced,Administration,Office Manager,4,8911,12,8,1,18,Yes,46,2,3,1,3,4,1,4,0,3,20,4.1,No
+644,37,Male,Married,Finance,Medical Biller,1,3009,10,1,7,13,Yes,49,3,4,2,4,4,2,1,5,1,12,3.4,No
+645,59,Non-Binary,Married,Nursing,Registered Nurse,2,5039,18,2,15,30,No,5,4,3,3,2,2,1,6,2,3,15,6.0,Yes
+646,49,Non-Binary,Divorced,Clinical,Physician,1,3837,17,1,8,24,Yes,19,4,4,1,3,3,4,3,2,2,23,3.6,Yes
+647,37,Non-Binary,Single,Clinical,Clinical Researcher,2,4650,15,14,5,17,No,46,5,2,3,4,4,3,1,1,3,23,6.2,No
+648,38,Non-Binary,Married,IT,IT Manager,3,6186,7,3,7,11,Yes,12,5,4,1,1,2,3,3,1,2,24,4.8,Yes
+649,27,Female,Married,Nursing,Nurse Practitioner,1,3262,3,3,0,6,No,13,4,3,4,4,4,1,9,5,3,12,7.7,Yes
+650,33,Female,Divorced,Administration,Office Manager,1,4051,11,6,7,14,Yes,26,4,2,2,2,2,1,7,2,3,19,3.8,Yes
+651,52,Female,Single,HR,Benefits Coordinator,2,5326,14,4,13,22,No,48,5,1,4,2,1,1,9,5,1,22,9.1,Yes
+652,44,Non-Binary,Divorced,Facilities,Facilities Manager,4,10413,1,0,1,20,No,4,5,3,4,1,4,2,2,1,3,24,7.2,Yes
+653,58,Non-Binary,Married,Clinical,Physician,2,4541,11,3,4,18,Yes,43,3,3,1,1,3,3,1,3,3,11,6.1,Yes
+654,36,Non-Binary,Single,Administration,Medical Records Clerk,2,5962,0,0,0,13,No,27,3,1,4,4,3,4,7,6,1,19,9.2,No
+655,40,Non-Binary,Divorced,Nursing,Nurse Manager,1,2525,11,2,2,15,Yes,8,1,4,1,3,2,1,4,0,0,25,4.7,Yes
+656,51,Non-Binary,Married,Clinical,Physician Assistant,1,2503,13,9,3,23,No,41,1,1,4,3,4,2,3,5,1,25,8.5,No
+657,52,Non-Binary,Single,Clinical,Specialist,2,5873,25,12,18,31,No,4,4,3,3,2,2,2,9,6,3,14,6.8,Yes
+658,56,Female,Divorced,IT,IT Support,4,8114,16,16,16,30,Yes,13,4,4,2,3,3,4,6,6,0,15,8.1,No
+659,42,Non-Binary,Married,Facilities,Facilities Manager,1,2676,11,10,9,20,No,44,2,2,4,4,3,4,5,4,1,15,3.2,No
+660,57,Female,Divorced,Clinical,Physician Assistant,3,7807,6,4,1,30,Yes,41,2,3,2,1,3,3,0,6,3,22,3.7,Yes
+661,39,Non-Binary,Divorced,Nursing,Charge Nurse,2,5430,4,4,0,15,No,23,5,4,3,2,3,2,4,4,3,23,6.0,Yes
+662,33,Non-Binary,Single,Nursing,CNA,3,8328,3,0,2,3,No,15,3,1,2,3,3,2,8,5,3,19,4.2,No
+663,44,Female,Married,Clinical,Physician,3,7806,18,6,14,23,No,35,3,3,1,2,3,3,6,5,2,22,8.3,No
+664,34,Female,Single,Nursing,Nurse Manager,2,6411,6,4,0,9,Yes,1,3,2,3,2,4,4,8,2,2,20,3.2,No
+665,24,Female,Divorced,Facilities,Safety Officer,3,8742,2,0,0,3,No,36,5,3,1,3,3,4,6,1,2,13,8.4,Yes
+666,46,Male,Divorced,Facilities,Facilities Manager,1,3566,9,6,5,16,Yes,20,3,1,3,4,4,3,1,2,1,22,5.0,No
+667,31,Male,Divorced,Clinical,Physician Assistant,2,6639,5,1,0,7,Yes,1,3,4,4,4,4,2,9,0,0,19,4.4,No
+668,61,Male,Single,Clinical,Surgeon,1,3525,1,0,0,13,No,22,3,3,4,1,4,2,2,1,2,21,4.5,Yes
+669,37,Male,Single,Clinical,Resident,3,10234,5,4,5,14,Yes,25,5,4,1,2,3,2,2,4,1,13,5.1,No
+670,43,Female,Single,Administration,Scheduling Coordinator,2,5112,20,13,18,21,Yes,4,2,2,4,4,4,4,6,0,0,14,3.0,No
+671,25,Female,Single,Clinical,Surgeon,1,3356,2,2,2,5,No,30,4,3,3,3,1,4,5,4,1,18,8.9,Yes
+672,28,Non-Binary,Divorced,Clinical,Specialist,4,10584,0,0,0,1,No,20,2,3,1,3,4,4,7,2,2,18,9.5,No
+673,27,Female,Married,Clinical,Resident,3,9085,4,3,2,6,Yes,32,1,4,2,3,3,3,2,3,3,23,3.8,Yes
+674,56,Male,Single,Administration,Medical Records Clerk,2,5991,20,1,3,31,Yes,19,1,2,1,3,1,2,3,3,3,18,7.3,No
+675,41,Male,Single,Clinical,Clinical Researcher,3,8730,13,7,3,21,No,13,2,1,4,2,1,4,7,0,1,23,4.0,No
+676,30,Male,Married,Administration,Scheduling Coordinator,3,9837,4,0,3,10,No,11,5,4,3,3,2,3,5,3,2,17,6.4,No
+677,31,Male,Single,Clinical,Physician Assistant,1,3983,7,7,3,9,Yes,14,2,3,3,1,1,1,1,4,0,20,9.1,Yes
+678,27,Non-Binary,Single,HR,HR Director,3,6859,5,5,2,8,Yes,4,4,4,2,2,3,2,4,0,0,14,8.2,No
+679,44,Female,Divorced,IT,Health Informatics Analyst,5,12917,1,0,1,11,No,49,2,4,1,1,2,2,9,0,0,21,5.9,Yes
+680,45,Male,Single,Administration,Medical Records Clerk,2,6561,1,1,1,24,No,1,2,3,3,4,3,2,8,0,1,20,6.8,No
+681,23,Female,Divorced,Clinical,Clinical Researcher,1,2812,0,0,0,0,No,1,1,4,4,4,2,2,7,4,1,22,3.4,No
+682,42,Non-Binary,Single,Clinical,Clinical Researcher,2,6814,11,0,7,19,Yes,44,1,3,3,1,1,1,7,3,1,25,3.2,No
+683,51,Non-Binary,Divorced,Administration,Admin Assistant,2,6708,29,28,17,29,No,24,2,3,3,4,2,1,8,4,3,15,5.8,No
+684,29,Non-Binary,Married,Finance,Financial Analyst,3,7608,3,2,1,8,No,12,5,4,2,1,4,4,2,1,1,15,3.2,No
+685,45,Female,Divorced,Nursing,CNA,3,9590,14,3,6,17,No,37,3,3,3,4,4,4,7,3,0,24,4.4,Yes
+686,43,Non-Binary,Married,Clinical,Physician Assistant,3,7936,8,0,3,18,No,49,3,4,1,2,2,1,4,1,0,12,7.4,Yes
+687,26,Non-Binary,Single,Finance,Medical Biller,5,12178,2,1,0,2,No,9,3,4,4,4,3,1,8,3,2,13,6.9,No
+688,62,Non-Binary,Single,HR,HR Generalist,2,5178,24,24,21,25,No,43,4,4,3,2,3,3,9,6,3,20,5.3,No
+689,41,Female,Married,IT,IT Support,1,3185,15,2,2,19,No,10,1,3,1,4,3,2,5,2,1,19,3.5,No
+690,28,Male,Divorced,Facilities,Maintenance Tech,1,2799,6,3,2,6,No,45,4,3,3,4,2,1,2,4,2,20,3.6,No
+691,32,Female,Single,Finance,Medical Biller,2,6169,1,1,0,6,No,40,2,2,1,3,2,3,6,0,0,20,8.2,No
+692,50,Male,Single,Nursing,Charge Nurse,3,6806,6,2,5,19,Yes,1,2,3,1,2,1,3,4,5,1,16,8.0,Yes
+693,27,Male,Divorced,IT,Systems Administrator,3,6930,0,0,0,5,No,48,5,3,4,1,4,2,9,1,1,13,3.9,No
+694,40,Male,Single,Facilities,Environmental Services,3,6109,13,1,2,15,Yes,40,4,2,3,4,4,2,8,1,3,20,8.6,No
+695,51,Female,Married,Facilities,Safety Officer,2,4599,12,3,11,26,Yes,30,2,4,3,1,1,1,5,4,0,11,9.2,Yes
+696,46,Male,Divorced,Nursing,CNA,3,9584,3,2,2,14,Yes,16,3,3,2,1,4,4,6,3,3,19,4.7,Yes
+697,62,Female,Single,Nursing,CNA,3,6887,12,12,6,20,Yes,9,4,3,4,1,4,1,5,3,0,19,8.8,Yes
+698,41,Male,Divorced,Clinical,Surgeon,3,7392,4,4,3,17,Yes,41,5,3,2,1,4,3,2,0,0,11,6.9,Yes
+699,56,Non-Binary,Divorced,Administration,Medical Records Clerk,3,6712,12,12,9,26,No,24,4,4,1,1,1,1,3,2,1,25,3.4,No
+700,34,Non-Binary,Divorced,Nursing,CNA,2,4875,9,7,1,15,No,1,5,3,2,2,2,3,0,1,0,14,7.1,Yes
+701,35,Male,Single,IT,IT Support,3,7337,9,2,9,10,Yes,6,1,3,1,4,2,1,5,4,2,23,6.5,Yes
+702,61,Non-Binary,Married,Nursing,CNA,1,3861,10,6,3,22,No,22,1,3,3,4,1,2,9,0,3,16,9.5,No
+703,36,Female,Married,Clinical,Specialist,1,3117,5,4,0,15,Yes,1,3,4,3,2,2,3,7,4,1,16,3.1,Yes
+704,49,Non-Binary,Divorced,Administration,Office Manager,1,2725,3,2,0,17,No,46,4,2,2,3,4,2,6,6,3,22,5.3,No
+705,40,Female,Single,Finance,Controller,2,5508,11,8,0,13,Yes,47,2,3,1,1,1,2,3,5,3,11,4.0,Yes
+706,29,Non-Binary,Divorced,Nursing,Registered Nurse,4,10041,5,3,1,8,No,7,2,3,2,3,2,3,3,6,2,17,9.3,Yes
+707,47,Female,Divorced,Clinical,Physician,5,17131,24,22,24,26,Yes,17,2,3,1,3,1,2,4,1,3,23,7.8,Yes
+708,46,Male,Single,Nursing,CNA,1,3292,13,2,2,28,No,11,1,3,3,2,2,1,0,2,3,20,7.6,No
+709,39,Female,Single,Clinical,Resident,1,2569,11,4,4,12,Yes,29,2,4,3,1,4,3,0,5,1,23,3.9,No
+710,58,Non-Binary,Divorced,Clinical,Physician,1,3057,10,2,3,39,No,13,5,2,2,1,1,2,2,6,2,11,7.8,Yes
+711,55,Male,Single,IT,Systems Administrator,1,2925,29,14,17,34,Yes,2,5,4,3,3,3,4,4,5,3,14,8.7,No
+712,36,Male,Married,Clinical,Surgeon,3,8057,1,1,0,1,No,22,2,2,1,4,1,2,4,6,0,25,7.9,Yes
+713,51,Female,Single,Nursing,Nurse Practitioner,1,2692,21,8,10,21,No,7,1,3,4,3,4,4,6,2,1,20,3.7,Yes
+714,25,Female,Single,Nursing,Charge Nurse,2,5578,1,1,1,1,Yes,10,5,2,3,4,1,3,2,3,1,17,8.1,Yes
+715,42,Non-Binary,Divorced,Clinical,Specialist,2,6693,6,4,3,13,Yes,34,2,3,3,3,4,1,8,5,3,25,8.3,No
+716,57,Female,Divorced,Facilities,Environmental Services,2,4605,6,5,4,22,No,28,1,4,3,2,3,2,8,1,1,16,3.2,No
+717,38,Male,Divorced,Nursing,Charge Nurse,2,4371,13,13,8,20,Yes,43,3,4,2,1,4,1,7,4,3,22,5.4,Yes
+718,28,Non-Binary,Married,Nursing,Registered Nurse,3,8714,3,3,3,7,No,20,4,4,3,2,1,3,7,2,2,18,3.4,No
+719,60,Non-Binary,Divorced,Finance,Revenue Cycle Analyst,1,3550,21,5,12,29,No,3,2,4,3,3,2,3,1,3,0,13,8.3,No
+720,50,Non-Binary,Divorced,Clinical,Surgeon,1,3338,19,11,11,28,No,16,3,4,4,1,2,3,1,0,2,13,6.3,Yes
+721,25,Female,Single,Administration,Office Manager,1,3298,1,1,1,1,No,17,4,3,1,4,1,2,0,0,2,19,3.7,Yes
+722,50,Non-Binary,Married,Nursing,Nurse Manager,1,3650,18,6,4,18,No,10,4,3,2,4,2,2,6,0,2,18,5.8,No
+723,37,Non-Binary,Divorced,Clinical,Physician Assistant,3,8463,15,3,5,15,No,14,5,3,2,4,2,1,0,3,1,19,9.4,Yes
+724,39,Male,Single,Clinical,Physician Assistant,3,6186,13,3,7,20,Yes,41,2,2,1,1,3,1,9,4,1,17,7.8,Yes
+725,24,Female,Single,HR,HR Director,4,9207,1,0,1,1,No,28,4,4,1,4,4,3,3,6,2,18,4.5,No
+726,40,Non-Binary,Married,Clinical,Physician,3,9571,2,2,2,3,No,7,5,3,1,2,1,1,1,0,1,18,4.7,Yes
+727,55,Male,Married,Clinical,Physician,3,6176,10,10,6,24,No,17,3,3,3,4,4,4,1,4,2,18,7.1,No
+728,44,Male,Divorced,Facilities,Safety Officer,4,9937,1,0,1,25,No,22,2,3,2,3,2,2,1,6,0,15,3.7,Yes
+729,59,Non-Binary,Divorced,IT,IT Manager,2,4266,27,8,23,37,No,39,4,3,2,1,3,2,7,5,1,12,5.2,Yes
+730,54,Non-Binary,Married,Clinical,Clinical Researcher,2,5227,22,0,3,23,Yes,17,1,4,3,2,2,1,7,1,2,21,7.1,Yes
+731,30,Male,Divorced,Clinical,Specialist,3,10347,4,4,2,9,Yes,35,5,3,3,4,1,4,1,5,3,14,8.2,No
+732,28,Female,Married,Clinical,Resident,3,7521,1,1,1,7,No,26,2,2,1,3,2,1,6,4,0,24,3.1,No
+733,57,Female,Single,Nursing,Nurse Manager,1,3618,26,14,24,29,No,21,4,4,1,1,2,2,4,3,3,22,3.3,Yes
+734,32,Male,Divorced,Clinical,Physician Assistant,1,4123,3,0,1,12,Yes,39,5,2,4,4,2,2,2,5,0,24,3.3,No
+735,38,Non-Binary,Married,Clinical,Clinical Researcher,2,6735,1,0,0,14,No,35,2,4,2,1,3,3,6,1,2,17,4.1,No
+736,46,Male,Single,Clinical,Specialist,2,5483,21,7,7,21,No,9,3,3,4,4,1,3,6,4,2,17,3.7,No
+737,62,Non-Binary,Single,Facilities,Safety Officer,4,9129,20,1,10,27,No,14,2,4,1,1,2,4,1,2,3,15,4.9,No
+738,29,Female,Single,Clinical,Physician Assistant,1,2425,4,3,1,6,Yes,12,5,3,1,4,3,4,8,5,1,14,7.2,Yes
+739,44,Non-Binary,Married,Facilities,Maintenance Tech,4,13662,6,2,1,25,Yes,1,2,3,4,3,4,1,7,2,0,17,6.5,No
+740,48,Non-Binary,Married,Administration,Office Manager,4,11722,18,16,8,19,No,24,2,3,2,1,4,3,0,5,0,24,7.8,Yes
+741,56,Non-Binary,Divorced,Administration,Scheduling Coordinator,3,6913,0,0,0,17,No,48,4,4,2,3,3,2,9,0,2,21,8.0,No
+742,44,Non-Binary,Married,Finance,Controller,2,4955,19,8,13,23,Yes,47,2,4,1,2,2,4,9,3,0,13,3.1,Yes
+743,25,Male,Single,Clinical,Physician Assistant,1,3846,0,0,0,4,Yes,5,2,3,2,1,1,1,6,6,1,20,5.0,Yes
+744,61,Male,Single,Facilities,Facilities Manager,3,10044,0,0,0,33,No,43,1,3,2,2,3,2,1,6,0,13,8.6,No
+745,32,Male,Divorced,IT,IT Manager,4,12154,7,0,0,10,No,23,1,2,2,3,1,3,3,6,0,14,4.7,No
+746,33,Male,Single,Clinical,Surgeon,3,7385,4,1,3,4,Yes,29,3,1,4,1,1,3,5,0,1,17,8.9,Yes
+747,39,Non-Binary,Single,Administration,Medical Records Clerk,5,14424,9,3,7,20,Yes,24,5,3,3,2,4,1,4,4,0,21,7.6,No
+748,59,Non-Binary,Single,Clinical,Physician,2,5269,3,1,0,14,Yes,25,4,2,1,1,4,3,1,4,1,23,8.6,Yes
+749,59,Female,Married,Nursing,Charge Nurse,4,11790,25,18,13,30,No,38,2,3,1,4,3,2,3,0,1,22,9.0,No
+750,39,Female,Single,Facilities,Maintenance Tech,1,4042,16,13,12,19,No,49,3,4,4,2,2,2,1,3,1,15,9.0,Yes
+751,30,Non-Binary,Married,Nursing,Nurse Practitioner,1,4102,8,4,0,12,No,10,2,3,1,2,2,2,6,2,3,15,3.6,No
+752,60,Non-Binary,Divorced,Clinical,Specialist,1,3319,5,3,0,36,No,25,5,3,1,1,4,2,9,6,1,15,8.1,No
+753,46,Male,Divorced,Administration,Admin Assistant,4,12976,6,5,6,24,No,12,2,3,2,3,1,1,2,3,1,14,8.1,No
+754,27,Non-Binary,Divorced,HR,Benefits Coordinator,1,2479,3,0,0,9,Yes,31,3,3,1,4,3,1,6,2,1,18,4.5,No
+755,61,Male,Divorced,Clinical,Specialist,5,16517,9,2,6,12,Yes,12,5,3,4,3,1,1,1,3,3,19,3.1,No
+756,62,Female,Divorced,Clinical,Surgeon,4,8577,24,4,7,41,Yes,32,5,3,1,1,4,4,2,5,3,15,6.5,Yes
+757,33,Female,Single,Clinical,Resident,1,4032,8,7,3,12,No,6,5,4,2,1,1,2,1,3,2,20,7.7,Yes
+758,31,Female,Divorced,Clinical,Resident,3,10413,5,1,1,9,Yes,49,5,4,3,4,1,2,6,2,0,17,4.8,No
+759,60,Female,Divorced,Facilities,Environmental Services,3,7675,12,1,11,19,No,6,5,2,3,1,1,1,6,4,3,17,9.1,No
+760,60,Female,Single,Administration,Admin Assistant,3,7944,27,11,25,29,No,23,1,4,2,2,4,4,2,4,3,17,4.6,No
+761,24,Non-Binary,Married,Clinical,Clinical Researcher,1,2795,0,0,0,0,Yes,45,1,3,3,3,2,2,5,4,2,13,5.0,Yes
+762,42,Male,Divorced,Clinical,Physician Assistant,4,12864,0,0,0,15,No,9,3,3,1,1,1,3,7,5,2,23,6.5,Yes
+763,30,Male,Single,Facilities,Maintenance Tech,2,4305,4,3,3,4,No,23,3,3,1,1,2,4,4,0,2,11,8.8,Yes
+764,51,Male,Single,Nursing,Charge Nurse,3,9747,13,9,12,15,Yes,22,5,3,2,2,2,4,9,3,0,20,7.2,No
+765,55,Male,Married,Administration,Scheduling Coordinator,2,4577,14,2,8,17,Yes,28,4,3,4,1,3,3,1,1,1,12,5.9,No
+766,55,Male,Married,IT,IT Support,1,3440,7,6,3,20,Yes,15,1,3,1,2,1,3,7,2,3,14,6.9,Yes
+767,46,Male,Divorced,Clinical,Resident,4,12595,6,5,1,8,Yes,1,5,4,4,2,4,3,1,0,1,14,4.0,No
+768,24,Male,Divorced,Clinical,Resident,3,6409,0,0,0,6,No,37,4,3,1,3,2,4,3,5,2,18,4.8,Yes
+769,36,Male,Divorced,Administration,Office Manager,1,3484,3,0,0,5,No,48,5,4,1,2,2,1,0,2,2,11,6.5,No
+770,45,Male,Single,Administration,Medical Records Clerk,4,10497,19,8,12,21,Yes,28,5,2,1,1,4,2,1,3,1,22,3.1,Yes
+771,49,Female,Married,Clinical,Specialist,2,4828,4,2,1,21,Yes,10,1,3,1,2,4,1,3,1,0,21,9.4,Yes
+772,23,Female,Single,Nursing,CNA,2,6737,1,0,0,2,No,31,5,4,1,1,3,2,1,1,1,13,8.3,Yes
+773,47,Female,Divorced,Nursing,CNA,3,6670,9,2,5,25,Yes,50,5,3,4,4,1,3,6,2,0,11,8.0,Yes
+774,36,Female,Single,Facilities,Maintenance Tech,3,9255,5,3,3,16,Yes,18,1,3,2,2,3,2,7,6,2,17,9.5,Yes
+775,61,Female,Single,Administration,Medical Records Clerk,4,12535,22,12,15,26,Yes,12,3,4,2,3,4,1,9,4,1,16,8.1,No
+776,53,Male,Single,HR,HR Director,3,6681,25,0,1,33,Yes,35,1,4,4,2,4,2,3,3,2,23,7.7,Yes
+777,50,Non-Binary,Married,Nursing,Charge Nurse,2,6974,7,3,6,12,Yes,43,2,3,4,4,1,4,4,3,2,25,4.4,Yes
+778,30,Non-Binary,Divorced,Nursing,Nurse Manager,1,3834,4,0,3,7,Yes,38,5,4,3,3,1,3,9,1,0,17,7.7,Yes
+779,51,Female,Married,Nursing,Nurse Manager,3,6608,19,3,0,23,No,40,5,3,2,1,4,2,8,1,1,11,8.1,No
+780,45,Male,Single,Clinical,Clinical Researcher,4,8523,11,9,8,25,No,40,2,3,4,3,4,4,6,0,2,22,5.4,No
+781,36,Female,Married,Clinical,Specialist,2,6416,5,3,4,17,No,50,1,3,3,1,3,4,0,5,2,24,8.6,No
+782,24,Female,Married,Finance,Revenue Cycle Analyst,2,6603,1,1,0,2,No,27,3,4,2,4,2,3,6,1,3,23,5.3,Yes
+783,43,Female,Divorced,Finance,Financial Analyst,3,6406,12,10,0,20,No,33,1,1,3,2,3,1,9,4,3,24,3.4,No
+784,60,Non-Binary,Married,Clinical,Surgeon,1,3408,0,0,0,20,Yes,48,5,3,4,4,3,3,4,5,2,11,5.6,No
+785,49,Non-Binary,Married,Nursing,Registered Nurse,2,5751,26,8,26,31,No,38,5,2,3,1,1,4,1,2,1,23,4.8,Yes
+786,33,Non-Binary,Single,Nursing,Nurse Manager,4,12112,8,8,1,8,Yes,2,5,4,2,3,1,4,9,2,3,21,7.9,Yes
+787,47,Male,Divorced,HR,Recruiter,2,6845,5,4,2,10,Yes,24,2,4,3,1,2,2,7,0,3,24,4.2,No
+788,32,Non-Binary,Single,Clinical,Resident,2,6814,3,0,3,4,No,22,1,3,2,2,2,3,9,5,3,16,3.8,Yes
+789,45,Female,Single,Facilities,Safety Officer,3,8710,18,6,2,22,No,30,4,3,4,3,1,2,6,5,0,13,5.0,Yes
+790,30,Non-Binary,Single,Clinical,Resident,3,7707,5,3,1,8,Yes,33,4,4,4,1,3,4,4,3,0,23,8.3,Yes
+791,24,Female,Divorced,Nursing,Nurse Practitioner,1,2551,2,1,0,2,No,30,4,4,2,4,4,2,9,1,1,21,9.3,Yes
+792,26,Male,Married,Facilities,Facilities Manager,2,4099,1,1,1,6,Yes,46,2,4,4,4,4,2,8,2,0,12,3.2,No
+793,39,Male,Single,Clinical,Surgeon,1,3730,12,12,4,13,No,37,2,3,2,1,3,2,5,4,1,20,6.4,No
+794,49,Male,Single,Clinical,Specialist,2,4494,23,3,21,31,No,37,3,3,3,4,1,1,7,4,2,12,6.4,No
+795,53,Male,Married,Clinical,Clinical Researcher,2,4325,11,0,4,13,Yes,34,2,2,4,2,2,2,9,3,3,19,9.1,Yes
+796,29,Non-Binary,Divorced,Administration,Medical Records Clerk,1,3581,7,6,0,11,No,9,2,4,1,1,3,2,2,1,1,25,4.9,No
+797,48,Female,Married,IT,Health Informatics Analyst,4,13598,6,3,2,21,No,5,5,3,1,4,1,4,3,3,0,12,5.5,No
+798,31,Male,Single,Clinical,Surgeon,3,9920,7,0,0,11,No,12,3,1,4,1,4,2,8,1,2,18,5.2,No
+799,39,Female,Single,Clinical,Specialist,3,10296,13,7,2,19,No,5,4,1,2,2,2,4,0,4,2,13,7.7,Yes
+800,62,Male,Divorced,Facilities,Maintenance Tech,3,9929,24,9,19,25,Yes,36,4,4,1,1,2,4,7,3,0,25,9.5,Yes
+801,34,Non-Binary,Divorced,Administration,Office Manager,2,4617,10,1,0,15,No,36,1,1,2,3,4,3,1,1,1,12,5.1,No
+802,36,Non-Binary,Single,Administration,Medical Records Clerk,1,3392,3,0,0,8,No,40,1,3,1,1,2,1,6,1,0,21,6.9,Yes
+803,60,Non-Binary,Married,Clinical,Resident,1,3595,20,7,12,29,No,28,5,2,3,1,4,3,8,3,0,22,7.6,No
+804,27,Female,Divorced,HR,Recruiter,3,8929,4,4,1,7,Yes,37,3,3,1,2,2,4,1,6,3,17,3.2,Yes
+805,22,Female,Single,Facilities,Safety Officer,3,7883,0,0,0,2,No,42,1,2,3,1,3,4,7,2,0,24,3.7,No
+806,48,Female,Married,IT,Health Informatics Analyst,1,3902,18,18,7,18,No,45,1,2,2,1,2,4,5,5,0,24,6.7,No
+807,54,Non-Binary,Single,Finance,Revenue Cycle Analyst,4,13806,15,6,15,20,No,42,1,4,3,3,1,1,5,1,3,17,7.2,No
+808,50,Non-Binary,Single,IT,Systems Administrator,4,8025,15,4,0,31,Yes,44,4,4,4,4,2,4,9,0,1,23,5.5,No
+809,33,Female,Single,Administration,Office Manager,2,5801,3,0,3,10,Yes,13,1,3,1,3,4,4,1,6,1,14,7.8,Yes
+810,55,Male,Divorced,Nursing,CNA,3,6842,6,5,3,27,Yes,46,3,3,3,2,3,2,4,0,3,12,5.5,No
+811,33,Male,Divorced,Nursing,Nurse Practitioner,2,6067,3,2,0,10,Yes,18,5,4,2,2,4,4,3,1,2,15,8.6,Yes
+812,62,Male,Married,Clinical,Physician Assistant,4,9722,18,4,12,29,No,38,4,2,2,2,1,2,1,1,1,12,3.0,Yes
+813,46,Male,Single,Clinical,Clinical Researcher,1,2790,2,2,0,27,Yes,28,5,4,1,4,2,2,9,4,1,13,5.2,Yes
+814,31,Female,Single,Clinical,Clinical Researcher,4,12031,8,7,7,11,No,50,1,3,4,4,1,1,3,1,3,22,6.5,Yes
+815,22,Male,Single,Clinical,Clinical Researcher,2,5399,0,0,0,3,No,13,4,3,3,2,4,1,0,2,0,21,8.6,Yes
+816,25,Female,Divorced,IT,IT Support,2,4998,3,1,1,5,Yes,37,1,4,4,1,3,2,3,5,3,25,3.7,Yes
+817,35,Male,Divorced,Nursing,Nurse Practitioner,2,4451,9,7,1,9,No,14,2,2,3,3,4,1,0,3,0,24,4.4,No
+818,54,Male,Married,Clinical,Resident,5,19319,13,4,9,33,No,40,2,3,1,3,4,1,9,0,2,15,4.2,No
+819,45,Female,Married,Clinical,Clinical Researcher,2,4607,4,4,0,22,Yes,44,3,2,4,2,4,4,8,5,0,15,4.7,Yes
+820,57,Male,Single,Clinical,Resident,3,8631,17,8,16,20,No,5,4,3,1,2,3,1,6,2,2,15,5.6,Yes
+821,59,Male,Divorced,HR,Recruiter,3,9794,2,1,0,15,No,7,1,2,3,1,1,4,3,2,1,18,6.2,No
+822,61,Female,Married,Facilities,Maintenance Tech,1,2986,25,4,1,41,No,40,3,1,1,1,1,4,5,2,1,19,7.2,No
+823,57,Male,Divorced,Administration,Office Manager,5,11377,6,1,0,7,Yes,43,1,3,2,4,1,2,2,3,0,25,4.4,No
+824,35,Non-Binary,Single,Clinical,Specialist,2,4103,10,0,4,11,No,19,3,3,2,2,1,4,0,3,2,25,7.8,Yes
+825,39,Female,Single,Nursing,Nurse Practitioner,2,6747,15,5,2,17,Yes,11,2,3,3,4,2,4,5,2,0,13,9.5,No
+826,29,Non-Binary,Divorced,Nursing,Nurse Manager,4,8371,6,4,2,10,Yes,39,1,3,2,4,3,3,5,0,0,15,7.4,No
+827,31,Male,Married,Clinical,Specialist,3,6316,9,1,1,12,Yes,22,3,3,1,2,1,4,1,2,3,15,4.1,Yes
+828,38,Non-Binary,Divorced,Administration,Scheduling Coordinator,1,2659,11,8,8,19,No,4,4,3,2,2,2,4,2,1,1,11,8.3,No
+829,50,Female,Divorced,Administration,Medical Records Clerk,2,6233,5,2,2,26,No,11,2,3,2,3,1,3,5,4,3,13,4.8,No
+830,49,Non-Binary,Married,IT,Health Informatics Analyst,1,3088,25,3,13,29,No,24,4,3,2,3,4,2,0,3,1,16,3.6,No
+831,38,Male,Married,Clinical,Clinical Researcher,2,4061,11,6,8,17,No,9,4,3,4,1,2,2,7,0,0,15,8.2,No
+832,47,Non-Binary,Divorced,Clinical,Surgeon,4,9175,21,15,7,27,No,20,2,1,4,4,4,1,4,4,1,11,3.4,No
+833,33,Non-Binary,Single,Nursing,Charge Nurse,2,5338,8,5,7,15,Yes,43,2,4,1,4,3,2,7,0,3,23,5.3,No
+834,56,Female,Divorced,Finance,Financial Analyst,3,8459,21,8,9,27,No,40,4,3,1,4,3,2,7,3,0,25,8.1,Yes
+835,22,Non-Binary,Divorced,Administration,Office Manager,4,10652,0,0,0,0,No,22,4,3,3,1,4,4,3,6,2,21,4.0,No
+836,26,Male,Single,Clinical,Clinical Researcher,4,13447,3,0,2,4,No,18,4,3,1,2,3,2,2,0,1,12,7.6,No
+837,30,Non-Binary,Single,Clinical,Clinical Researcher,3,7795,2,0,1,10,Yes,15,1,4,2,1,1,1,2,3,2,15,3.8,Yes
+838,38,Female,Single,Nursing,Nurse Manager,1,3519,15,4,10,16,No,25,3,2,4,1,4,3,2,0,3,16,4.2,Yes
+839,34,Male,Single,IT,IT Support,4,13847,11,8,10,11,Yes,27,2,4,2,1,4,4,2,1,0,17,4.5,Yes
+840,37,Female,Married,Nursing,Registered Nurse,1,2681,12,3,12,17,No,18,2,4,3,2,1,4,1,1,1,20,7.7,No
+841,37,Male,Married,Facilities,Safety Officer,2,6034,7,5,7,10,No,49,1,3,3,3,1,4,8,2,2,14,5.3,Yes
+842,56,Non-Binary,Single,Nursing,CNA,1,2580,30,11,17,35,No,27,3,1,1,3,3,2,8,4,3,17,7.5,Yes
+843,58,Non-Binary,Divorced,Clinical,Resident,1,2919,29,16,6,39,No,24,4,3,4,2,4,2,4,1,0,22,5.1,No
+844,49,Male,Married,Nursing,Nurse Practitioner,2,5534,11,10,0,26,No,36,2,3,2,3,2,1,3,3,0,13,5.2,No
+845,40,Male,Single,HR,Benefits Coordinator,3,9464,7,1,3,22,Yes,9,5,2,1,1,3,2,8,1,1,22,7.5,Yes
+846,37,Female,Single,Facilities,Environmental Services,1,3540,2,2,0,2,No,45,4,3,4,2,3,4,8,5,0,22,8.5,Yes
+847,60,Female,Divorced,Nursing,Nurse Manager,3,9144,8,2,1,39,No,41,1,3,1,2,3,1,2,6,1,22,8.0,Yes
+848,49,Female,Divorced,Clinical,Physician Assistant,2,5139,22,19,20,27,Yes,6,5,4,2,2,4,2,8,4,1,21,6.1,No
+849,58,Female,Single,Administration,Scheduling Coordinator,1,3534,20,14,7,22,No,25,4,3,1,3,1,3,8,2,2,16,7.3,Yes
+850,44,Non-Binary,Married,Clinical,Surgeon,2,4480,8,0,0,21,Yes,18,5,3,1,1,4,1,7,3,0,22,4.9,Yes
+851,37,Non-Binary,Married,Nursing,Registered Nurse,1,2523,11,11,7,14,No,30,1,3,3,3,1,2,3,3,1,19,5.4,Yes
+852,34,Non-Binary,Divorced,Finance,Financial Analyst,3,10210,2,1,1,15,Yes,14,1,3,2,1,1,1,9,5,0,14,8.4,Yes
+853,36,Female,Single,Nursing,Registered Nurse,1,3012,6,4,0,11,No,11,4,3,1,3,1,1,9,1,1,12,7.3,Yes
+854,46,Non-Binary,Single,HR,Benefits Coordinator,2,4278,10,9,1,16,No,12,5,3,4,1,3,1,9,1,2,19,6.9,No
+855,41,Male,Divorced,Finance,Revenue Cycle Analyst,2,4801,18,18,17,22,No,33,1,3,2,3,3,3,4,0,3,20,6.9,No
+856,44,Non-Binary,Married,Nursing,Nurse Manager,4,12528,11,10,5,23,No,9,1,4,1,1,3,3,4,2,2,24,9.0,No
+857,44,Male,Single,Nursing,Charge Nurse,2,6485,2,2,1,5,Yes,48,1,2,1,1,4,1,5,5,1,18,5.9,Yes
+858,46,Female,Married,Facilities,Maintenance Tech,1,2900,20,16,20,25,No,9,2,4,1,2,4,2,1,4,0,25,6.9,No
+859,52,Male,Married,Clinical,Surgeon,4,11324,15,13,10,21,Yes,20,3,3,3,3,4,4,1,3,0,19,7.1,No
+860,31,Non-Binary,Married,Clinical,Specialist,4,12533,2,2,2,3,No,22,1,4,1,2,2,1,7,6,2,25,3.0,Yes
+861,31,Non-Binary,Divorced,Administration,Medical Records Clerk,2,5594,6,0,2,6,No,30,3,3,4,3,4,3,3,1,1,23,8.4,No
+862,59,Male,Married,Clinical,Physician,4,12606,6,3,1,27,Yes,4,5,2,2,2,2,2,8,1,3,17,8.0,Yes
+863,59,Non-Binary,Divorced,Clinical,Specialist,3,10242,20,18,9,28,Yes,17,5,4,1,2,4,3,9,0,3,25,5.7,No
+864,22,Female,Divorced,Facilities,Facilities Manager,1,3530,0,0,0,3,No,11,2,3,1,2,4,4,5,4,2,14,3.2,No
+865,28,Non-Binary,Married,Nursing,Charge Nurse,1,2451,1,1,1,10,Yes,28,3,4,4,2,1,4,7,2,3,21,8.5,Yes
+866,27,Female,Married,Nursing,Charge Nurse,3,6692,2,1,2,3,No,26,3,3,4,2,1,4,1,1,2,25,9.5,No
+867,44,Female,Divorced,Nursing,Charge Nurse,1,2760,19,3,10,23,No,48,1,3,4,4,1,1,6,4,0,21,6.3,No
+868,27,Non-Binary,Single,Clinical,Surgeon,4,10909,3,1,3,7,No,36,5,4,3,2,4,4,6,6,1,18,6.0,No
+869,59,Male,Married,Nursing,Registered Nurse,3,7060,6,6,1,16,No,33,1,4,2,2,3,1,1,4,1,13,4.9,No
+870,32,Female,Married,Administration,Scheduling Coordinator,2,5669,8,4,0,12,Yes,20,5,3,3,3,2,1,0,3,2,19,7.8,No
+871,35,Non-Binary,Divorced,Nursing,Registered Nurse,4,11177,8,1,1,9,Yes,41,2,2,4,3,3,1,8,0,2,14,4.6,Yes
+872,32,Non-Binary,Divorced,Clinical,Physician,2,5900,5,0,3,8,Yes,13,4,3,1,3,4,2,3,6,3,11,7.5,No
+873,32,Female,Divorced,Clinical,Specialist,2,6649,2,2,1,13,No,10,5,4,4,3,1,1,8,4,2,11,8.8,Yes
+874,35,Non-Binary,Single,Clinical,Specialist,2,6518,6,1,5,17,No,30,3,4,3,1,1,3,8,5,3,13,5.4,Yes
+875,37,Male,Single,Clinical,Resident,4,11878,7,2,6,12,Yes,38,2,3,2,1,1,3,0,5,2,12,3.9,Yes
+876,58,Male,Divorced,Clinical,Physician Assistant,2,5744,17,5,3,26,Yes,17,2,4,4,4,1,4,2,6,3,15,3.1,No
+877,42,Male,Divorced,Administration,Office Manager,2,6535,1,0,1,17,Yes,20,4,3,1,4,2,4,2,6,3,15,7.2,Yes
+878,49,Non-Binary,Divorced,Clinical,Clinical Researcher,5,16899,2,0,1,2,Yes,44,5,3,3,1,4,3,2,5,1,12,6.5,Yes
+879,60,Female,Single,Clinical,Physician,2,4655,15,0,2,20,No,50,3,3,4,4,1,1,6,5,2,24,3.2,No
+880,22,Male,Divorced,Nursing,CNA,1,3642,0,0,0,2,No,45,5,3,2,2,3,2,6,2,1,19,8.5,Yes
+881,33,Non-Binary,Married,Clinical,Specialist,1,4051,5,3,2,13,Yes,14,4,4,4,3,1,4,1,1,2,23,5.3,Yes
+882,52,Non-Binary,Married,Clinical,Physician,2,5472,25,20,24,30,Yes,8,3,3,4,1,2,2,2,5,0,11,6.2,Yes
+883,26,Male,Divorced,Nursing,Nurse Practitioner,1,3088,1,0,0,5,Yes,8,1,1,4,1,4,1,7,0,3,20,5.4,No
+884,57,Non-Binary,Married,IT,IT Support,3,9263,14,12,0,18,No,30,4,3,4,4,3,1,5,3,3,16,7.5,No
+885,43,Male,Married,Nursing,Nurse Practitioner,2,6129,0,0,0,6,Yes,13,5,3,4,1,1,4,3,3,0,25,7.2,Yes
+886,54,Female,Married,Clinical,Surgeon,2,5711,6,1,5,15,Yes,37,1,4,2,1,1,2,7,1,1,20,4.6,No
+887,24,Female,Divorced,Nursing,Nurse Practitioner,2,6887,0,0,0,1,Yes,26,2,3,1,4,4,1,7,0,1,21,8.7,Yes
+888,59,Non-Binary,Married,Facilities,Maintenance Tech,2,5263,30,2,13,38,No,32,1,4,2,2,3,4,2,6,1,22,6.4,No
+889,24,Female,Divorced,Clinical,Resident,1,3558,1,0,0,5,No,11,3,3,1,1,4,2,2,0,0,21,7.3,Yes
+890,41,Female,Divorced,Clinical,Physician Assistant,2,4262,13,6,0,19,No,2,3,3,4,4,1,3,7,2,1,14,7.3,No
+891,36,Female,Divorced,Clinical,Clinical Researcher,3,6060,14,11,9,17,No,22,2,4,3,3,2,1,4,6,1,22,9.0,No
+892,42,Non-Binary,Divorced,Facilities,Maintenance Tech,4,10876,19,0,1,24,Yes,32,2,3,3,1,4,2,6,1,0,16,4.4,No
+893,54,Non-Binary,Married,HR,Recruiter,2,5875,1,0,1,26,No,7,5,3,4,1,4,4,7,0,2,14,7.0,Yes
+894,49,Non-Binary,Divorced,Facilities,Environmental Services,4,8486,15,12,10,31,No,19,5,3,3,3,3,3,8,6,3,22,7.0,Yes
+895,26,Non-Binary,Married,Clinical,Physician,2,6415,1,1,1,8,No,29,2,3,4,1,1,3,1,5,0,12,5.2,Yes
+896,35,Non-Binary,Married,Clinical,Resident,4,11028,5,5,0,15,No,47,5,3,4,3,2,3,5,2,3,11,9.1,Yes
+897,34,Male,Married,Administration,Office Manager,1,3151,0,0,0,14,Yes,36,2,3,3,1,2,4,8,5,1,15,5.6,No
+898,24,Non-Binary,Married,Clinical,Specialist,2,6748,2,0,2,2,No,32,1,4,3,2,4,2,2,5,3,24,8.2,No
+899,37,Female,Married,Clinical,Physician,3,10280,13,3,4,17,Yes,10,4,2,4,2,3,2,3,3,2,14,9.1,No
+900,47,Male,Divorced,Administration,Office Manager,3,7939,11,10,1,20,No,15,4,4,1,4,3,3,5,5,3,14,6.7,Yes
+901,40,Male,Married,HR,Recruiter,3,7501,16,4,13,18,No,1,1,3,4,2,3,4,3,5,3,20,5.1,No
+902,42,Male,Divorced,Facilities,Facilities Manager,1,3630,5,5,3,6,No,16,5,1,4,2,3,3,6,5,3,18,8.4,No
+903,29,Female,Married,Nursing,Nurse Manager,4,11335,6,5,6,9,No,5,3,1,3,2,3,1,9,6,1,20,6.0,No
+904,39,Female,Married,HR,HR Generalist,4,10470,14,14,14,21,Yes,17,2,3,2,2,1,3,4,2,1,19,6.1,Yes
+905,46,Male,Divorced,Clinical,Clinical Researcher,1,3548,5,2,2,19,No,49,5,3,1,3,3,2,9,1,2,18,3.7,No
+906,48,Male,Single,Facilities,Facilities Manager,1,2518,16,9,3,21,Yes,27,5,4,2,4,3,3,0,4,2,15,3.4,Yes
+907,32,Non-Binary,Married,Facilities,Safety Officer,2,5022,2,0,1,8,No,44,3,3,3,1,3,4,6,6,2,20,4.0,Yes
+908,32,Non-Binary,Married,Finance,Revenue Cycle Analyst,2,5353,5,2,3,5,No,37,5,3,2,3,4,1,6,3,1,16,8.3,No
+909,27,Male,Married,Clinical,Specialist,4,10316,2,0,0,8,Yes,18,2,3,4,2,3,1,9,4,3,22,4.2,No
+910,43,Female,Single,Administration,Office Manager,3,10206,17,2,9,24,Yes,31,3,3,4,3,1,2,1,6,0,12,8.1,No
+911,22,Male,Single,Clinical,Clinical Researcher,1,2542,0,0,0,1,Yes,23,4,3,4,1,1,2,3,5,1,25,3.4,Yes
+912,46,Male,Married,Nursing,Nurse Practitioner,3,7846,7,3,2,19,Yes,25,2,2,4,3,1,3,3,6,3,13,6.3,Yes
+913,28,Non-Binary,Married,Clinical,Physician Assistant,3,9089,3,3,3,4,No,43,3,4,1,2,3,1,6,1,1,23,4.7,No
+914,28,Non-Binary,Married,HR,Benefits Coordinator,1,3136,2,2,1,6,No,21,2,3,4,3,3,2,5,1,2,17,3.1,No
+915,27,Non-Binary,Married,Nursing,Registered Nurse,2,6375,0,0,0,3,Yes,7,5,3,1,3,1,3,9,2,3,13,6.6,No
+916,55,Non-Binary,Single,Clinical,Surgeon,5,11367,11,5,10,17,Yes,26,2,4,4,4,1,1,5,4,2,16,9.1,No
+917,51,Male,Single,Nursing,CNA,1,3737,22,19,8,31,No,11,5,3,1,3,3,3,4,3,0,18,5.2,No
+918,53,Male,Divorced,Nursing,Registered Nurse,3,8603,16,3,2,17,No,20,2,3,1,4,1,4,8,3,1,19,7.5,No
+919,37,Female,Divorced,Nursing,Nurse Manager,2,5291,7,6,7,19,Yes,45,4,2,4,4,4,4,1,2,3,12,9.3,No
+920,24,Female,Married,Nursing,CNA,3,7514,0,0,0,3,No,38,4,2,1,2,2,4,9,1,2,22,5.8,No
+921,29,Male,Single,Clinical,Clinical Researcher,2,4664,5,0,1,8,No,14,4,3,2,1,1,4,7,6,1,24,5.0,Yes
+922,35,Non-Binary,Single,HR,Recruiter,2,6782,4,3,4,14,Yes,14,2,3,4,1,2,4,1,5,1,24,6.2,Yes
+923,62,Non-Binary,Married,Finance,Revenue Cycle Analyst,1,3288,28,6,2,28,Yes,1,1,4,2,2,3,1,3,3,1,17,3.4,Yes
+924,31,Non-Binary,Divorced,Clinical,Physician Assistant,3,9774,2,1,0,12,No,22,5,4,3,1,4,4,6,3,3,15,6.7,Yes
+925,43,Male,Single,Clinical,Clinical Researcher,3,9601,19,17,4,22,No,30,4,3,2,2,4,4,2,0,2,17,3.8,Yes
+926,56,Female,Married,Nursing,Charge Nurse,1,2703,28,5,11,35,Yes,31,3,3,3,4,1,2,3,2,3,14,9.1,Yes
+927,32,Non-Binary,Single,Clinical,Physician Assistant,3,9170,3,1,3,12,No,29,3,3,2,2,3,4,1,3,3,13,9.4,No
+928,40,Male,Married,Facilities,Maintenance Tech,2,5022,12,2,2,12,Yes,39,5,3,1,2,4,3,2,1,0,22,4.5,Yes
+929,31,Female,Divorced,Clinical,Physician,1,2757,6,6,5,10,No,43,3,4,2,3,2,2,2,6,0,22,8.7,No
+930,22,Non-Binary,Married,Administration,Scheduling Coordinator,3,8222,0,0,0,0,No,28,3,4,1,4,3,2,5,3,1,18,7.6,No
+931,23,Female,Married,Nursing,Nurse Practitioner,2,5846,1,0,1,1,No,26,5,3,1,1,2,3,7,1,1,24,4.1,Yes
+932,49,Male,Single,Nursing,Nurse Manager,5,15533,18,7,18,27,Yes,14,2,4,3,1,4,1,9,0,2,20,7.4,Yes
+933,34,Non-Binary,Single,Nursing,Charge Nurse,3,8389,11,7,8,11,Yes,42,1,3,3,1,3,4,2,1,0,20,5.7,Yes
+934,32,Male,Divorced,Facilities,Maintenance Tech,3,6397,1,0,0,6,Yes,15,4,3,3,3,4,4,8,2,1,23,9.0,No
+935,54,Male,Single,Clinical,Resident,3,10146,26,4,10,26,Yes,1,5,2,2,4,2,3,0,0,1,22,4.5,Yes
+936,48,Male,Divorced,Clinical,Resident,2,6143,26,11,5,26,No,3,3,1,3,1,3,4,0,4,1,24,6.5,No
+937,61,Male,Single,Clinical,Surgeon,3,7604,14,5,5,32,No,50,2,4,4,2,1,2,5,2,1,11,3.1,Yes
+938,27,Non-Binary,Divorced,Clinical,Physician Assistant,4,12323,2,1,0,8,No,8,2,2,3,1,2,2,8,1,0,25,7.8,No
+939,56,Female,Divorced,Facilities,Safety Officer,2,6738,2,0,2,20,No,10,3,2,4,2,1,1,8,2,3,16,5.5,Yes
+940,45,Male,Single,IT,IT Support,1,3670,8,5,4,10,No,22,3,3,3,2,2,4,2,3,0,19,8.6,Yes
+941,34,Male,Married,Clinical,Physician Assistant,3,8263,5,4,4,15,Yes,31,1,2,4,4,2,4,5,5,3,20,4.2,Yes
+942,52,Male,Divorced,IT,Systems Administrator,3,7578,27,23,15,30,Yes,18,5,3,4,3,4,4,9,3,0,12,9.3,No
+943,49,Non-Binary,Divorced,Clinical,Resident,4,13675,5,1,1,13,Yes,29,5,2,1,3,2,1,9,5,0,25,6.2,Yes
+944,22,Female,Single,Facilities,Safety Officer,4,8736,0,0,0,3,No,3,4,4,3,3,3,1,6,4,1,23,9.2,No
+945,25,Non-Binary,Single,Clinical,Specialist,3,7270,2,0,2,2,Yes,7,4,3,2,2,4,1,2,5,0,14,3.9,Yes
+946,22,Female,Divorced,Administration,Admin Assistant,2,4920,0,0,0,3,Yes,13,3,3,4,1,3,3,0,6,0,16,3.1,Yes
+947,34,Non-Binary,Married,Facilities,Facilities Manager,4,8713,12,3,8,14,No,27,2,4,1,4,3,3,1,2,3,21,5.1,No
+948,59,Male,Single,Clinical,Physician,2,4886,18,17,11,21,Yes,12,5,4,4,3,1,4,1,3,3,11,3.6,No
+949,37,Male,Single,IT,Systems Administrator,3,7245,12,0,3,12,Yes,15,4,4,1,2,4,4,5,6,3,20,3.1,No
+950,23,Female,Married,Nursing,Nurse Practitioner,3,7493,0,0,0,0,No,25,1,4,2,2,3,3,3,1,1,13,6.3,Yes
+951,28,Female,Divorced,IT,Systems Administrator,2,6799,4,1,4,9,No,22,1,3,1,3,2,4,0,3,2,14,6.6,No
+952,35,Male,Single,Finance,Controller,5,13655,5,0,4,8,No,35,2,1,1,3,1,3,6,1,2,24,6.4,No
+953,42,Non-Binary,Divorced,Clinical,Surgeon,3,7662,6,0,4,7,No,6,5,4,3,2,3,3,4,4,2,23,8.6,Yes
+954,62,Non-Binary,Married,Clinical,Specialist,2,5738,8,5,1,34,Yes,7,1,2,3,3,1,4,4,0,2,13,8.7,Yes
+955,37,Male,Divorced,Finance,Revenue Cycle Analyst,3,8960,0,0,0,6,No,37,5,3,3,3,2,4,5,1,1,23,5.8,Yes
+956,26,Non-Binary,Divorced,IT,IT Manager,3,10143,1,1,1,2,No,16,4,3,3,1,4,2,5,4,3,18,8.4,No
+957,24,Female,Divorced,Facilities,Maintenance Tech,2,4439,2,0,0,2,No,29,5,3,4,3,2,4,7,3,0,11,4.6,No
+958,27,Male,Divorced,Finance,Revenue Cycle Analyst,2,4973,3,1,2,6,Yes,47,5,2,2,3,1,4,7,0,1,16,7.2,Yes
+959,42,Male,Single,HR,Recruiter,2,6200,16,2,12,17,No,42,4,4,2,2,3,2,8,0,3,17,6.8,No
+960,22,Male,Married,Nursing,CNA,2,5800,0,0,0,3,Yes,41,2,2,1,2,2,1,0,0,3,12,5.0,No
+961,58,Non-Binary,Married,Facilities,Maintenance Tech,2,5200,8,5,2,39,Yes,24,1,1,3,1,1,1,6,2,2,19,9.2,No
+962,55,Male,Married,Administration,Medical Records Clerk,4,9639,28,4,4,37,Yes,6,2,4,2,1,3,2,4,0,1,25,9.1,No
+963,28,Female,Married,Nursing,Nurse Manager,2,4167,1,1,1,1,No,3,4,4,1,2,2,3,5,5,2,23,3.6,No
+964,50,Non-Binary,Married,Nursing,Nurse Manager,1,2425,21,5,14,23,No,8,5,4,4,2,4,2,6,1,0,13,5.8,Yes
+965,31,Non-Binary,Married,Administration,Medical Records Clerk,2,6784,5,1,5,13,Yes,49,1,4,3,3,1,2,7,5,2,23,9.0,Yes
+966,41,Non-Binary,Single,Clinical,Resident,1,3587,14,13,5,23,No,14,2,2,4,4,3,1,3,4,1,21,3.1,Yes
+967,24,Female,Divorced,Facilities,Maintenance Tech,1,3652,2,1,1,5,Yes,46,3,4,2,3,3,1,9,0,0,11,5.6,No
+968,43,Male,Single,Administration,Admin Assistant,1,3317,18,7,1,25,Yes,26,2,3,3,4,4,3,4,4,1,11,8.5,No
+969,41,Male,Married,IT,Health Informatics Analyst,2,4359,16,10,5,19,No,41,2,3,1,3,4,1,9,6,3,19,5.9,No
+970,29,Female,Single,Facilities,Facilities Manager,2,6172,4,0,4,6,Yes,5,5,2,1,3,3,2,1,2,3,21,8.2,Yes
+971,59,Female,Married,Facilities,Environmental Services,4,10411,22,0,1,30,Yes,36,5,4,3,3,4,3,0,1,0,24,4.6,No
+972,46,Female,Single,Finance,Financial Analyst,2,6942,6,4,3,16,No,12,1,3,3,4,1,3,0,2,3,18,4.4,No
+973,31,Female,Divorced,Administration,Admin Assistant,1,3486,1,0,0,5,No,42,5,4,3,4,3,2,2,1,0,11,8.7,No
+974,49,Female,Married,Clinical,Physician,2,6937,8,5,7,16,Yes,11,5,2,3,3,3,4,2,5,1,24,4.9,No
+975,48,Non-Binary,Married,Clinical,Resident,2,6990,14,9,12,22,No,2,5,3,3,4,2,1,6,2,3,11,3.3,No
+976,36,Female,Married,Clinical,Physician Assistant,5,13232,2,1,0,7,Yes,22,1,3,2,4,4,4,6,6,2,25,3.6,No
+977,60,Female,Divorced,Facilities,Safety Officer,4,10706,13,3,9,39,Yes,9,5,4,2,4,4,4,1,1,2,11,7.0,No
+978,26,Non-Binary,Divorced,Facilities,Environmental Services,2,5600,4,3,1,5,No,28,5,3,3,2,1,4,4,1,1,23,4.0,Yes
+979,29,Non-Binary,Married,Clinical,Physician,3,10342,6,3,6,10,No,44,5,3,2,2,2,2,3,2,3,22,4.1,Yes
+980,37,Male,Divorced,Facilities,Maintenance Tech,2,4026,8,7,0,16,No,35,4,4,2,1,2,3,9,1,2,13,4.6,No
+981,31,Male,Divorced,Clinical,Clinical Researcher,2,4546,1,0,0,13,Yes,35,1,3,4,1,2,4,4,4,0,14,9.2,Yes
+982,30,Non-Binary,Single,Nursing,Charge Nurse,1,3012,2,0,2,4,No,3,1,3,4,2,2,1,2,3,3,23,7.5,Yes
+983,55,Male,Divorced,Facilities,Safety Officer,1,3314,21,14,16,29,Yes,29,3,3,1,4,4,1,6,3,1,16,8.1,Yes
+984,35,Non-Binary,Single,Clinical,Physician,1,3146,8,2,1,12,Yes,37,5,3,1,2,3,2,3,0,2,14,3.2,Yes
+985,32,Female,Single,Nursing,Nurse Practitioner,3,6355,3,0,1,3,No,23,3,3,4,2,3,4,4,0,0,22,5.0,No
+986,47,Female,Single,Clinical,Clinical Researcher,1,3950,4,4,1,15,Yes,36,2,3,2,1,1,3,5,0,3,15,9.4,Yes
+987,39,Male,Married,Facilities,Safety Officer,2,6715,13,8,4,20,No,50,2,3,1,3,3,2,0,4,0,19,9.1,No
+988,26,Male,Married,Finance,Financial Analyst,2,4400,0,0,0,0,No,8,5,3,2,2,4,3,5,5,2,20,8.1,Yes
+989,35,Non-Binary,Single,Clinical,Physician Assistant,1,2866,1,1,0,14,No,43,4,2,1,1,3,1,2,1,3,18,5.0,Yes
+990,28,Non-Binary,Single,Clinical,Specialist,1,2613,5,0,4,5,No,24,2,1,1,1,4,3,6,5,2,15,8.3,No
+991,54,Female,Married,Clinical,Surgeon,4,8727,30,23,19,33,No,42,4,3,4,1,1,4,7,4,2,14,5.9,No
+992,54,Non-Binary,Single,HR,HR Generalist,2,4130,9,6,2,14,No,47,4,3,3,3,2,1,9,4,3,13,4.4,No
+993,47,Non-Binary,Single,Facilities,Safety Officer,2,4727,14,8,6,17,Yes,10,3,2,1,2,1,1,3,3,0,11,5.2,No
+994,57,Male,Divorced,Nursing,CNA,1,3194,26,11,1,28,No,44,3,1,4,2,1,3,7,6,3,22,7.1,No
+995,49,Female,Divorced,Administration,Office Manager,2,5285,12,0,12,31,No,45,2,3,1,2,4,3,1,6,3,25,7.9,No
+996,38,Female,Married,Nursing,CNA,1,2908,11,8,9,12,Yes,5,3,3,2,1,2,2,6,2,3,19,5.9,No
+997,31,Non-Binary,Single,Facilities,Safety Officer,1,3281,9,4,2,11,Yes,46,5,3,4,4,2,1,0,0,1,14,4.9,No
+998,61,Female,Married,Facilities,Environmental Services,2,5211,11,5,9,20,No,38,3,3,2,2,4,1,3,0,0,17,6.9,Yes
+999,48,Male,Married,Administration,Admin Assistant,4,11024,11,9,8,13,No,5,1,4,3,3,3,3,0,6,3,15,4.2,No
+1000,26,Non-Binary,Married,Clinical,Resident,2,4747,4,1,4,7,No,5,4,2,4,4,2,2,6,3,0,25,8.6,No
+1001,54,Female,Divorced,Nursing,Nurse Manager,1,4135,21,18,17,28,Yes,18,1,1,3,2,2,2,6,0,3,13,4.0,Yes
+1002,23,Female,Single,Nursing,Nurse Manager,1,3793,0,0,0,3,Yes,2,3,2,3,2,2,3,0,4,0,14,6.3,Yes
+1003,32,Male,Single,Nursing,CNA,3,9551,10,5,1,10,No,7,3,3,2,2,4,1,7,0,3,12,4.8,Yes
+1004,35,Non-Binary,Divorced,Administration,Office Manager,1,2448,7,0,3,16,Yes,1,4,4,1,1,1,3,9,2,2,20,3.6,Yes
+1005,35,Male,Divorced,Facilities,Safety Officer,1,3559,7,2,1,17,No,9,5,3,3,4,1,4,4,0,1,25,4.4,No
+1006,26,Female,Single,Nursing,Charge Nurse,2,5956,2,1,0,8,Yes,13,4,4,4,1,3,3,1,1,2,12,4.4,Yes
+1007,34,Male,Married,Clinical,Physician Assistant,2,6063,10,9,3,14,No,17,4,2,3,4,2,4,0,1,3,18,3.3,Yes
+1008,32,Female,Married,Nursing,Registered Nurse,4,13713,8,7,6,8,Yes,6,2,3,1,3,1,2,6,0,1,17,8.5,Yes
+1009,53,Non-Binary,Single,Clinical,Physician,4,13282,13,5,0,16,Yes,41,4,3,4,2,1,2,1,1,1,18,5.8,Yes
+1010,50,Male,Divorced,Clinical,Surgeon,1,3629,22,7,18,22,No,8,2,2,3,4,1,4,4,5,3,22,7.0,No
+1011,48,Non-Binary,Married,Nursing,Registered Nurse,4,11515,0,0,0,13,Yes,19,4,2,3,1,3,1,2,4,1,18,8.3,Yes
+1012,61,Non-Binary,Single,Nursing,Registered Nurse,4,11228,26,19,25,37,No,6,2,2,3,1,4,4,8,5,3,15,7.5,No
+1013,34,Female,Single,Clinical,Surgeon,3,8483,11,5,6,14,No,20,2,3,4,2,1,4,1,2,3,15,3.8,No
+1014,44,Female,Single,Nursing,Nurse Practitioner,2,4254,21,6,12,26,No,13,5,2,1,3,3,1,6,6,1,15,3.5,Yes
+1015,40,Male,Single,Clinical,Specialist,1,2892,5,1,4,18,No,27,3,2,4,1,3,1,7,6,2,12,7.7,Yes
+1016,59,Non-Binary,Divorced,Facilities,Environmental Services,2,4981,10,4,2,38,No,16,1,4,3,2,1,4,1,0,1,12,9.0,Yes
+1017,61,Female,Single,Facilities,Safety Officer,2,6927,1,0,0,21,Yes,41,2,4,3,3,3,4,0,6,2,16,6.4,No
+1018,26,Female,Married,IT,IT Support,3,6217,3,3,2,3,No,6,4,4,4,3,4,2,4,5,1,13,7.4,No
+1019,55,Female,Single,Clinical,Specialist,5,12588,27,26,21,36,No,48,1,3,1,3,4,2,6,5,3,12,7.5,No
+1020,59,Male,Married,Administration,Medical Records Clerk,2,4150,12,3,2,38,No,2,3,4,4,2,4,2,2,1,2,25,5.1,No
+1021,44,Non-Binary,Divorced,Nursing,Registered Nurse,3,8834,0,0,0,24,No,25,2,2,1,3,2,4,2,6,2,24,6.0,Yes
+1022,39,Male,Divorced,Facilities,Safety Officer,2,5074,13,9,6,15,No,42,1,2,1,3,1,4,2,5,2,25,4.6,Yes
+1023,30,Male,Divorced,HR,Benefits Coordinator,3,7762,8,1,0,10,No,47,5,4,4,1,2,2,1,2,2,12,7.6,No
+1024,52,Male,Divorced,Facilities,Safety Officer,4,8500,22,0,4,25,Yes,12,5,3,2,1,2,2,5,6,2,13,8.0,Yes
+1025,51,Male,Divorced,Nursing,Registered Nurse,1,3282,19,15,10,19,Yes,24,5,3,4,2,3,2,4,5,2,21,3.7,Yes
+1026,26,Female,Single,Clinical,Clinical Researcher,4,9363,1,1,0,6,No,9,3,3,3,2,2,4,7,2,0,16,5.1,Yes
+1027,28,Female,Married,Administration,Scheduling Coordinator,3,10392,6,4,6,9,No,27,1,4,1,1,3,2,8,0,2,17,7.1,No
+1028,46,Male,Divorced,Clinical,Specialist,3,9698,2,1,2,9,No,7,2,3,3,2,3,4,3,5,0,18,5.7,No
+1029,55,Non-Binary,Married,Nursing,Registered Nurse,3,8070,29,7,3,34,No,47,2,3,4,3,3,1,0,1,0,11,5.9,No
+1030,45,Non-Binary,Married,Clinical,Resident,2,4913,22,19,13,22,No,35,1,3,4,1,2,2,3,0,2,13,3.5,Yes
+1031,31,Non-Binary,Married,Facilities,Environmental Services,4,13203,2,0,1,12,No,49,5,3,1,2,3,4,0,6,1,17,8.6,No
+1032,57,Non-Binary,Divorced,Administration,Admin Assistant,2,5574,13,3,8,27,No,41,1,3,2,3,1,4,6,4,2,22,4.0,No
+1033,32,Female,Divorced,Clinical,Physician,4,13078,3,2,3,6,No,24,5,4,1,4,2,1,6,5,0,18,4.5,No
+1034,58,Non-Binary,Divorced,Administration,Admin Assistant,4,9819,16,6,7,21,No,42,2,3,2,1,2,2,9,6,1,21,3.9,Yes
+1035,35,Non-Binary,Divorced,Finance,Medical Biller,2,4863,13,4,4,16,No,42,4,3,2,2,4,4,1,5,1,24,8.9,Yes
+1036,41,Non-Binary,Single,Nursing,Registered Nurse,3,10043,16,9,8,18,Yes,10,2,3,2,4,4,1,0,1,3,20,3.1,No
+1037,45,Female,Married,Clinical,Physician,2,6367,15,5,10,16,No,43,2,2,3,4,2,3,7,6,0,17,5.1,Yes
+1038,44,Female,Divorced,Clinical,Specialist,2,6460,4,0,4,24,No,50,1,3,3,2,2,1,9,1,1,22,7.7,Yes
+1039,37,Female,Single,Clinical,Surgeon,1,3205,4,1,2,9,Yes,4,3,4,2,1,1,3,5,6,3,14,7.4,Yes
+1040,59,Female,Divorced,Nursing,Charge Nurse,3,6319,18,4,18,18,No,28,4,3,1,4,2,3,2,4,0,19,5.9,No
+1041,35,Female,Single,Clinical,Specialist,4,8878,7,7,0,10,Yes,46,4,3,4,4,3,3,7,3,0,15,6.4,Yes
+1042,34,Male,Divorced,Clinical,Surgeon,3,7095,2,2,0,9,No,26,4,2,1,4,2,4,3,6,0,11,7.1,No
+1043,40,Non-Binary,Divorced,Administration,Scheduling Coordinator,4,8857,8,4,5,18,No,48,2,3,4,3,4,2,1,4,3,12,3.9,No
+1044,49,Male,Single,Nursing,Charge Nurse,4,9576,11,3,4,19,Yes,1,1,4,2,4,1,2,0,6,0,18,3.5,Yes
+1045,47,Female,Married,Clinical,Clinical Researcher,2,6158,3,3,3,3,Yes,40,2,3,3,4,1,2,6,0,1,11,4.8,No
+1046,52,Female,Divorced,Clinical,Specialist,1,4083,0,0,0,17,No,8,5,3,3,4,3,4,4,6,1,17,7.5,Yes
+1047,55,Female,Single,Facilities,Environmental Services,3,9777,18,17,8,21,No,47,5,4,3,2,3,1,1,0,2,19,6.5,No
+1048,52,Female,Married,Clinical,Physician Assistant,4,12950,4,2,4,4,No,43,4,3,4,3,1,2,8,0,0,21,7.8,No
+1049,54,Male,Married,Clinical,Physician,5,16366,6,2,2,7,No,5,3,3,1,2,1,1,5,2,1,15,4.5,Yes
+1050,29,Female,Single,Clinical,Physician,2,4078,2,2,1,10,No,33,1,1,1,4,2,1,3,6,1,18,4.4,No
+1051,31,Male,Single,Clinical,Surgeon,1,3734,9,9,0,10,Yes,43,1,2,4,4,3,1,7,1,0,21,5.2,No
+1052,26,Non-Binary,Divorced,Nursing,Nurse Practitioner,1,2855,2,1,0,6,Yes,6,2,4,1,1,1,2,0,4,3,19,6.9,Yes
+1053,51,Female,Divorced,Facilities,Safety Officer,1,3173,0,0,0,5,Yes,16,4,4,4,2,2,4,4,0,0,13,8.2,No
+1054,43,Non-Binary,Married,HR,HR Generalist,2,4945,20,5,11,22,Yes,30,5,4,1,4,2,4,8,5,0,13,8.1,No
+1055,59,Female,Married,HR,Benefits Coordinator,1,2659,16,14,11,28,Yes,31,2,3,1,3,2,4,7,3,2,22,6.4,No
+1056,42,Non-Binary,Married,Finance,Medical Biller,3,9262,15,14,7,15,No,36,2,3,2,1,3,3,8,0,3,14,6.3,No
+1057,52,Non-Binary,Single,Clinical,Surgeon,4,10210,11,1,0,26,Yes,9,4,4,3,2,1,2,2,6,0,14,5.8,Yes
+1058,32,Female,Single,Administration,Medical Records Clerk,3,8228,7,0,2,10,Yes,17,2,4,2,2,1,3,7,3,1,20,4.8,Yes
+1059,29,Male,Married,Clinical,Physician Assistant,1,3289,6,3,4,9,Yes,37,5,4,3,4,1,1,7,3,2,21,7.9,No
+1060,29,Male,Divorced,Nursing,Nurse Practitioner,1,3294,7,1,4,10,No,35,1,3,3,2,1,3,6,1,0,21,6.3,Yes
+1061,44,Female,Divorced,Facilities,Maintenance Tech,2,4309,15,11,2,25,Yes,43,1,3,4,2,4,1,7,5,1,13,7.8,Yes
+1062,35,Male,Married,Clinical,Physician Assistant,3,7045,9,1,8,16,No,21,3,3,1,4,1,4,6,2,0,14,7.6,No
+1063,61,Non-Binary,Married,Finance,Revenue Cycle Analyst,2,4928,15,1,14,15,Yes,36,2,2,3,3,4,3,9,5,1,16,4.3,No
+1064,62,Male,Single,Finance,Medical Biller,1,2990,26,22,23,36,No,5,3,3,2,4,1,1,6,1,2,21,8.6,No
+1065,25,Non-Binary,Single,Administration,Admin Assistant,1,2663,1,0,0,7,No,47,4,3,1,1,4,3,6,2,2,14,7.0,No
+1066,26,Non-Binary,Married,Clinical,Resident,1,3292,0,0,0,5,Yes,30,5,4,4,4,3,3,0,3,0,19,3.5,Yes
+1067,36,Male,Married,Nursing,Registered Nurse,2,6941,2,0,1,10,No,23,3,3,4,1,4,1,9,0,3,12,6.1,No
+1068,49,Non-Binary,Divorced,HR,Benefits Coordinator,5,15278,0,0,0,25,No,48,3,4,2,1,1,2,3,4,2,25,6.7,Yes
+1069,26,Male,Married,Clinical,Clinical Researcher,3,6515,4,1,1,6,No,28,3,1,2,3,1,3,1,4,0,22,3.9,Yes
+1070,39,Female,Divorced,Administration,Office Manager,2,5263,2,0,1,4,Yes,42,4,3,2,1,4,2,2,2,1,16,5.7,Yes
+1071,36,Male,Divorced,Facilities,Maintenance Tech,2,5693,10,8,7,11,No,30,5,3,2,4,4,4,3,3,3,14,3.4,Yes
+1072,58,Female,Married,Clinical,Clinical Researcher,1,3935,4,4,3,4,No,30,2,4,4,3,2,2,0,4,2,11,7.0,No
+1073,22,Non-Binary,Single,Clinical,Physician Assistant,4,11816,0,0,0,0,No,39,1,4,3,2,3,3,2,2,2,15,5.6,No
+1074,55,Non-Binary,Divorced,Clinical,Specialist,1,4027,5,0,4,11,Yes,42,1,2,4,4,1,1,9,6,0,17,3.3,No
+1075,50,Female,Single,HR,HR Director,3,8618,25,25,10,28,No,9,2,4,1,4,3,2,7,0,1,22,4.5,No
+1076,29,Male,Divorced,Nursing,CNA,2,6083,4,4,0,10,No,8,3,3,4,4,1,3,6,2,3,23,4.4,Yes
+1077,52,Female,Divorced,Clinical,Physician,4,8680,22,16,5,30,No,38,2,3,1,3,4,3,8,4,3,14,6.7,Yes
+1078,23,Male,Divorced,Finance,Controller,3,9742,1,0,0,4,No,19,4,3,3,2,1,2,6,2,3,24,4.6,No
+1079,55,Non-Binary,Divorced,Finance,Controller,5,14634,16,0,3,20,No,1,4,3,1,4,4,3,8,2,0,23,7.2,Yes
+1080,49,Female,Divorced,IT,Health Informatics Analyst,1,2845,27,14,12,31,No,47,1,3,1,1,1,1,4,0,2,13,3.0,Yes
+1081,48,Male,Married,Nursing,CNA,4,13369,10,7,1,22,Yes,49,3,4,3,4,3,4,9,3,0,23,3.1,Yes
+1082,53,Female,Divorced,Administration,Office Manager,1,3297,13,7,7,17,Yes,47,4,3,2,1,3,3,8,1,3,23,8.1,Yes
+1083,41,Non-Binary,Divorced,Facilities,Maintenance Tech,2,5118,15,13,8,15,Yes,19,3,1,2,2,4,2,1,2,1,17,3.3,Yes
+1084,49,Female,Single,HR,Benefits Coordinator,3,7175,4,1,0,10,No,34,5,3,4,4,1,4,0,2,0,16,6.0,No
+1085,38,Male,Divorced,Facilities,Facilities Manager,2,4371,8,5,4,16,Yes,21,4,1,2,4,2,1,8,4,1,20,3.2,Yes
+1086,45,Non-Binary,Single,Nursing,Registered Nurse,1,3616,17,3,0,27,Yes,37,5,3,2,2,3,3,2,4,3,23,7.8,Yes
+1087,61,Female,Divorced,Finance,Revenue Cycle Analyst,4,11965,25,9,15,37,No,6,3,2,3,4,2,3,7,0,3,16,3.6,Yes
+1088,60,Male,Single,Clinical,Resident,3,6180,9,2,4,30,Yes,6,5,3,2,3,1,2,4,3,0,16,4.1,No
+1089,55,Female,Single,Nursing,Nurse Manager,2,5657,26,15,0,35,Yes,35,2,4,3,4,2,1,7,3,2,25,8.5,Yes
+1090,55,Female,Divorced,Finance,Financial Analyst,1,2745,18,16,14,34,Yes,31,1,3,4,4,3,1,3,2,1,24,6.6,No
+1091,60,Male,Divorced,Administration,Medical Records Clerk,2,4171,24,11,10,42,No,46,5,3,4,1,3,4,0,5,1,22,4.8,No
+1092,29,Non-Binary,Single,IT,Health Informatics Analyst,1,3524,4,2,4,6,Yes,42,1,4,1,4,2,4,6,1,0,14,7.6,Yes
+1093,60,Female,Married,Clinical,Physician,3,7790,11,2,1,33,Yes,38,5,3,3,2,4,1,9,6,0,12,5.0,No
+1094,39,Female,Married,Administration,Scheduling Coordinator,2,4855,2,0,2,20,No,15,2,3,4,2,2,2,3,2,3,20,6.8,Yes
+1095,53,Male,Single,HR,HR Director,1,3080,4,3,2,27,Yes,9,2,2,4,3,2,4,9,6,3,13,5.8,Yes
+1096,30,Female,Married,Clinical,Physician Assistant,2,6479,7,7,3,9,No,45,5,4,2,2,4,2,0,6,3,13,5.9,Yes
+1097,57,Male,Single,Administration,Office Manager,2,5605,17,3,4,36,Yes,7,1,3,4,3,1,2,2,6,3,18,6.7,No
+1098,26,Male,Single,Administration,Admin Assistant,2,4874,3,2,3,7,No,12,3,3,4,2,4,2,7,3,2,14,5.3,No
+1099,62,Male,Divorced,Clinical,Specialist,3,7534,13,2,1,27,No,17,5,2,1,4,1,2,6,3,0,19,3.8,No
+1100,41,Female,Married,Facilities,Facilities Manager,2,4518,18,5,5,22,No,40,2,4,3,4,2,3,9,5,2,11,5.1,No
+1101,44,Non-Binary,Divorced,Administration,Medical Records Clerk,3,6430,10,1,0,22,Yes,19,3,3,3,1,2,1,2,2,1,18,7.5,No
+1102,57,Male,Single,Facilities,Safety Officer,1,2692,22,21,16,26,No,46,4,4,4,1,2,1,5,3,0,22,7.8,Yes
+1103,62,Female,Single,Nursing,Nurse Manager,1,2937,29,5,9,40,Yes,2,5,3,2,1,1,2,2,0,2,13,7.3,Yes
+1104,45,Female,Married,HR,Recruiter,3,8801,0,0,0,27,Yes,7,2,3,2,3,3,4,7,4,1,14,8.9,No
+1105,54,Male,Married,Nursing,CNA,2,5626,23,4,18,36,No,42,5,4,4,2,1,1,1,1,1,11,6.6,No
+1106,44,Female,Married,Clinical,Resident,3,8805,0,0,0,25,Yes,35,4,3,3,4,1,4,8,6,0,15,9.1,Yes
+1107,51,Non-Binary,Single,Administration,Scheduling Coordinator,2,4915,8,0,1,30,Yes,22,3,3,4,2,3,1,9,1,3,14,5.6,Yes
+1108,25,Male,Married,Clinical,Resident,2,4081,3,3,3,4,No,8,5,4,2,2,2,4,5,5,0,21,5.9,Yes
+1109,32,Male,Divorced,HR,HR Generalist,2,6895,9,7,6,9,Yes,5,4,4,4,2,3,3,6,1,0,16,5.1,No
+1110,26,Non-Binary,Married,Facilities,Environmental Services,1,3865,4,3,0,4,No,30,2,3,3,1,3,2,7,0,0,21,3.9,Yes
+1111,51,Female,Divorced,Finance,Financial Analyst,1,2814,27,18,2,29,Yes,31,4,3,1,2,2,3,4,2,1,20,9.5,Yes
+1112,32,Female,Married,Finance,Revenue Cycle Analyst,3,10340,6,5,6,12,No,19,1,2,2,1,3,3,0,1,0,13,8.4,Yes
+1113,29,Female,Single,Facilities,Facilities Manager,4,10823,4,0,0,10,No,13,2,2,2,1,1,1,6,5,2,13,8.4,Yes
+1114,22,Male,Married,Clinical,Specialist,1,3694,0,0,0,2,Yes,8,4,3,2,2,2,2,5,1,2,25,7.9,Yes
+1115,34,Female,Married,Facilities,Environmental Services,4,8686,6,2,4,10,No,9,5,3,1,4,2,4,1,6,0,18,3.6,Yes
+1116,27,Female,Single,Finance,Financial Analyst,1,2617,3,2,0,8,Yes,24,3,3,2,4,4,3,1,3,0,14,5.3,Yes
+1117,41,Non-Binary,Single,HR,HR Director,3,7957,9,6,2,14,Yes,14,5,3,2,3,3,1,9,3,2,24,4.5,No
+1118,22,Male,Married,Nursing,CNA,2,6698,0,0,0,4,Yes,7,3,4,1,2,2,4,0,5,2,13,7.4,No
+1119,48,Male,Divorced,Facilities,Maintenance Tech,4,12484,24,24,19,26,Yes,20,1,3,4,3,1,4,4,1,0,16,6.1,No
+1120,30,Female,Divorced,Clinical,Physician Assistant,2,4209,1,0,0,10,No,39,3,4,3,2,4,4,7,2,3,14,3.4,No
+1121,22,Female,Single,HR,HR Generalist,5,14802,0,0,0,0,No,27,2,3,2,3,2,4,2,0,0,16,6.4,No
+1122,24,Non-Binary,Married,Clinical,Physician Assistant,1,4038,0,0,0,2,Yes,49,2,3,3,2,1,2,4,4,3,21,8.6,No
+1123,47,Male,Married,Nursing,Nurse Manager,3,7993,21,7,8,22,Yes,50,5,3,2,1,1,4,8,3,1,17,4.6,Yes
+1124,41,Male,Single,Clinical,Physician Assistant,2,6814,6,3,5,11,No,5,2,4,1,3,3,1,9,1,1,13,6.0,No
+1125,26,Male,Single,Administration,Admin Assistant,2,6786,1,0,1,7,No,41,5,3,1,4,4,4,4,4,3,18,3.8,No
+1126,25,Non-Binary,Married,Administration,Admin Assistant,2,6372,2,1,1,6,Yes,49,2,3,4,1,3,2,8,5,1,21,4.0,Yes
+1127,46,Male,Married,Clinical,Physician Assistant,1,3470,13,4,0,14,Yes,26,2,3,2,2,1,1,9,0,0,20,3.3,Yes
+1128,46,Non-Binary,Divorced,Clinical,Physician Assistant,2,5213,11,9,2,23,Yes,48,4,2,4,4,3,3,7,2,2,12,3.9,Yes
+1129,52,Male,Married,Administration,Office Manager,1,3645,21,2,15,29,No,41,4,3,2,1,1,1,2,6,3,22,7.9,No
+1130,62,Non-Binary,Married,Clinical,Physician,3,7420,18,1,10,39,No,40,4,4,3,3,2,4,2,0,2,18,5.9,No
+1131,54,Male,Married,Facilities,Maintenance Tech,4,11499,4,4,3,17,Yes,43,4,3,3,4,2,1,2,1,3,24,7.2,No
+1132,35,Non-Binary,Divorced,Nursing,Charge Nurse,3,6188,0,0,0,15,No,15,3,3,4,3,4,3,2,5,1,23,9.1,Yes
+1133,49,Female,Married,HR,Recruiter,3,7069,3,1,1,9,Yes,5,1,3,1,3,4,1,5,5,0,23,4.4,No
+1134,56,Female,Married,Clinical,Physician,2,6544,13,11,7,21,No,38,1,3,3,1,4,3,0,2,3,12,7.2,Yes
+1135,33,Non-Binary,Single,Nursing,CNA,3,9585,2,2,1,6,Yes,1,4,3,4,4,4,4,0,2,0,16,8.1,No
+1136,60,Non-Binary,Divorced,HR,HR Director,2,5893,29,27,28,31,Yes,22,1,3,2,3,2,1,2,1,3,17,3.7,Yes
+1137,49,Female,Single,Clinical,Physician Assistant,4,11220,13,9,13,29,No,48,1,3,2,4,2,1,7,6,0,13,5.9,Yes
+1138,43,Male,Divorced,Clinical,Specialist,1,2686,6,6,1,25,No,43,5,3,3,2,4,4,0,6,1,13,8.6,No
+1139,25,Non-Binary,Married,Clinical,Surgeon,2,6029,1,1,0,6,No,12,5,3,4,3,3,1,3,1,2,24,9.1,Yes
+1140,47,Male,Single,IT,Health Informatics Analyst,2,5913,22,15,6,22,Yes,6,4,4,3,1,2,4,0,2,2,23,6.7,Yes
+1141,24,Female,Divorced,Facilities,Environmental Services,1,3480,0,0,0,2,No,8,1,3,2,1,2,4,4,3,0,11,9.0,Yes
+1142,37,Female,Divorced,HR,HR Director,2,5678,11,6,4,15,No,41,5,3,3,4,1,2,9,5,3,20,3.3,No
+1143,38,Female,Married,Clinical,Clinical Researcher,2,6799,12,6,0,18,No,18,3,4,3,4,4,1,0,4,3,22,8.3,No
+1144,37,Female,Married,Clinical,Specialist,2,4174,6,2,5,18,No,36,4,3,1,1,4,2,7,5,3,14,7.7,Yes
+1145,51,Female,Single,Administration,Admin Assistant,1,2813,19,13,9,27,Yes,8,3,4,2,2,4,4,6,3,0,17,9.4,Yes
+1146,52,Male,Single,Finance,Revenue Cycle Analyst,1,2827,13,2,12,34,No,42,1,4,3,1,2,2,8,0,2,15,7.6,No
+1147,38,Male,Divorced,Nursing,Charge Nurse,1,3807,1,1,1,2,No,36,3,1,4,1,3,4,6,0,2,23,8.9,No
+1148,53,Male,Married,Administration,Scheduling Coordinator,2,6936,17,17,0,26,No,46,5,2,3,2,3,3,5,0,2,15,5.0,No
+1149,42,Non-Binary,Single,Administration,Office Manager,3,9237,18,17,12,20,No,18,3,3,2,2,2,2,7,2,3,24,5.7,No
+1150,24,Male,Married,Facilities,Safety Officer,2,4931,0,0,0,4,No,31,3,3,3,3,4,3,1,1,0,13,8.3,Yes
+1151,29,Male,Single,Clinical,Clinical Researcher,4,10183,1,1,0,9,Yes,35,3,3,4,3,4,3,1,4,1,15,5.5,Yes
+1152,54,Non-Binary,Married,Clinical,Surgeon,1,2651,2,0,0,12,No,32,3,2,2,4,1,4,5,6,3,21,8.4,No
+1153,33,Male,Divorced,Clinical,Resident,1,3341,8,6,4,15,No,48,4,4,2,3,1,3,5,2,2,25,4.0,Yes
+1154,52,Male,Single,IT,IT Support,4,13453,0,0,0,34,Yes,43,2,4,4,1,3,3,3,5,3,15,6.2,No
+1155,59,Female,Divorced,Clinical,Physician Assistant,3,9966,24,5,11,32,Yes,10,4,4,1,4,3,1,4,2,1,23,6.2,Yes
+1156,24,Female,Married,Nursing,Nurse Manager,1,3031,2,1,0,3,Yes,45,5,4,3,4,1,1,9,6,2,12,9.3,Yes
+1157,49,Male,Divorced,IT,Health Informatics Analyst,2,4226,2,1,2,22,Yes,37,1,4,4,1,4,1,4,2,2,22,6.3,Yes
+1158,38,Female,Divorced,Clinical,Resident,2,5731,8,1,0,17,No,24,2,2,3,1,4,3,7,0,1,12,3.9,No
+1159,27,Male,Single,Administration,Scheduling Coordinator,2,4667,3,1,0,3,Yes,42,5,4,4,1,2,3,1,2,2,18,7.0,Yes
+1160,31,Female,Married,IT,IT Manager,2,4198,1,0,1,10,No,38,5,4,1,3,1,3,0,3,3,17,8.3,No
+1161,52,Male,Divorced,IT,Systems Administrator,4,10373,16,7,14,25,No,47,1,3,4,4,2,2,0,0,3,20,3.7,No
+1162,22,Male,Single,Nursing,Registered Nurse,2,6352,0,0,0,4,Yes,1,1,3,4,4,3,1,0,5,3,24,4.6,No
+1163,40,Female,Divorced,Clinical,Physician,2,4517,5,0,0,14,No,38,5,3,4,2,2,3,1,1,0,24,9.1,No
+1164,39,Non-Binary,Divorced,Clinical,Physician,2,4479,11,6,8,12,No,17,1,2,1,3,2,2,9,3,1,14,5.7,Yes
+1165,53,Female,Single,Nursing,Charge Nurse,2,4281,25,15,18,30,No,31,5,3,3,2,2,2,1,5,0,15,7.6,No
+1166,45,Female,Single,Administration,Office Manager,2,4548,0,0,0,8,No,27,5,3,1,2,1,1,6,6,3,16,9.3,No
+1167,60,Female,Single,IT,IT Support,1,4179,22,19,5,30,Yes,28,2,4,4,3,2,3,6,0,1,19,5.1,No
+1168,33,Female,Divorced,Clinical,Physician,1,4008,0,0,0,1,No,7,1,3,4,4,2,1,3,3,0,21,3.8,Yes
+1169,28,Male,Divorced,Finance,Controller,1,2678,4,2,3,7,No,45,4,3,1,1,1,3,4,4,2,23,8.1,No
+1170,57,Male,Divorced,Clinical,Specialist,1,2841,5,3,5,33,Yes,32,3,3,4,2,3,1,0,0,1,15,3.1,No
+1171,56,Non-Binary,Married,Nursing,CNA,2,4241,18,8,14,25,No,36,3,3,3,4,2,2,7,0,0,21,8.1,No
+1172,59,Non-Binary,Divorced,Finance,Controller,2,6200,11,3,10,15,Yes,47,1,3,2,4,3,4,6,2,2,20,7.4,No
+1173,36,Male,Divorced,Nursing,Charge Nurse,1,3178,4,1,4,15,Yes,10,1,1,2,3,4,2,2,4,1,16,5.2,No
+1174,43,Female,Single,IT,Systems Administrator,3,9681,7,6,5,22,No,1,2,4,2,3,3,3,1,2,0,19,8.3,Yes
+1175,30,Non-Binary,Divorced,Nursing,CNA,1,3805,1,1,0,11,No,4,1,4,2,4,4,2,0,4,3,12,3.5,No
+1176,56,Female,Divorced,Facilities,Facilities Manager,3,7262,6,4,5,37,No,28,2,3,3,3,2,2,0,2,1,15,4.6,No
+1177,37,Non-Binary,Married,Clinical,Clinical Researcher,1,3764,1,0,0,12,No,15,3,3,1,1,2,2,4,5,2,20,9.0,Yes
+1178,53,Non-Binary,Married,Clinical,Clinical Researcher,3,10223,8,4,2,29,No,18,3,3,2,4,1,1,3,6,3,20,8.9,Yes
+1179,32,Male,Married,Facilities,Maintenance Tech,3,9881,8,2,1,11,No,48,3,4,1,1,4,4,5,6,3,20,9.1,No
+1180,36,Female,Married,Nursing,Registered Nurse,2,4311,9,5,9,14,No,45,2,3,3,1,3,1,6,4,2,16,6.1,No
+1181,51,Male,Married,Clinical,Surgeon,3,9732,24,14,0,24,No,7,4,3,1,2,4,2,1,4,1,24,3.9,No
+1182,56,Female,Married,Administration,Admin Assistant,3,6371,22,6,11,28,Yes,24,1,4,3,3,4,2,8,6,1,15,8.0,No
+1183,53,Male,Divorced,Clinical,Physician Assistant,3,7558,4,1,0,35,Yes,7,2,3,3,4,2,3,2,6,0,16,3.4,No
+1184,46,Male,Single,Nursing,Charge Nurse,4,8858,6,3,1,7,Yes,32,2,2,3,4,1,2,9,4,2,12,5.1,Yes
+1185,29,Male,Married,Clinical,Specialist,2,5739,3,1,3,6,Yes,2,1,3,1,3,2,1,4,2,2,24,7.5,Yes
+1186,30,Male,Single,Administration,Office Manager,1,3489,3,1,3,3,Yes,49,5,1,3,3,1,2,5,2,1,23,8.4,No
+1187,49,Female,Married,Administration,Medical Records Clerk,3,9920,20,2,11,25,No,8,1,3,1,1,2,3,9,4,1,23,3.9,No
+1188,47,Male,Single,Nursing,Charge Nurse,2,4851,19,13,6,24,No,26,2,3,4,2,2,1,2,6,3,23,8.7,No
+1189,24,Female,Divorced,IT,IT Support,1,3033,2,0,0,4,Yes,6,2,3,4,2,3,3,5,0,2,20,7.9,Yes
+1190,49,Non-Binary,Married,Clinical,Physician Assistant,4,13585,2,1,2,26,No,49,1,3,2,3,3,3,3,1,1,19,9.1,Yes
+1191,26,Female,Single,Nursing,Nurse Manager,1,3835,2,2,2,3,No,49,1,3,1,2,1,4,7,0,1,11,5.3,Yes
+1192,40,Female,Married,HR,Benefits Coordinator,1,3395,11,1,2,16,No,17,2,2,2,3,1,3,0,0,0,21,4.4,No
+1193,30,Non-Binary,Single,Administration,Medical Records Clerk,2,6244,4,2,3,12,No,43,1,3,1,3,4,3,3,4,1,19,4.2,No
+1194,36,Non-Binary,Married,Clinical,Surgeon,4,10975,8,7,0,11,Yes,31,2,3,1,1,1,1,1,6,3,24,5.6,Yes
+1195,61,Non-Binary,Single,Administration,Medical Records Clerk,4,8567,5,5,0,7,Yes,38,3,1,2,4,3,1,3,2,1,18,4.3,No
+1196,48,Female,Married,Administration,Scheduling Coordinator,2,4620,25,21,8,30,No,40,5,4,4,1,3,1,0,4,0,25,5.3,No
+1197,27,Female,Married,Clinical,Specialist,2,5908,4,4,3,7,Yes,42,3,4,4,4,1,1,7,3,0,12,6.1,Yes
+1198,41,Non-Binary,Divorced,Nursing,Nurse Practitioner,1,3439,13,6,5,21,Yes,31,1,3,2,4,4,4,6,3,2,24,3.7,Yes
+1199,26,Male,Married,Clinical,Surgeon,2,6898,4,1,1,6,Yes,4,1,3,3,4,3,1,9,4,0,19,9.5,No
+1200,37,Male,Divorced,Facilities,Safety Officer,4,9101,5,0,0,14,Yes,8,5,3,4,4,4,3,6,4,0,14,8.2,Yes
+1201,29,Male,Married,Administration,Scheduling Coordinator,2,6352,1,0,0,11,Yes,10,4,4,3,1,4,3,5,2,2,17,6.3,No
+1202,47,Female,Single,Administration,Scheduling Coordinator,5,15502,19,13,5,24,Yes,48,1,3,4,4,1,1,3,6,1,25,3.2,No
+1203,58,Female,Divorced,IT,IT Manager,4,9551,1,1,1,37,Yes,3,1,3,1,2,3,4,6,2,3,12,3.6,Yes
+1204,49,Female,Divorced,Administration,Office Manager,1,3459,3,3,3,26,Yes,48,1,4,4,4,3,1,2,6,0,19,8.7,No
+1205,24,Male,Single,Clinical,Clinical Researcher,4,12856,0,0,0,4,Yes,6,5,3,1,4,4,2,1,6,0,11,4.5,No
+1206,52,Non-Binary,Divorced,Clinical,Specialist,4,12167,19,18,6,29,Yes,29,4,4,2,1,4,4,1,1,3,23,7.3,No
+1207,53,Female,Single,Facilities,Safety Officer,1,3488,25,24,9,27,No,38,5,2,3,1,1,3,9,3,1,16,4.7,Yes
+1208,26,Male,Married,Administration,Medical Records Clerk,3,10463,2,2,2,4,Yes,4,5,1,1,2,3,1,3,3,2,15,5.2,Yes
+1209,43,Male,Divorced,Clinical,Physician Assistant,1,3544,11,10,5,16,Yes,13,3,3,3,4,4,4,4,3,1,18,6.1,No
+1210,27,Female,Divorced,Clinical,Surgeon,2,4721,5,3,3,8,Yes,16,1,4,3,2,1,1,4,0,1,21,4.6,Yes
+1211,35,Female,Married,Nursing,Nurse Practitioner,2,5886,6,5,2,8,No,6,3,3,1,4,2,2,7,3,1,24,3.7,Yes
+1212,31,Male,Single,Facilities,Environmental Services,3,9070,8,1,3,12,No,36,2,4,4,3,2,3,1,0,3,21,8.5,No
+1213,53,Female,Single,Facilities,Safety Officer,5,16562,14,13,13,29,Yes,42,1,3,1,1,1,1,9,4,2,19,8.0,Yes
+1214,34,Male,Single,Clinical,Physician,2,5155,2,2,0,9,No,20,5,3,1,1,3,4,2,5,2,25,8.6,Yes
+1215,32,Male,Divorced,Clinical,Resident,2,6729,8,0,7,13,Yes,4,1,3,3,4,4,1,7,6,3,25,6.5,Yes
+1216,47,Female,Married,Nursing,Nurse Practitioner,4,11295,2,0,1,26,No,46,5,1,1,3,4,2,4,6,2,19,6.8,Yes
+1217,62,Female,Single,Finance,Medical Biller,3,7430,8,5,3,38,Yes,25,4,2,3,2,2,1,5,5,1,20,6.6,No
+1218,29,Female,Married,Administration,Office Manager,2,6760,7,5,2,10,No,50,5,2,3,2,2,4,6,6,2,22,7.8,No
+1219,30,Female,Divorced,Administration,Scheduling Coordinator,1,3878,3,3,0,10,No,6,3,2,3,3,4,4,4,2,2,14,9.4,No
+1220,29,Female,Married,Administration,Scheduling Coordinator,1,3760,5,0,4,6,Yes,25,4,1,2,4,2,4,6,6,0,15,6.9,No
+1221,52,Male,Divorced,Administration,Office Manager,3,9816,19,18,18,20,No,41,5,2,4,4,4,4,2,3,0,25,5.7,No
+1222,27,Female,Divorced,Clinical,Physician Assistant,2,4136,3,0,0,4,Yes,44,1,3,1,3,2,2,8,4,1,12,4.8,Yes
+1223,34,Non-Binary,Divorced,Nursing,Registered Nurse,3,9963,1,1,1,16,No,2,5,4,4,3,1,4,5,0,2,23,5.8,No
+1224,30,Non-Binary,Divorced,Clinical,Surgeon,1,4055,2,0,0,3,No,37,1,4,3,4,1,4,2,3,2,22,6.0,Yes
+1225,24,Non-Binary,Married,Facilities,Environmental Services,3,6262,2,1,2,2,No,22,5,2,2,2,2,3,1,3,0,25,3.7,No
+1226,52,Female,Single,Clinical,Specialist,1,3810,2,2,1,26,Yes,28,2,3,2,1,4,1,1,4,2,16,4.7,Yes
+1227,52,Male,Single,Nursing,CNA,4,13675,7,6,1,12,Yes,47,4,4,2,2,3,1,4,6,1,17,6.1,Yes
+1228,56,Female,Single,Clinical,Clinical Researcher,4,8903,10,7,2,23,Yes,18,1,3,2,2,3,1,1,0,3,22,8.7,Yes
+1229,41,Non-Binary,Married,IT,IT Support,2,6376,4,2,0,20,Yes,42,1,3,1,1,2,2,8,4,1,19,8.1,Yes
+1230,61,Female,Divorced,Facilities,Facilities Manager,5,19131,14,1,0,36,No,22,1,3,1,4,2,2,1,3,3,25,7.6,Yes
+1231,58,Non-Binary,Single,Nursing,Nurse Practitioner,2,6937,17,17,14,31,No,46,5,4,3,1,4,4,6,5,2,14,4.5,No
+1232,61,Non-Binary,Married,IT,Systems Administrator,1,2941,13,5,7,18,No,18,4,3,3,1,1,4,2,5,3,12,7.4,Yes
+1233,29,Female,Married,Finance,Medical Biller,2,5006,3,0,1,5,No,49,1,3,3,2,2,1,5,6,0,16,8.8,No
+1234,43,Male,Divorced,HR,Benefits Coordinator,5,17832,0,0,0,3,No,36,1,4,2,3,3,1,5,3,3,23,8.6,No
+1235,42,Non-Binary,Divorced,Facilities,Maintenance Tech,3,9643,9,9,6,10,Yes,38,2,3,1,3,4,3,3,1,1,16,7.5,Yes
+1236,54,Female,Single,Facilities,Facilities Manager,4,9990,17,8,15,28,No,16,2,4,1,3,3,2,5,1,1,14,3.4,No
+1237,28,Male,Divorced,Clinical,Clinical Researcher,5,15287,2,0,1,4,No,12,1,2,4,3,1,4,6,6,2,22,5.2,No
+1238,55,Male,Single,Clinical,Physician Assistant,5,16603,10,8,7,15,No,12,2,4,3,1,3,2,2,1,2,14,9.4,No
+1239,40,Female,Divorced,Administration,Scheduling Coordinator,2,5630,4,0,1,11,Yes,1,5,4,3,4,1,2,6,5,3,16,8.8,No
+1240,53,Non-Binary,Married,IT,Health Informatics Analyst,5,11882,27,26,13,31,No,30,4,4,1,1,1,4,1,0,0,13,8.0,No
+1241,45,Male,Divorced,Nursing,Nurse Manager,3,8391,10,5,10,18,No,19,3,3,2,2,1,4,7,5,2,15,5.6,Yes
+1242,50,Male,Married,Administration,Office Manager,4,8174,5,0,2,30,Yes,23,1,4,1,4,2,3,2,0,0,11,5.5,No
+1243,52,Male,Single,Clinical,Clinical Researcher,5,19283,27,0,1,27,No,49,2,4,3,1,3,3,2,6,0,23,5.2,No
+1244,40,Female,Married,Clinical,Resident,3,8792,2,2,1,5,Yes,25,5,3,2,2,4,3,0,4,3,23,8.9,Yes
+1245,55,Female,Divorced,Clinical,Specialist,2,6214,6,1,1,17,No,48,4,4,2,1,2,2,4,4,1,19,8.8,Yes
+1246,32,Female,Single,Clinical,Clinical Researcher,2,4495,7,6,7,9,Yes,8,5,3,1,3,3,4,0,4,2,16,3.9,Yes
+1247,39,Non-Binary,Divorced,Clinical,Resident,4,11207,15,13,9,16,No,13,1,4,3,3,2,2,4,3,0,16,3.9,Yes
+1248,59,Male,Single,Clinical,Clinical Researcher,1,3848,5,3,4,29,Yes,50,5,4,1,2,2,2,9,4,1,15,8.5,Yes
+1249,42,Female,Divorced,Nursing,Charge Nurse,4,9299,7,7,4,23,Yes,13,3,4,4,1,3,1,3,4,3,22,7.7,Yes
+1250,32,Male,Married,Nursing,Nurse Practitioner,1,3491,6,4,6,14,No,31,3,4,3,1,3,4,6,4,2,14,8.0,Yes
+1251,57,Female,Divorced,Facilities,Safety Officer,2,4458,16,1,4,21,No,11,3,4,1,3,4,4,8,3,1,15,6.7,No
+1252,35,Non-Binary,Married,Clinical,Resident,2,4043,9,3,9,12,Yes,18,4,3,1,1,3,2,4,5,3,15,6.0,Yes
+1253,28,Male,Divorced,Clinical,Physician,2,4882,3,0,2,9,No,29,1,3,4,1,3,2,2,1,1,20,8.9,No
+1254,25,Non-Binary,Married,Administration,Scheduling Coordinator,3,6748,0,0,0,6,Yes,47,1,3,1,3,2,1,0,3,0,15,6.5,No
+1255,41,Non-Binary,Divorced,Facilities,Safety Officer,1,2919,14,9,10,20,Yes,1,1,4,3,4,3,1,1,1,3,20,5.7,Yes
+1256,35,Male,Married,IT,IT Support,3,6549,1,1,0,13,No,29,5,3,4,1,4,2,2,5,2,20,7.8,No
+1257,62,Female,Married,Facilities,Facilities Manager,1,3698,25,25,7,41,Yes,32,3,4,3,2,1,1,5,5,1,17,6.4,No
+1258,59,Male,Married,Clinical,Physician,1,2927,22,15,14,26,Yes,22,5,3,3,2,3,1,2,0,1,13,7.6,No
+1259,24,Female,Married,Facilities,Maintenance Tech,2,5767,0,0,0,1,No,5,3,3,4,3,2,3,6,4,1,21,4.0,No
+1260,36,Male,Divorced,Facilities,Environmental Services,2,6023,6,4,1,9,No,1,5,3,3,3,1,1,7,1,3,14,5.9,No
+1261,27,Non-Binary,Married,Finance,Financial Analyst,4,10637,5,5,0,6,No,26,2,4,2,2,3,3,9,4,2,20,5.6,No
+1262,49,Non-Binary,Married,Nursing,Nurse Manager,1,2779,26,2,11,26,No,46,2,4,4,2,3,3,6,3,0,23,3.1,No
+1263,54,Non-Binary,Single,Clinical,Surgeon,1,2589,30,19,4,35,No,29,1,3,1,4,1,3,4,2,3,15,5.7,No
+1264,62,Male,Divorced,Clinical,Specialist,2,4085,26,0,16,28,Yes,25,4,3,2,3,1,2,9,5,1,11,8.0,Yes
+1265,37,Non-Binary,Single,Nursing,Charge Nurse,1,3567,4,0,2,18,Yes,18,2,3,4,2,4,3,7,3,1,18,3.1,No
+1266,44,Female,Married,Clinical,Surgeon,3,7230,12,1,2,12,No,38,4,4,1,2,2,3,4,2,2,11,4.0,Yes
+1267,51,Non-Binary,Married,Clinical,Specialist,3,8962,4,4,1,6,Yes,10,5,3,4,2,4,2,8,0,2,24,4.0,No
+1268,22,Male,Married,Nursing,CNA,1,2766,0,0,0,3,Yes,50,5,3,4,3,3,1,0,3,1,13,6.0,No
+1269,58,Non-Binary,Single,Clinical,Physician Assistant,5,15734,2,0,2,5,No,29,1,3,4,2,1,3,1,0,2,20,5.5,Yes
+1270,26,Non-Binary,Single,Nursing,Nurse Practitioner,2,5697,4,2,4,6,Yes,7,3,4,2,4,3,2,5,5,3,12,4.8,No
+1271,24,Female,Married,Clinical,Physician,2,6269,2,1,1,4,No,16,5,3,1,4,4,1,3,0,1,18,3.9,Yes
+1272,44,Female,Divorced,Finance,Controller,3,10427,3,3,3,6,Yes,1,1,1,4,1,3,3,6,3,3,24,5.5,Yes
+1273,28,Female,Single,HR,Recruiter,3,9457,2,2,1,9,No,7,1,2,4,2,1,4,5,0,3,24,8.2,No
+1274,38,Female,Divorced,Administration,Scheduling Coordinator,3,6556,1,1,1,7,No,39,3,4,3,1,4,4,3,0,3,14,3.3,No
+1275,37,Non-Binary,Married,Facilities,Safety Officer,2,4048,4,4,1,8,No,23,2,3,3,3,1,2,5,2,1,17,7.5,No
+1276,60,Male,Single,Finance,Revenue Cycle Analyst,3,8484,3,1,2,31,Yes,37,2,3,3,3,4,4,0,0,0,11,5.0,No
+1277,30,Female,Divorced,HR,Benefits Coordinator,4,11567,0,0,0,7,No,7,3,4,4,2,2,2,9,6,0,22,8.6,No
+1278,60,Female,Divorced,Clinical,Physician,1,4076,1,1,0,30,No,28,4,1,2,4,3,4,0,2,3,19,3.0,No
+1279,28,Female,Married,Administration,Admin Assistant,1,3780,5,5,4,8,Yes,46,3,3,2,3,3,2,2,3,2,25,7.7,No
+1280,38,Female,Married,Facilities,Environmental Services,1,3333,2,1,1,7,No,14,3,3,3,4,1,1,3,3,0,22,5.6,No
+1281,50,Female,Divorced,Nursing,CNA,3,9763,11,0,10,27,Yes,3,4,2,3,2,2,2,9,3,2,22,9.4,Yes
+1282,22,Non-Binary,Married,Clinical,Clinical Researcher,4,10452,0,0,0,1,No,30,4,4,2,1,3,4,8,1,1,15,3.2,Yes
+1283,42,Male,Divorced,Clinical,Physician,1,2894,2,1,0,20,Yes,34,1,1,1,4,2,2,9,5,1,11,3.6,No
+1284,31,Non-Binary,Married,Nursing,Nurse Manager,3,6403,3,2,1,13,No,23,1,2,2,3,2,4,0,5,3,11,6.2,No
+1285,38,Female,Divorced,Clinical,Physician,1,4049,6,3,3,9,Yes,15,2,4,2,3,2,4,6,3,2,25,3.0,No
+1286,36,Male,Single,Clinical,Surgeon,1,3195,0,0,0,13,Yes,30,2,2,2,2,3,2,0,1,0,20,5.2,Yes
+1287,33,Male,Married,Clinical,Surgeon,1,3117,7,5,4,10,No,38,5,3,3,3,1,2,7,1,3,17,7.0,No
+1288,33,Male,Single,HR,HR Director,1,2592,4,3,2,4,Yes,1,2,2,3,2,4,3,4,2,1,16,9.4,No
+1289,61,Female,Single,Finance,Controller,2,4423,14,11,6,23,No,44,4,3,2,4,1,1,6,5,0,12,7.7,No
+1290,26,Non-Binary,Divorced,Clinical,Clinical Researcher,3,9946,2,2,0,4,No,14,5,3,2,3,2,4,3,0,0,16,5.9,Yes
+1291,42,Non-Binary,Married,Clinical,Physician Assistant,3,6076,20,18,13,24,No,5,2,4,1,4,4,2,8,2,0,13,7.5,No
+1292,49,Female,Divorced,Administration,Admin Assistant,4,11365,19,15,18,22,No,5,5,4,1,3,3,2,5,3,2,20,6.5,No
+1293,54,Male,Married,Nursing,Charge Nurse,3,6675,16,11,8,24,Yes,4,3,4,3,2,4,4,4,2,3,18,5.5,Yes
+1294,34,Male,Divorced,Facilities,Facilities Manager,4,8346,0,0,0,1,Yes,11,3,3,3,1,2,4,3,5,1,12,6.1,Yes
+1295,62,Male,Divorced,Nursing,Nurse Practitioner,1,3603,14,11,14,17,Yes,33,5,2,1,2,3,3,4,6,1,11,5.5,Yes
+1296,60,Female,Single,Facilities,Safety Officer,1,2821,23,5,22,28,Yes,31,4,3,3,1,1,4,0,6,1,19,8.1,Yes
+1297,53,Male,Married,Nursing,CNA,4,13844,8,7,1,16,No,9,1,3,1,2,3,1,3,2,0,19,8.3,No
+1298,29,Female,Divorced,HR,HR Generalist,3,10395,7,6,4,10,No,45,3,3,3,1,3,4,3,2,2,25,9.1,Yes
+1299,41,Male,Single,IT,IT Support,4,9705,4,2,1,9,No,4,4,3,4,4,1,1,8,6,2,11,8.5,Yes
+1300,47,Non-Binary,Married,Clinical,Physician,1,3618,20,4,0,22,Yes,17,2,4,1,1,4,2,6,4,1,18,5.6,No
+1301,40,Female,Divorced,Clinical,Surgeon,3,7412,1,0,1,19,Yes,8,3,3,1,3,4,3,9,1,0,22,3.0,Yes
+1302,40,Male,Divorced,Facilities,Environmental Services,1,3522,8,3,8,22,No,14,3,4,1,3,1,4,7,3,2,16,9.2,No
+1303,60,Male,Divorced,Nursing,Nurse Manager,2,5394,14,7,7,28,Yes,48,3,4,2,2,4,2,4,2,0,12,7.0,Yes
+1304,54,Non-Binary,Married,Clinical,Specialist,5,18121,3,1,3,25,Yes,45,3,3,3,3,1,2,7,6,0,23,8.7,Yes
+1305,26,Non-Binary,Single,Finance,Controller,3,10200,3,0,1,4,No,25,5,1,1,1,2,3,2,5,2,16,6.9,No
+1306,42,Male,Divorced,Administration,Medical Records Clerk,4,12060,0,0,0,3,No,23,2,2,2,2,1,1,6,2,2,17,6.1,No
+1307,31,Female,Single,Nursing,CNA,1,3972,4,0,3,9,No,8,2,4,2,3,2,2,3,4,0,14,8.5,No
+1308,32,Non-Binary,Divorced,Administration,Scheduling Coordinator,3,7758,5,2,5,11,No,31,5,3,1,4,4,2,2,2,2,24,8.1,No
+1309,55,Non-Binary,Divorced,Facilities,Maintenance Tech,2,6372,10,7,7,27,No,43,5,3,2,3,1,1,0,4,1,23,6.9,No
+1310,53,Non-Binary,Divorced,Nursing,Charge Nurse,2,6489,23,18,4,25,No,2,5,4,4,1,1,3,4,0,3,16,8.0,Yes
+1311,28,Male,Married,Clinical,Physician Assistant,2,4513,0,0,0,9,Yes,19,2,3,3,4,4,2,7,3,3,18,8.3,No
+1312,55,Non-Binary,Married,Facilities,Maintenance Tech,3,9474,2,1,1,3,Yes,48,3,2,3,3,2,3,1,2,0,23,9.4,No
+1313,59,Female,Divorced,Nursing,Registered Nurse,4,8734,2,2,0,28,No,12,1,2,4,1,1,3,5,0,3,23,6.1,No
+1314,61,Male,Single,IT,IT Manager,2,4941,12,1,6,24,Yes,14,1,3,2,2,3,3,8,0,0,15,7.0,Yes
+1315,55,Non-Binary,Married,Finance,Revenue Cycle Analyst,2,6258,11,3,8,11,No,5,1,4,2,2,2,2,4,4,2,12,3.0,No
+1316,56,Male,Divorced,Clinical,Resident,3,10285,26,26,9,34,No,24,4,3,3,3,2,3,2,3,1,21,5.4,No
+1317,34,Non-Binary,Single,IT,Systems Administrator,3,6690,11,10,4,14,No,18,3,3,2,1,2,1,1,5,1,25,5.6,No
+1318,53,Male,Married,Clinical,Clinical Researcher,1,2569,15,6,9,33,No,12,1,3,4,2,4,4,9,1,2,24,8.4,No
+1319,28,Non-Binary,Divorced,Clinical,Surgeon,3,8756,0,0,0,2,No,26,1,3,1,1,2,2,8,1,1,21,4.8,Yes
+1320,33,Male,Married,Clinical,Surgeon,4,11116,4,4,0,13,No,16,4,3,4,2,4,1,2,0,1,17,9.5,No
+1321,48,Non-Binary,Divorced,Clinical,Resident,2,5407,9,3,4,17,No,30,5,4,3,2,2,4,3,6,3,14,9.2,No
+1322,29,Male,Single,Administration,Office Manager,4,11267,3,3,3,11,No,11,3,3,2,2,4,3,4,3,0,21,7.4,No
+1323,37,Female,Divorced,Clinical,Clinical Researcher,1,2786,10,0,2,11,Yes,43,3,4,1,2,4,2,6,3,3,18,8.2,No
+1324,46,Male,Single,Administration,Scheduling Coordinator,1,3321,17,1,4,27,No,21,2,1,1,4,3,2,9,1,1,23,3.5,No
+1325,26,Non-Binary,Married,Clinical,Resident,3,9413,1,1,0,3,No,24,4,3,3,4,1,4,7,0,2,11,3.1,No
+1326,53,Non-Binary,Single,Nursing,Nurse Practitioner,2,4000,10,10,10,14,No,27,3,2,4,4,4,3,4,0,2,14,3.5,No
+1327,39,Non-Binary,Single,Administration,Medical Records Clerk,3,8288,11,9,3,17,Yes,19,2,2,1,2,1,2,0,5,1,16,5.8,No
+1328,28,Male,Married,Finance,Controller,3,8501,3,2,2,6,No,14,1,2,4,2,3,1,1,4,3,12,6.4,No
+1329,24,Male,Single,Clinical,Resident,3,7968,1,0,0,1,Yes,24,4,3,2,2,3,2,8,6,1,20,6.3,Yes
+1330,58,Female,Married,Clinical,Surgeon,1,2427,3,0,0,28,Yes,14,1,4,4,3,3,2,1,5,3,16,4.5,No
+1331,60,Male,Married,Clinical,Resident,2,5959,17,11,1,40,No,13,3,4,1,1,4,3,0,6,0,21,4.0,Yes
+1332,59,Female,Single,Facilities,Facilities Manager,4,9035,4,3,2,37,No,25,4,2,4,1,4,3,6,2,1,20,8.7,Yes
+1333,50,Female,Divorced,Finance,Financial Analyst,2,4250,17,4,1,29,No,37,5,3,4,2,4,4,0,3,1,15,3.8,No
+1334,43,Female,Married,Clinical,Clinical Researcher,2,4166,6,6,3,19,No,10,2,4,2,2,4,3,2,3,3,20,5.9,No
+1335,40,Non-Binary,Single,HR,HR Director,1,3682,9,9,1,20,Yes,47,2,3,3,3,4,4,7,3,0,12,9.4,No
+1336,31,Female,Married,Administration,Admin Assistant,3,6578,1,0,1,13,No,46,4,4,2,2,4,3,7,5,3,21,3.5,No
+1337,61,Non-Binary,Divorced,Administration,Admin Assistant,3,9680,15,2,10,41,Yes,49,2,3,3,2,3,4,1,5,3,20,5.1,Yes
+1338,30,Female,Divorced,Clinical,Physician,1,3444,0,0,0,7,No,33,1,4,2,4,1,4,2,4,3,24,6.2,Yes
+1339,62,Female,Married,Nursing,Charge Nurse,2,5854,28,27,8,34,No,20,4,3,3,2,2,3,4,2,2,15,7.9,Yes
+1340,53,Male,Married,Administration,Office Manager,3,7863,18,16,11,22,No,37,5,2,3,2,4,1,3,2,0,14,8.9,No
+1341,56,Female,Single,Clinical,Physician Assistant,2,4543,4,4,4,20,Yes,33,3,4,4,2,1,2,9,4,1,16,6.7,Yes
+1342,40,Male,Single,Nursing,CNA,4,12384,17,17,11,17,Yes,44,2,3,2,4,1,2,7,6,3,14,3.3,Yes
+1343,59,Male,Married,IT,Systems Administrator,2,4364,21,1,11,37,Yes,47,5,4,3,2,1,1,0,2,1,12,6.3,No
+1344,25,Non-Binary,Married,Facilities,Maintenance Tech,1,3709,0,0,0,7,No,2,2,4,2,3,2,4,1,3,3,16,3.3,No
+1345,53,Female,Married,Clinical,Physician Assistant,2,6335,23,15,4,35,Yes,4,4,3,2,4,1,3,0,3,1,16,4.0,No
+1346,32,Female,Single,Finance,Medical Biller,3,8699,4,0,3,13,Yes,23,2,3,3,3,4,3,1,1,2,12,6.1,No
+1347,57,Female,Single,Nursing,Registered Nurse,1,3340,28,8,5,38,No,35,2,3,4,4,3,2,2,0,0,11,5.9,No
+1348,56,Male,Single,Nursing,Charge Nurse,2,5328,20,11,1,35,Yes,44,3,1,4,2,4,2,7,0,3,19,5.4,Yes
+1349,38,Non-Binary,Single,Facilities,Facilities Manager,4,9152,11,5,3,18,Yes,9,5,3,1,2,4,4,5,5,1,16,5.0,Yes
+1350,57,Non-Binary,Married,Nursing,Nurse Manager,3,7896,4,0,3,34,No,41,1,3,1,1,1,2,7,3,0,11,6.1,Yes
+1351,33,Non-Binary,Married,Nursing,Registered Nurse,2,5654,8,1,1,9,No,46,1,3,2,1,3,1,1,0,1,21,7.5,No
+1352,44,Female,Divorced,HR,HR Generalist,2,5750,1,1,0,15,No,33,3,3,1,1,4,1,7,5,2,25,6.8,Yes
+1353,31,Non-Binary,Single,Administration,Medical Records Clerk,3,7176,7,7,6,9,No,49,5,3,4,2,4,3,1,6,1,22,6.1,No
+1354,43,Female,Divorced,Facilities,Facilities Manager,2,6077,9,4,6,13,Yes,14,3,3,3,2,3,2,0,2,1,23,3.1,No
+1355,50,Male,Married,Nursing,Nurse Manager,1,3817,25,7,6,31,Yes,24,4,4,1,3,2,3,4,2,2,18,3.1,Yes
+1356,22,Non-Binary,Single,Finance,Controller,5,13913,0,0,0,1,Yes,16,3,1,3,4,2,4,3,6,1,19,3.8,Yes
+1357,33,Non-Binary,Single,Nursing,Nurse Manager,2,5652,0,0,0,14,Yes,6,1,4,3,2,4,1,2,4,2,13,3.7,Yes
+1358,27,Male,Divorced,Clinical,Surgeon,3,8382,2,1,1,7,Yes,39,3,4,1,2,1,2,2,6,1,21,4.4,No
+1359,54,Non-Binary,Single,Clinical,Physician,3,6404,10,1,4,17,No,16,3,3,3,4,2,3,1,5,3,20,7.8,No
+1360,39,Female,Married,Nursing,Nurse Manager,1,3613,11,2,8,11,No,7,2,3,4,4,1,2,9,5,0,16,6.7,No
+1361,30,Female,Single,IT,IT Manager,2,6946,4,3,1,10,No,9,5,2,3,4,2,1,8,2,0,17,9.2,Yes
+1362,60,Non-Binary,Divorced,Clinical,Physician,1,3224,26,3,6,32,Yes,11,3,3,1,2,1,1,8,3,3,11,4.8,Yes
+1363,49,Female,Married,Administration,Scheduling Coordinator,3,9204,21,12,6,24,No,39,5,2,2,1,2,1,5,4,2,23,8.1,Yes
+1364,60,Male,Married,Clinical,Surgeon,1,2966,7,3,1,11,No,31,1,4,1,3,1,4,2,4,2,25,7.2,No
+1365,60,Non-Binary,Married,HR,HR Director,4,10959,9,1,0,39,Yes,6,2,1,4,4,4,4,9,6,0,13,9.0,No
+1366,56,Female,Divorced,Nursing,CNA,3,9615,4,1,4,34,Yes,48,1,3,4,4,4,3,4,4,3,17,4.0,No
+1367,43,Non-Binary,Single,Facilities,Maintenance Tech,2,4873,17,5,12,19,No,21,5,3,1,1,2,4,7,3,2,16,8.4,Yes
+1368,46,Male,Single,Administration,Office Manager,3,10076,16,7,7,16,No,23,2,2,4,1,1,1,7,5,2,21,4.4,No
+1369,59,Female,Divorced,Clinical,Physician Assistant,3,6787,23,7,0,39,Yes,5,2,3,1,3,4,3,9,1,0,20,8.7,No
+1370,25,Female,Single,Facilities,Facilities Manager,3,6886,1,1,0,2,No,10,3,2,2,1,4,4,0,4,3,12,7.8,No
+1371,51,Non-Binary,Married,Clinical,Clinical Researcher,3,7899,3,2,3,23,Yes,24,3,1,3,3,3,1,1,3,3,16,6.2,No
+1372,59,Non-Binary,Married,Administration,Medical Records Clerk,3,6988,18,14,18,38,No,11,5,3,4,3,4,3,3,5,0,24,9.5,No
+1373,49,Female,Married,IT,Health Informatics Analyst,1,3931,27,15,13,29,No,5,5,3,1,3,1,2,3,2,2,24,5.6,No
+1374,31,Non-Binary,Married,Administration,Scheduling Coordinator,2,6024,8,7,5,9,No,33,4,3,4,2,2,4,4,1,2,14,5.0,No
+1375,60,Female,Single,HR,Recruiter,2,6005,2,2,1,9,Yes,23,2,2,4,1,3,2,4,4,1,12,6.1,No
+1376,27,Female,Divorced,Clinical,Specialist,1,3164,2,2,0,2,No,35,1,2,1,4,2,1,2,4,1,18,8.6,No
+1377,40,Female,Single,Nursing,Nurse Manager,1,3308,11,0,3,21,No,3,4,4,1,2,4,3,3,6,1,16,6.1,Yes
+1378,51,Male,Married,Administration,Admin Assistant,2,6517,24,18,5,27,No,47,2,3,4,1,3,1,0,5,0,17,7.1,Yes
+1379,22,Female,Single,Nursing,Charge Nurse,3,6812,0,0,0,0,No,1,1,3,1,1,4,4,3,2,2,22,7.0,Yes
+1380,28,Female,Married,Clinical,Physician Assistant,1,2419,2,0,1,3,Yes,42,3,3,1,1,4,3,0,4,1,11,5.7,Yes
+1381,31,Male,Single,Facilities,Maintenance Tech,2,4079,7,7,6,8,No,25,4,3,1,2,4,3,6,2,2,20,8.5,No
+1382,45,Male,Divorced,Nursing,Nurse Manager,1,3771,13,1,11,27,No,17,3,4,2,4,4,4,8,4,3,25,4.4,Yes
+1383,40,Non-Binary,Married,Clinical,Surgeon,4,11938,14,7,5,16,Yes,47,4,2,2,3,2,4,4,5,2,22,6.4,No
+1384,48,Female,Single,Finance,Controller,2,4407,26,17,6,29,Yes,50,3,4,2,3,4,4,6,5,2,14,5.3,No
+1385,31,Male,Married,Nursing,CNA,1,4068,5,5,5,9,No,14,4,3,3,2,1,4,6,0,2,20,6.0,No
+1386,62,Non-Binary,Single,Nursing,Nurse Manager,2,5165,11,11,5,23,No,44,3,4,2,3,1,3,5,1,3,22,3.5,Yes
+1387,32,Female,Divorced,IT,IT Support,3,6155,5,2,1,14,Yes,31,2,3,2,4,2,3,0,0,2,16,3.5,Yes
+1388,28,Non-Binary,Divorced,Administration,Office Manager,4,11143,6,4,1,6,No,2,3,4,4,3,3,2,2,3,2,18,5.1,No
+1389,39,Non-Binary,Divorced,Clinical,Surgeon,3,7510,10,0,1,18,No,31,2,3,4,2,4,4,5,4,3,14,7.7,Yes
+1390,53,Female,Single,Administration,Admin Assistant,3,9980,25,20,0,34,No,49,4,3,2,3,3,2,9,3,1,18,6.2,No
+1391,56,Female,Married,Finance,Revenue Cycle Analyst,2,5175,7,3,7,17,No,38,4,4,1,3,4,2,7,0,3,22,7.3,No
+1392,54,Male,Married,Nursing,Nurse Manager,4,11194,4,0,4,7,Yes,32,4,4,1,1,4,2,7,0,1,14,6.5,Yes
+1393,25,Female,Divorced,Clinical,Physician Assistant,1,3528,2,1,0,6,No,41,1,4,2,4,4,3,2,3,3,15,8.3,Yes
+1394,31,Male,Single,Facilities,Facilities Manager,3,6718,9,9,5,12,No,33,1,2,1,1,2,3,4,5,1,21,4.4,No
+1395,28,Non-Binary,Single,Nursing,Nurse Practitioner,1,2659,6,4,3,8,Yes,39,3,2,4,3,4,2,7,2,2,11,5.8,Yes
+1396,42,Non-Binary,Divorced,Nursing,Charge Nurse,2,4897,13,5,13,14,No,36,4,3,3,2,2,3,4,5,0,13,5.2,Yes
+1397,35,Female,Divorced,Clinical,Physician Assistant,3,8921,7,0,6,11,Yes,29,4,4,4,3,1,3,9,5,2,21,9.0,Yes
+1398,30,Male,Divorced,Administration,Scheduling Coordinator,3,6829,7,3,1,11,No,15,3,3,3,2,1,1,6,2,2,17,6.5,No
+1399,36,Female,Single,Nursing,Nurse Practitioner,2,5026,9,1,2,15,No,22,2,3,2,3,1,1,1,6,0,18,3.8,Yes
+1400,31,Female,Married,Facilities,Safety Officer,1,3481,7,6,1,11,Yes,40,5,3,3,2,2,2,1,1,1,23,5.7,Yes
+1401,46,Male,Married,Administration,Medical Records Clerk,1,2868,6,3,4,9,Yes,33,3,4,1,3,4,4,9,2,2,17,7.9,Yes
+1402,36,Non-Binary,Married,Clinical,Physician,3,6769,2,0,1,10,Yes,42,2,3,4,3,4,4,4,6,3,18,4.5,Yes
+1403,43,Non-Binary,Divorced,Clinical,Physician,4,12005,2,2,2,5,No,40,4,4,1,4,2,3,3,0,1,19,7.2,No
+1404,29,Non-Binary,Single,Facilities,Safety Officer,2,4005,5,5,0,10,No,5,1,4,2,2,3,3,2,1,3,23,8.7,Yes
+1405,53,Non-Binary,Married,Clinical,Surgeon,2,4177,1,1,1,25,No,35,1,4,1,1,4,2,7,5,3,15,6.8,Yes
+1406,57,Non-Binary,Married,Clinical,Clinical Researcher,3,7893,19,17,5,35,No,26,2,4,2,2,1,3,9,6,0,13,3.5,Yes
+1407,33,Male,Divorced,Administration,Office Manager,3,8786,4,1,4,15,Yes,41,3,3,2,3,4,2,0,3,1,11,4.8,Yes
+1408,39,Female,Divorced,Nursing,Nurse Manager,2,5921,12,3,6,20,No,20,3,2,4,3,3,2,8,1,1,15,4.2,No
+1409,56,Male,Married,Clinical,Surgeon,1,3706,16,2,0,27,Yes,14,5,4,4,2,4,3,5,3,3,23,4.7,No
+1410,38,Non-Binary,Single,Finance,Medical Biller,1,3513,3,1,3,7,No,3,4,2,2,4,4,1,3,0,1,20,7.8,No
+1411,38,Female,Divorced,Clinical,Resident,1,3966,7,5,1,15,No,18,5,3,3,1,4,3,2,0,1,16,6.6,Yes
+1412,47,Female,Divorced,Administration,Office Manager,1,3335,21,17,16,21,No,18,1,4,4,1,4,4,4,6,1,14,5.0,No
+1413,34,Non-Binary,Married,Administration,Office Manager,3,9939,12,11,5,16,Yes,19,3,2,3,1,1,3,8,4,3,17,8.6,Yes
+1414,48,Non-Binary,Single,IT,Health Informatics Analyst,1,3660,15,15,4,28,No,42,2,3,2,3,1,4,5,5,2,20,5.6,No
+1415,27,Non-Binary,Single,Clinical,Resident,4,11627,4,1,1,8,Yes,38,5,3,2,4,4,3,4,2,2,11,6.9,Yes
+1416,48,Female,Divorced,Clinical,Clinical Researcher,2,6313,1,1,0,27,Yes,41,2,4,1,1,3,2,5,3,1,20,4.0,Yes
+1417,33,Female,Single,IT,IT Support,3,8466,2,2,1,4,Yes,18,5,4,3,1,2,3,2,4,3,17,4.8,Yes
+1418,28,Male,Married,Nursing,Charge Nurse,5,19472,0,0,0,6,Yes,43,2,3,3,1,3,2,9,4,3,25,3.8,No
+1419,49,Female,Single,Clinical,Surgeon,2,6226,17,8,1,20,No,18,1,3,4,1,4,2,4,4,3,13,4.4,No
+1420,41,Non-Binary,Divorced,Nursing,Nurse Manager,4,12168,1,1,0,1,No,12,1,3,4,4,3,4,4,5,2,22,6.1,No
+1421,46,Male,Married,Finance,Controller,1,2483,7,5,6,20,No,8,3,3,3,1,3,1,7,4,0,16,5.0,No
+1422,40,Non-Binary,Married,Facilities,Safety Officer,1,3463,14,7,11,21,Yes,5,2,4,2,4,1,1,9,6,0,25,3.4,Yes
+1423,51,Non-Binary,Married,Nursing,Nurse Practitioner,2,6936,11,0,2,20,No,3,2,1,3,2,4,2,4,3,2,21,8.4,No
+1424,44,Non-Binary,Married,Clinical,Specialist,1,2487,6,1,3,12,Yes,17,1,3,4,1,2,1,5,5,1,21,9.3,No
+1425,27,Female,Divorced,Administration,Admin Assistant,3,7055,0,0,0,0,Yes,43,5,3,1,3,4,2,5,5,3,12,4.0,No
+1426,26,Female,Married,Nursing,Nurse Practitioner,1,3863,3,2,0,6,Yes,7,4,4,2,2,2,4,1,5,2,24,5.0,Yes
+1427,22,Non-Binary,Single,Facilities,Environmental Services,3,8729,0,0,0,1,No,44,4,3,1,1,1,3,5,0,1,25,5.2,No
+1428,45,Non-Binary,Single,Finance,Medical Biller,2,4285,13,7,9,18,Yes,30,2,3,2,1,1,1,9,2,2,22,3.2,No
+1429,32,Female,Single,IT,Health Informatics Analyst,3,7986,8,0,5,11,No,43,4,2,1,2,1,3,1,3,3,15,3.1,Yes
+1430,52,Male,Single,IT,IT Support,1,3644,19,14,5,34,Yes,15,1,4,1,4,2,3,4,0,2,14,7.2,Yes
+1431,51,Non-Binary,Single,Clinical,Clinical Researcher,2,4857,5,3,5,6,No,2,1,4,2,1,1,1,6,6,3,11,9.0,No
+1432,38,Non-Binary,Divorced,Finance,Medical Biller,2,4157,3,1,3,6,No,2,2,3,2,3,1,1,9,2,0,16,6.3,Yes
+1433,46,Female,Divorced,Clinical,Resident,2,5478,10,0,6,16,No,11,3,2,4,4,4,2,1,6,0,17,7.3,No
+1434,40,Male,Single,Clinical,Specialist,5,11436,15,6,8,20,No,12,5,4,3,2,2,2,5,2,0,20,5.9,Yes
+1435,24,Female,Married,Clinical,Clinical Researcher,5,14220,0,0,0,2,No,42,3,4,4,4,1,1,4,2,3,20,6.5,Yes
+1436,45,Non-Binary,Married,Administration,Office Manager,1,3378,11,3,2,12,No,25,5,4,1,1,2,3,8,0,3,11,5.1,Yes
+1437,39,Non-Binary,Married,Finance,Revenue Cycle Analyst,2,5612,12,5,5,20,Yes,33,4,3,3,2,3,2,0,4,3,24,6.3,Yes
+1438,40,Male,Divorced,IT,Health Informatics Analyst,3,6777,18,6,10,18,No,28,3,2,4,2,4,4,3,3,3,20,4.3,No
+1439,23,Male,Divorced,Nursing,Nurse Practitioner,1,2609,0,0,0,4,Yes,34,1,3,3,4,2,1,6,4,3,20,8.4,No
+1440,43,Non-Binary,Single,Clinical,Physician,3,6607,4,3,2,20,Yes,28,3,4,2,1,3,2,3,6,3,25,4.0,Yes
+1441,59,Female,Divorced,Administration,Scheduling Coordinator,1,2625,17,16,7,28,Yes,25,5,3,2,1,2,2,1,2,1,21,5.3,Yes
+1442,30,Non-Binary,Single,Clinical,Physician Assistant,3,7823,1,1,1,3,Yes,21,1,4,2,3,1,4,2,3,0,19,3.2,Yes
+1443,60,Non-Binary,Divorced,Clinical,Resident,3,8211,28,21,22,37,No,50,2,4,1,2,3,4,2,6,3,13,4.5,No
+1444,46,Male,Married,Nursing,Nurse Practitioner,4,13636,10,5,8,12,Yes,48,3,2,3,4,2,3,4,5,3,22,6.5,Yes
+1445,26,Non-Binary,Married,IT,Health Informatics Analyst,3,6346,2,1,0,2,No,27,2,4,4,3,4,4,4,1,0,16,6.2,No
+1446,33,Male,Divorced,Clinical,Physician Assistant,4,12170,3,1,1,9,No,3,5,3,1,2,1,3,0,0,0,17,9.0,Yes
+1447,28,Male,Single,Nursing,CNA,2,5524,3,3,0,9,Yes,35,1,3,2,2,2,2,1,2,3,19,8.5,Yes
+1448,30,Female,Divorced,Clinical,Specialist,2,4791,8,3,1,12,Yes,19,2,4,2,2,4,3,9,3,0,24,9.2,Yes
+1449,33,Female,Single,HR,HR Director,1,3323,1,1,0,13,Yes,4,5,3,1,3,4,4,2,0,0,14,5.3,Yes
+1450,43,Non-Binary,Divorced,Nursing,Nurse Practitioner,2,6196,7,3,6,17,No,25,4,4,2,1,1,1,1,2,1,18,4.9,No
+1451,53,Male,Divorced,Administration,Medical Records Clerk,5,17182,12,11,0,33,Yes,49,2,3,1,3,4,3,4,1,0,15,6.7,No
+1452,33,Female,Single,IT,Systems Administrator,2,6757,5,3,2,10,Yes,42,1,4,3,2,3,2,7,4,2,19,3.8,Yes
+1453,40,Male,Divorced,IT,Health Informatics Analyst,4,12144,10,3,4,21,No,9,4,3,3,3,2,1,2,2,2,20,5.3,No
+1454,44,Male,Married,Clinical,Specialist,4,8915,0,0,0,6,No,47,5,4,2,1,4,2,5,3,3,21,7.8,Yes
+1455,35,Female,Married,Finance,Revenue Cycle Analyst,4,11514,10,10,1,15,No,27,4,3,1,4,4,2,7,6,1,13,6.3,No
+1456,30,Female,Single,Nursing,Charge Nurse,2,4382,0,0,0,4,Yes,11,5,4,1,4,2,3,4,0,0,25,4.7,Yes
+1457,33,Female,Divorced,Clinical,Specialist,4,11780,11,4,9,12,Yes,46,5,4,1,3,1,3,9,3,0,14,4.7,No
+1458,31,Female,Divorced,Clinical,Surgeon,2,4658,4,4,3,6,No,43,5,3,1,1,4,2,1,2,0,22,8.6,No
+1459,56,Non-Binary,Married,Nursing,Nurse Practitioner,3,9536,2,1,1,25,No,31,4,3,3,3,1,1,0,3,2,25,5.9,No
+1460,40,Non-Binary,Divorced,Clinical,Clinical Researcher,1,3224,2,1,0,11,No,45,2,3,3,4,1,4,7,3,2,24,5.3,No
+1461,58,Female,Married,Administration,Office Manager,1,2818,0,0,0,14,No,13,3,3,2,2,4,4,8,1,2,22,4.7,No
+1462,52,Female,Divorced,Clinical,Resident,2,5831,29,3,29,32,No,36,4,2,4,4,3,1,7,3,2,13,8.7,No
+1463,61,Male,Divorced,Finance,Controller,1,4020,17,11,4,41,Yes,11,2,1,1,4,3,4,2,4,1,17,4.7,No
+1464,31,Non-Binary,Divorced,Clinical,Specialist,4,10112,1,1,1,7,Yes,10,2,4,2,4,1,3,7,3,3,11,4.9,No
+1465,31,Non-Binary,Married,Administration,Scheduling Coordinator,1,3532,5,2,0,12,No,50,1,3,2,2,2,4,5,1,1,12,6.9,No
+1466,33,Female,Married,Clinical,Physician,3,7391,1,0,1,9,No,33,1,3,4,1,4,4,9,4,0,16,7.5,Yes
+1467,23,Female,Divorced,Facilities,Environmental Services,4,11807,1,0,0,5,Yes,2,4,3,4,4,3,4,6,0,1,25,7.3,No
+1468,49,Female,Married,Clinical,Clinical Researcher,3,6346,22,14,4,22,No,45,1,4,4,2,3,1,0,1,2,17,4.3,No
+1469,43,Female,Divorced,Clinical,Resident,2,5915,16,1,3,25,Yes,45,4,3,2,1,3,2,8,0,1,11,6.1,Yes
+1470,27,Female,Married,Facilities,Safety Officer,4,10578,3,3,2,5,No,33,2,3,3,4,1,1,1,5,2,15,6.4,Yes
+1471,43,Non-Binary,Single,Administration,Admin Assistant,3,6851,14,8,0,14,Yes,20,4,3,4,3,1,3,0,2,1,13,8.2,No
+1472,56,Female,Single,Clinical,Resident,3,6791,16,13,4,26,No,49,3,4,1,4,1,1,3,6,3,15,9.1,No
+1473,27,Male,Divorced,Administration,Admin Assistant,1,2595,4,4,4,7,Yes,28,5,3,3,1,3,2,6,2,2,16,3.1,No
+1474,40,Non-Binary,Divorced,IT,Systems Administrator,2,4388,2,1,0,5,Yes,33,1,4,1,1,3,1,4,0,3,14,3.6,Yes
+1475,32,Non-Binary,Single,Clinical,Physician Assistant,2,4227,4,3,4,4,Yes,14,3,4,2,3,1,2,0,5,3,15,3.7,Yes
+1476,39,Male,Divorced,HR,Recruiter,2,4753,5,5,5,18,Yes,23,2,3,2,1,4,2,7,2,1,15,6.6,Yes
+1477,42,Non-Binary,Married,Clinical,Physician,2,6021,8,5,5,8,Yes,5,4,4,1,1,3,4,2,0,2,15,5.3,Yes
+1478,62,Non-Binary,Single,Nursing,Registered Nurse,5,11219,18,2,9,39,No,36,4,3,3,1,1,4,2,2,2,16,3.9,No
+1479,26,Non-Binary,Divorced,Clinical,Physician,2,4596,4,4,3,6,No,46,1,2,1,4,1,3,5,2,2,23,6.9,Yes
+1480,39,Non-Binary,Married,Clinical,Physician Assistant,1,3696,12,11,10,19,Yes,39,5,3,1,4,4,4,0,4,3,19,3.4,No
+1481,36,Female,Divorced,IT,IT Manager,2,5162,14,2,0,17,No,49,1,3,2,4,3,2,8,1,3,23,4.6,No
+1482,46,Non-Binary,Single,Administration,Admin Assistant,2,6465,24,22,21,28,No,25,1,4,1,1,1,4,1,1,2,11,5.5,No
+1483,52,Non-Binary,Single,Clinical,Specialist,2,6009,10,7,5,19,Yes,20,3,4,4,3,1,3,1,5,2,13,5.1,Yes
+1484,60,Male,Married,Clinical,Physician Assistant,1,3793,7,4,4,16,Yes,49,3,3,3,2,2,4,6,5,0,14,3.6,Yes
+1485,22,Non-Binary,Single,Clinical,Clinical Researcher,3,6062,0,0,0,0,Yes,45,4,3,2,2,1,2,2,1,2,25,5.2,Yes
+1486,58,Non-Binary,Divorced,IT,Health Informatics Analyst,4,8039,28,23,9,38,No,39,3,3,2,4,3,3,8,5,1,19,8.8,No
+1487,60,Female,Married,Clinical,Resident,1,2576,5,2,0,42,Yes,44,2,4,1,4,2,3,8,1,1,25,6.4,Yes
+1488,56,Non-Binary,Single,HR,Recruiter,1,2911,7,6,3,15,No,48,2,3,2,3,2,3,8,4,3,22,7.4,No
+1489,37,Non-Binary,Married,Clinical,Physician,4,13992,14,12,8,19,Yes,5,2,3,1,4,3,4,9,0,2,19,5.5,No
+1490,41,Non-Binary,Divorced,Clinical,Resident,1,2679,13,1,7,16,No,29,5,4,4,4,3,1,2,3,0,21,4.9,No
+1491,38,Female,Divorced,Clinical,Surgeon,2,5545,9,7,0,11,No,33,1,2,3,3,4,4,2,5,1,14,6.5,No
+1492,55,Non-Binary,Married,Nursing,Nurse Manager,2,4174,26,9,22,34,Yes,35,5,3,1,2,3,4,2,1,2,15,3.2,Yes
+1493,35,Male,Married,Facilities,Safety Officer,3,9907,11,7,3,16,Yes,15,3,3,3,4,2,3,5,3,0,23,9.5,Yes
+1494,44,Female,Single,Clinical,Physician,2,5576,12,8,0,14,Yes,29,3,3,3,1,2,3,0,2,0,24,8.4,Yes
+1495,29,Non-Binary,Married,Nursing,Registered Nurse,2,5153,7,6,1,9,Yes,17,2,4,3,1,4,1,4,1,3,19,4.0,Yes
+1496,50,Non-Binary,Single,Facilities,Maintenance Tech,5,17413,26,20,2,29,No,4,3,3,1,4,4,3,9,5,1,16,7.2,No
+1497,35,Male,Married,HR,HR Director,2,6131,4,4,0,13,No,49,4,3,3,1,4,4,7,3,3,19,3.8,No
+1498,60,Non-Binary,Single,Nursing,CNA,3,9039,26,14,13,40,No,41,3,4,4,4,2,4,3,1,1,14,9.0,Yes
+1499,26,Non-Binary,Divorced,Nursing,Nurse Practitioner,1,3561,2,2,1,6,Yes,45,4,2,3,1,1,1,2,3,2,15,3.6,Yes
+1500,56,Non-Binary,Married,Finance,Controller,1,3405,10,5,10,30,No,42,3,4,4,3,1,3,8,2,0,22,8.5,No
+1501,28,Male,Single,Clinical,Clinical Researcher,2,6370,3,1,0,4,Yes,36,1,4,1,2,1,2,0,6,2,17,7.0,Yes
+1502,23,Male,Single,Administration,Medical Records Clerk,4,11196,0,0,0,1,Yes,22,1,3,4,4,2,4,4,6,1,11,5.6,No
+1503,51,Male,Married,Clinical,Surgeon,1,3308,13,11,1,18,Yes,42,1,3,3,1,3,3,6,4,2,22,7.6,No
+1504,37,Female,Single,Administration,Office Manager,2,5001,10,5,5,15,No,38,4,4,4,4,2,2,2,6,3,15,3.5,No
+1505,39,Female,Single,Nursing,Nurse Practitioner,3,10260,14,12,11,14,Yes,38,3,4,4,3,4,1,8,4,2,25,4.2,No
+1506,56,Male,Single,Nursing,Nurse Practitioner,2,4183,16,9,0,31,No,25,3,3,4,4,1,3,0,3,1,16,6.3,No
+1507,22,Male,Single,HR,HR Director,2,4827,0,0,0,4,No,6,1,3,2,1,1,3,5,0,2,21,8.3,Yes
+1508,55,Female,Divorced,Facilities,Maintenance Tech,1,3777,27,12,19,29,No,49,1,3,2,3,1,3,5,6,0,15,4.0,No
+1509,57,Male,Single,Finance,Medical Biller,2,5982,21,16,5,33,No,25,5,4,4,2,4,4,7,1,1,18,4.7,No
+1510,31,Non-Binary,Divorced,Nursing,Nurse Practitioner,1,4119,6,3,0,7,No,1,2,1,1,2,4,3,4,6,1,21,7.4,Yes
+1511,55,Non-Binary,Married,IT,IT Manager,1,3234,18,10,14,35,No,43,1,3,2,1,4,1,3,0,0,21,9.2,No
+1512,24,Male,Divorced,Clinical,Physician Assistant,3,9922,2,0,2,2,No,13,2,3,3,4,3,3,3,1,3,18,3.7,No
+1513,40,Female,Single,Administration,Scheduling Coordinator,3,10381,2,2,1,18,No,49,1,2,3,3,4,3,6,5,3,22,7.6,No
+1514,25,Female,Divorced,Finance,Controller,4,9036,3,3,3,3,No,43,5,3,3,2,2,3,4,2,2,16,7.7,No
+1515,40,Female,Married,Clinical,Physician,2,6490,13,12,8,13,Yes,20,3,3,1,1,2,2,8,1,0,21,6.5,Yes
+1516,46,Male,Married,Nursing,Charge Nurse,4,13502,12,3,12,28,No,1,2,3,3,3,4,2,8,6,2,16,4.9,Yes
+1517,48,Non-Binary,Married,Nursing,Nurse Manager,5,19275,5,2,1,9,Yes,26,2,1,1,2,1,3,7,4,2,15,3.9,No
+1518,27,Non-Binary,Divorced,Clinical,Specialist,2,5602,5,1,2,9,Yes,14,2,2,4,3,2,1,4,0,1,24,7.9,No
+1519,43,Male,Married,Nursing,Nurse Manager,3,8923,1,0,0,11,Yes,3,5,3,4,4,2,3,4,5,0,13,7.7,No
+1520,55,Female,Married,Administration,Office Manager,3,6168,21,5,7,26,No,39,1,1,4,3,4,3,2,6,2,25,4.4,No
+1521,56,Male,Single,Facilities,Safety Officer,2,5293,19,0,13,38,No,2,5,3,4,4,2,4,9,1,1,23,3.4,Yes
+1522,52,Male,Single,Clinical,Resident,1,2810,20,7,19,24,Yes,47,2,2,2,3,3,2,8,6,0,12,8.1,No
+1523,59,Non-Binary,Single,Clinical,Physician,3,9160,22,0,10,32,Yes,18,1,2,4,2,4,3,2,3,0,16,4.4,Yes
+1524,38,Female,Married,Clinical,Physician,1,3677,13,12,6,13,No,25,2,3,3,4,1,1,2,0,2,19,8.2,No
+1525,42,Non-Binary,Divorced,Facilities,Maintenance Tech,2,5429,19,19,4,24,No,43,5,3,4,1,2,3,4,4,3,15,3.6,Yes
+1526,47,Male,Married,Nursing,Nurse Manager,3,10321,11,2,11,20,Yes,21,3,4,2,3,4,4,4,0,0,14,4.8,No
+1527,33,Non-Binary,Married,Nursing,Nurse Practitioner,5,11750,1,0,0,7,Yes,44,4,4,1,1,2,4,4,3,1,13,4.7,Yes
+1528,39,Male,Divorced,Clinical,Clinical Researcher,3,9470,17,12,5,21,No,18,4,4,2,3,1,4,3,3,0,24,5.5,No
+1529,43,Non-Binary,Married,Clinical,Specialist,4,10142,6,1,1,19,No,32,4,4,1,4,4,3,8,3,1,24,8.3,Yes
+1530,54,Male,Single,Clinical,Physician,3,6689,19,9,2,27,No,45,4,3,3,3,4,1,9,6,0,18,4.9,Yes
+1531,25,Female,Married,Administration,Admin Assistant,2,5557,2,1,0,3,Yes,19,5,3,2,1,4,1,2,6,2,23,4.4,Yes
+1532,42,Female,Single,Nursing,Nurse Practitioner,2,4923,16,9,11,22,Yes,47,4,2,4,4,1,4,7,6,0,23,6.2,Yes
+1533,49,Female,Married,IT,IT Support,1,3290,4,3,2,24,No,6,1,4,1,2,1,4,1,1,1,14,4.6,Yes
+1534,35,Female,Divorced,Administration,Office Manager,2,6556,0,0,0,14,No,47,3,1,1,2,4,2,8,5,0,11,3.8,No
+1535,53,Male,Divorced,Clinical,Physician,3,8583,28,25,18,29,No,4,1,3,3,2,1,4,3,2,0,19,6.7,No
+1536,61,Non-Binary,Married,Clinical,Resident,2,5087,27,23,3,43,No,34,2,4,1,3,4,3,8,2,0,13,4.3,Yes
+1537,25,Female,Single,Facilities,Safety Officer,1,3522,2,0,2,7,Yes,9,2,3,1,4,2,4,4,6,1,16,3.7,Yes
+1538,28,Non-Binary,Divorced,Administration,Office Manager,1,3929,6,2,6,7,Yes,12,4,4,1,1,3,3,3,5,0,20,4.9,Yes
+1539,54,Male,Married,Administration,Admin Assistant,3,10019,8,4,2,18,Yes,21,5,2,3,1,1,4,1,2,1,19,6.4,Yes
+1540,37,Male,Divorced,Facilities,Safety Officer,4,12736,13,10,6,14,No,20,1,4,1,4,2,4,6,1,2,11,7.9,Yes
+1541,57,Male,Married,Clinical,Clinical Researcher,3,7568,5,0,3,23,Yes,23,2,2,1,3,1,1,4,4,1,13,3.3,No
+1542,33,Male,Single,Facilities,Safety Officer,2,5179,6,0,4,6,Yes,45,3,4,4,3,1,1,6,2,1,23,5.7,Yes
+1543,47,Male,Divorced,IT,IT Support,3,7364,17,10,5,20,No,50,4,4,2,1,2,1,7,1,3,12,8.0,No
+1544,31,Female,Divorced,Facilities,Environmental Services,2,5287,9,9,7,9,Yes,17,3,3,3,3,1,3,6,0,3,11,5.4,No
+1545,22,Male,Married,Administration,Medical Records Clerk,4,8200,0,0,0,3,No,45,2,4,4,1,1,2,0,4,3,15,9.3,No
+1546,31,Non-Binary,Married,IT,IT Manager,2,5050,4,1,2,6,Yes,28,5,3,1,1,4,3,0,4,0,21,5.6,Yes
+1547,34,Non-Binary,Divorced,HR,Benefits Coordinator,1,4094,3,1,2,15,No,21,2,4,2,1,2,1,9,6,0,23,4.6,Yes
+1548,26,Female,Single,Nursing,Charge Nurse,1,3139,3,0,3,8,No,16,2,4,4,3,1,3,1,3,2,24,6.9,Yes
+1549,29,Non-Binary,Divorced,Clinical,Surgeon,3,10009,2,0,0,6,No,13,5,3,1,3,1,2,3,6,2,13,6.1,Yes
+1550,60,Non-Binary,Divorced,Clinical,Physician,4,9218,14,1,7,16,Yes,10,4,3,2,3,2,1,6,1,1,16,4.7,No
+1551,45,Male,Married,Clinical,Clinical Researcher,4,11013,3,0,1,10,No,46,1,2,2,3,1,4,7,3,0,19,8.4,Yes
+1552,44,Male,Married,Nursing,Registered Nurse,3,6831,0,0,0,23,No,6,5,3,3,2,2,4,9,3,1,11,7.3,Yes
+1553,42,Female,Single,Clinical,Specialist,3,8117,17,7,8,17,Yes,15,1,4,4,3,2,2,6,0,0,14,4.8,Yes
+1554,59,Non-Binary,Divorced,Clinical,Resident,1,4121,5,4,0,33,Yes,28,5,3,3,1,2,4,0,1,1,24,8.0,Yes
+1555,44,Male,Married,Clinical,Surgeon,1,2482,19,9,13,25,Yes,4,5,4,3,3,1,2,6,5,2,12,6.7,Yes
+1556,62,Male,Divorced,Clinical,Surgeon,2,6344,7,0,7,28,Yes,15,4,3,4,3,3,1,3,1,3,17,5.6,Yes
+1557,49,Male,Divorced,Nursing,Charge Nurse,2,4239,20,20,4,30,No,22,2,2,1,4,1,1,7,5,0,13,4.3,No
+1558,26,Male,Married,Clinical,Physician Assistant,3,9135,4,2,1,7,Yes,20,2,3,2,2,1,4,8,5,0,18,9.1,Yes
+1559,47,Female,Divorced,Nursing,Nurse Practitioner,3,9032,6,1,2,6,Yes,42,2,4,4,1,2,1,3,2,2,23,3.8,Yes
+1560,52,Male,Single,Clinical,Resident,2,4414,15,2,11,15,No,11,3,3,3,3,1,1,8,6,2,23,8.9,No
+1561,58,Non-Binary,Married,Nursing,Charge Nurse,1,4057,8,7,8,14,Yes,48,5,3,4,2,4,4,2,6,3,24,5.4,No
+1562,35,Male,Single,HR,HR Director,2,6945,9,7,2,12,No,31,1,4,3,3,3,3,4,6,0,15,7.0,Yes
+1563,55,Female,Divorced,Nursing,Nurse Manager,2,4007,22,6,1,30,No,23,5,3,1,2,2,4,3,0,1,20,4.8,Yes
+1564,61,Female,Divorced,Facilities,Environmental Services,1,3026,8,2,1,32,Yes,49,2,3,1,1,1,1,1,5,3,18,8.6,Yes
+1565,39,Female,Single,Nursing,CNA,3,10074,13,13,10,15,No,50,5,2,4,3,1,2,9,6,0,12,4.4,No
+1566,26,Non-Binary,Single,Facilities,Facilities Manager,3,9171,1,1,1,4,No,27,2,3,4,2,3,2,0,6,1,25,5.2,Yes
+1567,53,Female,Divorced,HR,Benefits Coordinator,5,16780,15,10,11,24,No,49,3,3,3,3,3,4,1,0,2,23,8.2,No
+1568,47,Female,Married,Facilities,Facilities Manager,1,2701,0,0,0,28,Yes,28,3,4,1,2,2,4,7,0,2,22,5.7,No
+1569,46,Non-Binary,Married,Administration,Office Manager,3,7292,21,14,16,23,No,43,2,3,1,4,3,2,8,0,3,18,4.6,No
+1570,30,Male,Married,Clinical,Physician,1,4131,5,3,1,11,Yes,40,2,3,3,3,1,4,2,3,2,17,9.1,No
+1571,34,Female,Single,Facilities,Facilities Manager,1,3184,0,0,0,0,No,26,2,3,2,2,2,4,7,5,3,18,5.1,Yes
+1572,55,Female,Single,Clinical,Clinical Researcher,1,3456,15,4,2,19,No,16,3,3,4,3,1,1,6,1,1,16,5.4,No
+1573,58,Male,Single,Clinical,Specialist,3,6817,9,4,9,16,No,24,3,3,3,4,3,2,2,3,0,19,5.3,Yes
+1574,59,Male,Divorced,Administration,Medical Records Clerk,3,9297,30,11,27,40,No,17,1,4,4,3,3,2,4,1,0,13,4.3,No
+1575,29,Female,Married,Clinical,Specialist,1,3065,7,5,1,8,Yes,35,1,4,1,3,2,1,5,4,0,21,8.0,Yes
+1576,38,Female,Married,Clinical,Physician Assistant,4,13975,16,15,13,18,Yes,8,2,3,1,2,1,1,5,2,3,25,9.4,Yes
+1577,33,Male,Married,Nursing,Nurse Manager,1,4042,10,10,6,10,No,29,2,3,4,4,2,2,6,4,1,23,6.4,No
+1578,62,Female,Single,Clinical,Specialist,3,8329,3,1,2,43,No,24,2,4,2,4,1,3,8,2,2,24,5.7,No
+1579,39,Male,Divorced,Administration,Office Manager,3,9463,12,4,4,13,Yes,48,4,2,1,1,4,3,5,3,2,13,9.4,Yes
+1580,48,Male,Divorced,Administration,Admin Assistant,2,5253,9,0,3,19,No,31,4,4,2,3,4,4,5,1,2,14,8.6,No
+1581,48,Non-Binary,Single,Nursing,Nurse Practitioner,4,9377,6,6,0,17,No,41,1,1,1,4,2,4,9,0,2,21,6.0,Yes
+1582,31,Non-Binary,Single,Nursing,CNA,3,9705,5,5,4,8,Yes,12,5,1,2,3,4,2,2,1,2,12,8.0,No
+1583,37,Male,Single,Clinical,Physician Assistant,3,8264,7,7,6,9,No,42,4,3,2,2,2,2,2,0,3,22,6.1,No
+1584,59,Female,Married,HR,HR Director,2,5980,21,1,5,23,No,7,3,3,3,1,4,3,6,1,3,13,7.0,No
+1585,25,Non-Binary,Single,Administration,Office Manager,3,9765,0,0,0,2,Yes,21,4,3,2,1,4,2,3,4,2,18,7.8,Yes
+1586,56,Female,Single,Administration,Admin Assistant,2,6038,4,2,1,14,Yes,33,2,4,1,3,1,2,1,6,0,24,4.7,Yes
+1587,36,Female,Divorced,Clinical,Physician Assistant,2,5546,14,14,1,16,Yes,39,1,4,3,3,4,4,2,0,1,25,5.0,No
+1588,28,Male,Married,Administration,Medical Records Clerk,3,8425,3,0,2,6,No,33,4,3,3,3,1,2,0,2,1,12,7.0,No
+1589,56,Female,Divorced,Administration,Office Manager,2,4707,16,10,11,20,No,13,4,4,1,2,3,2,9,4,0,14,6.2,Yes
+1590,27,Female,Married,Facilities,Maintenance Tech,1,2651,0,0,0,5,No,50,2,3,3,1,4,2,7,1,2,12,5.5,No
+1591,30,Female,Divorced,IT,IT Support,1,2666,1,0,0,10,No,32,3,4,3,2,1,3,9,3,1,19,5.3,Yes
+1592,47,Non-Binary,Single,Administration,Office Manager,2,4194,14,9,6,23,No,37,2,3,2,1,2,2,0,3,2,23,6.7,No
+1593,24,Non-Binary,Married,HR,Recruiter,3,7455,0,0,0,5,Yes,11,2,4,1,1,1,2,2,0,3,23,6.7,Yes
+1594,52,Female,Married,Facilities,Environmental Services,2,4412,7,6,4,20,No,38,2,3,2,2,1,4,4,0,1,21,4.2,No
+1595,48,Female,Divorced,HR,Benefits Coordinator,3,6838,17,3,6,30,Yes,20,5,3,3,3,3,2,8,2,3,23,3.3,Yes
+1596,51,Non-Binary,Divorced,Administration,Medical Records Clerk,2,4689,7,1,3,27,Yes,9,4,4,3,2,2,2,6,6,0,20,4.4,No
+1597,39,Female,Divorced,Facilities,Facilities Manager,3,7093,3,1,1,11,Yes,26,1,3,2,2,4,3,1,1,2,16,4.4,No
+1598,54,Male,Divorced,Finance,Medical Biller,2,6085,4,1,3,8,Yes,46,4,3,1,2,3,2,7,1,1,12,8.0,Yes
+1599,58,Male,Divorced,Clinical,Specialist,1,3921,19,16,7,26,No,17,2,2,1,2,3,4,6,2,1,25,9.0,Yes
+1600,32,Male,Divorced,Nursing,Registered Nurse,2,6134,7,3,7,8,Yes,8,2,1,2,1,1,2,2,5,0,25,7.7,Yes
