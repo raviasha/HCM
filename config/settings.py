@@ -25,8 +25,8 @@ DATA_BACKEND: str = "pandas"  # Future: "duckdb"
 
 # --- API ---
 API_HOST: str = "0.0.0.0"
-API_PORT: int = 8000
-API_BASE_URL: str = f"http://localhost:{API_PORT}"
+API_PORT: int = int(os.getenv("PORT", 8000))
+API_BASE_URL: str = os.getenv("API_BASE_URL", f"http://localhost:{API_PORT}")
 
 # --- Streamlit ---
 STREAMLIT_PORT: int = 8501
