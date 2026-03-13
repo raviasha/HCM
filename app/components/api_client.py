@@ -4,15 +4,43 @@ Centralizes request logic and error handling.
 """
 
 import httpx
+import streamlit as st
 from typing import Any, Optional
-
-from config.settings import API_BASE_URL
 
 TIMEOUT = httpx.Timeout(300.0, connect=10.0)  # 5 min for AI generation
 
 
+def _base_url() -> str:
+    """Resolve API base URL: st.secrets → env var → localhost fallback."""
+    try:
+        return st.secrets["API_BASE_URL"].rstrip("/")
+    except (KeyError, AttributeError):
+        pass
+    from config.settings import API_BASE_URL
+    return API_BASE_URL.rstrip("/")
+
+
 def _url(path: str) -> str:
-    return f"{API_BASE_URL}{path}"
+    return f"{_base_url()}{path}"
+
+
+def check_api_health() -> tuple[bool, str]:
+    """Return (is_healthy, message). Used to surface config errors early."""
+    url = _base_url()
+    try:
+        with httpx.Client(timeout=httpx.Timeout(10.0)) as client:
+            resp = client.get(f"{url}/health")
+            resp.raise_for_status()
+            return True, url
+    except httpx.ConnectError:
+        return False, (
+            f"Cannot reach the API at **{url}**.\n\n"
+            "If you are on Streamlit Cloud, add `API_BASE_URL` to your app "
+            "secrets pointing to your Render backend URL "
+            "(e.g. `https://hcm-api.onrender.com`)."
+        )
+    except Exception as e:
+        return False, f"API health check failed: {e}"
 
 
 # ── Upload endpoints ─────────────────────────────────────────────────

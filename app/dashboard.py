@@ -56,6 +56,20 @@ if "company_name" not in st.session_state:
     st.session_state.company_name = ""
 if "upload_status" not in st.session_state:
     st.session_state.upload_status = {"csv": False, "json": False}
+if "api_ok" not in st.session_state:
+    st.session_state.api_ok = None
+
+# ── API connectivity check ────────────────────────────────────────────
+if st.session_state.api_ok is None:
+    healthy, msg = api_client.check_api_health()
+    st.session_state.api_ok = healthy
+    if not healthy:
+        st.session_state.api_error = msg
+
+if not st.session_state.api_ok:
+    st.error(f"⚠️ **API Unreachable**\n\n{st.session_state.get('api_error', '')}")
+    st.info("Once the API URL is configured, reload this page.")
+    st.stop()
 
 
 # ── Sidebar ──────────────────────────────────────────────────────────
