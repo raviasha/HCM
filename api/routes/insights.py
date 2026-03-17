@@ -10,6 +10,8 @@ performance, etc.) is detected dynamically from the CSV schema.
 
 from fastapi import APIRouter, HTTPException
 
+import logging
+
 from api.models.schemas import (
     GenerateInsightsRequest,
     InsightResponse,
@@ -26,6 +28,8 @@ router = APIRouter(prefix="/api/insights", tags=["AI Insights"])
 
 # In-memory cache for generated insights (per company)
 _insights_cache: dict[str, InsightResponse] = {}
+
+logger = logging.getLogger(__name__)
 
 
 @router.post("/generate", response_model=InsightResponse)
@@ -64,6 +68,21 @@ async def generate_insights(request: GenerateInsightsRequest):
             status_code=400,
             detail=f"No feedback data for '{company}'. Upload JSON first.",
         )
+
+    try:
+        return await _run_pipeline(company, backend)
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.exception("Pipeline failed for %s", company)
+        raise HTTPException(
+            status_code=500,
+            detail=f"Analysis pipeline error: {type(e).__name__}: {str(e)[:500]}",
+        )
+
+
+async def _run_pipeline(company: str, backend) -> InsightResponse:
+    """Run the full 11-step analysis pipeline."""
 
     # ── Step 1: Dynamic schema analysis via GPT-4o ──
 
