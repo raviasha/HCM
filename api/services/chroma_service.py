@@ -51,15 +51,58 @@ def ingest_feedback(company_name: str, feedback_list: list[dict]) -> int:
     Embed and store all feedback entries for a company.
     Clears any existing data for this company first.
 
-    Args:
-        company_name: Name of the company (used to scope the collection).
-        feedback_list: List of feedback dicts with keys:
-            feedback_id, employee_id, feedback_type, date,
-            question_prompt, response_text, department
+    Dynamically detects JSON keys — supports varying schemas across companies.
+    The document text, ID, and department/unit fields are auto-detected from
+    the first entry's keys.
 
     Returns:
         Number of documents ingested.
     """
+    if not feedback_list:
+        return 0
+
+    # ── Auto-detect field names from the first entry ─────────────────
+    sample = feedback_list[0]
+    keys = set(sample.keys())
+
+    # Text field: the employee's response / comment / answer
+    _TEXT_CANDIDATES = ["response_text", "answer", "comment", "text", "feedback_text", "response"]
+    text_key = next((k for k in _TEXT_CANDIDATES if k in keys), None)
+    if text_key is None:
+        # Fallback: pick the longest string value
+        text_key = max(
+            (k for k, v in sample.items() if isinstance(v, str) and len(v) > 20),
+            key=lambda k: len(str(sample[k])),
+            default=None,
+        )
+    if text_key is None:
+        raise ValueError("Cannot detect text/response field in feedback JSON")
+
+    # ID field
+    _ID_CANDIDATES = ["feedback_id", "id", "entry_id"]
+    id_key = next((k for k in _ID_CANDIDATES if k in keys), None)
+
+    # Department / organizational unit field
+    _DEPT_CANDIDATES = ["department", "dept", "unit", "team", "group", "store_region"]
+    dept_key = next((k for k in _DEPT_CANDIDATES if k in keys), None)
+
+    # Employee ID field
+    _EMP_CANDIDATES = ["employee_id", "staff_id", "staff_number", "emp_id", "empid"]
+    emp_key = next((k for k in _EMP_CANDIDATES if k in keys), None)
+
+    # Feedback type / channel field
+    _TYPE_CANDIDATES = ["feedback_type", "survey_type", "channel", "type", "source"]
+    type_key = next((k for k in _TYPE_CANDIDATES if k in keys), None)
+
+    # Date field
+    _DATE_CANDIDATES = ["date", "submitted_at", "timestamp", "created_at"]
+    date_key = next((k for k in _DATE_CANDIDATES if k in keys), None)
+
+    # Question / prompt field
+    _PROMPT_CANDIDATES = ["question_prompt", "question", "prompt"]
+    prompt_key = next((k for k in _PROMPT_CANDIDATES if k in keys), None)
+
+    # ── Ingest ───────────────────────────────────────────────────────
     client = _get_client()
     col_name = _collection_name(company_name)
 
@@ -74,21 +117,32 @@ def ingest_feedback(company_name: str, feedback_list: list[dict]) -> int:
         embedding_function=_get_embedding_fn(),
     )
 
-    # Prepare batch data
     ids = []
     documents = []
     metadatas = []
 
-    for entry in feedback_list:
-        ids.append(str(entry["feedback_id"]))
-        documents.append(entry["response_text"])
-        metadatas.append({
-            "employee_id": str(entry["employee_id"]),
-            "department": entry["department"],
-            "feedback_type": entry["feedback_type"],
-            "date": entry["date"],
-            "question_prompt": entry.get("question_prompt", ""),
-        })
+    for idx, entry in enumerate(feedback_list):
+        doc_id = str(entry[id_key]) if id_key else str(idx + 1)
+        text = str(entry.get(text_key, ""))
+        if not text.strip():
+            continue
+
+        # Build metadata with normalized keys so downstream code works
+        meta: dict = {}
+        if emp_key:
+            meta["employee_id"] = str(entry.get(emp_key, ""))
+        if dept_key:
+            meta["department"] = str(entry.get(dept_key, ""))
+        if type_key:
+            meta["feedback_type"] = str(entry.get(type_key, ""))
+        if date_key:
+            meta["date"] = str(entry.get(date_key, ""))
+        if prompt_key:
+            meta["question_prompt"] = str(entry.get(prompt_key, ""))
+
+        ids.append(doc_id)
+        documents.append(text)
+        metadatas.append(meta)
 
     # ChromaDB supports batch upsert (max recommended ~5000 per call)
     batch_size = 500

@@ -5,7 +5,7 @@ Centralizes request logic and error handling.
 
 import httpx
 import streamlit as st
-from typing import Any, Optional
+from typing import Optional
 
 TIMEOUT = httpx.Timeout(300.0, connect=10.0)  # 5 min for AI generation
 
@@ -45,11 +45,11 @@ def check_api_health() -> tuple[bool, str]:
 
 # ── Upload endpoints ─────────────────────────────────────────────────
 
-def upload_attrition_csv(file_bytes: bytes, filename: str, company_name: str) -> dict:
-    """Upload attrition CSV to FastAPI."""
+def upload_csv(file_bytes: bytes, filename: str, company_name: str) -> dict:
+    """Upload structured CSV data to FastAPI."""
     with httpx.Client(timeout=TIMEOUT) as client:
         resp = client.post(
-            _url("/api/attrition/upload"),
+            _url("/api/data/upload-csv"),
             files={"file": (filename, file_bytes, "text/csv")},
             data={"company_name": company_name},
         )
@@ -58,10 +58,10 @@ def upload_attrition_csv(file_bytes: bytes, filename: str, company_name: str) ->
 
 
 def upload_feedback_json(file_bytes: bytes, filename: str, company_name: str) -> dict:
-    """Upload VoE feedback JSON to FastAPI."""
+    """Upload qualitative feedback JSON to FastAPI."""
     with httpx.Client(timeout=TIMEOUT) as client:
         resp = client.post(
-            _url("/api/feedback/upload"),
+            _url("/api/data/upload-json"),
             files={"file": (filename, file_bytes, "application/json")},
             data={"company_name": company_name},
         )
@@ -109,23 +109,16 @@ def get_cached_insights(company_name: str) -> Optional[dict]:
         return None
 
 
-# ── Individual data endpoints ────────────────────────────────────────
-
-def get_attrition_by_department(company_name: str) -> list[dict]:
+def ask_question(company_name: str, question: str, conversation_history: list[dict] = None) -> dict:
+    """Send a follow-up question to the AI Q&A endpoint."""
     with httpx.Client(timeout=TIMEOUT) as client:
-        resp = client.get(
-            _url("/api/attrition/by-department"),
-            params={"company_name": company_name},
-        )
-        resp.raise_for_status()
-        return resp.json()
-
-
-def get_kpis(company_name: str) -> dict:
-    with httpx.Client(timeout=TIMEOUT) as client:
-        resp = client.get(
-            _url("/api/attrition/kpis"),
-            params={"company_name": company_name},
+        resp = client.post(
+            _url("/api/insights/ask"),
+            json={
+                "company_name": company_name,
+                "question": question,
+                "conversation_history": conversation_history or [],
+            },
         )
         resp.raise_for_status()
         return resp.json()

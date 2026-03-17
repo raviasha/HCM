@@ -3,12 +3,13 @@ OpenAI service for AI-powered insight generation.
 
 Handles all GPT-4o interactions:
   - Sentiment analysis of employee feedback
-  - Theme/topic extraction from VoE data
+  - Theme/topic extraction
   - Executive summary generation
-  - Retention recommendations per department
-  - Sentiment-attrition correlation narrative
+  - HCM recommendations per department
+  - Sentiment-target metric correlation narrative
 
-All prompts run server-side (no user prompt needed).
+All prompts are domain-generic — the AI adapts to the dataset's
+target variable (attrition, engagement, performance, etc.)
 """
 
 from __future__ import annotations
@@ -142,11 +143,10 @@ def extract_themes(
 
 def generate_executive_summary(
     company_name: str,
-    summary_kpis: dict,
-    attrition_by_dept: list[dict],
-    risk_factors: list[dict],
+    structured_results: dict,
     sentiment_by_dept: list[dict],
     themes: list[dict],
+    target_info: dict,
 ) -> str:
     """
     Generate a narrative executive summary from all analytical outputs.
@@ -156,9 +156,8 @@ def generate_executive_summary(
 
     user = (
         f"# {company_name} — Workforce Analytics Data\n\n"
-        f"## Summary KPIs\n{json.dumps(summary_kpis, indent=2)}\n\n"
-        f"## Attrition by Department\n{json.dumps(attrition_by_dept, indent=2)}\n\n"
-        f"## Top Risk Factors\n{json.dumps(risk_factors[:8], indent=2)}\n\n"
+        f"## Target Variable\n{json.dumps(target_info, indent=2)}\n\n"
+        f"## Structured Analysis Results\n{json.dumps(structured_results, indent=2, default=str)}\n\n"
         f"## Sentiment by Department\n{json.dumps(sentiment_by_dept, indent=2)}\n\n"
         f"## Top Themes from Employee Feedback\n{json.dumps(themes, indent=2)}\n"
     )
@@ -168,24 +167,26 @@ def generate_executive_summary(
 
 # ── Retention Recommendations ────────────────────────────────────────
 
-def generate_retention_recommendations(
+def generate_recommendations(
     company_name: str,
     department_stats: list[dict],
     sentiment_by_dept: list[dict],
     themes: list[dict],
+    target_info: dict,
 ) -> list[dict]:
     """
-    Generate per-department retention recommendations.
+    Generate per-department HCM recommendations.
 
     Returns list of dicts:
         [{"department": "Engineering", "risk_level": "High",
           "key_issues": ["Burnout", "Career stagnation"],
           "recommendations": ["Implement ...", "Create ..."]}, ...]
     """
-    system = _prompt("retention_recommendations")
+    system = _prompt("recommendations")
 
     user = (
         f"Company: {company_name}\n\n"
+        f"## Target Variable\n{json.dumps(target_info, indent=2)}\n\n"
         f"## Department Statistics\n{json.dumps(department_stats, indent=2)}\n\n"
         f"## Sentiment by Department\n{json.dumps(sentiment_by_dept, indent=2)}\n\n"
         f"## Top Feedback Themes\n{json.dumps(themes, indent=2)}\n"
@@ -199,24 +200,303 @@ def generate_retention_recommendations(
 
 def analyze_correlations(
     company_name: str,
-    attrition_by_dept: list[dict],
+    group_by_dept: list[dict],
     sentiment_by_dept: list[dict],
+    target_info: dict,
 ) -> list[dict]:
     """
-    Analyze the correlation between sentiment scores and attrition rates
+    Analyze the correlation between sentiment scores and the target metric
     across departments. Provide a narrative for each department.
 
     Returns list of dicts:
-        [{"department": "Engineering", "attrition_rate": 0.45,
+        [{"department": "Engineering", "target_rate": 0.45,
           "avg_sentiment_score": -0.25, "narrative": "..."}, ...]
     """
     system = _prompt("correlations")
 
     user = (
         f"Company: {company_name}\n\n"
-        f"## Attrition by Department\n{json.dumps(attrition_by_dept, indent=2)}\n\n"
+        f"## Target Variable\n{json.dumps(target_info, indent=2)}\n\n"
+        f"## Target Metric by Department\n{json.dumps(group_by_dept, indent=2)}\n\n"
         f"## Sentiment by Department\n{json.dumps(sentiment_by_dept, indent=2)}\n"
     )
 
     result = _chat_json(system, user)
     return result.get("correlations", [])
+
+
+# ── Dynamic Schema Analysis ──────────────────────────────────────────
+
+def analyze_csv_schema(metadata: dict) -> dict:
+    """
+    Ask GPT-4o to analyze CSV column metadata and return a structured
+    column mapping (attrition col, department col, numeric cols, etc.).
+    """
+    system = _prompt("schema_analysis")
+
+    user = (
+        "Analyze this HR dataset and identify the role of each column.\n\n"
+        f"## Columns & Types\n{json.dumps(metadata['dtypes'], indent=2)}\n\n"
+        f"## Shape\n{json.dumps(metadata['shape'])}\n\n"
+        f"## Sample Rows (first 5)\n{json.dumps(metadata['sample_rows'], indent=2, default=str)}\n\n"
+        f"## Unique Value Counts\n{json.dumps(metadata['unique_counts'], indent=2)}\n\n"
+        f"## Null Counts\n{json.dumps(metadata['null_counts'], indent=2)}\n"
+    )
+
+    return _chat_json(system, user)
+
+
+def generate_analysis_plan(
+    metadata: dict,
+    column_mapping: dict,
+) -> list[dict]:
+    """
+    Ask GPT-4o to generate a dynamic analysis plan based on the
+    schema metadata and column mapping.
+
+    Returns list of analysis step dicts.
+    """
+    system = _prompt("analysis_plan")
+
+    user = (
+        "Plan the analyses for this HR dataset.\n\n"
+        f"## Column Mapping\n{json.dumps(column_mapping, indent=2)}\n\n"
+        f"## Columns & Types\n{json.dumps(metadata['dtypes'], indent=2)}\n\n"
+        f"## Shape\n{json.dumps(metadata['shape'])}\n\n"
+        f"## Sample Rows (first 5)\n{json.dumps(metadata['sample_rows'], indent=2, default=str)}\n\n"
+        f"## Unique Value Counts\n{json.dumps(metadata['unique_counts'], indent=2)}\n"
+    )
+
+    result = _chat_json(system, user)
+    return result.get("analyses", [])
+
+
+# ── Dynamic Dashboard Specification ──────────────────────────────────
+
+def generate_dashboard_spec(
+    company_name: str,
+    structured_results: dict,
+    sentiment_by_dept: list[dict],
+    themes: list[dict],
+    correlations: list[dict],
+    target_info: dict,
+) -> dict:
+    """
+    Ask GPT-4o to generate a complete dashboard specification
+    (KPIs, chart sections, recommendations) from all analysis results.
+
+    Returns: {"kpis": [...], "sections": [...], "recommendations": [...]}
+    """
+    system = _prompt("generate_dashboard")
+
+    user = (
+        f"Company: {company_name}\n\n"
+        f"## Target Variable\n"
+        f"{json.dumps(target_info, indent=2)}\n\n"
+        f"## Structured Analysis Results\n"
+        f"{json.dumps(structured_results, indent=2, default=str)}\n\n"
+        f"## Sentiment by Department\n"
+        f"{json.dumps(sentiment_by_dept, indent=2, default=str)}\n\n"
+        f"## Feedback Themes\n"
+        f"{json.dumps(themes, indent=2, default=str)}\n\n"
+        f"## Sentiment–Target Metric Correlations\n"
+        f"{json.dumps(correlations, indent=2, default=str)}\n"
+    )
+
+    result = _chat_json(system, user)
+    return {
+        "kpis": result.get("kpis", []),
+        "sections": result.get("sections", []),
+        "recommendations": result.get("recommendations", []),
+    }
+
+
+# ── Targeted Feedback Query Formulation ──────────────────────────────
+
+def formulate_feedback_queries(
+    company_name: str,
+    group_by_dept: list[dict],
+    risk_factors: list[dict],
+    department_stats: list[dict],
+) -> dict[str, str]:
+    """
+    Ask GPT-4o to formulate a semantic search query per department
+    based on structured data findings.
+
+    Returns: {"Engineering": "career growth promotion frustration ...", ...}
+    """
+    system = _prompt("query_formulation")
+
+    user = (
+        f"Company: {company_name}\n\n"
+        f"## Target Metric by Department\n{json.dumps(group_by_dept, indent=2)}\n\n"
+        f"## Top Risk/Influence Factors\n"
+        f"{json.dumps(risk_factors[:8], indent=2)}\n\n"
+        f"## Department Stats\n{json.dumps(department_stats, indent=2)}\n"
+    )
+
+    result = _chat_json(system, user)
+    return {
+        item["department"]: item["query"]
+        for item in result.get("queries", [])
+    }
+
+
+# ── Interactive Q&A with Tool Calling ────────────────────────────────
+
+_ASK_TOOLS = [
+    {
+        "type": "function",
+        "function": {
+            "name": "query_structured_data",
+            "description": (
+                "Query the employee CSV data for structured statistics."
+            ),
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "query_type": {
+                        "type": "string",
+                        "enum": [
+                            "kpis", "group_by_department", "risk_factors",
+                            "department_stats", "group_by_factor",
+                        ],
+                        "description": "Type of structured query to run.",
+                    },
+                    "factor": {
+                        "type": "string",
+                        "description": (
+                            "Column name for group_by_factor "
+                            "(e.g. 'Age', 'MonthlyIncome', 'YearsAtCompany')."
+                        ),
+                    },
+                },
+                "required": ["query_type"],
+            },
+        },
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "search_feedback",
+            "description": (
+                "Semantic search over employee feedback "
+                "stored in a vector database."
+            ),
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "query": {
+                        "type": "string",
+                        "description": "Natural language search query.",
+                    },
+                    "department": {
+                        "type": "string",
+                        "description": "Optional department filter.",
+                    },
+                    "n_results": {
+                        "type": "integer",
+                        "description": "Number of results (default 15).",
+                    },
+                },
+                "required": ["query"],
+            },
+        },
+    },
+]
+
+
+def ask_question(
+    company_name: str,
+    question: str,
+    insights_context: str,
+    conversation_history: list[dict],
+    data_backend,
+) -> dict:
+    """
+    Interactive Q&A with tool calling. GPT-4o can call back into
+    pandas (structured data) and ChromaDB (feedback search) as needed.
+
+    Returns: {"answer": str, "chart_spec": dict|None, "sources": list[str]}
+    """
+    from api.services import chroma_service
+
+    system = (
+        _prompt("ask_question")
+        + f"\n\n## Cached Insights Context\n{insights_context}"
+    )
+
+    messages: list[dict] = [{"role": "system", "content": system}]
+    messages.extend(conversation_history)
+    messages.append({"role": "user", "content": question})
+
+    client = _get_client()
+    sources: set[str] = set()
+    choice = None
+
+    # Agentic loop — allow up to 5 tool-call rounds
+    for _ in range(5):
+        response = client.chat.completions.create(
+            model=CHAT_MODEL,
+            temperature=0.2,
+            messages=messages,
+            tools=_ASK_TOOLS,
+            response_format={"type": "json_object"},
+        )
+
+        choice = response.choices[0]
+
+        if not choice.message.tool_calls:
+            messages.append(choice.message)
+            break
+
+        # Process tool calls
+        messages.append(choice.message)
+
+        for tool_call in choice.message.tool_calls:
+            fn_name = tool_call.function.name
+            args = json.loads(tool_call.function.arguments)
+
+            if fn_name == "query_structured_data":
+                sources.add("structured_data")
+                result = data_backend.query(
+                    company_name,
+                    args["query_type"],
+                    args.get("factor", ""),
+                )
+            elif fn_name == "search_feedback":
+                sources.add("feedback")
+                raw = chroma_service.query_feedback(
+                    company_name=company_name,
+                    query_text=args["query"],
+                    department=args.get("department"),
+                    n_results=args.get("n_results", 15),
+                )
+                result = [
+                    {"text": r["document"], "department": r["metadata"]["department"]}
+                    for r in raw
+                ]
+            else:
+                result = {"error": f"Unknown tool: {fn_name}"}
+
+            messages.append({
+                "role": "tool",
+                "tool_call_id": tool_call.id,
+                "content": json.dumps(result, default=str),
+            })
+
+    # Parse final response
+    text = (choice.message.content or "{}") if choice else "{}"
+    try:
+        parsed = json.loads(text)
+    except json.JSONDecodeError:
+        parsed = {"answer": text, "chart_spec": None, "sources": []}
+
+    if not sources:
+        sources.add("cached_insights")
+
+    return {
+        "answer": parsed.get("answer", text),
+        "chart_spec": parsed.get("chart_spec"),
+        "sources": list(sources),
+    }

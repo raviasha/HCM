@@ -1,5 +1,5 @@
 """
-Voice of Employee feedback API routes.
+Qualitative / feedback data API routes.
 Handles JSON upload, ChromaDB ingestion, and semantic search.
 """
 
@@ -13,10 +13,10 @@ from fastapi import APIRouter, UploadFile, File, Form, HTTPException
 from api.models.schemas import UploadResponse
 from api.services import chroma_service
 
-router = APIRouter(prefix="/api/feedback", tags=["Voice of Employee"])
+router = APIRouter(prefix="/api/data", tags=["Qualitative Data"])
 
 
-@router.post("/upload", response_model=UploadResponse)
+@router.post("/upload-json", response_model=UploadResponse)
 async def upload_feedback(
     file: UploadFile = File(...),
     company_name: str = Form(...),

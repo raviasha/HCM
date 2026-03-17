@@ -24,3 +24,6 @@ data/chroma_db/
 # OS
 .DS_Store
 Thumbs.db
+.streamlit/
+data/synthetic copy/
+*.zip
