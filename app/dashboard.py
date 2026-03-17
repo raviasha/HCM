@@ -268,31 +268,196 @@ if analyze_button:
 
 insights = st.session_state.insights
 
+# ── User Guide content (reusable) ────────────────────────────────────────
+
+def _render_user_guide():
+    """Render the full User Guide content."""
+    st.subheader("📖 User Guide")
+    st.markdown("""
+---
+
+### What Is This Tool?
+
+HCM AI Insights is an **AI-powered workforce analytics dashboard** that turns raw employee data into
+actionable intelligence — automatically. Upload any HR dataset (structured CSV + qualitative feedback JSON),
+and GPT-4o will detect the key metrics, run a full analysis pipeline, and generate an interactive dashboard
+tailored to *your* data.
+
+No templates. No manual configuration. The AI figures out what matters in your data and builds the
+analysis around it.
+
+---
+
+### Getting Started
+
+| Step | Action |
+|------|--------|
+| **1** | Enter a **Company Name** in the sidebar |
+| **2** | Upload a **Structured Data CSV** (employee records with any columns) |
+| **3** | Upload a **Qualitative Feedback JSON** (survey responses, exit interviews, etc.) |
+| **4** | Click **🚀 Analyze** — the AI pipeline takes 30–60 seconds |
+| **5** | Explore the generated tabs! |
+
+> **Quick demo:** Click **NovaTech**, **Meridian**, or **Pinnacle** in the sidebar to load
+> pre-generated sample data instantly, then hit Analyze.
+
+---
+
+### Dashboard Tabs
+
+#### 📋 Overview
+A high-level snapshot showing KPI cards and one representative chart from every analysis section.
+Use this to get the big picture at a glance.
+
+#### 📉 Structured Analysis *(dynamic name)*
+Deep-dive into the primary metric detected in your CSV — attrition rates, engagement scores,
+burnout indices, or whatever the AI identifies as the key target variable. Includes:
+- Department-level breakdowns
+- Risk factor identification
+- Statistical distributions with interactive Plotly charts
+
+> *The tab name changes dynamically* — e.g. "Attrition Analysis" for NovaTech,
+> "Engagement Score Analysis" for Meridian, "Burnout Index Analysis" for Pinnacle.
+
+#### 💬 Employee Feedback *(dynamic name)*
+AI-classified sentiment analysis and theme extraction from your qualitative feedback:
+- **Sentiment by department** — positive / neutral / negative counts + average score
+- **Top themes** — recurring topics with representative quotes
+- Interactive charts for each insight
+
+#### 🧠 AI Insights
+The executive summary and strategic recommendations layer:
+- **Executive Summary** — a C-suite-ready narrative synthesizing all findings
+- **Correlation Insights** — cross-analysis linking quantitative metrics with qualitative sentiment
+- **Recommendations** — prioritized by risk level (🔴 High / 🟡 Medium / 🟢 Low) with
+  specific key issues and actionable steps
+
+#### 💡 Ask AI
+A conversational interface to ask **any follow-up question** about your data:
+- *"Show me attrition by age group in Engineering"*
+- *"What are the top 3 reasons people leave?"*
+- *"Compare sentiment across departments as a bar chart"*
+
+The AI has full context of all generated insights plus access to the raw data.
+Responses include both text answers and auto-generated charts.
+
+#### ✏️ Explore & Customize
+All AI-generated charts are displayed here. Use the chat to **modify any chart**:
+- Change colors, chart types, or filters
+- Add comparisons or trend lines
+- Create entirely new visualizations
+
+Your original dashboard tabs remain untouched — customizations live only here.
+
+---
+
+### Special Features
+
+| Feature | Description |
+|---------|-------------|
+| **Zero-Config Schema Detection** | Upload *any* HR CSV — the AI auto-detects columns, data types, and the primary target variable (binary or numeric) |
+| **Dynamic Analysis Plans** | GPT-4o generates a custom analysis plan for each dataset — no hardcoded templates |
+| **Adaptive Feedback Ingestion** | JSON feedback files with *any* key names are auto-mapped (the system detects text, ID, department, date fields automatically) |
+| **Semantic Search (ChromaDB)** | Qualitative feedback is embedded and stored in a vector database for targeted, department-level semantic retrieval |
+| **11-Step AI Pipeline** | Schema analysis → plan generation → execution → targeted feedback retrieval → sentiment → themes → correlation → summary → recommendations → dashboard spec |
+| **Interactive Charts** | All visualizations are Plotly-based — hover, zoom, pan, and download as PNG |
+| **Conversational AI** | Multi-turn conversations in Ask AI and Explore tabs with full context memory |
+| **Dynamic Tab Names** | Tab labels adapt to reflect what was actually analyzed in your data |
+| **Works Across Industries** | Tech, retail, healthcare, finance — any HCM dataset works out of the box |
+
+---
+
+### Data Format Guide
+
+**Structured CSV** — Any employee-level CSV with columns like:
+- Employee ID, department, age, tenure, salary, role, etc.
+- A target/outcome column (e.g., Attrition, EngagementScore, BurnoutIndex)
+- The AI will figure out which column is the target and how to analyze it
+
+**Qualitative Feedback JSON** — An array of objects, e.g.:
+```json
+[
+  {
+    "feedback_id": "F001",
+    "department": "Engineering",
+    "response_text": "I feel overworked and undervalued...",
+    "feedback_type": "exit_interview"
+  }
+]
+```
+Field names are flexible — the system auto-detects text content, department, ID, and date fields
+regardless of what you name them.
+
+---
+
+### Sample Datasets
+
+Three pre-loaded demo companies showcase the tool's versatility:
+
+| Company | Industry | Target Variable | Focus Areas |
+|---------|----------|----------------|-------------|
+| **NovaTech Solutions** | Technology | Attrition (Yes/No) | Engineering burnout, career stagnation, compensation gaps |
+| **Meridian Retail Group** | Retail | Engagement Score (1–10) | Hourly wage impact, shift patterns, store-region disparities |
+| **Pinnacle Healthcare** | Healthcare | Burnout Index (1–10) | Patient load, shift patterns, unit-level stress |
+
+---
+
+### Tips & Best Practices
+
+1. **Larger datasets = richer insights** — 200+ employee records give the AI more patterns to find
+2. **Include diverse feedback** — mix of surveys, exit interviews, and open comments yields the best theme extraction
+3. **Use Ask AI for drill-downs** — after the initial analysis, ask specific questions to go deeper
+4. **Explore & Customize** — don't just view charts, modify them to match your presentation needs
+5. **Re-analyze anytime** — upload updated data and hit Analyze again to refresh everything
+
+---
+
+*Powered by GPT-4o · FastAPI · Streamlit · ChromaDB · Plotly*
+    """)
+
+
 if insights is None:
     # Landing state
     st.title("📊 HCM AI Insights Dashboard")
-    st.markdown("""
-    ### Welcome to the AI-Powered Workforce Analytics Prototype
 
-    This tool analyzes employee data and qualitative feedback
-    to automatically generate actionable insights using GPT-4o.
+    landing_tab1, landing_tab2 = st.tabs(["🏠 Welcome", "📖 User Guide"])
 
-    **How to use:**
-    1. Enter a company name in the sidebar
-    2. Upload a structured CSV file and a qualitative feedback JSON file
-    3. Click **Analyze** — the AI will mine patterns and generate insights
+    with landing_tab1:
+        st.markdown("""
+        ### Welcome to the AI-Powered Workforce Analytics Prototype
 
-    **Or try a sample dataset** using the buttons in the sidebar.
+        This tool analyzes employee data and qualitative feedback
+        to automatically generate actionable insights using GPT-4o.
 
-    ---
+        **How to use:**
+        1. Enter a company name in the sidebar
+        2. Upload a structured CSV file and a qualitative feedback JSON file
+        3. Click **Analyze** — the AI will mine patterns and generate insights
 
-    #### What you'll get:
-    - 📈 **Structured Analysis** — Risk factors, department-level breakdowns, key metrics
-    - 💬 **Sentiment Analysis** — AI-classified employee sentiment by department
-    - 🔍 **Theme Extraction** — Top topics surfaced from employee feedback
-    - 🧠 **AI Executive Summary** — GPT-4o generated narrative with recommendations
-    - 🔗 **Correlation Insights** — Qualitative vs quantitative cross-analysis
-    """)
+        **Or try a sample dataset** using the buttons in the sidebar.
+
+        ---
+
+        #### What you'll get:
+        - 📈 **Structured Analysis** — Risk factors, department-level breakdowns, key metrics
+        - 💬 **Sentiment Analysis** — AI-classified employee sentiment by department
+        - 🔍 **Theme Extraction** — Top topics surfaced from employee feedback
+        - 🧠 **AI Executive Summary** — GPT-4o generated narrative with recommendations
+        - 🔗 **Correlation Insights** — Qualitative vs quantitative cross-analysis
+
+        ---
+
+        #### Special Features
+        - **Zero-Config Detection** — AI auto-detects your CSV schema, target variable, and JSON feedback keys
+        - **Works Across Industries** — Tech, retail, healthcare, finance — any HCM dataset works out of the box
+        - **Conversational AI** — Ask follow-up questions and customize any chart via natural language
+        - **11-Step AI Pipeline** — Schema → plan → execution → retrieval → sentiment → themes → correlation → summary → recommendations → dashboard
+
+        *Check the* 📖 **User Guide** *tab above for full documentation.*
+        """)
+
+    with landing_tab2:
+        _render_user_guide()
 
 else:
     # ── Dashboard with insights ──────────────────────────────────────
@@ -361,13 +526,14 @@ else:
     else:
         voe_tab_label = "💬 Qualitative Insights"
 
-    tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs([
+    tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs([
         "📋 Overview",
         structured_tab_label,
         voe_tab_label,
         "🧠 AI Insights",
         "💡 Ask AI",
         "✏️ Explore & Customize",
+        "📖 User Guide",
     ])
 
     # ── Tab 1: Overview ──────────────────────────────────────────────
@@ -637,3 +803,8 @@ else:
 
     with tab6:
         _explore_fragment()
+
+    # ── Tab 7: User Guide ─────────────────────────────────────────────
+
+    with tab7:
+        _render_user_guide()
