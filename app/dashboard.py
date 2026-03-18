@@ -3,7 +3,7 @@ HCM AI Insights Dashboard — Streamlit entry point.
 
 This is the main UI for the prototype. It provides:
   - Sidebar: Company name input + file uploaders + Analyze button
-  - 6 tabs: Overview | Structured Analysis | Voice of Employee | AI Insights | Ask AI | Explore & Customize
+  - 3-4 tabs: AI Insights | Descriptive Analytics | Predictive Analytics (deep) | User Guide
 
 Run with: streamlit run app/dashboard.py
 """
@@ -99,16 +99,20 @@ if "upload_status" not in st.session_state:
     st.session_state.upload_status = {"csv": False, "json": False}
 if "api_ok" not in st.session_state:
     st.session_state.api_ok = None
-if "chat_history" not in st.session_state:
-    st.session_state.chat_history = []
-if "conversation_api_history" not in st.session_state:
-    st.session_state.conversation_api_history = []
-if "explore_history" not in st.session_state:
-    st.session_state.explore_history = []
-if "explore_api_history" not in st.session_state:
-    st.session_state.explore_api_history = []
-if "explore_charts" not in st.session_state:
-    st.session_state.explore_charts = {}
+if "analysis_mode" not in st.session_state:
+    st.session_state.analysis_mode = "quick"
+# Per-tab Ask AI state
+for _prefix in ("desc", "pred"):
+    if f"{_prefix}_chat_history" not in st.session_state:
+        st.session_state[f"{_prefix}_chat_history"] = []
+    if f"{_prefix}_api_history" not in st.session_state:
+        st.session_state[f"{_prefix}_api_history"] = []
+    if f"{_prefix}_explore_history" not in st.session_state:
+        st.session_state[f"{_prefix}_explore_history"] = []
+    if f"{_prefix}_explore_api_history" not in st.session_state:
+        st.session_state[f"{_prefix}_explore_api_history"] = []
+    if f"{_prefix}_explore_charts" not in st.session_state:
+        st.session_state[f"{_prefix}_explore_charts"] = {}
 
 # ── API connectivity check ────────────────────────────────────────────
 if st.session_state.api_ok is None:
@@ -131,11 +135,20 @@ with st.sidebar:
     st.markdown("---")
 
     st.subheader("📁 Data Upload")
+
+    # Apply pending sample company name to the widget BEFORE it renders
+    if "_pending_company" in st.session_state:
+        st.session_state["_company_input"] = st.session_state.pop("_pending_company")
+
     company_name = st.text_input(
         "Company Name",
-        value=st.session_state.company_name,
+        key="_company_input",
         placeholder="e.g., NovaTech Solutions",
     )
+
+    # Show persistent data-loaded indicator
+    if st.session_state.upload_status.get("csv") and st.session_state.upload_status.get("json") and st.session_state.company_name:
+        st.success(f"✅ {st.session_state.company_name} data loaded")
 
     csv_file = st.file_uploader(
         "Structured Data (CSV)",
@@ -166,6 +179,19 @@ with st.sidebar:
     with sample_col3:
         if st.button("Pinnacle", use_container_width=True):
             sample_company = ("Pinnacle Healthcare", "pinnacle")
+
+    st.markdown("---")
+
+    # Analysis mode toggle
+    st.subheader("🧪 Analysis Mode")
+    analysis_mode = st.radio(
+        "Choose analysis depth",
+        options=["quick", "deep"],
+        index=0 if st.session_state.analysis_mode == "quick" else 1,
+        format_func=lambda x: "⚡ Quick Insights (Descriptive)" if x == "quick" else "🔬 Deep Analysis (Descriptive & Predictive)",
+        help="Quick = descriptive analytics only (~30-60s). Deep = descriptive + ML predictive analytics (~60-120s).",
+    )
+    st.session_state.analysis_mode = analysis_mode
 
     st.markdown("---")
 
@@ -213,8 +239,8 @@ if sample_company:
     name, slug = sample_company
     try:
         if load_sample_data(name, slug):
-            st.sidebar.success(f"✅ {name} data loaded!")
-            company_name = name
+            st.session_state["_pending_company"] = name
+            st.rerun()
     except Exception as e:
         st.sidebar.error(f"Failed to load sample data: {e}")
 
@@ -253,8 +279,9 @@ if analyze_button:
 
             # Generate insights
             if st.session_state.upload_status["csv"] and st.session_state.upload_status["json"]:
-                with st.spinner("🤖 AI is analyzing your data... This may take 30-60 seconds."):
-                    insights = api_client.generate_insights(company_name)
+                mode_label = "🔬 Deep Analysis (Descriptive & Predictive)" if st.session_state.analysis_mode == "deep" else "⚡ Quick Insights (Descriptive)"
+                with st.spinner(f"{mode_label} — analyzing your data... This may take 30-120 seconds."):
+                    insights = api_client.generate_insights(company_name, analysis_mode=st.session_state.analysis_mode)
                     st.session_state.insights = insights
                     st.session_state.company_name = company_name
             else:
@@ -267,6 +294,428 @@ if analyze_button:
 # ── Main content ─────────────────────────────────────────────────────
 
 insights = st.session_state.insights
+
+# ── ML Predictive Analytics Tab ──────────────────────────────────────────
+
+
+def _trust_badge(level: str, explanation: str):
+    """Render a coloured trust-level indicator."""
+    cfg = {
+        "high": ("🟢", "#10b981", "#f0fdf4", "High Confidence"),
+        "medium": ("🟡", "#f59e0b", "#fffbeb", "Medium Confidence"),
+        "low": ("🔴", "#ef4444", "#fef2f2", "Low Confidence"),
+    }
+    icon, border, bg, label = cfg.get(level, cfg["medium"])
+    st.markdown(
+        f'<div style="background:{bg}; border-left:4px solid {border}; '
+        f'padding:10px 14px; border-radius:6px; margin:8px 0;">'
+        f'<strong>{icon} {label}</strong> &mdash; {explanation}</div>',
+        unsafe_allow_html=True,
+    )
+
+
+def _takeaway_box(text: str):
+    """Render an actionable key-takeaway box."""
+    st.markdown(
+        f'<div style="background:#f0f9ff; border-left:4px solid #3b82f6; '
+        f'padding:10px 14px; border-radius:6px; margin:4px 0 12px 0;">'
+        f'<strong>💡 Key Takeaway:</strong> {text}</div>',
+        unsafe_allow_html=True,
+    )
+
+
+def _model_trust_level(mm: dict) -> tuple[str, str]:
+    """Derive an overall trust level from model metrics."""
+    if not mm:
+        return "low", "No model metrics available — treat results as directional only."
+    best = mm.get("best_model", "")
+    comp = mm.get("comparison", {}).get(best, {})
+    tt = mm.get("target_type", "")
+    if tt == "binary":
+        auc = comp.get("auc_roc")
+        acc = comp.get("accuracy")
+        if auc is not None:
+            if auc >= 0.80:
+                return "high", f"AUC-ROC {auc:.2f} — model discriminates well between outcomes."
+            if auc >= 0.65:
+                return "medium", f"AUC-ROC {auc:.2f} — moderate discrimination; directionally useful."
+            return "low", f"AUC-ROC {auc:.2f} — weak model; use results as rough guidance only."
+        if acc is not None:
+            if acc >= 0.80:
+                return "high", f"Accuracy {acc:.0%} — predictions are reliable."
+            if acc >= 0.65:
+                return "medium", f"Accuracy {acc:.0%} — moderate reliability."
+            return "low", f"Accuracy {acc:.0%} — use with caution."
+    else:
+        r2 = comp.get("r2")
+        if r2 is not None:
+            if r2 >= 0.50:
+                return "high", f"R² {r2:.2f} — model explains most variance."
+            if r2 >= 0.25:
+                return "medium", f"R² {r2:.2f} — moderate explanatory power; directionally useful."
+            return "low", f"R² {r2:.2f} — limited predictive power; treat as exploratory."
+    return "medium", "Metrics incomplete — interpret with moderate confidence."
+
+
+def _render_ml_tab(insights: dict):
+    """Render the Predictive Analytics tab with all ML results."""
+    ml = insights.get("ml_results")
+    if not ml:
+        st.info("No ML results available. Re-run analysis in Deep mode.")
+        return
+
+    # ── Data Quality & Model Metrics Banner ──────────────────────────
+    dq = ml.get("data_quality", {})
+    mm = ml.get("model_metrics", {})
+
+    if dq or mm:
+        st.subheader("📊 Model Performance & Data Quality")
+
+        # Data quality metrics
+        if dq:
+            dq_cols = st.columns(4)
+            with dq_cols[0]:
+                st.metric("Original Rows", dq.get("original_rows", "—"))
+            with dq_cols[1]:
+                st.metric("Duplicates Removed", dq.get("duplicates_removed", 0))
+            with dq_cols[2]:
+                st.metric("Outliers Capped", dq.get("outliers_capped", 0))
+            with dq_cols[3]:
+                st.metric("Features Used", dq.get("features_used", "—"))
+
+        # Model comparison metrics
+        if mm:
+            best = mm.get("best_model", "")
+            comparison = mm.get("comparison", {})
+            target_type = mm.get("target_type", "")
+            st.markdown(f"**Best Model:** `{best}` &nbsp;|&nbsp; "
+                        f"**Train:** {mm.get('train_size', '?')} rows &nbsp;|&nbsp; "
+                        f"**Test:** {mm.get('test_size', '?')} rows (80/20 split)")
+
+            if comparison:
+                # Build comparison table
+                comp_rows = []
+                for name, m in comparison.items():
+                    row = {"Model": name}
+                    row["CV Mean"] = m.get("cv_mean", "—")
+                    row["CV Std"] = m.get("cv_std", "—")
+                    if target_type == "binary":
+                        row["Accuracy"] = m.get("accuracy", "—")
+                        row["AUC-ROC"] = m.get("auc_roc", "—")
+                        row["F1"] = m.get("f1", "—")
+                        row["Precision"] = m.get("precision", "—")
+                        row["Recall"] = m.get("recall", "—")
+                    else:
+                        row["R²"] = m.get("r2", "—")
+                        row["RMSE"] = m.get("rmse", "—")
+                        row["MAE"] = m.get("mae", "—")
+                    if name == best:
+                        row["Model"] = f"✅ {name}"
+                    comp_rows.append(row)
+                st.dataframe(pd.DataFrame(comp_rows), use_container_width=True, hide_index=True, key="ml_model_comp")
+
+                # Show cross-validation fold scores for best model
+                best_m = comparison.get(best, {})
+                cv_scores = best_m.get("cv_scores", [])
+                if cv_scores:
+                    with st.expander(f"📈 {best} — {len(cv_scores)}-Fold Cross-Validation Scores"):
+                        cv_df = pd.DataFrame([{"Fold": i + 1, "Score": s} for i, s in enumerate(cv_scores)])
+                        fig = px.bar(cv_df, x="Fold", y="Score",
+                                     title=f"Cross-Validation Scores (mean={best_m.get('cv_mean', 0):.4f} ± {best_m.get('cv_std', 0):.4f})")
+                        fig.update_layout(yaxis_title="Score", xaxis_title="Fold")
+                        st.plotly_chart(fig, use_container_width=True, key="ml_cv_chart")
+
+        # Overall trust badge for the model
+        trust_level, trust_text = _model_trust_level(mm)
+        _trust_badge(trust_level, trust_text)
+        st.markdown("---")
+
+    # ML Narrative (AI-generated interpretation)
+    narrative = ml.get("ml_narrative", "")
+    if narrative:
+        st.markdown(narrative)
+        st.markdown("---")
+
+    # ── 1. Feature Importance ────────────────────────────────────────
+    fi = ml.get("feature_importance", [])
+    if fi:
+        st.subheader("🎯 Feature Importance — Top Predictors")
+
+        # Show model info badge
+        if mm:
+            best = mm.get("best_model", "")
+            best_m = mm.get("comparison", {}).get(best, {})
+            target_type = mm.get("target_type", "")
+            if target_type == "binary":
+                metric_label = f"AUC-ROC: {best_m.get('auc_roc', '—')} | Accuracy: {best_m.get('accuracy', '—')}"
+            else:
+                metric_label = f"R²: {best_m.get('r2', '—')} | RMSE: {best_m.get('rmse', '—')}"
+            st.caption(f"Model: **{best}** | {metric_label}")
+
+        fi_df = pd.DataFrame(fi)
+        if "importance" in fi_df.columns and "feature" in fi_df.columns:
+            fi_df = fi_df.sort_values("importance", ascending=True)
+            color_map = {"positive": "#ef4444", "negative": "#10b981"}
+            fig = px.bar(
+                fi_df, x="importance", y="feature", orientation="h",
+                title="Top Predictors of Target Variable",
+                color="direction" if "direction" in fi_df.columns else None,
+                color_discrete_map=color_map,
+            )
+            fig.update_layout(yaxis_title="", xaxis_title="Importance Score", height=max(400, len(fi_df) * 28))
+            st.plotly_chart(fig, use_container_width=True, key="ml_fi_chart")
+
+            with st.expander("📊 Raw Feature Importance Data"):
+                display_cols = [c for c in ["feature", "importance", "direction", "correlation"] if c in fi_df.columns]
+                st.dataframe(fi_df[display_cols].sort_values("importance", ascending=False), use_container_width=True)
+
+        # Trust + Takeaway for Feature Importance
+        fi_trust, fi_trust_text = _model_trust_level(mm)
+        _trust_badge(fi_trust, fi_trust_text)
+        top_feat = fi[0] if fi else {}
+        if top_feat:
+            direction_word = "increases" if top_feat.get("direction") == "positive" else "decreases"
+            _takeaway_box(
+                f"<strong>{top_feat['feature']}</strong> is the strongest predictor "
+                f"(importance {top_feat.get('importance', 0):.3f}) and {direction_word} the target. "
+                f"Prioritise interventions around this factor first."
+            )
+        st.markdown("---")
+
+    # ── 2. Risk Scores ───────────────────────────────────────────────
+    risk = ml.get("risk_scores", {})
+    if risk:
+        st.subheader("⚠️ Risk Score Distribution")
+
+        dist = risk.get("distribution", {})
+        if dist:
+            total_employees = sum(dist.values())
+            r_cols = st.columns(3)
+            for i, (level, count) in enumerate(dist.items()):
+                with r_cols[i % 3]:
+                    icon = "🔴" if "high" in level.lower() else "🟡" if "medium" in level.lower() else "🟢"
+                    pct = round(count / total_employees * 100, 1) if total_employees > 0 else 0
+                    st.metric(f"{icon} {level}", f"{count} ({pct}%)")
+
+            # Pie chart of distribution
+            dist_df = pd.DataFrame([{"Level": k, "Count": v} for k, v in dist.items()])
+            fig = px.pie(dist_df, names="Level", values="Count", title="Risk Distribution",
+                         color="Level", color_discrete_map={"High": "#ef4444", "Medium": "#f59e0b", "Low": "#10b981"})
+            st.plotly_chart(fig, use_container_width=True, key="ml_risk_pie")
+
+        # Department risk
+        hi_depts = risk.get("high_risk_departments", [])
+        if hi_depts:
+            dept_df = pd.DataFrame(hi_depts)
+            if "department" in dept_df.columns and "high_risk_pct" in dept_df.columns:
+                fig = px.bar(dept_df, x="department", y="high_risk_pct", title="High-Risk % by Department",
+                             color="high_risk_pct", color_continuous_scale="OrRd")
+                fig.update_layout(xaxis_title="", yaxis_title="High-Risk %")
+                st.plotly_chart(fig, use_container_width=True, key="ml_risk_dept")
+
+        # Top risk employees table
+        top_risk = risk.get("top_risk_employees", [])
+        if top_risk:
+            with st.expander(f"👤 Top {len(top_risk)} Highest-Risk Employees"):
+                st.dataframe(pd.DataFrame(top_risk), use_container_width=True)
+
+        # Trust + Takeaway for Risk Scores
+        risk_trust, risk_trust_text = _model_trust_level(mm)
+        _trust_badge(risk_trust, risk_trust_text)
+        # Build takeaway from distribution + departments
+        if dist:
+            total_emp = sum(dist.values())
+            high_count = dist.get("High", 0)
+            high_pct = round(high_count / total_emp * 100, 1) if total_emp else 0
+            takeaway_parts = [f"{high_pct}% of employees ({high_count}) are flagged <strong>High Risk</strong>."]
+            if hi_depts:
+                worst = hi_depts[0]
+                takeaway_parts.append(
+                    f"<strong>{worst.get('department', '?')}</strong> has the highest concentration "
+                    f"at {worst.get('high_risk_pct', 0):.0%} high-risk."
+                )
+            takeaway_parts.append("Target retention programmes at these groups immediately.")
+            _takeaway_box(" ".join(takeaway_parts))
+        st.markdown("---")
+
+    # ── 3. Survival Analysis ─────────────────────────────────────────
+    surv = ml.get("survival_analysis")
+    if surv and surv.get("curves"):
+        st.subheader("📉 Survival Analysis — Retention Curves")
+        st.caption(f"Tenure column: **{surv.get('tenure_column', '—')}**")
+
+        curves = surv["curves"]
+        # Build combined DF for line chart
+        all_rows = []
+        for dept, points in curves.items():
+            for pt in points:
+                all_rows.append({
+                    "Department": dept,
+                    "Tenure": pt.get("time", pt.get("timeline", 0)),
+                    "Survival Probability": pt.get("survival_prob", 0),
+                })
+        if all_rows:
+            surv_df = pd.DataFrame(all_rows)
+            fig = px.line(surv_df, x="Tenure", y="Survival Probability", color="Department",
+                          title="Kaplan-Meier Retention Curves by Department")
+            fig.update_layout(yaxis_range=[0, 1.05], xaxis_title="Tenure (years)", yaxis_title="Probability of Staying")
+            st.plotly_chart(fig, use_container_width=True, key="ml_surv_chart")
+
+        # Median survival times
+        medians = surv.get("median_survival", {})
+        if medians:
+            med_df = pd.DataFrame([{"Department": k, "Median Tenure (years)": v} for k, v in medians.items()])
+            st.dataframe(med_df, use_container_width=True, key="ml_surv_median")
+
+        # Trust + Takeaway for Survival Analysis
+        n_curves = len(curves)
+        if n_curves >= 4:
+            _trust_badge("high", f"Kaplan-Meier curves for {n_curves} departments — robust sample coverage.")
+        elif n_curves >= 2:
+            _trust_badge("medium", f"Curves for {n_curves} departments — reasonable but limited coverage.")
+        else:
+            _trust_badge("low", f"Only {n_curves} department(s) had enough data — interpret cautiously.")
+        if medians:
+            valid_medians = {k: v for k, v in medians.items() if v is not None}
+            if valid_medians:
+                shortest_dept = min(valid_medians, key=valid_medians.get)
+                longest_dept = max(valid_medians, key=valid_medians.get)
+                _takeaway_box(
+                    f"<strong>{shortest_dept}</strong> has the shortest median retention "
+                    f"({valid_medians[shortest_dept]:.1f} yrs) vs <strong>{longest_dept}</strong> "
+                    f"({valid_medians[longest_dept]:.1f} yrs). "
+                    f"Investigate what {shortest_dept} can learn from {longest_dept}'s practices."
+                )
+        st.markdown("---")
+
+    # ── 4. Employee Segments (Clustering) ────────────────────────────
+    clust = ml.get("clustering", {})
+    profiles = clust.get("profiles", [])
+    if profiles:
+        st.subheader("👥 Employee Segments — Cluster Analysis")
+
+        # Clustering quality metrics
+        sil = clust.get("silhouette_score")
+        n_clust = clust.get("n_clusters")
+        pca_var = clust.get("pca_variance_explained")
+        metric_parts = []
+        if n_clust:
+            metric_parts.append(f"**{n_clust} segments**")
+        if sil is not None:
+            metric_parts.append(f"Silhouette Score: **{sil:.4f}**")
+        if pca_var is not None:
+            metric_parts.append(f"PCA Variance Explained: **{pca_var:.1%}**")
+        if metric_parts:
+            st.caption(" | ".join(metric_parts))
+
+        for ci, profile in enumerate(profiles):
+            label = f"Segment {profile.get('cluster_id', ci)}"
+            headcount = profile.get("headcount", 0)
+            pct = profile.get("pct_of_total", 0)
+            target_rate = profile.get("target_rate", profile.get("target_mean", "—"))
+            target_str = f"{target_rate:.1%}" if isinstance(target_rate, float) and target_rate <= 1.0 else str(target_rate)
+
+            with st.expander(f"**{label}** — {headcount} employees ({pct:.1%}) | Target: {target_str}"):
+                # Top departments
+                top_depts = profile.get("top_departments", {})
+                if top_depts:
+                    st.markdown("**Top Departments:** " + ", ".join(f"{k} ({v})" for k, v in top_depts.items()))
+
+                # Distinguishing features
+                dist_feats = profile.get("distinguishing_features", [])
+                if dist_feats:
+                    if isinstance(dist_feats, list):
+                        feat_df = pd.DataFrame(dist_feats)
+                    else:
+                        feat_df = pd.DataFrame([{"Feature": k, "Value": v} for k, v in dist_feats.items()])
+                    st.dataframe(feat_df, use_container_width=True, key=f"ml_clust_feat_{ci}")
+
+        # PCA scatter plot
+        pca_points = clust.get("pca_2d", [])
+        if pca_points:
+            pca_df = pd.DataFrame(pca_points)
+            x_col = "x" if "x" in pca_df.columns else "pc1" if "pc1" in pca_df.columns else None
+            y_col = "y" if "y" in pca_df.columns else "pc2" if "pc2" in pca_df.columns else None
+            if x_col and y_col:
+                fig = px.scatter(pca_df, x=x_col, y=y_col,
+                                 color="cluster" if "cluster" in pca_df.columns else None,
+                                 title="Employee Segments — PCA Projection",
+                                 labels={x_col: "Principal Component 1", y_col: "Principal Component 2"})
+                st.plotly_chart(fig, use_container_width=True, key="ml_pca_scatter")
+
+        # Trust + Takeaway for Clustering
+        sil_val = clust.get("silhouette_score", 0)
+        if sil_val >= 0.50:
+            _trust_badge("high", f"Silhouette score {sil_val:.2f} — well-separated, meaningful segments.")
+        elif sil_val >= 0.25:
+            _trust_badge("medium", f"Silhouette score {sil_val:.2f} — segments overlap somewhat; use as directional groupings.")
+        else:
+            _trust_badge("low", f"Silhouette score {sil_val:.2f} — weak separation; treat clusters as rough groupings.")
+        # Takeaway: highlight the riskiest segment
+        if profiles:
+            riskiest = max(
+                profiles,
+                key=lambda p: p.get("target_rate", p.get("target_mean", 0)) or 0,
+            )
+            seg_id = riskiest.get("cluster_id", "?")
+            seg_hc = riskiest.get("headcount", 0)
+            seg_rate = riskiest.get("target_rate", riskiest.get("target_mean", 0))
+            rate_str = f"{seg_rate:.1%}" if isinstance(seg_rate, float) and seg_rate <= 1 else str(round(seg_rate, 2))
+            top_d = riskiest.get("top_departments", {})
+            dept_hint = f" (mostly in {list(top_d.keys())[0]})" if top_d else ""
+            _takeaway_box(
+                f"<strong>Segment {seg_id}</strong>{dept_hint} has the highest target rate "
+                f"at {rate_str} with {seg_hc} employees. "
+                f"Deep-dive into this group's distinguishing features to design targeted action plans."
+            )
+        st.markdown("---")
+
+    # ── 5. What-If Scenarios ─────────────────────────────────────────
+    wif = ml.get("what_if_scenarios", [])
+    if wif:
+        st.subheader("🔮 What-If Scenario Analysis")
+        for si, scenario in enumerate(wif):
+            feat = scenario.get("feature", f"Feature {si + 1}")
+            desc = scenario.get("scenario", "change")
+            baseline = scenario.get("current_rate", 0)
+            projected = scenario.get("predicted_rate", 0)
+            change_pct = scenario.get("pct_change", 0)
+            importance = scenario.get("importance", 0)
+
+            st.markdown(f"**{feat}** — {desc} &nbsp; *(importance: {importance:.4f})*")
+            sc_cols = st.columns(3)
+            with sc_cols[0]:
+                st.metric("Baseline Rate", f"{baseline:.4f}")
+            with sc_cols[1]:
+                st.metric("Projected Rate", f"{projected:.4f}")
+            with sc_cols[2]:
+                st.metric("Change", f"{abs(change_pct):.1f}%", delta=f"{change_pct:.1f}%")
+
+            # Mini bar chart comparing baseline vs projected
+            comp_df = pd.DataFrame([
+                {"Scenario": "Baseline", "Rate": baseline},
+                {"Scenario": "Projected", "Rate": projected},
+            ])
+            fig = px.bar(comp_df, x="Scenario", y="Rate", title=f"Impact: {desc}",
+                         color="Scenario", color_discrete_map={"Baseline": "#94a3b8", "Projected": "#3b82f6"})
+            st.plotly_chart(fig, use_container_width=True, key=f"ml_wif_{si}")
+
+            if si < len(wif) - 1:
+                st.markdown("---")
+
+        # Trust + Takeaway for What-If (after all scenarios)
+        wif_trust, wif_trust_text = _model_trust_level(mm)
+        _trust_badge(wif_trust, wif_trust_text)
+        # Find the scenario with the largest absolute impact
+        biggest = max(wif, key=lambda s: abs(s.get("pct_change", 0)))
+        direction_verb = "reduce" if biggest.get("pct_change", 0) > 0 else "increase"
+        _takeaway_box(
+            f"The highest-impact lever is <strong>{biggest.get('feature', '?')}</strong>: "
+            f"{biggest.get('scenario', '?')} could {direction_verb} the target metric by "
+            f"~{abs(biggest.get('pct_change', 0)):.1f}%. "
+            f"This is the single most actionable change to prioritise."
+        )
+
 
 # ── User Guide content (reusable) ────────────────────────────────────────
 
@@ -295,8 +744,9 @@ analysis around it.
 | **1** | Enter a **Company Name** in the sidebar |
 | **2** | Upload a **Structured Data CSV** (employee records with any columns) |
 | **3** | Upload a **Qualitative Feedback JSON** (survey responses, exit interviews, etc.) |
-| **4** | Click **🚀 Analyze** — the AI pipeline takes 30–60 seconds |
-| **5** | Explore the generated tabs! |
+| **4** | Choose **Analysis Mode**: ⚡ Quick Insights (Descriptive, ~30-60s) or 🔬 Deep Analysis (Descriptive & Predictive, ~60-120s) |
+| **5** | Click **🚀 Analyze** |
+| **6** | Explore the generated tabs! |
 
 > **Quick demo:** Click **NovaTech**, **Meridian**, or **Pinnacle** in the sidebar to load
 > pre-generated sample data instantly, then hit Analyze.
@@ -305,49 +755,40 @@ analysis around it.
 
 ### Dashboard Tabs
 
-#### 📋 Overview
-A high-level snapshot showing KPI cards and one representative chart from every analysis section.
-Use this to get the big picture at a glance.
-
-#### 📉 Structured Analysis *(dynamic name)*
-Deep-dive into the primary metric detected in your CSV — attrition rates, engagement scores,
-burnout indices, or whatever the AI identifies as the key target variable. Includes:
-- Department-level breakdowns
-- Risk factor identification
-- Statistical distributions with interactive Plotly charts
-
-> *The tab name changes dynamically* — e.g. "Attrition Analysis" for NovaTech,
-> "Engagement Score Analysis" for Meridian, "Burnout Index Analysis" for Pinnacle.
-
-#### 💬 Employee Feedback *(dynamic name)*
-AI-classified sentiment analysis and theme extraction from your qualitative feedback:
-- **Sentiment by department** — positive / neutral / negative counts + average score
-- **Top themes** — recurring topics with representative quotes
-- Interactive charts for each insight
-
 #### 🧠 AI Insights
-The executive summary and strategic recommendations layer:
+The executive summary and strategic recommendations layer — your starting point:
 - **Executive Summary** — a C-suite-ready narrative synthesizing all findings
-- **Correlation Insights** — cross-analysis linking quantitative metrics with qualitative sentiment
+- **Key Charts at a Glance** — one representative chart from every analysis section in a compact grid
 - **Recommendations** — prioritized by risk level (🔴 High / 🟡 Medium / 🟢 Low) with
   specific key issues and actionable steps
 
-#### 💡 Ask AI
-A conversational interface to ask **any follow-up question** about your data:
-- *"Show me attrition by age group in Engineering"*
-- *"What are the top 3 reasons people leave?"*
-- *"Compare sentiment across departments as a bar chart"*
+#### 📊 Descriptive Analytics
+All descriptive analysis in one place — the primary metric analysis, employee feedback, and correlations:
+- **Structured Analysis** *(dynamic name)* — Department-level breakdowns, risk factor identification,
+  statistical distributions, interactive Plotly charts. Tab name adapts to your data
+  (e.g. "Attrition Analysis", "Engagement Score Analysis", "Burnout Index Analysis").
+- **Employee Feedback** — AI-classified sentiment analysis and theme extraction from qualitative feedback,
+  sentiment by department, top themes with representative quotes.
+- **Correlation Insights** — Cross-analysis linking quantitative metrics with qualitative sentiment.
+- **💡 Ask AI** *(embedded)* — Ask follow-up questions about the descriptive results in natural language.
+  Get text answers and auto-generated charts.
+- **✏️ Explore & Customize** *(embedded)* — Modify any chart — change colors, chart types, filters,
+  or create entirely new visualizations.
 
-The AI has full context of all generated insights plus access to the raw data.
-Responses include both text answers and auto-generated charts.
+#### 🔮 Predictive Analytics *(Deep mode only)*
+Machine learning predictions and advanced analytics — only appears when you run in **Deep** mode:
+- **Feature Importance** — Which factors most strongly predict your target variable, with model comparison
+  (RandomForest vs LogisticRegression/Ridge) and cross-validation metrics
+- **Risk Scoring** — High / Medium / Low risk distribution with department-level breakdown
+- **Survival Analysis** — Kaplan-Meier retention curves showing expected tenure by department *(binary targets only)*
+- **Employee Segments** — K-Means clustering to identify distinct employee profiles with PCA visualization
+- **What-If Scenarios** — Simulated impact of changing key factors on the target metric
+- **Trust Indicators** — Green/yellow/red confidence badges after every analysis section
+- **💡 Ask AI** *(embedded)* — Ask follow-up questions about the predictive results.
+- **✏️ Explore & Customize** *(embedded)* — Modify charts or create new visualizations.
 
-#### ✏️ Explore & Customize
-All AI-generated charts are displayed here. Use the chat to **modify any chart**:
-- Change colors, chart types, or filters
-- Add comparisons or trend lines
-- Create entirely new visualizations
-
-Your original dashboard tabs remain untouched — customizations live only here.
+#### 📖 User Guide
+This documentation page.
 
 ---
 
@@ -360,6 +801,8 @@ Your original dashboard tabs remain untouched — customizations live only here.
 | **Adaptive Feedback Ingestion** | JSON feedback files with *any* key names are auto-mapped (the system detects text, ID, department, date fields automatically) |
 | **Semantic Search (ChromaDB)** | Qualitative feedback is embedded and stored in a vector database for targeted, department-level semantic retrieval |
 | **11-Step AI Pipeline** | Schema analysis → plan generation → execution → targeted feedback retrieval → sentiment → themes → correlation → summary → recommendations → dashboard spec |
+| **ML Predictive Analytics** | Feature importance, risk scoring, survival analysis, clustering, what-if scenarios — activated in Deep mode |
+| **Analysis Mode Toggle** | Choose ⚡ Quick Insights (Descriptive, ~30-60s) or 🔬 Deep Analysis (Descriptive & Predictive, ~60-120s) |
 | **Interactive Charts** | All visualizations are Plotly-based — hover, zoom, pan, and download as PNG |
 | **Conversational AI** | Multi-turn conversations in Ask AI and Explore tabs with full context memory |
 | **Dynamic Tab Names** | Tab labels adapt to reflect what was actually analyzed in your data |
@@ -406,8 +849,8 @@ Three pre-loaded demo companies showcase the tool's versatility:
 
 1. **Larger datasets = richer insights** — 200+ employee records give the AI more patterns to find
 2. **Include diverse feedback** — mix of surveys, exit interviews, and open comments yields the best theme extraction
-3. **Use Ask AI for drill-downs** — after the initial analysis, ask specific questions to go deeper
-4. **Explore & Customize** — don't just view charts, modify them to match your presentation needs
+3. **Use Ask AI for drill-downs** — after the initial analysis, use the embedded Ask AI in each tab to go deeper
+4. **Customize charts in-place** — use the embedded Explore & Customize section to modify any chart without leaving your current tab
 5. **Re-analyze anytime** — upload updated data and hit Analyze again to refresh everything
 
 ---
@@ -432,18 +875,18 @@ if insights is None:
         **How to use:**
         1. Enter a company name in the sidebar
         2. Upload a structured CSV file and a qualitative feedback JSON file
-        3. Click **Analyze** — the AI will mine patterns and generate insights
+        3. Choose an **Analysis Mode** — ⚡ Quick Insights (Descriptive) or 🔬 Deep Analysis (Descriptive & Predictive)
+        4. Click **Analyze** — the AI pipeline runs in 30–120 seconds
+        5. Explore the generated tabs!
 
         **Or try a sample dataset** using the buttons in the sidebar.
 
         ---
 
         #### What you'll get:
-        - 📈 **Structured Analysis** — Risk factors, department-level breakdowns, key metrics
-        - 💬 **Sentiment Analysis** — AI-classified employee sentiment by department
-        - 🔍 **Theme Extraction** — Top topics surfaced from employee feedback
-        - 🧠 **AI Executive Summary** — GPT-4o generated narrative with recommendations
-        - 🔗 **Correlation Insights** — Qualitative vs quantitative cross-analysis
+        - 🧠 **AI Insights** — Executive summary, KPI snapshot, and prioritized recommendations
+        - 📊 **Descriptive Analytics** — Structured analysis, employee feedback, correlations, with built-in Ask AI and chart customization
+        - 🔮 **Predictive Analytics** *(Deep mode)* — Feature importance, risk scoring, survival analysis, clustering, what-if scenarios
 
         ---
 
@@ -451,6 +894,7 @@ if insights is None:
         - **Zero-Config Detection** — AI auto-detects your CSV schema, target variable, and JSON feedback keys
         - **Works Across Industries** — Tech, retail, healthcare, finance — any HCM dataset works out of the box
         - **Conversational AI** — Ask follow-up questions and customize any chart via natural language
+        - **ML Predictive Analytics** — Feature importance, risk scoring, survival analysis, clustering, what-if scenarios *(Deep mode)*
         - **11-Step AI Pipeline** — Schema → plan → execution → retrieval → sentiment → themes → correlation → summary → recommendations → dashboard
 
         *Check the* 📖 **User Guide** *tab above for full documentation.*
@@ -464,22 +908,26 @@ else:
 
     st.title(f"📊 {insights['company_name']} — AI Insights Dashboard")
 
+    # Show analysis mode badge
+    mode = insights.get("analysis_mode", "quick")
+    if mode == "deep":
+        st.caption("🔬 **Deep Analysis** — Descriptive & Predictive analytics")
+    else:
+        st.caption("⚡ **Quick Insights** — Descriptive analytics")
+
     # ── Helper: render a dynamic section ─────────────────────────────
 
     def _render_section(section: dict, key_prefix: str):
         """Render an AnalysisSection: metrics, narrative, charts."""
-        # Metrics row
         metrics = section.get("metrics", [])
         if metrics:
             cols = st.columns(min(len(metrics), 4))
             for i, m in enumerate(metrics):
                 with cols[i % len(cols)]:
                     st.metric(m.get("label", ""), m.get("value", ""))
-        # Narrative
         narrative = section.get("narrative", "")
         if narrative:
             st.markdown(narrative)
-        # Charts
         for j, chart in enumerate(section.get("charts", [])):
             chart_dict = chart if isinstance(chart, dict) else chart.dict() if hasattr(chart, "dict") else {}
             _render_dynamic_chart(chart_dict, key=f"{key_prefix}_chart_{j}")
@@ -506,88 +954,192 @@ else:
     voe_sections = [s for s in all_sections if s.get("category") == "voe"]
     correlation_sections = [s for s in all_sections if s.get("category") == "correlation"]
 
-    # ── Dynamic tab names based on what was analyzed ─────────────────
-    target_desc = insights.get("target_description", "").strip()
-    if target_desc:
-        # e.g. "Employee Attrition" → "Attrition Analysis", "Engagement Score" → "Engagement Score Analysis"
-        short = target_desc.replace("Employee ", "")
-        structured_tab_label = f"📉 {short} Analysis"
-    else:
-        structured_tab_label = "📉 Structured Analysis"
+    # ── Embedded Ask AI helper ───────────────────────────────────────
 
-    # Derive VoE tab name from section titles if available
-    if voe_sections:
-        first_voe = voe_sections[0] if isinstance(voe_sections[0], dict) else {}
-        voe_hint = first_voe.get("title", "")
-        if "sentiment" in voe_hint.lower() or "feedback" in voe_hint.lower():
-            voe_tab_label = "💬 Employee Feedback"
-        else:
-            voe_tab_label = f"💬 {voe_hint}" if voe_hint else "💬 Qualitative Insights"
-    else:
-        voe_tab_label = "💬 Qualitative Insights"
+    def _render_ask_ai(context_key: str):
+        """Render an embedded Ask AI section using text_input + button."""
+        import json as _json
 
-    tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs([
-        "📋 Overview",
-        structured_tab_label,
-        voe_tab_label,
-        "🧠 AI Insights",
-        "💡 Ask AI",
-        "✏️ Explore & Customize",
-        "📖 User Guide",
-    ])
+        chat_key = f"{context_key}_chat_history"
+        api_key = f"{context_key}_api_history"
 
-    # ── Tab 1: Overview ──────────────────────────────────────────────
+        st.markdown("### 💡 Ask AI")
+        st.caption(
+            "Ask follow-up questions in natural language. The AI has full context "
+            "of the insights already generated, plus access to the raw data."
+        )
 
-    with tab1:
-        if all_sections:
-            # Show first chart from each section as an overview
-            overview_charts = []
-            for sec in all_sections:
-                sec_charts = sec.get("charts", [])
-                if sec_charts:
-                    first = sec_charts[0]
-                    overview_charts.append((sec.get("title", ""), first))
+        # Render previous messages
+        for mi, msg in enumerate(st.session_state[chat_key]):
+            with st.chat_message(msg["role"]):
+                st.markdown(msg["content"])
+                if msg.get("chart"):
+                    _render_dynamic_chart(msg["chart"], key=f"{context_key}_ask_hist_{mi}")
 
-            for idx in range(0, len(overview_charts), 2):
-                cols = st.columns(2)
-                for ci, col in enumerate(cols):
-                    if idx + ci < len(overview_charts):
-                        title, chart_data = overview_charts[idx + ci]
-                        with col:
-                            chart_dict = chart_data if isinstance(chart_data, dict) else chart_data.dict() if hasattr(chart_data, "dict") else {}
-                            _render_dynamic_chart(chart_dict, key=f"overview_{idx}_{ci}")
-        else:
-            st.info("No analysis sections available. Run Analyze first.")
+        # Text input + send button
+        ask_col1, ask_col2 = st.columns([5, 1])
+        with ask_col1:
+            user_q = st.text_input(
+                "Your question",
+                placeholder="e.g., Show me attrition by age group in Engineering",
+                key=f"{context_key}_ask_input",
+                label_visibility="collapsed",
+            )
+        with ask_col2:
+            send = st.button("Send", key=f"{context_key}_ask_send", use_container_width=True, type="primary")
 
-    # ── Tab 2: Structured Analysis (dynamic) ─────────────────────────
+        if send and user_q:
+            st.session_state[chat_key].append({"role": "user", "content": user_q})
+            st.session_state[api_key].append({"role": "user", "content": user_q})
 
-    with tab2:
-        if structured_sections:
-            for idx, section in enumerate(structured_sections):
-                sec_dict = section if isinstance(section, dict) else section.dict() if hasattr(section, "dict") else {}
-                st.subheader(sec_dict.get("title", f"Analysis {idx + 1}"))
-                _render_section(sec_dict, f"struct_{idx}")
-                if idx < len(structured_sections) - 1:
-                    st.markdown("---")
-        else:
-            st.info("No structured analysis sections were generated. Run Analyze first.")
+            with st.chat_message("assistant"):
+                with st.spinner("Thinking..."):
+                    try:
+                        result = api_client.ask_question(
+                            company_name=insights["company_name"],
+                            question=user_q,
+                            conversation_history=st.session_state[api_key],
+                        )
+                        answer = result.get("answer", "Sorry, I couldn't generate a response.")
+                        chart_spec = result.get("chart")
 
-    # ── Tab 3: Voice of Employee (dynamic) ───────────────────────────
+                        st.markdown(answer)
+                        if chart_spec:
+                            _render_dynamic_chart(chart_spec, key=f"{context_key}_ask_new_{len(st.session_state[chat_key])}")
 
-    with tab3:
-        if voe_sections:
-            for idx, section in enumerate(voe_sections):
-                sec_dict = section if isinstance(section, dict) else section.dict() if hasattr(section, "dict") else {}
-                st.subheader(sec_dict.get("title", f"Feedback Analysis {idx + 1}"))
-                _render_section(sec_dict, f"voe_{idx}")
-                if idx < len(voe_sections) - 1:
-                    st.markdown("---")
-        else:
-            st.info("No qualitative analysis sections were generated. Run Analyze first.")
+                        st.session_state[chat_key].append({
+                            "role": "assistant", "content": answer, "chart": chart_spec,
+                        })
+                        st.session_state[api_key].append({
+                            "role": "assistant", "content": answer,
+                        })
+                    except Exception as e:
+                        error_msg = f"Error: {str(e)}"
+                        st.error(error_msg)
+                        st.session_state[chat_key].append({
+                            "role": "assistant", "content": error_msg, "chart": None,
+                        })
+            st.rerun()
 
-    # ── Tab 4: AI Insights ───────────────────────────────────────────
+    # ── Embedded Explore & Customize helper ──────────────────────────
 
-    with tab4:
+    def _render_explore(context_key: str, sections_to_show: list):
+        """Render an embedded Explore & Customize section."""
+        import json as _json
+
+        hist_key = f"{context_key}_explore_history"
+        api_key = f"{context_key}_explore_api_history"
+        charts_key = f"{context_key}_explore_charts"
+
+        st.markdown("### ✏️ Explore & Customize")
+        st.caption(
+            "Modify any chart above — change colors, chart types, filters, or "
+            "create entirely new visualizations."
+        )
+
+        # AI-customized charts
+        if st.session_state[charts_key]:
+            st.markdown("#### 🤖 Custom Charts")
+            for ei, (title, spec) in enumerate(st.session_state[charts_key].items()):
+                st.markdown(f"**{title}**")
+                _render_dynamic_chart(spec, key=f"{context_key}_exp_custom_{ei}")
+
+        # Chat history
+        for mi, msg in enumerate(st.session_state[hist_key]):
+            with st.chat_message(msg["role"]):
+                st.markdown(msg["content"])
+                if msg.get("chart"):
+                    _render_dynamic_chart(msg["chart"], key=f"{context_key}_exp_hist_{mi}")
+
+        # Text input + send button
+        exp_col1, exp_col2 = st.columns([5, 1])
+        with exp_col1:
+            explore_prompt = st.text_input(
+                "Customize",
+                placeholder="e.g., Color all bars green, Show attrition as a pie chart...",
+                key=f"{context_key}_exp_input",
+                label_visibility="collapsed",
+            )
+        with exp_col2:
+            exp_send = st.button("Send", key=f"{context_key}_exp_send", use_container_width=True, type="primary")
+
+        if exp_send and explore_prompt:
+            # Build context from provided sections
+            all_chart_context = []
+            for sec in sections_to_show:
+                sec_dict = sec if isinstance(sec, dict) else sec.dict() if hasattr(sec, "dict") else {}
+                all_chart_context.append({
+                    "title": sec_dict.get("title", ""),
+                    "category": sec_dict.get("category", ""),
+                    "narrative": sec_dict.get("narrative", ""),
+                    "charts": [
+                        (c if isinstance(c, dict) else c.dict() if hasattr(c, "dict") else {})
+                        for c in sec_dict.get("charts", [])
+                    ],
+                })
+            full_q = (
+                f"{explore_prompt}\n\n"
+                f"The user is viewing these dashboard charts:\n"
+                f"{_json.dumps(all_chart_context, default=str)}\n"
+                f"Modify an existing chart or create a new visualization based on the request. "
+                f"Always include a chart_spec in your response."
+            )
+
+            st.session_state[hist_key].append({"role": "user", "content": explore_prompt})
+            st.session_state[api_key].append({"role": "user", "content": full_q})
+
+            with st.chat_message("assistant"):
+                with st.spinner("Customizing..."):
+                    try:
+                        result = api_client.ask_question(
+                            company_name=insights["company_name"],
+                            question=full_q,
+                            conversation_history=st.session_state[api_key],
+                        )
+                        answer = result.get("answer", "")
+                        chart_spec = result.get("chart")
+
+                        st.markdown(answer)
+                        if chart_spec:
+                            _render_dynamic_chart(chart_spec, key=f"{context_key}_exp_new_{len(st.session_state[hist_key])}")
+                            ct = chart_spec.get("title", explore_prompt[:40])
+                            st.session_state[charts_key][ct] = chart_spec
+
+                        st.session_state[hist_key].append({
+                            "role": "assistant", "content": answer, "chart": chart_spec,
+                        })
+                        st.session_state[api_key].append({
+                            "role": "assistant", "content": answer,
+                        })
+                    except Exception as e:
+                        error_msg = f"Error: {str(e)}"
+                        st.error(error_msg)
+                        st.session_state[hist_key].append({
+                            "role": "assistant", "content": error_msg, "chart": None,
+                        })
+            st.rerun()
+
+        # Reset
+        if st.session_state[hist_key]:
+            if st.button("🔄 Reset Customizations", key=f"{context_key}_exp_reset"):
+                st.session_state[hist_key] = []
+                st.session_state[api_key] = []
+                st.session_state[charts_key] = {}
+                st.rerun()
+
+    # ── Build dynamic tab list ────────────────────────────────────────
+    tab_labels = ["🧠 AI Insights", "📊 Descriptive Analytics"]
+    has_ml_tab = mode == "deep" and insights.get("ml_results")
+    if has_ml_tab:
+        tab_labels.append("🔮 Predictive Analytics")
+    tab_labels.append("📖 User Guide")
+
+    tabs = st.tabs(tab_labels)
+    tab_idx = 0
+
+    # ── Tab 1: AI Insights ───────────────────────────────────────────
+
+    with tabs[tab_idx]:
         # Executive Summary
         st.subheader("📋 Executive Summary")
         st.markdown(
@@ -597,18 +1149,7 @@ else:
 
         st.markdown("---")
 
-        # Correlation sections (dynamic)
-        if correlation_sections:
-            for idx, section in enumerate(correlation_sections):
-                sec_dict = section if isinstance(section, dict) else section.dict() if hasattr(section, "dict") else {}
-                st.subheader(sec_dict.get("title", "Correlation Analysis"))
-                _render_section(sec_dict, f"corr_{idx}")
-                if idx < len(correlation_sections) - 1:
-                    st.markdown("---")
-
-        st.markdown("---")
-
-        # Retention Recommendations (dynamic first, legacy fallback)
+        # Recommendations
         st.subheader("🎯 Recommendations")
         dynamic_recs = insights.get("recommendations", [])
         if dynamic_recs:
@@ -626,185 +1167,77 @@ else:
                         for i, r in enumerate(rec["recommendations"], 1):
                             st.markdown(f"{i}. {r}")
 
+    # ── Tab 2: Descriptive Analytics ─────────────────────────────────
+    tab_idx += 1
 
-    # ── Tab 5: Ask AI ────────────────────────────────────────────────
+    with tabs[tab_idx]:
+        # Structured analysis sections
+        if structured_sections:
+            target_desc = insights.get("target_description", "").strip()
+            if target_desc:
+                short = target_desc.replace("Employee ", "")
+                st.subheader(f"📉 {short} Analysis")
+            else:
+                st.subheader("📉 Structured Analysis")
 
-    @st.fragment
-    def _ask_ai_fragment():
-        st.subheader("💡 Ask a Question About Your Data")
-        st.caption(
-            "Ask follow-up questions in natural language. The AI has full context "
-            "of the insights already generated, plus access to the raw CSV and feedback data."
-        )
+            for idx, section in enumerate(structured_sections):
+                sec_dict = section if isinstance(section, dict) else section.dict() if hasattr(section, "dict") else {}
+                st.markdown(f"#### {sec_dict.get('title', f'Analysis {idx + 1}')}")
+                _render_section(sec_dict, f"struct_{idx}")
+                if idx < len(structured_sections) - 1:
+                    st.markdown("---")
 
-        # Render previous messages
-        for mi, msg in enumerate(st.session_state.chat_history):
-            with st.chat_message(msg["role"]):
-                st.markdown(msg["content"])
-                if msg.get("chart"):
-                    _render_dynamic_chart(msg["chart"], key=f"ask_hist_{mi}")
-
-        # Chat input
-        if prompt := st.chat_input("e.g., Show me attrition by age group in Engineering"):
-            # Display user message
-            with st.chat_message("user"):
-                st.markdown(prompt)
-            st.session_state.chat_history.append({"role": "user", "content": prompt})
-            st.session_state.conversation_api_history.append({"role": "user", "content": prompt})
-
-            # Call API
-            with st.chat_message("assistant"):
-                with st.spinner("Thinking..."):
-                    try:
-                        result = api_client.ask_question(
-                            company_name=insights["company_name"],
-                            question=prompt,
-                            conversation_history=st.session_state.conversation_api_history,
-                        )
-                        answer = result.get("answer", "Sorry, I couldn't generate a response.")
-                        chart_spec = result.get("chart")
-
-                        st.markdown(answer)
-                        if chart_spec:
-                            _render_dynamic_chart(chart_spec, key=f"ask_new_{len(st.session_state.chat_history)}")
-
-                        st.session_state.chat_history.append({
-                            "role": "assistant", "content": answer, "chart": chart_spec
-                        })
-                        st.session_state.conversation_api_history.append({
-                            "role": "assistant", "content": answer
-                        })
-
-                    except Exception as e:
-                        error_msg = f"Error: {str(e)}"
-                        st.error(error_msg)
-                        st.session_state.chat_history.append({
-                            "role": "assistant", "content": error_msg, "chart": None
-                        })
-
-    with tab5:
-        _ask_ai_fragment()
-
-    # ── Tab 6: Explore & Customize ───────────────────────────────────
-
-    @st.fragment
-    def _explore_fragment():
-        st.subheader("✏️ Explore & Customize Analyses")
-        st.caption(
-            "All AI-generated charts are shown below. Use the chat to modify any "
-            "chart — change colors, chart types, filter data, add comparisons, or "
-            "create entirely new visualizations. Your original tabs stay untouched."
-        )
-
-        import json as _json
-
-        # ── Show ALL sections (structured + VoE + correlation) ───────
-        for idx, section in enumerate(all_sections):
-            sec_dict = section if isinstance(section, dict) else section.dict() if hasattr(section, "dict") else {}
-            cat = sec_dict.get("category", "")
-            icon = "📉" if cat == "structured" else "💬" if cat == "voe" else "🔗"
-            st.markdown(f"#### {icon} {sec_dict.get('title', f'Section {idx + 1}')}")
-            _render_section(sec_dict, f"explore_{idx}")
-            if idx < len(all_sections) - 1:
-                st.markdown("---")
-
-        if not all_sections:
-            st.info("No analysis sections available. Run Analyze first.")
-
-        # ── AI-customized charts ─────────────────────────────────────
-        if st.session_state.explore_charts:
             st.markdown("---")
-            st.markdown("### 🤖 Custom Charts")
-            for ei, (title, spec) in enumerate(st.session_state.explore_charts.items()):
-                st.markdown(f"**{title}**")
-                _render_dynamic_chart(spec, key=f"exp_custom_{ei}")
 
-        # ── Chat history ─────────────────────────────────────────────
+        # Voice of Employee sections
+        if voe_sections:
+            st.subheader("💬 Employee Feedback")
+
+            for idx, section in enumerate(voe_sections):
+                sec_dict = section if isinstance(section, dict) else section.dict() if hasattr(section, "dict") else {}
+                st.markdown(f"#### {sec_dict.get('title', f'Feedback Analysis {idx + 1}')}")
+                _render_section(sec_dict, f"voe_{idx}")
+                if idx < len(voe_sections) - 1:
+                    st.markdown("---")
+
+            st.markdown("---")
+
+        # Correlation sections
+        if correlation_sections:
+            st.subheader("🔗 Correlation Insights")
+
+            for idx, section in enumerate(correlation_sections):
+                sec_dict = section if isinstance(section, dict) else section.dict() if hasattr(section, "dict") else {}
+                st.markdown(f"#### {sec_dict.get('title', 'Correlation Analysis')}")
+                _render_section(sec_dict, f"corr_{idx}")
+                if idx < len(correlation_sections) - 1:
+                    st.markdown("---")
+
+            st.markdown("---")
+
+        if not structured_sections and not voe_sections and not correlation_sections:
+            st.info("No analysis sections were generated. Run Analyze first.")
+
+        # Embedded Ask AI + Explore
         st.markdown("---")
-        st.markdown("### 🤖 Customize Any Chart")
-
-        for mi, msg in enumerate(st.session_state.explore_history):
-            with st.chat_message(msg["role"]):
-                st.markdown(msg["content"])
-                if msg.get("chart"):
-                    _render_dynamic_chart(msg["chart"], key=f"exp_hist_{mi}")
-
-        # ── Single unified chat input ────────────────────────────────
-        if explore_prompt := st.chat_input(
-            "e.g., Color all bars green, Show attrition as a pie chart, Add a trend line...",
-            key="explore_chat",
-        ):
-            # Build context from ALL sections
-            all_chart_context = []
-            for sec in all_sections:
-                sec_dict = sec if isinstance(sec, dict) else sec.dict() if hasattr(sec, "dict") else {}
-                all_chart_context.append({
-                    "title": sec_dict.get("title", ""),
-                    "category": sec_dict.get("category", ""),
-                    "narrative": sec_dict.get("narrative", ""),
-                    "charts": [
-                        (c if isinstance(c, dict) else c.dict() if hasattr(c, "dict") else {})
-                        for c in sec_dict.get("charts", [])
-                    ],
-                })
-            full_q = (
-                f"{explore_prompt}\n\n"
-                f"The user is viewing ALL dashboard charts:\n"
-                f"{_json.dumps(all_chart_context, default=str)}\n"
-                f"Modify an existing chart or create a new visualization based on the request. "
-                f"Always include a chart_spec in your response."
-            )
-
-            with st.chat_message("user"):
-                st.markdown(explore_prompt)
-            st.session_state.explore_history.append({
-                "role": "user", "content": explore_prompt,
-            })
-            st.session_state.explore_api_history.append({"role": "user", "content": full_q})
-
-            with st.chat_message("assistant"):
-                with st.spinner("Customizing..."):
-                    try:
-                        result = api_client.ask_question(
-                            company_name=insights["company_name"],
-                            question=full_q,
-                            conversation_history=st.session_state.explore_api_history,
-                        )
-                        answer = result.get("answer", "")
-                        chart_spec = result.get("chart")
-
-                        st.markdown(answer)
-                        if chart_spec:
-                            _render_dynamic_chart(chart_spec, key=f"exp_new_{len(st.session_state.explore_history)}")
-                            ct = chart_spec.get("title", explore_prompt[:40])
-                            st.session_state.explore_charts[ct] = chart_spec
-
-                        st.session_state.explore_history.append({
-                            "role": "assistant", "content": answer, "chart": chart_spec,
-                        })
-                        st.session_state.explore_api_history.append({
-                            "role": "assistant", "content": answer,
-                        })
-                    except Exception as e:
-                        error_msg = f"Error: {str(e)}"
-                        st.error(error_msg)
-                        st.session_state.explore_history.append({
-                            "role": "assistant", "content": error_msg, "chart": None,
-                        })
-
-        # ── Reset ────────────────────────────────────────────────────
+        _render_ask_ai("desc")
         st.markdown("---")
-        if st.session_state.explore_history:
-            if st.button("🔄 Reset All Customizations", key="explore_reset"):
-                st.session_state.explore_history = []
-                st.session_state.explore_api_history = []
-                st.session_state.explore_charts = {}
-                st.rerun()
+        _render_explore("desc", all_sections)
 
-    with tab6:
-        _explore_fragment()
+    # ── Tab 3: Predictive Analytics (deep mode only) ─────────────────
+    if has_ml_tab:
+        tab_idx += 1
+        with tabs[tab_idx]:
+            _render_ml_tab(insights)
 
-    # ── Tab 7: User Guide ─────────────────────────────────────────────
+            # Embedded Ask AI + Explore
+            st.markdown("---")
+            _render_ask_ai("pred")
+            st.markdown("---")
+            _render_explore("pred", all_sections)
 
-    with tab7:
+    # ── Tab 4: User Guide ─────────────────────────────────────────────
+    tab_idx += 1
+
+    with tabs[tab_idx]:
         _render_user_guide()
