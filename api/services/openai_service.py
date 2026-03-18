@@ -147,6 +147,7 @@ def generate_executive_summary(
     sentiment_by_dept: list[dict],
     themes: list[dict],
     target_info: dict,
+    ml_results: dict | None = None,
 ) -> str:
     """
     Generate a narrative executive summary from all analytical outputs.
@@ -162,6 +163,47 @@ def generate_executive_summary(
         f"## Top Themes from Employee Feedback\n{json.dumps(themes, indent=2)}\n"
     )
 
+    if ml_results and ml_results.get("feature_importance"):
+        user += (
+            f"\n\n## ML Predictive Analytics\n"
+            f"### Top Predictors\n{json.dumps(ml_results.get('feature_importance', [])[:5], indent=2)}\n"
+            f"### Risk Distribution\n{json.dumps(ml_results.get('risk_scores', {}).get('distribution', {}), indent=2)}\n"
+            f"### What-If Scenarios\n{json.dumps(ml_results.get('what_if_scenarios', []), indent=2)}\n"
+        )
+
+    return _chat(system, user, temperature=0.4)
+
+
+# ── ML Narrative Generation ──────────────────────────────────────────
+
+def generate_ml_narrative(
+    company_name: str,
+    ml_results: dict,
+    target_info: dict,
+) -> str:
+    """
+    Generate a business narrative interpreting ML predictive analytics results.
+    Returns a markdown-formatted narrative string.
+    """
+    system = _prompt("ml_narrative")
+
+    user = (
+        f"Company: {company_name}\n\n"
+        f"## Target Variable\n{json.dumps(target_info, indent=2)}\n\n"
+        f"## Feature Importance (Top Predictors)\n"
+        f"{json.dumps(ml_results.get('feature_importance', []), indent=2)}\n\n"
+        f"## Risk Score Distribution\n"
+        f"{json.dumps(ml_results.get('risk_scores', {}).get('distribution', {}), indent=2)}\n\n"
+        f"## High-Risk Departments\n"
+        f"{json.dumps(ml_results.get('risk_scores', {}).get('high_risk_departments', []), indent=2)}\n\n"
+        f"## Survival Analysis\n"
+        f"{json.dumps(ml_results.get('survival_analysis'), indent=2, default=str)}\n\n"
+        f"## Employee Segments (Clustering)\n"
+        f"{json.dumps(ml_results.get('clustering', {}).get('profiles', []), indent=2)}\n\n"
+        f"## What-If Scenarios\n"
+        f"{json.dumps(ml_results.get('what_if_scenarios', []), indent=2)}\n"
+    )
+
     return _chat(system, user, temperature=0.4)
 
 
@@ -173,6 +215,7 @@ def generate_recommendations(
     sentiment_by_dept: list[dict],
     themes: list[dict],
     target_info: dict,
+    ml_results: dict | None = None,
 ) -> list[dict]:
     """
     Generate per-department HCM recommendations.
@@ -191,6 +234,15 @@ def generate_recommendations(
         f"## Sentiment by Department\n{json.dumps(sentiment_by_dept, indent=2)}\n\n"
         f"## Top Feedback Themes\n{json.dumps(themes, indent=2)}\n"
     )
+
+    if ml_results and ml_results.get("feature_importance"):
+        user += (
+            f"\n\n## ML Predictive Analytics\n"
+            f"### Top Risk Predictors\n{json.dumps(ml_results.get('feature_importance', [])[:5], indent=2)}\n"
+            f"### High-Risk Departments\n{json.dumps(ml_results.get('risk_scores', {}).get('high_risk_departments', []), indent=2)}\n"
+            f"### What-If Scenarios\n{json.dumps(ml_results.get('what_if_scenarios', []), indent=2)}\n"
+            f"\nUse these ML predictions to make recommendations more specific and data-driven.\n"
+        )
 
     result = _chat_json(system, user)
     return result.get("departments", [])
@@ -280,6 +332,7 @@ def generate_dashboard_spec(
     themes: list[dict],
     correlations: list[dict],
     target_info: dict,
+    ml_results: dict | None = None,
 ) -> dict:
     """
     Ask GPT-4o to generate a complete dashboard specification
@@ -302,6 +355,16 @@ def generate_dashboard_spec(
         f"## Sentiment–Target Metric Correlations\n"
         f"{json.dumps(correlations, indent=2, default=str)}\n"
     )
+
+    if ml_results and ml_results.get("feature_importance"):
+        user += (
+            f"\n\n## ML Predictive Analytics Results\n"
+            f"### Feature Importance\n{json.dumps(ml_results.get('feature_importance', []), indent=2)}\n"
+            f"### Risk Score Distribution\n{json.dumps(ml_results.get('risk_scores', {}).get('distribution', {}), indent=2)}\n"
+            f"### What-If Scenarios\n{json.dumps(ml_results.get('what_if_scenarios', []), indent=2)}\n"
+            f"\nInclude the ML findings in your executive summary KPIs and recommendations. "
+            f"Reference specific predictors and risk percentages.\n"
+        )
 
     result = _chat_json(system, user)
     return {

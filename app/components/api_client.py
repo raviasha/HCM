@@ -71,12 +71,12 @@ def upload_feedback_json(file_bytes: bytes, filename: str, company_name: str) ->
 
 # ── Insights endpoint ────────────────────────────────────────────────
 
-def generate_insights(company_name: str) -> dict:
+def generate_insights(company_name: str, analysis_mode: str = "quick") -> dict:
     """Trigger the full AI insight generation pipeline."""
     with httpx.Client(timeout=TIMEOUT) as client:
         resp = client.post(
             _url("/api/insights/generate"),
-            json={"company_name": company_name},
+            json={"company_name": company_name, "analysis_mode": analysis_mode},
         )
         resp.raise_for_status()
         return resp.json()

@@ -29,10 +29,24 @@ class AnalysisSection(BaseModel):
     """A dynamically generated dashboard section with charts and narrative."""
     id: str
     title: str
-    category: str  # "structured", "voe", "correlation"
+    category: str  # "structured", "voe", "correlation", "ml"
     narrative: str = ""
     charts: list[ChartSpec] = []
     metrics: list[dict] = []  # [{"label": str, "value": str, "description": str}]
+
+
+# ── ML Results ───────────────────────────────────────────────────────
+
+class MLResults(BaseModel):
+    """Results from the ML predictive analytics pipeline."""
+    feature_importance: list[dict] = []
+    risk_scores: dict = {}
+    survival_analysis: Optional[dict] = None
+    clustering: dict = {}
+    what_if_scenarios: list[dict] = []
+    model_metrics: dict = {}
+    data_quality: dict = {}
+    ml_narrative: str = ""
 
 
 # ── Insight Pipeline Response ────────────────────────────────────────
@@ -46,16 +60,23 @@ class InsightResponse(BaseModel):
     target_description: str = ""  # e.g. "Employee Attrition", "Engagement Score"
     domain_context: dict = {}  # raw analysis context for Ask AI
 
+    # Analysis mode
+    analysis_mode: str = "quick"  # "quick" or "deep"
+
     # Dynamic AI-generated dashboard
     kpis: list[dict] = []
     sections: list[AnalysisSection] = []
     recommendations: list[dict] = []
+
+    # ML results (only populated in "deep" mode)
+    ml_results: Optional[MLResults] = None
 
 
 # ── API Requests ─────────────────────────────────────────────────────
 
 class GenerateInsightsRequest(BaseModel):
     company_name: str
+    analysis_mode: str = "quick"  # "quick" or "deep"
 
 
 class UploadResponse(BaseModel):

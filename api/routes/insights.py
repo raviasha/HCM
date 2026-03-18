@@ -16,6 +16,7 @@ from api.models.schemas import (
     GenerateInsightsRequest,
     InsightResponse,
     AnalysisSection,
+    MLResults,
     AskRequest,
     AskResponse,
     ChartSpec,
@@ -53,6 +54,7 @@ async def generate_insights(request: GenerateInsightsRequest):
     Returns a complete InsightResponse payload.
     """
     company = request.company_name
+    analysis_mode = request.analysis_mode
     backend = get_backend()
 
     # Validate data is loaded
@@ -70,7 +72,7 @@ async def generate_insights(request: GenerateInsightsRequest):
         )
 
     try:
-        return await _run_pipeline(company, backend)
+        return await _run_pipeline(company, backend, analysis_mode)
     except HTTPException:
         raise
     except Exception as e:
@@ -81,8 +83,8 @@ async def generate_insights(request: GenerateInsightsRequest):
         )
 
 
-async def _run_pipeline(company: str, backend) -> InsightResponse:
-    """Run the full 11-step analysis pipeline."""
+async def _run_pipeline(company: str, backend, analysis_mode: str = "quick") -> InsightResponse:
+    """Run the full analysis pipeline."""
 
     # ── Step 1: Dynamic schema analysis via GPT-4o ──
 
@@ -136,6 +138,43 @@ async def _run_pipeline(company: str, backend) -> InsightResponse:
 
     department_stats = backend.get_department_stats(company)
 
+    # ── Step 3.5: ML Predictive Analytics (Deep mode only) ──
+
+    ml_results_raw = None
+    ml_results_model = None
+    if analysis_mode == "deep":
+        try:
+            from api.services import ml_service
+            ml_df = backend._df(company)
+            ml_mapping = backend._mapping(company)
+            ml_results_raw = ml_service.run_ml_pipeline(ml_df, ml_mapping)
+
+            # Generate ML narrative via GPT-4o
+            ml_narrative = openai_service.generate_ml_narrative(
+                company_name=company,
+                ml_results=ml_results_raw,
+                target_info=target_info,
+            )
+
+            ml_results_model = MLResults(
+                feature_importance=ml_results_raw.get("feature_importance", []),
+                risk_scores=ml_results_raw.get("risk_scores", {}),
+                survival_analysis=ml_results_raw.get("survival_analysis"),
+                clustering=ml_results_raw.get("clustering", {}),
+                what_if_scenarios=ml_results_raw.get("what_if_scenarios", []),
+                model_metrics=ml_results_raw.get("model_metrics", {}),
+                data_quality=ml_results_raw.get("data_quality", {}),
+                ml_narrative=ml_narrative,
+            )
+            logger.info("ML pipeline completed for %s", company)
+        except Exception as e:
+            logger.exception(
+                "ML pipeline failed for %s — continuing with descriptive only",
+                company,
+            )
+            ml_results_raw = None
+            ml_results_model = None
+
     # ── Step 4: GPT-4o formulates targeted queries per department ──
 
     dept_queries = openai_service.formulate_feedback_queries(
@@ -185,6 +224,7 @@ async def _run_pipeline(company: str, backend) -> InsightResponse:
         sentiment_by_dept=sentiment_by_dept,
         themes=themes,
         target_info=target_info,
+        ml_results=ml_results_raw,
     )
 
     # ── Step 10: Recommendations via GPT-4o ──
@@ -195,6 +235,7 @@ async def _run_pipeline(company: str, backend) -> InsightResponse:
         sentiment_by_dept=sentiment_by_dept,
         themes=themes,
         target_info=target_info,
+        ml_results=ml_results_raw,
     )
 
     # ── Step 11: GPT-4o generates dynamic dashboard specification ──
@@ -206,6 +247,7 @@ async def _run_pipeline(company: str, backend) -> InsightResponse:
         themes=themes,
         correlations=correlations,
         target_info=target_info,
+        ml_results=ml_results_raw,
     )
 
     # Build AnalysisSection objects from dashboard spec
@@ -242,16 +284,35 @@ async def _run_pipeline(company: str, backend) -> InsightResponse:
         "recommendations": recommendations_raw,
     }
 
+    # Include ML results in domain context for Ask AI
+    if ml_results_raw:
+        domain_context["ml_results"] = {
+            "feature_importance": ml_results_raw.get("feature_importance", []),
+            "risk_scores_summary": {
+                "distribution": ml_results_raw.get("risk_scores", {}).get("distribution", {}),
+                "high_risk_departments": ml_results_raw.get("risk_scores", {}).get("high_risk_departments", []),
+            },
+            "clustering_summary": {
+                "n_clusters": ml_results_raw.get("clustering", {}).get("n_clusters"),
+                "profiles": ml_results_raw.get("clustering", {}).get("profiles", []),
+            },
+            "what_if_scenarios": ml_results_raw.get("what_if_scenarios", []),
+        }
+
     response = InsightResponse(
         company_name=company,
         executive_summary=executive_summary,
         target_description=target_info.get("target_description", ""),
         domain_context=domain_context,
+        analysis_mode=analysis_mode,
 
         # Dynamic dashboard
         kpis=dashboard_spec.get("kpis", []),
         sections=sections,
         recommendations=dashboard_spec.get("recommendations", []),
+
+        # ML results
+        ml_results=ml_results_model,
     )
 
     # Cache for subsequent reads
@@ -301,12 +362,31 @@ async def ask_question_endpoint(request: AskRequest):
     insights_context = (
         f"Executive Summary:\n{cached.executive_summary}\n\n"
         f"Target Variable: {cached.target_description}\n\n"
+        f"Analysis Mode: {cached.analysis_mode}\n\n"
         f"Structured Results: {ctx.get('structured_results', {})}\n\n"
         f"Sentiment by Department: {ctx.get('sentiment_by_dept', [])}\n\n"
         f"Themes: {ctx.get('themes', [])}\n\n"
         f"Correlations: {ctx.get('correlations', [])}\n\n"
         f"Recommendations: {ctx.get('recommendations', [])}"
     )
+
+    # Include ML context if available
+    ml_ctx = ctx.get("ml_results")
+    if ml_ctx:
+        insights_context += (
+            f"\n\nML Predictive Analytics Results:\n"
+            f"Feature Importance: {ml_ctx.get('feature_importance', [])}\n"
+            f"Risk Scores: {ml_ctx.get('risk_scores_summary', {})}\n"
+            f"Clustering: {ml_ctx.get('clustering_summary', {})}\n"
+            f"What-If Scenarios: {ml_ctx.get('what_if_scenarios', [])}\n"
+        )
+    elif cached.analysis_mode == "quick":
+        insights_context += (
+            "\n\nNote: This analysis was run in Quick mode (descriptive only). "
+            "ML predictions, risk scores, and clustering were not computed. "
+            "If the user asks about predictions or ML, let them know they can "
+            "re-run the analysis in Deep Analysis mode."
+        )
 
     backend = get_backend()
 
