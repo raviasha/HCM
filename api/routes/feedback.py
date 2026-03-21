@@ -12,6 +12,7 @@ from fastapi import APIRouter, UploadFile, File, Form, HTTPException
 
 from api.models.schemas import UploadResponse
 from api.services import chroma_service
+from api.services.audit_service import log_event
 
 router = APIRouter(prefix="/api/data", tags=["Qualitative Data"])
 
@@ -32,6 +33,7 @@ async def upload_feedback(
             raise ValueError("JSON must be an array of feedback objects")
 
         count = chroma_service.ingest_feedback(company_name, feedback_list)
+        log_event("data_upload_feedback", company_name, {"entry_count": count})
         return UploadResponse(
             success=True,
             message=f"Ingested {count} feedback entries for {company_name}",

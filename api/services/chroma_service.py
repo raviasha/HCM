@@ -10,6 +10,7 @@ a managed vector database for multi-tenant, high-volume workloads.
 
 from __future__ import annotations
 
+import hashlib
 import re
 from typing import Dict, List, Optional
 
@@ -130,7 +131,9 @@ def ingest_feedback(company_name: str, feedback_list: list[dict]) -> int:
         # Build metadata with normalized keys so downstream code works
         meta: dict = {}
         if emp_key:
-            meta["employee_id"] = str(entry.get(emp_key, ""))
+            # Hash employee_id for GDPR — original PII never stored
+            raw_id = str(entry.get(emp_key, ""))
+            meta["employee_id"] = hashlib.sha256(raw_id.encode()).hexdigest()[:16] if raw_id else ""
         if dept_key:
             meta["department"] = str(entry.get(dept_key, ""))
         if type_key:
@@ -259,3 +262,14 @@ def get_feedback_count(company_name: str) -> int:
         return collection.count()
     except (ValueError, NotFoundError):
         return 0
+
+
+def delete_feedback(company_name: str) -> bool:
+    """Delete all feedback data for a company. Returns True if collection existed."""
+    client = _get_client()
+    col_name = _collection_name(company_name)
+    try:
+        client.delete_collection(col_name)
+        return True
+    except (ValueError, NotFoundError, Exception):
+        return False

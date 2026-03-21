@@ -15,10 +15,14 @@ Current implementation: PandasBackend (in-memory DataFrame).
 from __future__ import annotations
 
 import io
+import time
 from typing import Protocol, Optional, Any
 
 import numpy as np
 import pandas as pd
+
+# Maximum time-to-live for uploaded datasets (seconds) — 24 hours
+_TTL_SECONDS = 24 * 60 * 60
 
 
 # ── Abstract Backend Protocol ────────────────────────────────────────
@@ -47,14 +51,35 @@ class PandasBackend:
     def __init__(self):
         self._datasets: dict[str, pd.DataFrame] = {}
         self._mappings: dict[str, dict] = {}
+        self._load_times: dict[str, float] = {}
+
+    def _expire_stale(self) -> None:
+        """Remove datasets older than _TTL_SECONDS."""
+        now = time.time()
+        stale = [k for k, t in self._load_times.items() if now - t > _TTL_SECONDS]
+        for key in stale:
+            self._datasets.pop(key, None)
+            self._mappings.pop(key, None)
+            self._load_times.pop(key, None)
+
+    def delete(self, company_name: str) -> bool:
+        """Delete all in-memory data for a company. Returns True if data existed."""
+        existed = company_name in self._datasets
+        self._datasets.pop(company_name, None)
+        self._mappings.pop(company_name, None)
+        self._load_times.pop(company_name, None)
+        return existed
 
     def load(self, file_content: bytes, company_name: str) -> int:
+        self._expire_stale()
         df = pd.read_csv(io.BytesIO(file_content))
         self._datasets[company_name] = df
         self._mappings.pop(company_name, None)
+        self._load_times[company_name] = time.time()
         return len(df)
 
     def is_loaded(self, company_name: str) -> bool:
+        self._expire_stale()
         return company_name in self._datasets
 
     def has_mapping(self, company_name: str) -> bool:

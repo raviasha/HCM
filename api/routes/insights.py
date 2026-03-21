@@ -24,6 +24,7 @@ from api.models.schemas import (
 from api.services.data_service import get_backend
 from api.services import chroma_service
 from api.services import openai_service
+from api.services.audit_service import log_event
 
 router = APIRouter(prefix="/api/insights", tags=["AI Insights"])
 
@@ -317,6 +318,7 @@ async def _run_pipeline(company: str, backend, analysis_mode: str = "quick") -> 
 
     # Cache for subsequent reads
     _insights_cache[company] = response
+    log_event("insight_generation", company, {"analysis_mode": analysis_mode})
     return response
 
 

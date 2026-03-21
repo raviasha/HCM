@@ -23,6 +23,67 @@ from openai import OpenAI
 
 from config.settings import OPENAI_API_KEY, CHAT_MODEL
 
+# ── PII Sanitization (GDPR Article 5(1)(c) — Data Minimization) ──────
+
+_PII_ID_PATTERNS = {
+    "employee_id", "employeeid", "emp_id", "empid", "staff_id",
+    "staffid", "staff_number", "id", "name", "first_name", "last_name",
+    "email", "phone", "address", "ssn", "social_security",
+}
+
+
+def _sanitize_sample_rows(rows: list[dict]) -> list[dict]:
+    """
+    Remove or mask PII fields from sample rows before sending to the LLM.
+    - ID columns: replaced with sequential anonymized labels (EMP_001, ...)
+    - Name/email/phone/address: redacted entirely
+    - All other fields: kept as-is (needed for schema analysis)
+    """
+    if not rows:
+        return rows
+
+    sanitized = []
+    for idx, row in enumerate(rows):
+        clean = {}
+        for key, val in row.items():
+            key_lower = key.lower().replace(" ", "_")
+            if key_lower in _PII_ID_PATTERNS:
+                clean[key] = f"EMP_{idx + 1:03d}"
+            elif any(p in key_lower for p in ("email", "phone", "address", "ssn")):
+                clean[key] = "[REDACTED]"
+            else:
+                clean[key] = val
+        sanitized.append(clean)
+    return sanitized
+
+
+def _sanitize_ml_results_for_llm(ml_results: dict | None) -> dict | None:
+    """
+    Strip employee-level PII from ML results before sending to OpenAI.
+    Keeps aggregated stats (distribution, department risk, feature importance)
+    but removes individual employee IDs from top_risk_employees.
+    """
+    if not ml_results:
+        return ml_results
+
+    sanitized = {**ml_results}
+
+    # Strip employee IDs from risk scores
+    risk = sanitized.get("risk_scores", {})
+    if risk and "top_risk_employees" in risk:
+        sanitized["risk_scores"] = {**risk}
+        sanitized["risk_scores"]["top_risk_employees"] = [
+            {
+                "risk_score": emp.get("risk_score"),
+                "risk_level": emp.get("risk_level"),
+                "department": emp.get("department"),
+            }
+            for emp in risk["top_risk_employees"]
+        ]
+
+    return sanitized
+
+
 # ── Prompt loader ────────────────────────────────────────────────────
 
 _PROMPTS_FILE = Path(__file__).resolve().parent.parent.parent / "config" / "prompts.yaml"
@@ -164,11 +225,12 @@ def generate_executive_summary(
     )
 
     if ml_results and ml_results.get("feature_importance"):
+        safe_ml = _sanitize_ml_results_for_llm(ml_results)
         user += (
             f"\n\n## ML Predictive Analytics\n"
-            f"### Top Predictors\n{json.dumps(ml_results.get('feature_importance', [])[:5], indent=2)}\n"
-            f"### Risk Distribution\n{json.dumps(ml_results.get('risk_scores', {}).get('distribution', {}), indent=2)}\n"
-            f"### What-If Scenarios\n{json.dumps(ml_results.get('what_if_scenarios', []), indent=2)}\n"
+            f"### Top Predictors\n{json.dumps(safe_ml.get('feature_importance', [])[:5], indent=2)}\n"
+            f"### Risk Distribution\n{json.dumps(safe_ml.get('risk_scores', {}).get('distribution', {}), indent=2)}\n"
+            f"### What-If Scenarios\n{json.dumps(safe_ml.get('what_if_scenarios', []), indent=2)}\n"
         )
 
     return _chat(system, user, temperature=0.4)
@@ -187,21 +249,23 @@ def generate_ml_narrative(
     """
     system = _prompt("ml_narrative")
 
+    safe_ml = _sanitize_ml_results_for_llm(ml_results) or ml_results
+
     user = (
         f"Company: {company_name}\n\n"
         f"## Target Variable\n{json.dumps(target_info, indent=2)}\n\n"
         f"## Feature Importance (Top Predictors)\n"
-        f"{json.dumps(ml_results.get('feature_importance', []), indent=2)}\n\n"
+        f"{json.dumps(safe_ml.get('feature_importance', []), indent=2)}\n\n"
         f"## Risk Score Distribution\n"
-        f"{json.dumps(ml_results.get('risk_scores', {}).get('distribution', {}), indent=2)}\n\n"
+        f"{json.dumps(safe_ml.get('risk_scores', {}).get('distribution', {}), indent=2)}\n\n"
         f"## High-Risk Departments\n"
-        f"{json.dumps(ml_results.get('risk_scores', {}).get('high_risk_departments', []), indent=2)}\n\n"
+        f"{json.dumps(safe_ml.get('risk_scores', {}).get('high_risk_departments', []), indent=2)}\n\n"
         f"## Survival Analysis\n"
-        f"{json.dumps(ml_results.get('survival_analysis'), indent=2, default=str)}\n\n"
+        f"{json.dumps(safe_ml.get('survival_analysis'), indent=2, default=str)}\n\n"
         f"## Employee Segments (Clustering)\n"
-        f"{json.dumps(ml_results.get('clustering', {}).get('profiles', []), indent=2)}\n\n"
+        f"{json.dumps(safe_ml.get('clustering', {}).get('profiles', []), indent=2)}\n\n"
         f"## What-If Scenarios\n"
-        f"{json.dumps(ml_results.get('what_if_scenarios', []), indent=2)}\n"
+        f"{json.dumps(safe_ml.get('what_if_scenarios', []), indent=2)}\n"
     )
 
     return _chat(system, user, temperature=0.4)
@@ -236,11 +300,12 @@ def generate_recommendations(
     )
 
     if ml_results and ml_results.get("feature_importance"):
+        safe_ml = _sanitize_ml_results_for_llm(ml_results)
         user += (
             f"\n\n## ML Predictive Analytics\n"
-            f"### Top Risk Predictors\n{json.dumps(ml_results.get('feature_importance', [])[:5], indent=2)}\n"
-            f"### High-Risk Departments\n{json.dumps(ml_results.get('risk_scores', {}).get('high_risk_departments', []), indent=2)}\n"
-            f"### What-If Scenarios\n{json.dumps(ml_results.get('what_if_scenarios', []), indent=2)}\n"
+            f"### Top Risk Predictors\n{json.dumps(safe_ml.get('feature_importance', [])[:5], indent=2)}\n"
+            f"### High-Risk Departments\n{json.dumps(safe_ml.get('risk_scores', {}).get('high_risk_departments', []), indent=2)}\n"
+            f"### What-If Scenarios\n{json.dumps(safe_ml.get('what_if_scenarios', []), indent=2)}\n"
             f"\nUse these ML predictions to make recommendations more specific and data-driven.\n"
         )
 
@@ -286,11 +351,13 @@ def analyze_csv_schema(metadata: dict) -> dict:
     """
     system = _prompt("schema_analysis")
 
+    safe_rows = _sanitize_sample_rows(metadata.get('sample_rows', []))
+
     user = (
         "Analyze this HR dataset and identify the role of each column.\n\n"
         f"## Columns & Types\n{json.dumps(metadata['dtypes'], indent=2)}\n\n"
         f"## Shape\n{json.dumps(metadata['shape'])}\n\n"
-        f"## Sample Rows (first 5)\n{json.dumps(metadata['sample_rows'], indent=2, default=str)}\n\n"
+        f"## Sample Rows (first 5, PII anonymized)\n{json.dumps(safe_rows, indent=2, default=str)}\n\n"
         f"## Unique Value Counts\n{json.dumps(metadata['unique_counts'], indent=2)}\n\n"
         f"## Null Counts\n{json.dumps(metadata['null_counts'], indent=2)}\n"
     )
@@ -310,12 +377,14 @@ def generate_analysis_plan(
     """
     system = _prompt("analysis_plan")
 
+    safe_rows = _sanitize_sample_rows(metadata.get('sample_rows', []))
+
     user = (
         "Plan the analyses for this HR dataset.\n\n"
         f"## Column Mapping\n{json.dumps(column_mapping, indent=2)}\n\n"
         f"## Columns & Types\n{json.dumps(metadata['dtypes'], indent=2)}\n\n"
         f"## Shape\n{json.dumps(metadata['shape'])}\n\n"
-        f"## Sample Rows (first 5)\n{json.dumps(metadata['sample_rows'], indent=2, default=str)}\n\n"
+        f"## Sample Rows (first 5, PII anonymized)\n{json.dumps(safe_rows, indent=2, default=str)}\n\n"
         f"## Unique Value Counts\n{json.dumps(metadata['unique_counts'], indent=2)}\n"
     )
 
@@ -357,11 +426,12 @@ def generate_dashboard_spec(
     )
 
     if ml_results and ml_results.get("feature_importance"):
+        safe_ml = _sanitize_ml_results_for_llm(ml_results)
         user += (
             f"\n\n## ML Predictive Analytics Results\n"
-            f"### Feature Importance\n{json.dumps(ml_results.get('feature_importance', []), indent=2)}\n"
-            f"### Risk Score Distribution\n{json.dumps(ml_results.get('risk_scores', {}).get('distribution', {}), indent=2)}\n"
-            f"### What-If Scenarios\n{json.dumps(ml_results.get('what_if_scenarios', []), indent=2)}\n"
+            f"### Feature Importance\n{json.dumps(safe_ml.get('feature_importance', []), indent=2)}\n"
+            f"### Risk Score Distribution\n{json.dumps(safe_ml.get('risk_scores', {}).get('distribution', {}), indent=2)}\n"
+            f"### What-If Scenarios\n{json.dumps(safe_ml.get('what_if_scenarios', []), indent=2)}\n"
             f"\nInclude the ML findings in your executive summary KPIs and recommendations. "
             f"Reference specific predictors and risk percentages.\n"
         )
@@ -535,8 +605,9 @@ def ask_question(
                     department=args.get("department"),
                     n_results=args.get("n_results", 15),
                 )
+                # Only send text + department to LLM (no employee_id or other PII)
                 result = [
-                    {"text": r["document"], "department": r["metadata"]["department"]}
+                    {"text": r["document"], "department": r["metadata"].get("department", "")}
                     for r in raw
                 ]
             else:

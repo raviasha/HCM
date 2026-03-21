@@ -122,3 +122,13 @@ def ask_question(company_name: str, question: str, conversation_history: list[di
         )
         resp.raise_for_status()
         return resp.json()
+
+
+def delete_company_data(company_name: str) -> dict:
+    """Delete all data for a company (GDPR right to erasure)."""
+    with httpx.Client(timeout=TIMEOUT) as client:
+        resp = client.delete(
+            _url(f"/api/data/{company_name}"),
+        )
+        resp.raise_for_status()
+        return resp.json()
