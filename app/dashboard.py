@@ -1315,6 +1315,162 @@ The system is split into two isolated components:
 
 ---
 
+### Complete User Journey & Data Flow
+
+This diagram traces every step from the moment you interact with the dashboard
+to the final insights — showing exactly **where** each operation happens and
+**what data** moves between components.
+
+```
+ YOU (Browser)
+  │
+  │ ① Open dashboard (https://localhost:8501)
+  │
+  ▼
+┌══════════════════════════════════════════════════════════════════════════════┐
+║                    YOUR ENVIRONMENT (Client Container)                     ║
+║                                                                           ║
+║  ┌─────────────────────────────────────────────────────────────────────┐   ║
+║  │  STREAMLIT DASHBOARD (Port 8501)                                   │   ║
+║  │  • You see the upload page                                         │   ║
+║  │  • You upload CSV + JSON files                                     │   ║
+║  └──────────────────────────┬──────────────────────────────────────────┘   ║
+║                             │                                             ║
+║            ② Files sent to local API (never leaves your machine)          ║
+║                             │                                             ║
+║  ┌──────────────────────────▼──────────────────────────────────────────┐   ║
+║  │  LOCAL FASTAPI (Port 8001)                                         │   ║
+║  │                                                                    │   ║
+║  │  ③ LOAD DATA INTO MEMORY                                          │   ║
+║  │     • CSV → pandas DataFrame (in-memory, not saved to disk)        │   ║
+║  │     • JSON feedback → held for ChromaDB ingestion                  │   ║
+║  │     • 24-hour auto-expiry timer starts                             │   ║
+║  │                                                                    │   ║
+║  │  ④ PII CLASSIFICATION (100% local Python — no AI involved)         │   ║
+║  │     • Column names checked against regex patterns                  │   ║
+║  │     • Sample values scanned for email/phone/SSN patterns           │   ║
+║  │     • Uniqueness ratio computed to detect identifiers              │   ║
+║  │     • Each column classified: safe / quasi_identifier / direct_pii │   ║
+║  │                                                                    │   ║
+║  │  ⑤ SCHEMA REVIEW (you see this in the dashboard)                   │   ║
+║  │     ┌──────────────────────────────────────────────────────────┐    │   ║
+║  │     │  Column         │ PII Category     │ Handling           │    │   ║
+║  │     │  EmployeeName   │ direct_pii       │ ❌ EXCLUDED        │    │   ║
+║  │     │  Email          │ direct_pii       │ ❌ EXCLUDED        │    │   ║
+║  │     │  Salary         │ quasi_identifier │ 📊 AGGREGATE ONLY  │    │   ║
+║  │     │  Department     │ safe             │ ✅ PASS THROUGH    │    │   ║
+║  │     │  Age            │ safe             │ ✅ PASS THROUGH    │    │   ║
+║  │     └──────────────────────────────────────────────────────────┘    │   ║
+║  │     You review, optionally tighten, and click APPROVE              │   ║
+║  │                                                                    │   ║
+║  │  ⑥ FEEDBACK INGESTION (local ChromaDB)                             │   ║
+║  │     • Free-text feedback scrubbed for PII:                         │   ║
+║  │       "John Smith said..." → "[NAME] said..."                      │   ║
+║  │     • Employee IDs hashed (SHA-256, first 16 chars)                │   ║
+║  │     • Scrubbed text embedded via provider (see step ⑦a)            │   ║
+║  │     • Vectors stored locally in ChromaDB                           │   ║
+║  └──────────────────────────┬──────────────────────────────────────────┘   ║
+║                             │                                             ║
+║  ╔══════════════════════════▼══════════════════════════════════════════╗   ║
+║  ║  🔒 AGGREGATION & SCRUBBING LAYER (Security Boundary)              ║   ║
+║  ║                                                                    ║   ║
+║  ║  Everything below this line is ANONYMIZED before leaving:          ║   ║
+║  ║  • PII columns → completely removed                               ║   ║
+║  ║  • Quasi-identifiers → replaced with "[aggregated]"               ║   ║
+║  ║  • Employee IDs → hashed                                          ║   ║
+║  ║  • Feedback text → PII-scrubbed (names/emails/phones replaced)    ║   ║
+║  ║  • Numbers → only department-level aggregates (means, counts)     ║   ║
+║  ╚══════════════════════════╤══════════════════════════════════════════╝   ║
+║                             │                                             ║
+║  ⑦ THREE REQUESTS CROSS THE NETWORK (aggregated data only):              ║
+║                             │                                             ║
+║     ┌───────────────────────┼───────────────────────────────────┐         ║
+║     │                       │                                   │         ║
+║   ⑦a EMBED              ⑦b SCHEMA + PLAN                 ⑦c INSIGHTS    ║
+║   Scrubbed text →        Column names +                   Dept stats +   ║
+║   embedding vectors      dtypes + safe                    correlations + ║
+║   (for ChromaDB)         sample rows →                    scrubbed       ║
+║                          column mapping +                 feedback →     ║
+║                          analysis plan                    executive      ║
+║                                                           summary +     ║
+║                                                           charts +      ║
+║                                                           recommendations║
+║     │                       │                                   │         ║
+╚═════╪═══════════════════════╪═══════════════════════════════════╪═════════╝
+      │  HTTPS (encrypted)    │                                   │
+      ▼                       ▼                                   ▼
+┌─────────────────────────────────────────────────────────────────────────┐
+│                   PROVIDER BACKEND (Cloud / Render)                     │
+│                                                                        │
+│   ⑧ GPT-4o ORCHESTRATION (stateless — nothing stored)                  │
+│      • Receives aggregated stats → generates narrative insights        │
+│      • Receives column names → decides analysis plan                   │
+│      • Receives scrubbed text → writes sentiment analysis              │
+│      • Calls OpenAI API with your data + system prompts                │
+│      • Returns JSON responses                                          │
+│      • Immediately discards all inputs after response                  │
+│                                                                        │
+│   ┌────────────────┐                                                   │
+│   │   OpenAI API   │  Sees only: aggregated stats, scrubbed text,      │
+│   │   (GPT-4o)     │  column names. Never sees raw employee data.      │
+│   └────────┬───────┘                                                   │
+│            │                                                           │
+│   ⑨ Returns: executive summary, chart specs, recommendations (JSON)   │
+│                                                                        │
+└────────────┼───────────────────────────────────────────────────────────┘
+             │
+             ▼
+┌══════════════════════════════════════════════════════════════════════════┐
+║                    YOUR ENVIRONMENT (back to client)                    ║
+║                                                                        ║
+║  ⑩ LOCAL ML PIPELINE (Deep Mode — runs entirely on your machine)       ║
+║     • scikit-learn: RandomForest vs Logistic Regression (5-fold CV)    ║
+║     • Feature importance, risk scoring, what-if scenarios              ║
+║     • lifelines: Kaplan-Meier survival analysis                        ║
+║     • KMeans clustering with PCA visualization                         ║
+║     • PII columns excluded from ML features automatically             ║
+║     • Employee IDs hashed in risk score output                         ║
+║     • Trained models NEVER leave your machine                          ║
+║                                                                        ║
+║  ⑪ RESULTS RENDERED IN STREAMLIT                                       ║
+║     • KPI cards, interactive Plotly charts, department breakdowns      ║
+║     • AI narrative, recommendations, ML insights                       ║
+║     • Ask AI: your question + cached context → provider → answer       ║
+║     • All displayed data stays in browser memory                       ║
+║                                                                        ║
+║  ⑫ DATA EXPIRY                                                         ║
+║     • Auto-expires after 24 hours (in-memory TTL)                      ║
+║     • Or: click "Delete Data" for immediate erasure                    ║
+║     • ChromaDB collection deleted, DataFrame purged, cache cleared     ║
+║                                                                        ║
+╚══════════════════════════════════════════════════════════════════════════╝
+```
+
+**What never leaves your environment:**
+
+| Data Type | Stays Local? | Proof |
+|-----------|:---:|--------|
+| Raw CSV rows | ✅ | Loaded into pandas in-memory, never serialized to network |
+| Employee names, emails, SSNs, phones | ✅ | Dropped by PII classifier before any network call |
+| Individual salary/compensation values | ✅ | Replaced with `[aggregated]` — only dept averages sent |
+| Trained ML models (sklearn objects) | ✅ | Fit and predict run locally, model never serialized |
+| ChromaDB vector database | ✅ | Stored on local disk, embeddings computed via proxy |
+| Original feedback text (pre-scrubbing) | ✅ | Scrubbed copy sent; original stays in ChromaDB locally |
+| Risk scores per individual employee | ✅ | Computed locally, employee IDs hashed in output |
+
+**What crosses the network (anonymized only):**
+
+| Data Sent | Example | Why |
+|-----------|---------|-----|
+| Column names + data types | `{"Department": "object", "Age": "int64"}` | GPT-4o needs schema to plan analyses |
+| Safe sample values | `{"Department": "Engineering", "Age": 34}` | Context for column mapping |
+| Dept-level aggregates | `{"Sales": {headcount: 120, attrition_rate: 0.23}}` | GPT-4o writes narrative from stats |
+| Correlation numbers | `[{factor: "overtime", correlation: 0.34}]` | For recommendations |
+| PII-scrubbed feedback | `"[NAME] said work-life balance is poor"` | Sentiment and theme analysis |
+| Embedding text (scrubbed) | Same scrubbed feedback | ChromaDB needs vectors |
+
+---
+
 ### The 3-Step PII Review Process
 
 Before any analysis begins, every column in your data goes through a rigorous
