@@ -24,6 +24,9 @@ from openai import OpenAI
 from config.settings import OPENAI_API_KEY, CHAT_MODEL
 
 # ── PII Sanitization (GDPR Article 5(1)(c) — Data Minimization) ──────
+# Legacy hardcoded patterns — used as fallback when no stored PII
+# classification is available. The preferred path is apply_pii_policy()
+# from pii_classifier.py which uses the user-approved schema.
 
 _PII_ID_PATTERNS = {
     "employee_id", "employeeid", "emp_id", "empid", "staff_id",
@@ -82,6 +85,76 @@ def _sanitize_ml_results_for_llm(ml_results: dict | None) -> dict | None:
         ]
 
     return sanitized
+
+
+# ── PII Validation (AI additive review — can only tighten) ───────────
+
+_STRICTNESS_ORDER = {"safe": 0, "quasi_identifier": 1, "direct_pii": 2, "identifier": 3}
+_HANDLING_FOR_CATEGORY = {
+    "safe": "pass_through",
+    "quasi_identifier": "aggregate_only",
+    "direct_pii": "exclude",
+    "identifier": "exclude",
+}
+
+
+def validate_pii_classification(
+    classifications: list[dict],
+) -> list[dict]:
+    """
+    Ask GPT-4o to review Python's PII classification.
+    AI can only UPGRADE columns to stricter categories, never downgrade.
+    Input/output: list of dicts with column_name, dtype, pii_category, handling, confidence, reason.
+    """
+    system = _prompt("pii_validation")
+
+    # Only send column names + dtypes + current classification (no values)
+    review_input = [
+        {
+            "column_name": c["column_name"],
+            "dtype": c["dtype"],
+            "pii_category": c["pii_category"],
+            "handling": c["handling"],
+        }
+        for c in classifications
+    ]
+
+    user = (
+        "Review these column PII classifications for an HR dataset.\n\n"
+        f"{json.dumps(review_input, indent=2)}\n"
+    )
+
+    result = _chat_json(system, user)
+    ai_columns = result.get("columns", [])
+
+    # Build lookup of AI suggestions
+    ai_map = {c["column_name"]: c for c in ai_columns}
+
+    # Merge: only allow upgrades (stricter category)
+    merged = []
+    for orig in classifications:
+        col_name = orig["column_name"]
+        ai_col = ai_map.get(col_name)
+
+        if ai_col:
+            orig_level = _STRICTNESS_ORDER.get(orig["pii_category"], 0)
+            ai_level = _STRICTNESS_ORDER.get(ai_col.get("pii_category", "safe"), 0)
+
+            if ai_level > orig_level:
+                # AI upgraded — use stricter classification
+                new_cat = ai_col["pii_category"]
+                merged.append({
+                    **orig,
+                    "pii_category": new_cat,
+                    "handling": _HANDLING_FOR_CATEGORY.get(new_cat, orig["handling"]),
+                    "confidence": ai_col.get("confidence", orig["confidence"]),
+                    "reason": f"AI upgrade: {ai_col.get('reason', orig['reason'])}",
+                })
+                continue
+
+        merged.append(orig)
+
+    return merged
 
 
 # ── Prompt loader ────────────────────────────────────────────────────
@@ -344,14 +417,24 @@ def analyze_correlations(
 
 # ── Dynamic Schema Analysis ──────────────────────────────────────────
 
-def analyze_csv_schema(metadata: dict) -> dict:
+def analyze_csv_schema(metadata: dict, pii_classifications=None) -> dict:
     """
     Ask GPT-4o to analyze CSV column metadata and return a structured
     column mapping (attrition col, department col, numeric cols, etc.).
     """
     system = _prompt("schema_analysis")
 
-    safe_rows = _sanitize_sample_rows(metadata.get('sample_rows', []))
+    # Use stored PII policy if available, otherwise fall back to legacy sanitizer
+    if pii_classifications:
+        from api.services.pii_classifier import apply_pii_policy
+        safe_rows = apply_pii_policy(metadata.get('sample_rows', []), pii_classifications)
+    else:
+        safe_rows = _sanitize_sample_rows(metadata.get('sample_rows', []))
+
+    # NOTE: Do NOT filter column names from schema analysis — GPT-4o needs
+    # all column names (incl. PII) to correctly build the column mapping
+    # (employee_id_col, department_col, etc.).  Sample row *values* are
+    # already anonymised by apply_pii_policy / _sanitize_sample_rows above.
 
     user = (
         "Analyze this HR dataset and identify the role of each column.\n\n"
@@ -368,6 +451,7 @@ def analyze_csv_schema(metadata: dict) -> dict:
 def generate_analysis_plan(
     metadata: dict,
     column_mapping: dict,
+    pii_classifications=None,
 ) -> list[dict]:
     """
     Ask GPT-4o to generate a dynamic analysis plan based on the
@@ -377,15 +461,28 @@ def generate_analysis_plan(
     """
     system = _prompt("analysis_plan")
 
-    safe_rows = _sanitize_sample_rows(metadata.get('sample_rows', []))
+    if pii_classifications:
+        from api.services.pii_classifier import apply_pii_policy
+        safe_rows = apply_pii_policy(metadata.get('sample_rows', []), pii_classifications)
+    else:
+        safe_rows = _sanitize_sample_rows(metadata.get('sample_rows', []))
+
+    # Filter metadata to exclude PII column names from counts
+    dtypes = metadata['dtypes']
+    unique_counts = metadata['unique_counts']
+    if pii_classifications:
+        _excluded = {c.column_name for c in pii_classifications
+                     if c.handling == "exclude"}
+        dtypes = {k: v for k, v in dtypes.items() if k not in _excluded}
+        unique_counts = {k: v for k, v in unique_counts.items() if k not in _excluded}
 
     user = (
         "Plan the analyses for this HR dataset.\n\n"
         f"## Column Mapping\n{json.dumps(column_mapping, indent=2)}\n\n"
-        f"## Columns & Types\n{json.dumps(metadata['dtypes'], indent=2)}\n\n"
+        f"## Columns & Types\n{json.dumps(dtypes, indent=2)}\n\n"
         f"## Shape\n{json.dumps(metadata['shape'])}\n\n"
         f"## Sample Rows (first 5, PII anonymized)\n{json.dumps(safe_rows, indent=2, default=str)}\n\n"
-        f"## Unique Value Counts\n{json.dumps(metadata['unique_counts'], indent=2)}\n"
+        f"## Unique Value Counts\n{json.dumps(unique_counts, indent=2)}\n"
     )
 
     result = _chat_json(system, user)
@@ -605,9 +702,10 @@ def ask_question(
                     department=args.get("department"),
                     n_results=args.get("n_results", 15),
                 )
-                # Only send text + department to LLM (no employee_id or other PII)
+                # Scrub PII from feedback text before sending to LLM
+                from api.services.pii_classifier import scrub_text_pii
                 result = [
-                    {"text": r["document"], "department": r["metadata"].get("department", "")}
+                    {"text": scrub_text_pii(r["document"])[0], "department": r["metadata"].get("department", "")}
                     for r in raw
                 ]
             else:

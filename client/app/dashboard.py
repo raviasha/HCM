@@ -12,10 +12,10 @@ import sys
 from pathlib import Path
 
 # Ensure project root is on the Python path
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
 
 import streamlit as st
-from app.components import api_client
+from client.app.components import api_client
 import pandas as pd
 import plotly.express as px
 

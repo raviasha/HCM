@@ -72,6 +72,14 @@ async def generate_insights(request: GenerateInsightsRequest):
             detail=f"No feedback data for '{company}'. Upload JSON first.",
         )
 
+    # Require PII schema review & approval before any analysis
+    if not backend.has_pii_classification(company):
+        raise HTTPException(
+            status_code=400,
+            detail="Schema must be reviewed and approved before analysis. "
+                   "Call /api/data/analyze-schema and /api/data/approve-schema first.",
+        )
+
     try:
         return await _run_pipeline(company, backend, analysis_mode)
     except HTTPException:
@@ -87,11 +95,15 @@ async def generate_insights(request: GenerateInsightsRequest):
 async def _run_pipeline(company: str, backend, analysis_mode: str = "quick") -> InsightResponse:
     """Run the full analysis pipeline."""
 
+    pii_classifications = backend.get_pii_classification(company)
+
     # ── Step 1: Dynamic schema analysis via GPT-4o ──
 
     if not backend.has_mapping(company):
         schema_metadata = backend.get_schema_metadata(company)
-        column_mapping = openai_service.analyze_csv_schema(schema_metadata)
+        column_mapping = openai_service.analyze_csv_schema(
+            schema_metadata, pii_classifications=pii_classifications,
+        )
         backend.set_schema_mapping(company, column_mapping)
     else:
         schema_metadata = backend.get_schema_metadata(company)
@@ -103,6 +115,7 @@ async def _run_pipeline(company: str, backend, analysis_mode: str = "quick") -> 
     analysis_plan = openai_service.generate_analysis_plan(
         metadata=schema_metadata,
         column_mapping=backend._mapping(company),
+        pii_classifications=pii_classifications,
     )
 
     # ── Step 3: Execute analysis plan against pandas ──
@@ -143,31 +156,41 @@ async def _run_pipeline(company: str, backend, analysis_mode: str = "quick") -> 
 
     ml_results_raw = None
     ml_results_model = None
+    ml_skip_reason = None
     if analysis_mode == "deep":
         try:
             from api.services import ml_service
             ml_df = backend._df(company)
             ml_mapping = backend._mapping(company)
-            ml_results_raw = ml_service.run_ml_pipeline(ml_df, ml_mapping)
-
-            # Generate ML narrative via GPT-4o
-            ml_narrative = openai_service.generate_ml_narrative(
-                company_name=company,
-                ml_results=ml_results_raw,
-                target_info=target_info,
+            ml_results_raw = ml_service.run_ml_pipeline(
+                ml_df, ml_mapping,
+                pii_classifications=pii_classifications,
             )
 
-            ml_results_model = MLResults(
-                feature_importance=ml_results_raw.get("feature_importance", []),
-                risk_scores=ml_results_raw.get("risk_scores", {}),
-                survival_analysis=ml_results_raw.get("survival_analysis"),
-                clustering=ml_results_raw.get("clustering", {}),
-                what_if_scenarios=ml_results_raw.get("what_if_scenarios", []),
-                model_metrics=ml_results_raw.get("model_metrics", {}),
-                data_quality=ml_results_raw.get("data_quality", {}),
-                ml_narrative=ml_narrative,
-            )
-            logger.info("ML pipeline completed for %s", company)
+            # Check if the pipeline returned a skip reason (e.g. no target col)
+            if ml_results_raw.get("_skip_reason"):
+                ml_skip_reason = ml_results_raw["_skip_reason"]
+                logger.warning("ML pipeline skipped for %s: %s", company, ml_skip_reason)
+                ml_results_raw = None
+            else:
+                # Generate ML narrative via GPT-4o
+                ml_narrative = openai_service.generate_ml_narrative(
+                    company_name=company,
+                    ml_results=ml_results_raw,
+                    target_info=target_info,
+                )
+
+                ml_results_model = MLResults(
+                    feature_importance=ml_results_raw.get("feature_importance", []),
+                    risk_scores=ml_results_raw.get("risk_scores", {}),
+                    survival_analysis=ml_results_raw.get("survival_analysis"),
+                    clustering=ml_results_raw.get("clustering", {}),
+                    what_if_scenarios=ml_results_raw.get("what_if_scenarios", []),
+                    model_metrics=ml_results_raw.get("model_metrics", {}),
+                    data_quality=ml_results_raw.get("data_quality", {}),
+                    ml_narrative=ml_narrative,
+                )
+                logger.info("ML pipeline completed for %s", company)
         except Exception as e:
             logger.exception(
                 "ML pipeline failed for %s — continuing with descriptive only",
@@ -175,6 +198,7 @@ async def _run_pipeline(company: str, backend, analysis_mode: str = "quick") -> 
             )
             ml_results_raw = None
             ml_results_model = None
+            ml_skip_reason = f"ML pipeline error: {e}"
 
     # ── Step 4: GPT-4o formulates targeted queries per department ──
 
@@ -195,7 +219,11 @@ async def _run_pipeline(company: str, backend, analysis_mode: str = "quick") -> 
             department=dept,
             n_results=30,
         )
-        targeted_feedback_by_dept[dept] = [r["document"] for r in results]
+        # Scrub PII from feedback text before it reaches any OpenAI call
+        from api.services.pii_classifier import scrub_text_pii
+        targeted_feedback_by_dept[dept] = [
+            scrub_text_pii(r["document"])[0] for r in results
+        ]
 
     all_feedback_texts = []
     for texts in targeted_feedback_by_dept.values():
@@ -300,6 +328,20 @@ async def _run_pipeline(company: str, backend, analysis_mode: str = "quick") -> 
             "what_if_scenarios": ml_results_raw.get("what_if_scenarios", []),
         }
 
+    # ── Build PII handling summary for dashboard transparency ──
+
+    pii_handling_summary = None
+    if pii_classifications:
+        pii_handling_summary = [
+            {
+                "column": c.column_name,
+                "category": c.pii_category,
+                "handling": c.handling,
+            }
+            for c in pii_classifications
+            if c.handling != "pass_through"
+        ]
+
     response = InsightResponse(
         company_name=company,
         executive_summary=executive_summary,
@@ -314,6 +356,10 @@ async def _run_pipeline(company: str, backend, analysis_mode: str = "quick") -> 
 
         # ML results
         ml_results=ml_results_model,
+        ml_skip_reason=ml_skip_reason,
+
+        # PII transparency
+        pii_handling_summary=pii_handling_summary,
     )
 
     # Cache for subsequent reads

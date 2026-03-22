@@ -70,6 +70,10 @@ class InsightResponse(BaseModel):
 
     # ML results (only populated in "deep" mode)
     ml_results: Optional[MLResults] = None
+    ml_skip_reason: Optional[str] = None
+
+    # PII handling transparency — tells the dashboard what was excluded/hashed
+    pii_handling_summary: Optional[list[dict]] = None
 
 
 # ── API Requests ─────────────────────────────────────────────────────
@@ -97,3 +101,52 @@ class AskResponse(BaseModel):
     answer: str
     chart: Optional[ChartSpec] = None
     sources: list[str] = []
+
+
+# ── Schema Review & PII Consent ──────────────────────────────────────
+
+class ColumnClassificationOut(BaseModel):
+    """PII classification for a single column."""
+    column_name: str
+    dtype: str
+    pii_category: str   # identifier | direct_pii | quasi_identifier | safe
+    handling: str        # exclude | hash | aggregate_only | pass_through
+    confidence: str      # high | medium | low
+    reason: str
+
+
+class PiiDetectionOut(BaseModel):
+    """A single PII match detected in free text."""
+    pii_type: str
+    original: str
+    start: int
+    end: int
+
+
+class FeedbackSampleOut(BaseModel):
+    """A feedback entry with original and PII-scrubbed text."""
+    original_text: str
+    scrubbed_text: str
+    pii_detections: list[PiiDetectionOut] = []
+    metadata: dict = {}
+
+
+class SchemaReviewResponse(BaseModel):
+    """Returned by /api/data/analyze-schema after PII classification."""
+    company_name: str
+    row_count: int
+    column_count: int
+    columns: list[ColumnClassificationOut]
+    pii_summary: dict  # {"identifier": 1, "direct_pii": 0, ...}
+    sample_rows: list[dict]  # PII columns already redacted
+    feedback_columns: list[ColumnClassificationOut] = []
+    feedback_samples: list[FeedbackSampleOut] = []
+    feedback_entry_count: int = 0
+    feedback_text_pii_count: int = 0
+
+
+class ApproveSchemaRequest(BaseModel):
+    """User-approved column classifications (can only tighten, not loosen)."""
+    company_name: str
+    columns: list[ColumnClassificationOut]
+    feedback_columns: list[ColumnClassificationOut] = []

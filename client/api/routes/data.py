@@ -1,11 +1,13 @@
 """
-Structured data API routes.
-Handles CSV upload and generic data queries.
+Client-side structured data routes.
+
+All data stays local. PII classification and schema review happen here.
+AI validation goes through the provider's /api/validate-pii endpoint.
 """
 
 from fastapi import APIRouter, UploadFile, File, Form, HTTPException
 
-from api.models.schemas import (
+from shared.contracts import (
     UploadResponse,
     SchemaReviewResponse,
     ColumnClassificationOut,
@@ -13,10 +15,12 @@ from api.models.schemas import (
     FeedbackSampleOut,
     PiiDetectionOut,
 )
-from api.services.data_service import get_backend
-from api.services import chroma_service
-from api.services.audit_service import log_event
-from api.services.pii_classifier import (
+from client.services.data_service import get_backend
+from client.services import chroma_service
+from client.services.audit_service import log_event
+from client.services import provider_client
+from client.services.pii_classifier import (
+    ColumnClassification,
     classify_columns,
     classify_feedback_keys,
     apply_pii_policy,
@@ -31,7 +35,7 @@ async def upload_csv(
     file: UploadFile = File(...),
     company_name: str = Form(...),
 ):
-    """Upload a CSV file containing employee/workforce data."""
+    """Upload a CSV file — data stays in the local container."""
     if not file.filename or not file.filename.endswith(".csv"):
         raise HTTPException(status_code=400, detail="File must be a .csv")
 
@@ -51,11 +55,8 @@ async def upload_csv(
 
 @router.delete("/{company_name}")
 async def delete_company_data(company_name: str):
-    """
-    Delete all data for a company (GDPR Article 17 — Right to Erasure).
-    Removes structured data, schema mappings, cached insights, and feedback.
-    """
-    from api.routes.insights import _insights_cache
+    """Delete all local data for a company (GDPR Article 17)."""
+    from client.api.routes.insights import _insights_cache
 
     backend = get_backend()
     data_deleted = backend.delete(company_name)
@@ -83,42 +84,37 @@ async def delete_company_data(company_name: str):
 @router.post("/analyze-schema", response_model=SchemaReviewResponse)
 async def analyze_schema(company_name: str = Form(...)):
     """
-    Step 2 of the upload flow: extract schema via Python deterministic
-    heuristics, classify every column for PII, optionally have AI
-    validate. Returns the full schema with classifications for user review.
+    Step 2: Classify columns for PII locally, then validate via provider AI.
+    Returns schema with classifications for user review.
     """
-    from api.services import openai_service
-
     backend = get_backend()
     if not backend.is_loaded(company_name):
         raise HTTPException(status_code=400, detail=f"No data loaded for '{company_name}'")
 
     df = backend._df(company_name)
 
-    # 1. Deterministic Python PII classification
+    # 1. Deterministic Python PII classification (runs locally)
     classifications = classify_columns(df)
 
-    # 2. AI validation (additive only — can tighten, not loosen)
+    # 2. AI validation via provider (sends only column names + dtypes)
     class_dicts = [c.to_dict() for c in classifications]
     try:
-        validated = openai_service.validate_pii_classification(class_dicts)
+        validated = provider_client.validate_pii(class_dicts)
     except Exception:
-        # If AI validation fails, fall back to Python-only classification
         validated = class_dicts
 
-    # 3. Apply PII policy to sample rows for the response
+    # 3. Apply PII policy to sample rows
     sample_rows = df.head(5).fillna("").to_dict(orient="records")
-    from api.services.pii_classifier import ColumnClassification as CC
-    cc_list = [CC(**v) for v in validated]
+    cc_list = [ColumnClassification(**v) for v in validated]
     safe_sample = apply_pii_policy(sample_rows, cc_list)
 
-    # 4. PII summary counts
+    # 4. PII summary
     pii_summary: dict[str, int] = {}
     for c in validated:
         cat = c["pii_category"]
         pii_summary[cat] = pii_summary.get(cat, 0) + 1
 
-    # 5. Classify feedback keys and scrub sample texts if feedback is loaded
+    # 5. Feedback PII detection
     feedback_cols: list[ColumnClassificationOut] = []
     feedback_samples: list[FeedbackSampleOut] = []
     fb_count = chroma_service.get_feedback_count(company_name)
@@ -126,14 +122,11 @@ async def analyze_schema(company_name: str = Form(...)):
     if fb_count > 0:
         all_fb = chroma_service.get_all_feedback(company_name)
         if all_fb:
-            # Classify metadata keys
             sample_meta = all_fb[0].get("metadata", {})
             fb_classifications = classify_feedback_keys(sample_meta)
             feedback_cols = [
                 ColumnClassificationOut(**c.to_dict()) for c in fb_classifications
             ]
-
-            # Scrub PII from sample feedback texts (show 5 samples)
             for entry in all_fb[:5]:
                 original_text = entry.get("document", "")
                 scrubbed, detections = scrub_text_pii(original_text)
@@ -141,16 +134,13 @@ async def analyze_schema(company_name: str = Form(...)):
                 feedback_samples.append(FeedbackSampleOut(
                     original_text=original_text,
                     scrubbed_text=scrubbed,
-                    pii_detections=[
-                        PiiDetectionOut(**d.to_dict()) for d in detections
-                    ],
+                    pii_detections=[PiiDetectionOut(**d.to_dict()) for d in detections],
                     metadata=entry.get("metadata", {}),
                 ))
 
     log_event("schema_analysis", company_name, {
         "column_count": len(validated),
         "pii_summary": pii_summary,
-        "feedback_text_pii_count": fb_text_pii_count,
     })
 
     return SchemaReviewResponse(
@@ -172,16 +162,11 @@ _STRICTNESS = {"safe": 0, "quasi_identifier": 1, "direct_pii": 2, "identifier": 
 
 @router.post("/approve-schema")
 async def approve_schema(request: ApproveSchemaRequest):
-    """
-    Step 3 of the upload flow: user approves the PII classification.
-    Users can only TIGHTEN classifications (mark more as PII), never loosen.
-    Stores approved classifications for use by the analysis pipeline.
-    """
+    """Step 3: User approves PII classification (can only tighten)."""
     backend = get_backend()
     if not backend.is_loaded(request.company_name):
         raise HTTPException(status_code=400, detail=f"No data loaded for '{request.company_name}'")
 
-    # Validate: user cannot downgrade any column
     existing = backend.get_pii_classification(request.company_name)
     if existing:
         orig_map = {c.column_name: c for c in existing}
@@ -197,10 +182,8 @@ async def approve_schema(request: ApproveSchemaRequest):
                                f"'{orig.pii_category}' to '{col.pii_category}'",
                     )
 
-    # Store approved classifications
-    from api.services.pii_classifier import ColumnClassification as CC
     approved = [
-        CC(
+        ColumnClassification(
             column_name=c.column_name,
             dtype=c.dtype,
             pii_category=c.pii_category,
@@ -212,10 +195,9 @@ async def approve_schema(request: ApproveSchemaRequest):
     ]
     backend.set_pii_classification(request.company_name, approved)
 
-    # Store feedback key classifications if provided
     if request.feedback_columns:
         fb_approved = [
-            CC(
+            ColumnClassification(
                 column_name=c.column_name,
                 dtype=c.dtype,
                 pii_category=c.pii_category,
@@ -229,10 +211,6 @@ async def approve_schema(request: ApproveSchemaRequest):
 
     log_event("schema_approval", request.company_name, {
         "columns_approved": len(approved),
-        "pii_summary": {
-            cat: sum(1 for c in approved if c.pii_category == cat)
-            for cat in ("identifier", "direct_pii", "quasi_identifier", "safe")
-        },
     })
 
     return {

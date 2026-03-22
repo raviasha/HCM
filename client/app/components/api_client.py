@@ -16,7 +16,7 @@ def _base_url() -> str:
         return st.secrets["API_BASE_URL"].rstrip("/")
     except (KeyError, AttributeError):
         pass
-    from config.settings import API_BASE_URL
+    from client.config.settings import API_BASE_URL
     return API_BASE_URL.rstrip("/")
 
 
